@@ -8,5 +8,13 @@ module.exports = defineConfig({
   },
   devServer: {
     port: 8000,
+    proxy: {
+      '/lib/coms': {
+        target: 'http://localhost:8200',
+        logLevel: 'debug',
+        changeOrigin: true,
+        ws: true
+      },
+    }
   },
 })
