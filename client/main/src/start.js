@@ -1,4 +1,5 @@
-time_log('[main] start')
+
+window.time_log('[main] start')
 
 // import VConsole from 'vconsole';
 // const vConsole = new VConsole();
@@ -16,7 +17,7 @@ const loadLib = (url) => {
     return new Promise(resolve => {
         importHtml(url).then( res => {
             console.log('importHtml', url, res)
-            res.execScripts().then(exports => {
+            res.execScripts().then(() => {
                 resolve()
             })
         })
@@ -28,9 +29,9 @@ Promise.all([
     import('./main'),
     loadLib('/lib/coms/'),
 ]).then(results => {
-    time_log('results', results)
+    window.time_log('results', results)
     const [main] = results
-    time_log('main', main)
+    window.time_log('main', main)
     //
     main.start()
 })

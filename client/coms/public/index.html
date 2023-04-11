@@ -11,17 +11,6 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <script>
-      if (location.search.indexOf('debug=true') > 0) {
-          var start_time = Date.now()
-          window.time_log = function (...args) {
-              console.log((Date.now() - start_time), ...args)
-          }
-          time_log('[main] index.html')
-      } else {
-          window.time_log = function() {}
-      }
-    </script>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
