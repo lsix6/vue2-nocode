@@ -2,8 +2,7 @@
 window.time_log('[nocode] main.js')
 
 const registerComponents = (Vue) => {
-  window.time_log('[nocode] register components')
-  Vue.component('NoCode', () => import('./components/HelloWorld.vue'))
+  window.time_log('[nocode] register components', Vue)
 }
 
 if (window.Vue) {
