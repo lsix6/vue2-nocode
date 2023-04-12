@@ -27,6 +27,7 @@ const loadLib = (url) => {
 
 Promise.all([
     import('./main'),
+    loadLib('/lib/nocode/'),
     loadLib('/lib/coms/'),
 ]).then(results => {
     window.time_log('[main] js loaded', results)
