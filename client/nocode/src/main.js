@@ -1,16 +1,10 @@
+import Vue from 'vue'
+import App from './App.vue'
 
-window.time_log('[nocode] main.js')
+Vue.config.productionTip = false
 
-const registerComponents = (Vue) => {
-  window.time_log('[nocode] register components', Vue)
-  Vue.component('nc_component', () => import('./components/nc_component.vue'))
-  Vue.component('nc_view', () => import('./nc_view.vue'))
-}
-
-if (window.Vue) {
-  // 主应用中赋值了 window.Vue
-  // 注册组件
-  registerComponents(window.Vue)
-} else {
-  console.error(`not found 'window.Vue'`)
+export const start = () => {
+  new Vue({
+    render: h => h(App),
+  }).$mount('#app')
 }

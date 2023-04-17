@@ -1,14 +1,20 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: '/lib/nocode/',
-  outputDir: './dist/lib/nocode/',
-  configureWebpack: (config) => {
-    config.externals = {
-      'vue': 'Vue',
-    };
+  pages: {
+    index: {
+      entry: './src/start.js'
+    }
   },
   devServer: {
-    port: 8100,
+    port: 8000,
+    proxy: {
+      '/lib/coms': {
+        target: 'http://localhost:8200',
+        logLevel: 'debug',
+        changeOrigin: true,
+        ws: true
+      },
+    }
   },
 })
