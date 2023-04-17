@@ -5,6 +5,9 @@ import App from './App.vue'
 import { get_nc_view_route } from './components/nc_pages'
 import { init_nocode } from './init_nocode'
 
+// css 样式
+import './assets/css/main.scss'
+
 Vue.config.productionTip = false
 
 export const start = () => {
