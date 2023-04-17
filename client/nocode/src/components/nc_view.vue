@@ -6,8 +6,12 @@
 <script>
 
 import { nc_pages, nc_view_route } from './nc_pages.js';
+import nc_component from './nc_component.vue'
 
 export default {
+  components: {
+    nc_component
+  },
   data() {
     return {
       com_data: null

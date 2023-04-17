@@ -1,14 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <nc_view />
   </div>
 </template>
 
 <script>
 
+import nc_view from './components/nc_view.vue'
+
 export default {
   name: 'App',
+  components: {
+    nc_view
+  },
 }
 </script>
 
