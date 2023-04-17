@@ -5,7 +5,7 @@
 
 <script>
 
-import { nc_pages, nc_view_route } from './nc_pages';
+import { nc_pages, nc_view_route } from './nc_pages.js';
 
 export default {
   data() {
