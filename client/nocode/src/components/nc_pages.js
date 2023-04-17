@@ -1,7 +1,7 @@
 
 export const nc_pages = {}
 
-export const nc_view_route = '/board/'
+export const nc_view_route = '/'
 
 export const register_page = (route, page) => {
     nc_pages[route] = page;
