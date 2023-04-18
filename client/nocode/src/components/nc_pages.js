@@ -26,7 +26,6 @@ export const get_nc_view_route = () => {
         path: nc_view_route,
         name: 'nc_view',
         redirect,
-        component: () => import('./nc_view.vue'),
         children: [
             ...children,
         ]
