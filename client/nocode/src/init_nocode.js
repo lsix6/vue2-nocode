@@ -11,6 +11,12 @@ const pageHome = {
             background: '#F5F6F7'
         },
     },
+    com_children: [
+        {
+            com_name: 'span',
+            com_text: 'test nocode',
+        }
+    ],
 }
 
 export const init_nocode = () => {
