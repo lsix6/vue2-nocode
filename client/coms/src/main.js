@@ -3,7 +3,6 @@ window.time_log('[coms] main.js')
 
 const registerComponents = (Vue) => {
   window.time_log('[coms] register components')
-  Vue.component('HelloWorld', () => import('./components/HelloWorld.vue'))
   Vue.component('nc_children', () => import('./components/nc_children.vue'))
   Vue.component('nc_data', () => import('./components/nc_data.vue'))
 }
