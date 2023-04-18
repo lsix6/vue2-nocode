@@ -1,21 +1,7 @@
 <template>
     <div v-bind="node_props" :data="data">
         <template v-if="data_children && data">
-            <template v-if="isArray(data)">
-                <nc_children 
-                    v-for="(rec, recIndex) in data"
-                    :key="recIndex"
-                    :com_children="data_children" 
-                    :com_params="{ 
-                        ...com_params,
-                        ...rec,
-                        nc_data_is_first: (recIndex === 0),
-                        nc_data_is_last: (recIndex === (data.length - 1))
-                    }"
-                >
-                </nc_children>
-            </template>
-            <nc_children v-else :com_children="data_children" :com_params="{ ...com_params, ...data }">
+            <nc_children :com_children="data_children" :com_params="{ ...com_params, ...data }">
             </nc_children>
         </template>
     </div>
@@ -24,7 +10,6 @@
 <script>
 import { get_params } from '../utils/nc_params'
 import { request_api } from '../utils/nc_request'
-import _ from 'lodash'
 
 export default {
     install(Vue) {
@@ -94,9 +79,6 @@ export default {
                     resolve(true)
                 }
             })
-        },
-        isArray(obj) {
-            return _.isArray(obj)
         },
     }
 }
