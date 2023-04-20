@@ -1,3 +1,4 @@
+import './init.js'
 
 window.time_log('[coms] main.js')
 
