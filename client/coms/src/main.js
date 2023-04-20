@@ -1,5 +1,7 @@
 import './init.js'
 
+import elementui from './elementui/index.js'
+
 window.time_log('[coms] main.js')
 
 const registerComponents = (Vue) => {
@@ -11,6 +13,8 @@ const registerComponents = (Vue) => {
 
 if (window.Vue) {
   // 主应用中赋值了 window.Vue
+  //
+  window.Vue.use(elementui)
   // 注册组件
   registerComponents(window.Vue)
 } else {
