@@ -33,7 +33,7 @@ const btnEdit = {
 }
 
 const btnRemove = {
-    com_name: 'nc_popconfirm',
+    com_name: 'el-popconfirm',
     com_props: {
         'popper-class': 'board-style',
         title: '确认删除',
