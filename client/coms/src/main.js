@@ -6,6 +6,7 @@ const registerComponents = (Vue) => {
   window.time_log('[coms] register components')
   Vue.component('nc_children', () => import('./components/nc_children.vue'))
   Vue.component('nc_data', () => import('./components/nc_data.vue'))
+  Vue.component('nc_list', () => import('./components/nc_list.vue'))
 }
 
 if (window.Vue) {
