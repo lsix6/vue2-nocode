@@ -109,14 +109,13 @@ const btnRemove = {
 }
 
 export const pageProductList = {
-    "com_name": "div",
-    "com_version": '0',
-    "com_props": {
+    com_name: "div",
+    com_version: '0',
+    com_props: {
         style: {
-            width: '100%',
-            height: '100%',
+            background: '#F5F6F7',
+            flex: 1,
             display: 'flex',
-            background: '#F5F6F7'
         },
     },
     com_children: [
@@ -128,6 +127,9 @@ export const pageProductList = {
                         url: 'product/list',
                         method: 'GET',
                     },
+                },
+                style: {
+                    flex: 1,
                 },
                 data_children: [
                     {

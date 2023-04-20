@@ -18,8 +18,10 @@ export default {
 
 <style>
 #app {
-  height: 100%;
   background-color: #fff;
+  flex: 1;
+  display: flex;
   overflow: hidden;
+  padding: 20px;
 }
 </style>
