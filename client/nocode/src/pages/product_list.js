@@ -1,8 +1,11 @@
 
 const btnInRow = {
-    com_name: 'a',
+    com_name: 'el-button',
     com_props: {
-        class: 'table-btn text-button',
+        type: 'text',
+        style: {
+            'margin-right': '10px',
+        },
     },
 }
 
@@ -173,7 +176,7 @@ export const pageProductList = {
                                 {
                                     column_props: {
                                         label: '操作',
-                                        'min-width': '160',
+                                        width: '160',
                                         align: 'center',
                                         fixed: 'right',
                                     },
@@ -182,7 +185,7 @@ export const pageProductList = {
                                             com_name: 'div',
                                             com_props: {
                                                 style: {
-                                                    'text-align': 'left',
+                                                    'text-align': 'center',
                                                     'margin-left': '10px',
                                                 },
                                             },
