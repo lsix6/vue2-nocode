@@ -132,6 +132,12 @@ export const pageProductList = {
                 data_children: [
                     {
                         com_name: 'nc_list',
+                        com_binds: [
+                            {
+                                prop_name: 'listData',
+                                field_name: 'listData',
+                            }
+                        ],
                         com_props: {
                             table_props: {
                                 stripe: true,
