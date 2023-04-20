@@ -33,10 +33,13 @@ export default {
             type: Object,
             default: null
         },
+        listData: {
+            type: Array,
+            default: () => [],
+        },
     },
     data() {
         return {
-            listData: [],
             sort: {},
         }
     },
