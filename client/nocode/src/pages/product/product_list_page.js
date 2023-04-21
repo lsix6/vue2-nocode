@@ -1,5 +1,5 @@
 import { product_list } from "./product_list";
-// import { formSearch } from "./product_list_search";
+import { formSearch } from "./product_list_search";
 
 export const product_list_page = {
     com_name: "div",
@@ -14,6 +14,7 @@ export const product_list_page = {
     com_children: [
         {
             com_name: 'nc_data',
+            com_ref: 'product_list_page_data',
             com_props: {
                 fetch_data: {
                     api: {
@@ -45,7 +46,7 @@ export const product_list_page = {
                                     },
                                 },
                                 com_children: [
-
+                                    formSearch,
                                 ],
                             },
                             {
