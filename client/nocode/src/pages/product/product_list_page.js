@@ -26,66 +26,53 @@ export const product_list_page = {
                 },
                 data_children: [
                     {
-                        com_name: "div",
-                        com_props: {
-                            class: 'content-opration',
-                            style: {
-                                'min-width': 'fit-content',
-                            },
-                        },
-                        com_children: [
-                            {
-                                com_name: "div",
-                                com_props: {
-                                    class: "opration-left",
-                                    style: {
-                                        "max-width": '80%',
-                                        width: 'auto',
-                                    },
-                                },
-                                com_children: [
-                                    // formSearch,
-                                ]
-                            },
-                            {
-                                com_name: "div",
-                                com_props: {
-                                    class: "opration-right",
-                                    style: {
-                                        "max-width": '35%',
-                                        "text-align": 'right',
-                                        "z-index": 10,
-                                    },
-                                },
-                                com_children: [
-                                    // btnCreate
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        com_name: "div",
-                        com_props: {
-                            style: {
-                                overflow: 'hidden',
-                                flex: 1,
-                            }
-                        },
-                        com_children: [
-                            product_list,
-                        ]
-                    },
-                    {
                         com_name: 'div',
                         com_props: {
-                            class: 'pagination-block',
                             style: {
-                                'min-width': 'fit-content',
+                                height: '100%',
+                                display: 'flex',
+                                'flex-direction': 'column',
+                                overflow: 'hidden',
                             },
                         },
                         com_children: [
-                            // pagination
-                        ]
+                            {
+                                com_name: 'div',
+                                com_props: {
+                                    style: {
+                                        background: 'blue',
+                                        height: '30px',
+                                    },
+                                },
+                                com_children: [
+
+                                ],
+                            },
+                            {
+                                com_name: 'div',
+                                com_props: {
+                                    style: {
+                                        background: 'green',
+                                        flex: 1,
+                                    },
+                                },
+                                com_children: [
+                                    product_list,
+                                ],
+                            },
+                            {
+                                com_name: 'div',
+                                com_props: {
+                                    style: {
+                                        background: 'blue',
+                                        height: '30px',
+                                    },
+                                },
+                                com_children: [
+
+                                ],
+                            },
+                        ],
                     },
                 ],
             },
