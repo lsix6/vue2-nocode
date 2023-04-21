@@ -5,7 +5,7 @@ Vue.use(nc_component)
 
 
 import { register_page } from "./components/nc_pages"
-import { pageProductList } from "./pages/product_list"
+import { pageProductList } from "./pages/product/product_list"
 
 
 export const init_nocode = () => {
