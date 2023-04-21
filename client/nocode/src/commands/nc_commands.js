@@ -1,6 +1,8 @@
 
 import { nc_command_functions } from "./nc_commands_base"
 
+import './nc_commands_com'
+
 function clone(obj) {
     if (obj) {
         return JSON.parse(JSON.stringify(obj))
