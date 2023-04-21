@@ -111,108 +111,79 @@ const btnRemove = {
     ]
 }
 
-export const pageProductList = {
-    com_name: "div",
-    com_version: '0',
+export const product_list = {
+    com_name: 'nc_list',
+    com_binds: [
+        {
+            prop_name: 'listData',
+            field_name: 'listData',
+        }
+    ],
     com_props: {
-        style: {
-            background: '#F5F6F7',
-            flex: 1,
-            display: 'flex',
+        table_props: {
+            stripe: true,
+            height: '100%',
+            'tooltip-effect': 'light',
+            border: true,
         },
+        fields: [
+            {
+                column_props: {
+                    prop: 'no',
+                    label: '产品编号',
+                    'min-width': '180',
+                },
+            },
+            {
+                column_props: {
+                    prop: 'name',
+                    label: '产品名称',
+                    'min-width': '200',
+                    'show-overflow-tooltip': true,
+                },
+            },
+            {
+                column_props: {
+                    prop: 'price',
+                    label: '价格',
+                    'min-width': '100',
+                },
+            },
+            {
+                column_props: {
+                    label: '操作',
+                    width: '160',
+                    align: 'center',
+                    fixed: 'right',
+                },
+                column_components: [
+                    {
+                        com_name: 'div',
+                        com_props: {
+                            style: {
+                                'text-align': 'center',
+                                'margin-left': '10px',
+                            },
+                        },
+                        com_children: [
+                            btnEdit,
+                            btnRemove,
+                        ]
+                    },
+                ]
+            },
+        ],
     },
     com_children: [
         {
-            com_name: 'nc_data',
-            com_props: {
-                fetch_data: {
-                    api: {
-                        url: 'product/list',
-                        method: 'GET',
-                    },
+            com_name: 'div',
+            com_slot: 'empty',
+            com_children: [
+                {
+                    com_name: 'div',
+                    com_text: '暂无数据',
                 },
-                style: {
-                    flex: 1,
-                },
-                data_children: [
-                    {
-                        com_name: 'nc_list',
-                        com_binds: [
-                            {
-                                prop_name: 'listData',
-                                field_name: 'listData',
-                            }
-                        ],
-                        com_props: {
-                            table_props: {
-                                stripe: true,
-                                height: '100%',
-                                'tooltip-effect': 'light',
-                                border: true,
-                            },
-                            fields: [
-                                {
-                                    column_props: {
-                                        prop: 'no',
-                                        label: '产品编号',
-                                        'min-width': '180',
-                                    },
-                                },
-                                {
-                                    column_props: {
-                                        prop: 'name',
-                                        label: '产品名称',
-                                        'min-width': '200',
-                                        'show-overflow-tooltip': true,
-                                    },
-                                },
-                                {
-                                    column_props: {
-                                        prop: 'price',
-                                        label: '价格',
-                                        'min-width': '100',
-                                    },
-                                },
-                                {
-                                    column_props: {
-                                        label: '操作',
-                                        width: '160',
-                                        align: 'center',
-                                        fixed: 'right',
-                                    },
-                                    column_components: [
-                                        {
-                                            com_name: 'div',
-                                            com_props: {
-                                                style: {
-                                                    'text-align': 'center',
-                                                    'margin-left': '10px',
-                                                },
-                                            },
-                                            com_children: [
-                                                btnEdit,
-                                                btnRemove,
-                                            ]
-                                        },
-                                    ]
-                                },
-                            ],
-                        },
-                        com_children: [
-                            {
-                                com_name: 'div',
-                                com_slot: 'empty',
-                                com_children: [
-                                    {
-                                        com_name: 'div',
-                                        com_text: '暂无数据',
-                                    },
-                                ],
-                            }
-                        ],
-                    }
-                ],
-            },
+            ],
         }
     ],
 }
