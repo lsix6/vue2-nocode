@@ -16,8 +16,14 @@ let listProducts = [
 const product_list = (params) => {
     console.log('product_list, params', params)
     return new Promise(resolve => {
+        let list = listProducts
+        if (params.search && params.search.keyWord) {
+            list = listProducts.filter(item => {
+                return item.name.indexOf(params.search.keyWord) >= 0
+            })
+        }
         const ret = {
-            listData: _.cloneDeep(listProducts),
+            listData: _.cloneDeep(list),
             pageData: {
                 pageCount: 1,
                 pageNumber: 1,
