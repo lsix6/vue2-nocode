@@ -2,7 +2,6 @@ export const product_list_pagination = {
     com_name: 'nc_pagination',
     com_ref: 'pagination',
     com_props: {
-        class: 'board-pagination',
         pagination_props: {
             'page-sizes': [20, 50, 100],
             layout: "total, sizes, prev, pager, next, jumper",

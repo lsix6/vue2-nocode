@@ -6,7 +6,6 @@ const inputSearch = {
     },
     com_props: {
         placeholder: '看板名称、看板编号',
-        class: 'search-input',
         clearable: true,
     },
 }
