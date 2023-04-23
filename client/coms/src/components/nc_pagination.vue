@@ -16,7 +16,11 @@ export default {
         pagination_props: {
             type: Object,
             default: () => { }
-        }
+        },
+        page_data: {
+            type: Object,
+            default: () => {}
+        },
     },
     data() {
         return {
@@ -27,12 +31,28 @@ export default {
             },
         }
     },
+    watch: {
+        page_data: {
+            handler() {
+                // console.log('[nc_pagination] watch, page_data:', this.page_data)
+                // 只在 'page_data' 变化时，才把变化后的值更新到 'data' 中
+                this.updateData()
+            },
+            deep: true,
+        },
+    },
     mounted() {
-        this.initData()
+        // console.log('[nc_pagination] mounted, page_data:', this.page_data)
+        this.updateData()
+    },
+    beforeUpdate() {
+        // console.log('[nc_pagination] beforeUpdate, page_data:', this.page_data)
     },
     methods: {
-        initData() {
-            this.data.pageSize = this.pagination_props['page-sizes'][0]
+        updateData() {
+            this.data.currentPage = this.page_data.pageNumber
+            this.data.pageSize = this.page_data.pageSize
+            this.data.total = this.page_data.totalCount
         },
         getData() {
             return {
@@ -44,6 +64,7 @@ export default {
             this.data.total = pageData.totalCount
         },
         onChange() {
+            // console.log('[nc_pagination] onChange, data:', this.data)
             this.$emit('change')
         }
     }
