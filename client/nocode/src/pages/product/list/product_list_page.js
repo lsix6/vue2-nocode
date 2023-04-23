@@ -58,11 +58,21 @@ export const product_list_page = {
                                 com_name: 'div',
                                 com_props: {
                                     style: {
-                                        padding: '10px 0'
+                                        padding: '10px 0',
+                                        display: 'flex',
+                                        'flex-direction': 'row',
                                     },
                                 },
                                 com_children: [
                                     product_list_formSearch,
+                                    {
+                                        com_name: 'div',
+                                        com_props: {
+                                            style: {
+                                                flex: 1,
+                                            },
+                                        }
+                                    },
                                     product_list_btnAdd,
                                 ],
                             },
