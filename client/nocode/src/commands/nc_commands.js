@@ -1,6 +1,7 @@
 
 import { nc_command_functions } from "./nc_commands_base"
 
+import './nc_commands_route'
 import './nc_commands_com'
 
 function clone(obj) {
