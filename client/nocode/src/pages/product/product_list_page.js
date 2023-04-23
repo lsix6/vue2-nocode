@@ -41,8 +41,7 @@ export const product_list_page = {
                                 com_name: 'div',
                                 com_props: {
                                     style: {
-                                        background: 'blue',
-                                        height: '30px',
+                                        padding: '10px 0'
                                     },
                                 },
                                 com_children: [
