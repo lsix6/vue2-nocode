@@ -21,6 +21,13 @@ export const product_list_page = {
                         url: 'product/list',
                         method: 'GET',
                     },
+                    fetch_params: [
+                        {
+                            params_source: 'com_ref',
+                            params_com_ref: 'formSearch',
+                            params_set_name: 'search',
+                        },
+                    ]
                 },
                 style: {
                     flex: 1,
