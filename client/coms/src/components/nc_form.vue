@@ -156,29 +156,6 @@ export default {
                 resolve()
             })
         },
-        processFetch() {
-            return new Promise(resolve => {
-                if (this.fetch_data.api) {
-                    //  请求 api 获取数据
-                    const requestParams = get_params(this, this.fetch_data.fetch_params)
-                    request_api(this.fetch_data.api, requestParams).then(data => {
-                        resolve(data)
-                    }).catch(err => {
-                        const options = (this.fetch_data.error_message || err.msgText || '获取数据失败')
-                        msg_box.error({
-                            options,
-                        })
-                        resolve(false)
-                    })
-                } else {
-                    // 参数里获取到的就是数据
-                    console.log('[nc_form] fetch_data:', this.fetch_data)
-                    const fetchParams = get_params(this, this.fetch_data.fetch_params)
-                    const data = fetchParams
-                    resolve(data)
-                }
-            })
-        },
         initDefaultData() {
             return new Promise(resolve => {
                 let data = {}
