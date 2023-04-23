@@ -28,7 +28,11 @@ export const product_list_page = {
                             params_com_ref: 'formSearch',
                             params_set_name: 'search',
                         },
-                    ]
+                        {
+                            params_source: 'com_ref',
+                            params_com_ref: 'pagination',
+                            params_set_name: 'page',
+                        },]
                 },
                 style: {
                     flex: 1,
