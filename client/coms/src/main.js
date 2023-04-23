@@ -9,6 +9,7 @@ const registerComponents = (Vue) => {
   Vue.component('nc_data', () => import('./components/nc_data.vue'))
   Vue.component('nc_list', () => import('./components/nc_list.vue'))
   Vue.component('nc_form', () => import('./components/nc_form.vue'))
+  Vue.component('nc_pagination', () => import('./components/nc_pagination.vue'))
 }
 
 if (window.Vue) {
