@@ -1,4 +1,3 @@
-import './init.js'
 
 import elementui from './elementui/index.js'
 

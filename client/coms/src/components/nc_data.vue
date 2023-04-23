@@ -8,8 +8,7 @@
 </template>
 
 <script>
-import { get_params } from '../utils/nc_params'
-import { request_api } from '../utils/nc_request'
+import { fetch_data } from '../utils/nc_request'
 
 export default {
     install(Vue) {
@@ -47,29 +46,11 @@ export default {
         }, 0);
     },
     methods: {
-        fetchData(fetch_data) {
-            return new Promise(resolve => {
-                if (fetch_data.api) {
-                    //  请求 api 获取数据
-                    const fetchParams = get_params(this, fetch_data.fetch_params)
-                    const requestParams = { ...fetchParams }
-                    request_api(fetch_data.api, requestParams).then(data => {
-                        resolve(data)
-                    })
-                } else {
-                    // 参数里获取到的就是数据
-                    // console.log('[nc_data] fetchData, fetch_data:', fetch_data)
-                    const fetchParams = get_params(this, fetch_data.fetch_params)
-                    const data = fetchParams[fetch_data.fetch_params[0].params_fields[0]]
-                    resolve(data)
-                }
-            })
-        },
         refreshData() {
             return new Promise(resolve => {
                 if (this.fetch_data) {
-                    this.fetchData(this.fetch_data).then(data => {
-                        console.log('[nc_data] fetchData, return:', data)
+                    fetch_data(this.fetch_data).then(data => {
+                        console.log('[nc_data] fetch_data, return:', data)
                         this.data = data
                         this.$el.dispatchEvent(new Event('loaded'))
                         //

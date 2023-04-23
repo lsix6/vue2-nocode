@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
-import App from './App.vue'
-import { get_nc_view_route } from './components/nc_pages'
 import { init_nocode } from './init_nocode'
+import { get_nc_view_route } from './components/nc_pages'
+import App from './App.vue'
 
 // css 样式
 import './assets/css/main.scss'

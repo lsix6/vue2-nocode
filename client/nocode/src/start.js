@@ -10,6 +10,8 @@ window.Vue = Vue
 
 import importHtml from 'import-html-entry'
 
+window.nocode = {}
+
 const loadLib = (url) => {
     return new Promise(resolve => {
         importHtml(url).then( res => {

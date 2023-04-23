@@ -24,3 +24,5 @@ export const get_com_ref = (ref_name) => {
     // console.log('[nc_refs] get_com_ref', ref_name, ref)
     return ref
 }
+
+window.nocode.get_com_ref = get_com_ref
