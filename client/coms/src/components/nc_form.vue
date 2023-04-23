@@ -179,32 +179,6 @@ export default {
                 }
             })
         },
-        fetchData() {
-            // 拉取数据后会清除此表单的修改标记
-            return new Promise(resolve => {
-                const requestParams = get_params(this, this.fetch_data.fetch_params)
-                this.processFetch().then(data => {
-                    console.log('[nc_form] processFetch.then, data:', data)
-                    if (data) {
-                        let formData = { ...this.com_params, ...requestParams }
-                        for (let k in this.fields) {
-                            // console.log('[nc_form] fetchData, field:', k, cloneDeep(this.fields[k]))
-                            // 把 api 返回数据里的字段值赋给表单数据
-                            // 如果 api 返回的数据里没有该字段的值，就字段的缺省值赋给表单数据
-                            const v = data[k]
-                            formData[k] = ((v === undefined || v === null) ? this.fields[k].field_default : v)
-                        }
-                        console.log('[nc_form] fetchData result, formData:', _.cloneDeep(formData))
-                        //
-                        this.setData(formData).then(() => {
-                            resolve()
-                        })
-                    } else {
-                        resolve(false)
-                    }
-                })
-            })
-        },
         initDefaultData() {
             return new Promise(resolve => {
                 let data = {}
@@ -214,7 +188,7 @@ export default {
                         data[k] = field.field_default
                     }
                 }
-                const formData = { ...this.com_params, ...data }
+                const formData = { ...data }
                 console.log('[nc_form] initDefaultData, formData', _.cloneDeep(formData))
                 //
                 this.setData(formData).then(() => {
@@ -226,17 +200,10 @@ export default {
             console.log('[nc_form] initFormData')
             //
             return new Promise(resolve => {
-                if (this.fetch_data) {
-                    // 如果有拉取数据的配置，则拉取数据
-                    this.fetchData().then(() => {
-                        resolve()
-                    })
-                } else {
-                    // 没有拉取数据的配置，则设置缺省字段的值
-                    this.initDefaultData().then(() => {
-                        resolve()
-                    })
-                }
+                // 没有拉取数据的配置，则设置缺省字段的值
+                this.initDefaultData().then(() => {
+                    resolve()
+                })
             })
         },
         commitData() {
