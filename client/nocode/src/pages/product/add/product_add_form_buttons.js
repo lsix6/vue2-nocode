@@ -2,21 +2,11 @@
 const cmdCancel = {
     cmd_name: 'call_com_method',
     cmd_params: {
-        com_ref: 'formCreateBoard',
+        com_ref: 'formAdd',
         com_method_name: 'cancelFormChange',
-        com_method_params: [
-            {
-                dialog_ref: 'createBoardDlg',
-                message: '有未保存的更改, 确定取消吗？',
-            },
-        ],
         commands: [
             {
-                cmd_name: 'call_com_method',
-                cmd_params: {
-                    com_ref: 'createBoardDlg',
-                    com_method_name: 'close',
-                }
+                cmd_name: 'go_back',
             }
         ]
     },
@@ -50,7 +40,7 @@ const btnSave = {
                 {
                     cmd_name: 'call_com_method',
                     cmd_params: {
-                        com_ref: 'formCreateBoard',
+                        com_ref: 'formAdd',
                         com_method_name: 'commitData',
                         commands: [
                             {
