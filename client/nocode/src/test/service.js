@@ -22,7 +22,7 @@ const init_products = () => {
         })
     }
 }
-init_products()
+// init_products()
 
 const product_list = (params) => {
     console.log('product_list, params', params)
