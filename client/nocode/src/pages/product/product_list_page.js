@@ -1,4 +1,5 @@
 import { product_list } from "./product_list";
+import { product_list_pagination } from "./product_list_pagination";
 import { formSearch } from "./product_list_search";
 
 export const product_list_page = {
@@ -59,8 +60,8 @@ export const product_list_page = {
                                 com_name: 'div',
                                 com_props: {
                                     style: {
-                                        background: 'green',
                                         flex: 1,
+                                        overflow: 'hidden',
                                     },
                                 },
                                 com_children: [
@@ -71,12 +72,11 @@ export const product_list_page = {
                                 com_name: 'div',
                                 com_props: {
                                     style: {
-                                        background: 'blue',
-                                        height: '30px',
+                                        padding: '10px 0'
                                     },
                                 },
                                 com_children: [
-
+                                    product_list_pagination,
                                 ],
                             },
                         ],
