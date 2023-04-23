@@ -39,11 +39,7 @@ export default {
     },
     mounted() {
         // console.log('[nc_data] mounted, com_params:', this.com_params)
-        setTimeout(() => {
-            // com_ref 需要在 mounted 注册，访问数据可能要用到 com_ref 参数，
-            // 所以这里需要延后一帧再调用
-            this.refreshData()
-        }, 0);
+        this.refreshData()
     },
     methods: {
         refreshData() {
