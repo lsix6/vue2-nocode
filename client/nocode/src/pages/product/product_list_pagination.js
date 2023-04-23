@@ -1,6 +1,12 @@
 export const product_list_pagination = {
     com_name: 'nc_pagination',
     com_ref: 'pagination',
+    com_binds: [
+        {
+            prop_name: 'page_data',
+            field_name: 'pageData',
+        }
+    ],
     com_props: {
         pagination_props: {
             'page-sizes': [20, 50, 100],
