@@ -50,7 +50,7 @@ export default {
         },
         unsave_warning: {
             type: Object,
-            default: () => {},
+            default: () => { },
         },
         check_valid_after_change: {
             type: Boolean,
