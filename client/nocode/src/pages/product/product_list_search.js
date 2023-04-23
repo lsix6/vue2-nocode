@@ -11,7 +11,7 @@ const inputSearch = {
     },
 }
 
-export const formSearch = {
+export const product_list_formSearch = {
     com_name: 'nc_form',
     com_ref: 'formSearch',
     com_props: {

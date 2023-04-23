@@ -1,6 +1,6 @@
 import { product_list } from "./product_list";
 import { product_list_pagination } from "./product_list_pagination";
-import { formSearch } from "./product_list_search";
+import { product_list_formSearch } from "./product_list_search";
 
 export const product_list_page = {
     com_name: "div",
@@ -61,7 +61,7 @@ export const product_list_page = {
                                     },
                                 },
                                 com_children: [
-                                    formSearch,
+                                    product_list_formSearch,
                                 ],
                             },
                             {
