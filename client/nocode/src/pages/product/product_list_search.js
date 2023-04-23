@@ -20,6 +20,7 @@ export const formSearch = {
         ],
         style: {
             'min-width': '270px',
+            'max-width': '570px',
             'margin-right': '20px',
         },
     },
