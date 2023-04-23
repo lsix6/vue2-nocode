@@ -1,3 +1,4 @@
+import { product_formAdd } from "./product_add_form";
 
 export const product_add_page = {
     com_name: "div",
@@ -14,5 +15,6 @@ export const product_add_page = {
             com_name: 'div',
             com_text: 'add product',
         },
+        product_formAdd,
     ],
 }
