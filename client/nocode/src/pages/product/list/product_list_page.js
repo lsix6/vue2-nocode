@@ -1,4 +1,5 @@
 import { product_list } from "./product_list";
+import { product_list_btnAdd } from "./product_list_add_button";
 import { product_list_pagination } from "./product_list_pagination";
 import { product_list_formSearch } from "./product_list_search";
 
@@ -62,6 +63,7 @@ export const product_list_page = {
                                 },
                                 com_children: [
                                     product_list_formSearch,
+                                    product_list_btnAdd,
                                 ],
                             },
                             {
