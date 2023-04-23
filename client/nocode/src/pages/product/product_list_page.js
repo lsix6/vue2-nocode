@@ -32,6 +32,10 @@ export const product_list_page = {
                             params_source: 'com_ref',
                             params_com_ref: 'pagination',
                             params_set_name: 'page',
+                            params_default_value: {
+                                pageIndex: 1,
+                                pageSize: 20,
+                            },
                         },]
                 },
                 style: {
