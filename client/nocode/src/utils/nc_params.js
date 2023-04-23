@@ -28,6 +28,8 @@ export const get_params = (com, paramsDef, cmdData) => {
                 const ref = get_com_ref(obj.params_com_ref)
                 if (ref) {
                     source = ref.getData()
+                } else {
+                    source = obj.params_default_value
                 }
             } else if(obj.params_source === 'route_query') {
                 source = com.$route.query
