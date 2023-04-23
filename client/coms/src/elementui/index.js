@@ -9,7 +9,8 @@ import {
   Form, FormItem,
   Tabs, TabPane,
   Upload,
-  Container, Main, Scrollbar,
+  Container, Header, Main, Footer,
+  Scrollbar,
   Popconfirm,
 } from "element-ui"
 
@@ -54,7 +55,9 @@ const element = {
     Vue.use(TabPane)
     Vue.use(Upload)
     Vue.use(Container)
+    Vue.use(Header)
     Vue.use(Main)
+    Vue.use(Footer)
     Vue.use(Scrollbar)
     Vue.use(DropdownMenu);
     Vue.use(Popconfirm)
