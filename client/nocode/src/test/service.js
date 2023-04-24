@@ -92,6 +92,21 @@ const product_delete = (params) => {
     })
 }
 
+const product_detail = (params) => {
+    return new Promise((resolve, reject) => {
+        const i = listProducts.findIndex(item => {
+            return (item._id === params._id)
+        })
+        if (i >= 0) {
+            resolve(_.cloneDeep(listProducts[i]))
+        } else {
+            reject({
+                message: 'not found',
+            })
+        }
+    })
+}
+
 export const request_api = function (api, data) {
     console.log('request_api', api.url, api.method, data)
     //
@@ -101,5 +116,7 @@ export const request_api = function (api, data) {
         return product_add(data)
     } else if (api.url === 'product/delete') {
         return product_delete(data)
+    } else if (api.url === 'product/detail') {
+        return product_detail(data)
     }
 }
