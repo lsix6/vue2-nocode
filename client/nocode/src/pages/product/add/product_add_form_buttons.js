@@ -44,21 +44,7 @@ const btnSave = {
                         com_method_name: 'commitData',
                         commands: [
                             {
-                                cmd_name: 'push_route',
-                                cmd_params: {
-                                    path: 'edit',
-                                    route_params: [
-                                        {
-                                            params_source: 'cmd_data',
-                                            params_fields: [
-                                                {
-                                                    field_name: 'insertResult.insertedId',
-                                                    target_name: '_id',
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                }
+                                cmd_name: 'go_back',
                             }
                         ]
                     }
