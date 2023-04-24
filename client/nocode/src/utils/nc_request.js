@@ -22,11 +22,11 @@ export const request_api = (api, data) => {
     })
 }
 
-export const fetch_data = (fetchData) => {
+export const fetch_data = (com, fetchData) => {
     return new Promise(resolve => {
         if (fetchData.api) {
             //  请求 api 获取数据
-            const fetchParams = get_params(this, fetchData.fetch_params)
+            const fetchParams = get_params(com, fetchData.fetch_params)
             const requestParams = { ...fetchParams }
             request_api(fetchData.api, requestParams).then(data => {
                 resolve(data)
@@ -34,7 +34,7 @@ export const fetch_data = (fetchData) => {
         } else {
             // 参数里获取到的就是数据
             // console.log('[nc_data] fetch_data, fetchData:', fetchData)
-            const fetchParams = get_params(this, fetchData.fetch_params)
+            const fetchParams = get_params(com, fetchData.fetch_params)
             const data = fetchParams[fetchData.fetch_params[0].params_fields[0]]
             resolve(data)
         }

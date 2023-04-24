@@ -45,7 +45,7 @@ export default {
         refreshData() {
             return new Promise(resolve => {
                 if (this.fetch_data) {
-                    fetch_data(this.fetch_data).then(data => {
+                    fetch_data(this, this.fetch_data).then(data => {
                         console.log('[nc_data] fetch_data, return:', data)
                         this.data = data
                         this.$el.dispatchEvent(new Event('loaded'))
