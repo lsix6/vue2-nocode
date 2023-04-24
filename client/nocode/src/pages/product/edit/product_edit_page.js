@@ -43,6 +43,25 @@ export const product_edit_page = {
                                 },
                             },
                             com_children: [
+                                {
+                                    com_name: 'nc_data',
+                                    com_props: {
+                                        fetch_data: {
+                                            api: {
+                                                url: 'product/detail',
+                                                method: 'GET',
+                                            },
+                                            fetch_params: [
+                                                {
+                                                    params_source: 'route_query',
+                                                    params_fields: [
+                                                        '_id',
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                    },
+                                },
                             ],
                         },
                     ],
