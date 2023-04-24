@@ -76,7 +76,7 @@ const product_add = (params) => {
 }
 
 const product_delete = (params) => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         const i = listProducts.findIndex(item => {
             return (item._id === params._id)
         })
@@ -85,7 +85,9 @@ const product_delete = (params) => {
             //
             resolve(true)
         } else {
-            resolve(false)
+            reject({
+                message: 'not found',
+            })
         }
     })
 }
@@ -95,9 +97,9 @@ export const request_api = function (api, data) {
     //
     if (api.url === 'product/list') {
         return product_list(data)
-    } else if(api.url === 'product/add') {
+    } else if (api.url === 'product/add') {
         return product_add(data)
-    } else if(api.url === 'product/delete') {
+    } else if (api.url === 'product/delete') {
         return product_delete(data)
     }
 }
