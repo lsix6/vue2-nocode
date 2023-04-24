@@ -5,13 +5,13 @@ let listProducts = [
         _id: '1',
         no: '1',
         name: '1',
-        price: 10,
+        price: '10',
     },
     {
         _id: '2',
         no: '2',
         name: '2',
-        price: 20,
+        price: '20',
     },
 ]
 
@@ -98,7 +98,10 @@ const product_detail = (params) => {
             return (item._id === params._id)
         })
         if (i >= 0) {
-            resolve(_.cloneDeep(listProducts[i]))
+            const result = {
+                data: _.cloneDeep(listProducts[i]),
+            }
+            resolve(result)
         } else {
             reject({
                 message: 'not found',
