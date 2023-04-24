@@ -1,3 +1,4 @@
+import { product_formEdit } from "./product_edit_form";
 
 export const product_edit_page = {
     com_name: "div",
@@ -60,6 +61,9 @@ export const product_edit_page = {
                                                 }
                                             ]
                                         },
+                                        data_children: [
+                                            product_formEdit,
+                                        ],
                                     },
                                 },
                             ],

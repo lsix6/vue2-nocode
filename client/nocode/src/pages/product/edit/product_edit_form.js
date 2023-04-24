@@ -3,6 +3,12 @@ import { product_form_items } from "../product_form_items";
 export const product_formEdit = {
     com_name: 'nc_form',
     com_ref: 'formEdit',
+    com_binds: [
+        {
+            prop_name: 'init_data',
+            field_name: 'data',
+        },
+    ],
     com_props: {
         form_props: {
             "label-width": '90px',
