@@ -75,6 +75,21 @@ const product_add = (params) => {
     })
 }
 
+const product_delete = (params) => {
+    return new Promise(resolve => {
+        const i = listProducts.findIndex(item => {
+            return (item._id === params._id)
+        })
+        if (i >= 0) {
+            listProducts.splice(i, 1)
+            //
+            resolve(true)
+        } else {
+            resolve(false)
+        }
+    })
+}
+
 export const request_api = function (api, data) {
     console.log('request_api', api.url, api.method, data)
     //
@@ -82,5 +97,7 @@ export const request_api = function (api, data) {
         return product_list(data)
     } else if(api.url === 'product/add') {
         return product_add(data)
+    } else if(api.url === 'product/delete') {
+        return product_delete(data)
     }
 }

@@ -35,6 +35,60 @@ const btnEdit = {
     ],
 }
 
+const cmdRemove = {
+    cmd_name: 'request_api',
+    cmd_params: {
+        api: {
+            url: 'product/delete',
+            method: 'DELETE',
+        },
+        request_params: [
+            {
+                params_source: 'com_params',
+                params_fields: [
+                    '_id'
+                ],
+            }
+        ],
+        commands: [
+            {
+                cmd_name: 'message',
+                cmd_params: {
+                    cmd_msg_type: 'success',
+                    cmd_msg_params: {
+                        options: '删除成功',
+                    },
+                }
+            },
+            {
+                cmd_name: 'call_com_method',
+                cmd_params: {
+                    com_ref: 'product_list_page_data',
+                    com_method_name: 'refreshData',
+                }
+            },
+        ],
+        exception_commands: [
+            {
+                cmd_name: 'message',
+                cmd_params: {
+                    cmd_msg_type: 'error',
+                    cmd_msg_params: {
+                        options_params: [
+                            {
+                                params_source: 'cmd_data',
+                                params_fields: [
+                                    'message'
+                                ]
+                            }
+                        ],
+                    },
+                }
+            },
+        ],
+    },
+}
+
 const btnRemove = {
     com_name: 'el-popconfirm',
     com_props: {
@@ -44,61 +98,9 @@ const btnRemove = {
     },
     com_events: [
         {
-            event_name: 'onConfirm',
+            event_name: 'confirm',
             commands: [
-                {
-                    cmd_name: 'request_api',
-                    cmd_params: {
-                        api: {
-                            url: 'bulletinBoard/delete',
-                            method: 'DELETE',
-                        },
-                        request_params: [
-                            {
-                                params_source: 'com_params',
-                                params_fields: [
-                                    '_id'
-                                ],
-                            }
-                        ],
-                        commands: [
-                            {
-                                cmd_name: 'message',
-                                cmd_params: {
-                                    cmd_msg_type: 'success',
-                                    cmd_msg_params: {
-                                        options: '删除成功',
-                                    },
-                                }
-                            },
-                            {
-                                cmd_name: 'call_com_method',
-                                cmd_params: {
-                                    com_ref: 'boardList',
-                                    com_method_name: 'refreshList',
-                                }
-                            },
-                        ],
-                        exception_commands: [
-                            {
-                                cmd_name: 'message',
-                                cmd_params: {
-                                    cmd_msg_type: 'error',
-                                    cmd_msg_params: {
-                                        options_params: [
-                                            {
-                                                params_source: 'cmd_data',
-                                                params_fields: [
-                                                    'message'
-                                                ]
-                                            }
-                                        ],
-                                    },
-                                }
-                            },
-                        ],
-                    },
-                },
+                cmdRemove,
             ],
         }
     ],
