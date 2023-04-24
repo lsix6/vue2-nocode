@@ -4,7 +4,6 @@ export const product_list_btnAdd = {
     com_text: '添加',
     com_props: {
         type: 'primary',
-        plain: true,
         style: {
             width: '100px',
         },
