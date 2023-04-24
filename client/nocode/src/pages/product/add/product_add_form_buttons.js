@@ -45,6 +45,7 @@ const btnSave = {
                         commands: [
                             {
                                 cmd_name: 'go_back',
+                                cmd_delay: 500,
                             }
                         ]
                     }
