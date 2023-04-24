@@ -33,9 +33,9 @@ export default {
             type: Array,
             default: () => []
         },
-        fetch_data: {
+        init_data: {
             type: Object,
-            default: null
+            default: () => null,
         },
         commit_data: {
             type: Object,
@@ -178,10 +178,19 @@ export default {
             console.log('[nc_form] initFormData')
             //
             return new Promise(resolve => {
-                // 没有拉取数据的配置，则设置缺省字段的值
-                this.initDefaultData().then(() => {
+                if (this.init_data) {
+                    this.formData = {
+                        ...this.formData,
+                        ...this.init_data,
+                    }
+                    //
                     resolve()
-                })
+                } else {
+                    // 没有拉取数据的配置，则设置缺省字段的值
+                    this.initDefaultData().then(() => {
+                        resolve()
+                    })
+                }
             })
         },
         commitData() {
@@ -239,36 +248,6 @@ export default {
                     // 参数不足
                     reject(`[nc_form] not found 'commit_data' or 'commit_data.api'`)
                 }
-            })
-        },
-        refreshData(params) {
-            // 拉取数据后不会清除此表单的修改标记
-            return new Promise((resolve) => {
-                const requestParams = get_params(this, this.fetch_data.fetch_params)
-                request_api(this.fetch_data.api, requestParams).then(data => {
-                    // 如果有 params.fields，则只更新 params.fields 里指定的字段
-                    let fields = this.fields
-                    if (params && params.fields) {
-                        fields = {}
-                        params.fields.forEach(name => {
-                            fields[name] = {}
-                        })
-                    }
-                    console.log('[nc_form] refreshData, fields:', _.cloneDeep(fields))
-                    for (let k in fields) {
-                        if (data[k] !== this.formData[k]) {
-                            console.log('[nc_form] refreshData, set field:', k, _.cloneDeep(this.formData[k]), _.cloneDeep(data[k]))
-                            if (this.preFormData[k] === this.formData[k]) {
-                                // 避免刷新后判断为有修改
-                                this.preFormData[k] = data[k]
-                            }
-                            this.formData[k] = data[k]
-                        }
-                    }
-                    console.log('[nc_form] refreshData result, formData:', _.cloneDeep(this.formData))
-                    //
-                    resolve(true)
-                })
             })
         },
         checkValidAfterChange() {
