@@ -43,9 +43,9 @@ export const product_add_page = {
                                     margin: 'auto',
                                 },
                             },
-                            com_children: {
+                            com_children: [
                                 product_formAdd,
-                            },
+                            ],
                         },
                     ],
                 },
