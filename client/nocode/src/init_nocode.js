@@ -3,7 +3,7 @@ import Vue from 'vue'
 import nc_component from './components/nc_component.vue'
 Vue.use(nc_component)
 
-
+import './utils/nc_msg_box.js'
 import { register_page } from "./components/nc_pages"
 import { product_add_page } from './pages/product/add/product_add_page'
 import { product_list_page } from './pages/product/list/product_list_page'
