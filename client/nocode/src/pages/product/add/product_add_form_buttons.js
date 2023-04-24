@@ -32,6 +32,7 @@ const btnSave = {
     com_text: '确定',
     com_props: {
         type: 'primary',
+        'native-type': 'submit',
     },
     com_events: [
         {
