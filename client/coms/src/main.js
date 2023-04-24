@@ -1,5 +1,6 @@
 
 import elementui from './elementui/index.js'
+import { DomMessage } from './elementui/messageDeduplication.js'
 
 window.time_log('[coms] main.js')
 
@@ -12,6 +13,8 @@ const registerComponents = (Vue) => {
   Vue.component('nc_form', () => import('./components/nc_form.vue'))
   Vue.component('nc_form_item', () => import('./components/nc_form_item.vue'))
   Vue.component('nc_input', () => import('./components/nc_input.vue'))
+  //
+  window.nocode.register_msg_box(new DomMessage())
 }
 
 if (window.Vue) {
