@@ -110,6 +110,29 @@ const product_detail = (params) => {
     })
 }
 
+const product_update = (params) => {
+    return new Promise((resolve, reject) => {
+        const i = listProducts.findIndex(item => {
+            return (item._id === params.data._id)
+        })
+        if (i >= 0) {
+            listProducts[i] = {
+                ...listProducts[i],
+                ...params.data,
+            }
+            //
+            const result = {
+                data: _.cloneDeep(listProducts[i]),
+            }
+            resolve(result)
+        } else {
+            reject({
+                message: 'not found',
+            })
+        }
+    })
+}
+
 export const request_api = function (api, data) {
     console.log('request_api', api.url, api.method, data)
     //
@@ -121,5 +144,7 @@ export const request_api = function (api, data) {
         return product_delete(data)
     } else if (api.url === 'product/detail') {
         return product_detail(data)
+    } else if (api.url === 'product/update') {
+        return product_update(data)
     }
 }
