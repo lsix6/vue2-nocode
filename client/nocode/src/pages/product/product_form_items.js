@@ -76,17 +76,14 @@ export const product_form_items = [
         },
         com_children: [
             {
-                com_name: 'nc_input',
+                com_name: 'el-input',
                 com_props: {
-                    trim_after_blur: true,
-                    input_props: {
-                        clearable: true,
-                        placeholder: '请输入编号',
-                    },
+                    clearable: true,
+                    placeholder: '请输入价格',
                 },
                 com_field: {
                     field_name: 'formData.price',
-                    field_default_value: '10',
+                    field_default_value: 10,
                 },
             }
         ]

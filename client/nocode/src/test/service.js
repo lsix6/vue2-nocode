@@ -5,13 +5,13 @@ let listProducts = [
         _id: '1',
         no: '1',
         name: '1',
-        price: '10',
+        price: 10,
     },
     {
         _id: '2',
         no: '2',
         name: '2',
-        price: '20',
+        price: 20,
     },
 ]
 
