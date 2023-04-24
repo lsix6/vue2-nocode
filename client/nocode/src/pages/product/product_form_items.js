@@ -3,38 +3,6 @@ export const product_form_items = [
         com_name: 'nc_form_item',
         com_props: {
             form_item_props: {
-                label: '名称',
-                prop: 'name',
-                rules: [
-                    { required: true, message: '请输入名称', trigger: 'blur' },
-                    { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: ['blur', 'change'] }
-                ],
-            },
-        },
-        com_children: [
-            {
-                com_name: 'nc_input',
-                com_props: {
-                    autofocus: true,
-                    trim_after_blur: true,
-                    input_props: {
-                        maxlength: 20,
-                        'show-word-limit': true,
-                        clearable: true,
-                        placeholder: '请输入名称',
-                    },
-                },
-                com_field: {
-                    field_name: 'formData.name',
-                    field_default_value: '',
-                },
-            }
-        ]
-    },
-    {
-        com_name: 'nc_form_item',
-        com_props: {
-            form_item_props: {
                 label: '编号',
                 prop: 'no',
                 rules: [
@@ -48,6 +16,7 @@ export const product_form_items = [
             {
                 com_name: 'nc_input',
                 com_props: {
+                    autofocus: true,
                     trim_after_blur: true,
                     input_props: {
                         maxlength: 8,
@@ -58,6 +27,37 @@ export const product_form_items = [
                 },
                 com_field: {
                     field_name: 'formData.no',
+                    field_default_value: '',
+                },
+            }
+        ]
+    },
+    {
+        com_name: 'nc_form_item',
+        com_props: {
+            form_item_props: {
+                label: '名称',
+                prop: 'name',
+                rules: [
+                    { required: true, message: '请输入名称', trigger: 'blur' },
+                    { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: ['blur', 'change'] }
+                ],
+            },
+        },
+        com_children: [
+            {
+                com_name: 'nc_input',
+                com_props: {
+                    trim_after_blur: true,
+                    input_props: {
+                        maxlength: 20,
+                        'show-word-limit': true,
+                        clearable: true,
+                        placeholder: '请输入名称',
+                    },
+                },
+                com_field: {
+                    field_name: 'formData.name',
                     field_default_value: '',
                 },
             }
