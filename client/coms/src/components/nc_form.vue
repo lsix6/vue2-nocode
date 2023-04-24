@@ -9,11 +9,12 @@
 
 import { request_api } from '../utils/nc_request'
 import { nc_vars } from '../utils/nc_vars.js'
-import { msg_box } from '../utils/nc_msg_box'
 import { get_params } from '../utils/nc_params'
 import _ from 'lodash'
 import { filterFields } from '../utils/nc_utils'
 import { get_com_ref } from '../utils/nc_refs'
+
+const msg_box = window.nocode.msg_box
 
 export default {
     install(Vue) {
