@@ -5,7 +5,7 @@ const inputSearch = {
         field_name: 'formData.keyWord'
     },
     com_props: {
-        placeholder: '看板名称、看板编号',
+        placeholder: '产品名称、产品编号',
         clearable: true,
     },
 }
