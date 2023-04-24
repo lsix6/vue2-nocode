@@ -64,10 +64,23 @@ const product_list = (params) => {
     })
 }
 
+const product_add = (params) => {
+    return new Promise(resolve => {
+        listProducts.push({
+            _id: '' + Date.now(),
+            ...params.data
+        })
+        //
+        resolve(true)
+    })
+}
+
 export const request_api = function (api, data) {
     console.log('request_api', api.url, api.method, data)
     //
     if (api.url === 'product/list') {
         return product_list(data)
+    } else if(api.url === 'product/add') {
+        return product_add(data)
     }
 }
