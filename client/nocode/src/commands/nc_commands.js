@@ -4,6 +4,7 @@ import { nc_command_functions } from "./nc_commands_base"
 import './nc_commands_request'
 import './nc_commands_route'
 import './nc_commands_com'
+import './nc_commands_message'
 
 function clone(obj) {
     if (obj) {
