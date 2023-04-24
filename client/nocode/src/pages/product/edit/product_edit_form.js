@@ -1,4 +1,5 @@
 import { product_form_items } from "../product_form_items";
+import { product_edit_form_buttons } from "./product_edit_form_buttons";
 
 export const product_formEdit = {
     com_name: 'nc_form',
@@ -23,6 +24,7 @@ export const product_formEdit = {
         },
         form_children: [
             ...product_form_items,
+            product_edit_form_buttons,
         ]
     }
 }
