@@ -16,13 +16,11 @@ export const product_form_items = [
             {
                 com_name: 'nc_input',
                 com_props: {
-                    input_props: {
-                        autofocus: true,
-                        maxlength: 8,
-                        'show-word-limit': true,
-                        clearable: true,
-                        placeholder: '请输入编号',
-                    },
+                    autofocus: true,
+                    maxlength: 8,
+                    'show-word-limit': true,
+                    clearable: true,
+                    placeholder: '请输入编号',
                 },
                 com_field: {
                     field_name: 'formData.no',
@@ -47,12 +45,10 @@ export const product_form_items = [
             {
                 com_name: 'nc_input',
                 com_props: {
-                    input_props: {
-                        maxlength: 20,
-                        'show-word-limit': true,
-                        clearable: true,
-                        placeholder: '请输入名称',
-                    },
+                    maxlength: 20,
+                    'show-word-limit': true,
+                    clearable: true,
+                    placeholder: '请输入名称',
                 },
                 com_field: {
                     field_name: 'formData.name',

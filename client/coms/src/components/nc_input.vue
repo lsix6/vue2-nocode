@@ -1,5 +1,5 @@
 <template>
-    <el-input ref="input" v-blur-trim v-bind="input_props" :value="value" @input="onInput">
+    <el-input ref="input" v-blur-trim v-bind="com_props" :value="value" @input="onInput">
     </el-input>
 </template>
 
@@ -13,7 +13,7 @@ export default {
             type: String,
             default: ''
         },
-        input_props: {
+        com_props: {
             type: Object,
             default: () => { },
         },
