@@ -53,7 +53,7 @@ export const product_fields = [
         field_info: {
             name: 'price',
             label: '价格',
-            default: 10,
+            default_value: 10,
         },
         in_list: {
             'min-width': '100',
