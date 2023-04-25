@@ -13,10 +13,10 @@ Vue.config.productionTip = false
 
 init_vue(Vue)
 
-export const start = () => {
+export const start = async () => {
 
   //
-  init_nocode()
+  await init_nocode()
 
   //
   const ncRoute = get_nc_view_route()

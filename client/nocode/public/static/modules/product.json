@@ -1,0 +1,123 @@
+{
+    "name": "product",
+    "add_form": {
+        "title": "添加新产品"
+    },
+    "edit_form": {
+        "title": "修改产品信息"
+    },
+    "fields": [
+        {
+            "field_info": {
+                "name": "no",
+                "label": "产品编号"
+            },
+            "in_list": {
+                "min-width": "180"
+            },
+            "in_search": {
+                "type": "key"
+            },
+            "in_form": {
+                "rules": [
+                    {
+                        "required": true,
+                        "message": "请输入编号",
+                        "trigger": "blur"
+                    },
+                    {
+                        "pattern": {},
+                        "message": "请输入字母或数字",
+                        "trigger": [
+                            "blur",
+                            "change"
+                        ]
+                    },
+                    {
+                        "min": 1,
+                        "max": 8,
+                        "message": "长度在 1 到 8 个字母或数字",
+                        "trigger": [
+                            "blur",
+                            "change"
+                        ]
+                    }
+                ],
+                "edit_com": {
+                    "com_name": "nc_input",
+                    "com_props": {
+                        "maxlength": 8,
+                        "show-word-limit": true,
+                        "clearable": true,
+                        "placeholder": "请输入编号"
+                    }
+                }
+            }
+        },
+        {
+            "field_info": {
+                "name": "name",
+                "label": "产品名称"
+            },
+            "in_list": {
+                "min-width": "200"
+            },
+            "in_search": {
+                "type": "key"
+            },
+            "in_form": {
+                "rules": [
+                    {
+                        "required": true,
+                        "message": "请输入名称",
+                        "trigger": "blur"
+                    },
+                    {
+                        "min": 1,
+                        "max": 20,
+                        "message": "长度在 1 到 20 个字符",
+                        "trigger": [
+                            "blur",
+                            "change"
+                        ]
+                    }
+                ],
+                "edit_com": {
+                    "com_name": "nc_input",
+                    "com_props": {
+                        "maxlength": 20,
+                        "show-word-limit": true,
+                        "clearable": true,
+                        "placeholder": "请输入名称"
+                    }
+                }
+            }
+        },
+        {
+            "field_info": {
+                "name": "price",
+                "label": "价格",
+                "default_value": 10
+            },
+            "in_list": {
+                "min-width": "100"
+            },
+            "in_form": {
+                "rules": [
+                    {
+                        "required": true,
+                        "message": "请输入价格",
+                        "trigger": "blur"
+                    }
+                ],
+                "edit_com": {
+                    "com_name": "el-input",
+                    "com_props": {
+                        "clearable": true,
+                        "placeholder": "请输入价格"
+                    }
+                }
+            }
+        }
+    ]
+}
