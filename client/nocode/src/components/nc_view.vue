@@ -5,7 +5,7 @@
 
 <script>
 
-import { nc_pages, nc_view_route } from './nc_pages.js';
+import { get_page, nc_view_route } from './nc_pages.js';
 import nc_component from './nc_component.vue'
 
 export default {
@@ -35,7 +35,7 @@ export default {
       // 获取页面数据的函数
       function getPageData() {
         return new Promise(resolve => {
-          const page = nc_pages[pageRoute]
+          const page = get_page(pageRoute)
           if (typeof page === 'function') {
             page().then(ret => {
               resolve(ret.default)
