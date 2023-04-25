@@ -7,8 +7,11 @@ import App from './App.vue'
 
 // css 样式
 import './assets/css/main.scss'
+import { init_vue } from './init_vue'
 
 Vue.config.productionTip = false
+
+init_vue(Vue)
 
 export const start = () => {
 
