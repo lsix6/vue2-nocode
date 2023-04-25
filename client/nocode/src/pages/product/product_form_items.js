@@ -16,9 +16,8 @@ export const product_form_items = [
             {
                 com_name: 'nc_input',
                 com_props: {
-                    autofocus: true,
-                    trim_after_blur: true,
                     input_props: {
+                        autofocus: true,
                         maxlength: 8,
                         'show-word-limit': true,
                         clearable: true,
@@ -48,7 +47,6 @@ export const product_form_items = [
             {
                 com_name: 'nc_input',
                 com_props: {
-                    trim_after_blur: true,
                     input_props: {
                         maxlength: 20,
                         'show-word-limit': true,
