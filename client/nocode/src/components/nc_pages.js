@@ -30,6 +30,14 @@ export const get_nc_view_route = () => {
             ...children,
         ]
     }
+    if (children.length > 0) {
+        route.children.push(
+            {
+                path: '*',
+                redirect: children[0]
+            }
+        )
+    }
     console.log('[nc_pages] get_nc_view_route, route: ', route)
     //
     return route
