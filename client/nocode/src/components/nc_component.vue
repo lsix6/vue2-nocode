@@ -1,5 +1,5 @@
 <template>
-    <component v-if="shouldShow" :is="com_name" v-bind="finalBinds" :com_params="com_params" ref="com">
+    <component v-if="shouldShow" :is="com_name" v-bind="finalBinds" :com_props="com_props" :com_params="com_params" ref="com">
         <template v-if="com_text">{{ com_text }}</template>
         <template v-if="com_children">
             <nc_component v-for="(child, childIndex) in com_children" :key="childIndex" v-bind="child"
