@@ -1,4 +1,14 @@
-export const createListSearch = (search) => {
+export const createListSearch = (moduleFields) => {
+
+    const key_fields_name = []
+    moduleFields.forEach(field => {
+        if (field.in_search) {
+            if (field.in_search.type === 'key') {
+                key_fields_name.push(field.field_info.label)
+            }
+        }
+    })
+    const keyPlaceHolder = key_fields_name.join('、')
 
     const inputSearch = {
         com_name: 'el-input',
@@ -6,7 +16,7 @@ export const createListSearch = (search) => {
             field_name: 'formData.keyWord'
         },
         com_props: {
-            placeholder: search.placeholder,
+            placeholder: keyPlaceHolder,
             clearable: true,
         },
     }

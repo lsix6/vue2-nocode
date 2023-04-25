@@ -8,6 +8,9 @@ export const product_fields = [
         in_list: {
             'min-width': '180',
         },
+        in_search: {
+            type: 'key',
+        },
         in_form: {
             rules: [
                 { required: true, message: '请输入编号', trigger: 'blur' },
@@ -32,6 +35,9 @@ export const product_fields = [
         },
         in_list: {
             'min-width': '200',
+        },
+        in_search: {
+            type: 'key',
         },
         in_form: {
             rules: [

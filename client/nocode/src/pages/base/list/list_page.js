@@ -6,7 +6,7 @@ import { list_pagination } from "./list_pagination";
 export const createListPage = (moduleInfo) => {
 
     const list = createList(moduleInfo.name, moduleInfo.fields)
-    const list_formSearch = createListSearch(moduleInfo.search)
+    const list_formSearch = createListSearch(moduleInfo.fields)
 
     const list_page = {
         com_name: "div",
