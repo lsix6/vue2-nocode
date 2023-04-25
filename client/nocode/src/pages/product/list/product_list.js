@@ -1,3 +1,4 @@
+import { product_fields } from "../product_fields"
 
 const btnInRow = {
     com_name: 'el-button',
@@ -113,6 +114,25 @@ const btnRemove = {
     ]
 }
 
+const createFields = (fields) => {
+    const arr = []
+    //
+    fields.forEach(field => {
+        arr.push({
+            column_props: {
+                prop: field.field_info.name,
+                label: field.field_info.label,
+                ...field.in_list,
+            },
+        })
+    });
+    console.log('createFields', arr)
+    //
+    return arr
+}
+
+const fields = createFields(product_fields)
+
 export const product_list = {
     com_name: 'nc_list',
     com_binds: [
@@ -129,28 +149,7 @@ export const product_list = {
             border: true,
         },
         fields: [
-            {
-                column_props: {
-                    prop: 'no',
-                    label: '产品编号',
-                    'min-width': '180',
-                },
-            },
-            {
-                column_props: {
-                    prop: 'name',
-                    label: '产品名称',
-                    'min-width': '200',
-                    'show-overflow-tooltip': true,
-                },
-            },
-            {
-                column_props: {
-                    prop: 'price',
-                    label: '价格',
-                    'min-width': '100',
-                },
-            },
+            ...fields,
             {
                 column_props: {
                     label: '操作',
