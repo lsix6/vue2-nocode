@@ -1,85 +1,43 @@
-export const product_form_items = [
-    {
-        com_name: 'nc_form_item',
-        com_props: {
-            form_item_props: {
-                label: '编号',
-                prop: 'no',
-                rules: [
-                    { required: true, message: '请输入编号', trigger: 'blur' },
-                    { pattern: /^[A-Za-z0-9]+$/, message: '请输入字母或数字', trigger: ['blur', 'change'] },
-                    { min: 1, max: 8, message: '长度在 1 到 8 个字母或数字', trigger: ['blur', 'change'] }
-                ],
-            },
-        },
-        com_children: [
-            {
-                com_name: 'nc_input',
-                com_props: {
-                    autofocus: true,
-                    maxlength: 8,
-                    'show-word-limit': true,
-                    clearable: true,
-                    placeholder: '请输入编号',
-                },
-                com_field: {
-                    field_name: 'formData.no',
-                    field_default_value: '',
-                },
+import _ from 'lodash'
+import { product_fields } from "./product_fields"
+
+const createFormItems = (fields) => {
+    const arr = []
+    //
+    fields.forEach((field, i) => {
+        const edit_com = _.cloneDeep(field.in_form.edit_com)
+        //
+        if (i === 0) {
+            if (!edit_com.com_props) {
+                edit_com.com_props = {}
             }
-        ]
-    },
-    {
-        com_name: 'nc_form_item',
-        com_props: {
-            form_item_props: {
-                label: '名称',
-                prop: 'name',
-                rules: [
-                    { required: true, message: '请输入名称', trigger: 'blur' },
-                    { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: ['blur', 'change'] }
-                ],
+            edit_com.com_props.autofocus = true
+        }
+        //
+        edit_com.com_field = {
+            field_name: `formData.${field.field_info.name}`
+        }
+        if (!_.isNil(field.field_info.default_value)) {
+            edit_com.com_field.field_default_value = field.field_info.default_value
+        }
+        //
+        arr.push({
+            com_name: 'nc_form_item',
+            com_props: {
+                form_item_props: {
+                    label: field.field_info.label,
+                    prop: field.field_info.name,
+                    rules: field.in_form.rules,
+                },
             },
-        },
-        com_children: [
-            {
-                com_name: 'nc_input',
-                com_props: {
-                    maxlength: 20,
-                    'show-word-limit': true,
-                    clearable: true,
-                    placeholder: '请输入名称',
-                },
-                com_field: {
-                    field_name: 'formData.name',
-                    field_default_value: '',
-                },
-            }
-        ]
-    },
-    {
-        com_name: 'nc_form_item',
-        com_props: {
-            form_item_props: {
-                label: '价格',
-                prop: 'price',
-                rules: [
-                    { required: true, message: '请输入价格', trigger: 'blur' },
-                ],
-            },
-        },
-        com_children: [
-            {
-                com_name: 'el-input',
-                com_props: {
-                    clearable: true,
-                    placeholder: '请输入价格',
-                },
-                com_field: {
-                    field_name: 'formData.price',
-                    field_default_value: 10,
-                },
-            }
-        ]
-    },
-]
+            com_children: [
+                edit_com,
+            ]
+        })
+    })
+    console.log('createFormItems', arr)
+    //
+    return arr
+}
+
+export const product_form_items = createFormItems(product_fields)
