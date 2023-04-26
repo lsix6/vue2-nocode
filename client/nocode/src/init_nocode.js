@@ -2,6 +2,10 @@ import Vue from 'vue'
 
 import nc_component from './components/core/nc_component.vue'
 Vue.use(nc_component)
+import nc_children from './components/base/nc_children.vue'
+Vue.use(nc_children)
+import nc_data from './components/base/nc_data.vue'
+Vue.use(nc_data)
 
 import './utils/nc_msg_box.js'
 import { request_api } from './test/service'

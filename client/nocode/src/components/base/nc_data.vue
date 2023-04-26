@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { fetch_data } from '../utils/nc_request'
+import { fetch_data } from '../../utils/nc_request'
 
 export default {
     install(Vue) {
