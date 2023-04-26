@@ -1,4 +1,4 @@
-import { register_page } from "@/components/nc_pages"
+import { register_page } from "@/components/core/nc_pages"
 import { createAddPage } from "./add/add_page"
 import { createEditPage } from "./edit/edit_page"
 import { createListPage } from "./list/list_page"

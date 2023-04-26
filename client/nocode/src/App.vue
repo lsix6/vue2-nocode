@@ -6,7 +6,7 @@
 
 <script>
 
-import nc_view from './components/nc_view.vue'
+import nc_view from './components/core/nc_view.vue'
 
 export default {
   name: 'App',

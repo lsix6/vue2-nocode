@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import { execute_commands } from '../commands/nc_commands'
-import { register_com_ref, unregister_com_ref } from '../utils/nc_refs'
-import { getPropValue, parseValue, setPropValue } from '../utils/nc_utils'
+import { execute_commands } from '../../commands/nc_commands'
+import { register_com_ref, unregister_com_ref } from '../../utils/nc_refs'
+import { getPropValue, parseValue, setPropValue } from '../../utils/nc_utils'
 
 export default {
     install(Vue) {

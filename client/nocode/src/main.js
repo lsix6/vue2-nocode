@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 import { init_nocode } from './init_nocode'
-import { get_nc_view_route } from './components/nc_pages'
+import { get_nc_view_route } from './components/core/nc_pages'
 import App from './App.vue'
 
 // css 样式

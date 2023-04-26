@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import nc_component from './components/nc_component.vue'
+import nc_component from './components/core/nc_component.vue'
 Vue.use(nc_component)
 
 import './utils/nc_msg_box.js'
