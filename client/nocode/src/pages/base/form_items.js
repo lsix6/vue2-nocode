@@ -23,11 +23,9 @@ export const createFormItems = (fields) => {
         arr.push({
             com_name: 'nc_form_item',
             com_props: {
-                form_item_props: {
-                    label: field.field_info.label,
-                    prop: field.field_info.name,
-                    rules: field.in_form.rules,
-                },
+                label: field.field_info.label,
+                prop: field.field_info.name,
+                rules: field.in_form.rules,
             },
             com_children: [
                 edit_com,
