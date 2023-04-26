@@ -70,6 +70,3 @@ export const fetch_data = (com, fetchData) => {
         }
     })
 }
-
-window.nocode.request_api = request_api
-window.nocode.fetch_data = fetch_data

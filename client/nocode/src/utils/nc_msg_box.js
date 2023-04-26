@@ -29,6 +29,3 @@ export const msg_box = {
     },
 
 }
-
-window.nocode.register_msg_box = register_msg_box
-window.nocode.msg_box = msg_box

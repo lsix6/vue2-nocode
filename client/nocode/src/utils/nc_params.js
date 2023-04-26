@@ -75,5 +75,3 @@ export const get_params = (com, paramsDef, cmdData) => {
     //
     return result
 }
-
-window.nocode.get_params = get_params
