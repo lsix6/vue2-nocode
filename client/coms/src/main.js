@@ -12,8 +12,6 @@ const registerComponents = (Vue) => {
   Vue.component('nc_form', () => import('./components/nc_form.vue'))
   Vue.component('nc_form_item', () => import('./components/nc_form_item.vue'))
   Vue.component('nc_input', () => import('./components/nc_input.vue'))
-  //
-  window.nocode.register_msg_box(new DomMessage())
 }
 
 if (window.Vue) {
@@ -22,6 +20,8 @@ if (window.Vue) {
   window.Vue.use(elementui)
   // 注册组件
   registerComponents(window.Vue)
+  //
+  window.nocode.register_msg_box(new DomMessage())
 } else {
   console.error(`not found 'window.Vue'`)
 }

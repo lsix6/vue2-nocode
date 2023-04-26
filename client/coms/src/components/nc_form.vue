@@ -7,13 +7,13 @@
 
 <script>
 
-import { request_api } from '../utils/nc_request'
-import { nc_vars } from '../utils/nc_vars.js'
-import { get_params } from '../utils/nc_params'
 import _ from 'lodash'
+import { nc_vars } from '../utils/nc_vars.js'
 import { filterFields } from '../utils/nc_utils'
-import { get_com_ref } from '../utils/nc_refs'
 
+const request_api = window.nocode.request_api
+const get_params = window.nocode.get_params
+const get_com_ref = window.nocode.get_com_ref
 const msg_box = window.nocode.msg_box
 
 export default {

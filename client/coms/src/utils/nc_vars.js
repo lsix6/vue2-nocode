@@ -1,4 +1,3 @@
-import { get_com_ref } from "./nc_refs"
 
 export const nc_vars = {
 
@@ -32,7 +31,7 @@ export const nc_vars = {
                 const forms = Object.keys(changed)
                 console.log('[nc_vars] formChanged.getUnsaveWarning, forms:', forms)
                 if (forms.length > 0) {
-                    const formRef = get_com_ref(forms[0])
+                    const formRef = window.nocode.get_com_ref(forms[0])
                     return formRef.unsave_warning
                 }
                 //
