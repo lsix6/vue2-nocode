@@ -18,13 +18,18 @@ export const product_fields = [
                 { min: 1, max: 8, message: '长度在 1 到 8 个字母或数字', trigger: ['blur', 'change'] }
             ],
             edit_com: {
-                com_name: 'nc_input',
+                com_name: 'el-input',
                 com_props: {
                     maxlength: 8,
                     'show-word-limit': true,
                     clearable: true,
                     placeholder: '请输入编号',
                 },
+                com_directives: [
+                    {
+                        name: 'blur-trim',
+                    }
+                ],
             },
         },
     },
@@ -45,13 +50,18 @@ export const product_fields = [
                 { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: ['blur', 'change'] }
             ],
             edit_com: {
-                com_name: 'nc_input',
+                com_name: 'el-input',
                 com_props: {
                     maxlength: 20,
                     'show-word-limit': true,
                     clearable: true,
                     placeholder: '请输入名称',
                 },
+                com_directives: [
+                    {
+                        name: 'blur-trim',
+                    }
+                ],
             },
         },
     },
