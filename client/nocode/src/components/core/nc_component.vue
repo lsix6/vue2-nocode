@@ -147,6 +147,9 @@ export default {
     render: function (createElement, hack) {
         console.log('[nc_component] render', this.com_name)
         const children = []
+        if (this.com_text) {
+            children.push(this.com_text)
+        }
         if (this.com_children) {
             this.com_children.map((child, i) => {
                 const childCom = createElement(
@@ -165,9 +168,6 @@ export default {
                 )
                 children.push(childCom)
             })
-        }
-        if (this.com_text) {
-            children.unshift(this.com_text)
         }
         console.log('[nc_component] children', children)
         //
