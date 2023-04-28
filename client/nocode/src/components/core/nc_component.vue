@@ -22,6 +22,10 @@ export default {
             type: Object,
             default: () => { }
         },
+        com_directives: {
+            type: Array,
+            default: () => []
+        },
         com_ref: {
             type: String,
             default: null
@@ -177,6 +181,7 @@ export default {
                 ...this.com_props,
             },
             style: this.com_props && this.com_props.style,
+            directives: this.com_directives,
             ref: 'com',
         }
         console.log('[nc_component] data', comData)
