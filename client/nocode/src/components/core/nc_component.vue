@@ -152,6 +152,7 @@ export default {
                             ...child,
                             com_params: this.com_params,
                         },
+                        slot: child.com_slot,
                         key: '' + i,
                     },
                     null
