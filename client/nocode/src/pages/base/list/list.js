@@ -183,7 +183,7 @@ export const createList = (moduleName, moduleFields) => {
                 com_children: [
                     {
                         com_name: 'div',
-                        com_text: '暂无数据',
+                        com_text: '暂 无 数 据',
                     },
                 ],
             }
