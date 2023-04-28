@@ -1,13 +1,3 @@
-<template>
-    <component v-if="shouldShow" :is="com_name" v-bind="finalBinds" :com_props="com_props" :com_params="com_params" ref="com">
-        <template v-if="com_text">{{ com_text }}</template>
-        <template v-if="com_children">
-            <nc_component v-for="(child, childIndex) in com_children" :key="childIndex" v-bind="child"
-                :com_params="com_params" :slot="child.com_slot">
-            </nc_component>
-        </template>
-    </component>
-</template>
 
 <script>
 import { execute_commands } from '../../commands/nc_commands'
@@ -150,11 +140,62 @@ export default {
             return ret
         },
     },
+    render: function (createElement, hack) {
+        console.log('[nc_component] render', this.com_name)
+        const children = []
+        if (this.com_children) {
+            this.com_children.map((child, i) => {
+                const childCom = createElement(
+                    'nc_component',
+                    {
+                        props: {
+                            ...child,
+                            com_params: this.com_params,
+                        },
+                        key: '' + i,
+                    },
+                    null
+                    ,
+                    true,
+                )
+                children.push(childCom)
+            })
+        }
+        if (this.com_text) {
+            children.unshift(this.com_text)
+        }
+        console.log('[nc_component] children', children)
+        //
+        const comData = {
+            props: {
+                ...this.finalBinds,
+                com_props: this.com_props,
+                com_params: this.com_params,
+            },
+            attrs: {
+                ...this.com_props,
+            },
+            style: this.com_props && this.com_props.style,
+            ref: 'com',
+        }
+        console.log('[nc_component] data', comData)
+        //
+        const vnode = createElement(
+            this.com_name,
+            comData,
+            children,
+        )
+        // console.log('vnode', vnode)
+        return vnode
+    },
     beforeUpdate() {
         // console.log('[nc_component] beforeUpdate', this.com_name, this.com_params)
     },
+    created() {
+        console.log('[nc_component] created', this.com_name, this.com_ref, this.$refs.com)
+    },
     mounted() {
-        // console.log('[nc_component] mounted', this.com_name, this.com_ref, this.$refs.com)
+        console.log('[nc_component] mounted', this.com_name, this.com_ref, this.$refs.com)
         if (this.$refs.com) {
             this.inMounted()
         } else {
@@ -172,7 +213,7 @@ export default {
         }
     },
     destroyed() {
-        // console.log('[nc_component] destroyed', this.com_name, this.com_ref, this.$refs.com)
+        console.log('[nc_component] destroyed', this.com_name, this.com_ref, this.$refs.com)
         this.inDestroyed()
     },
     methods: {
