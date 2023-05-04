@@ -10,10 +10,12 @@ export const createFormItems = (fields) => {
             if (!edit_com.com_info) {
                 edit_com.com_info = {}
             }
-            if (!edit_com.com_info.attrs) {
-                edit_com.com_info.attrs = {}
+            if (!edit_com.com_info.directives) {
+                edit_com.com_info.directives = []
             }
-            edit_com.com_info.attrs.autofocus = true
+            edit_com.com_info.directives.push({
+                name: 'focus'
+            })
         }
         //
         edit_com.com_field = {
