@@ -6,7 +6,7 @@ export const createAddPage = (moduleInfo) => {
 
     const add_page = {
         com_name: "div",
-        com_version: '0',
+        com_version: '1',
         com_info: {
             style: {
                 background: '#F5F6F7',

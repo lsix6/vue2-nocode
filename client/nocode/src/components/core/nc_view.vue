@@ -1,5 +1,5 @@
 <template>
-  <nc_component v-if="com_data && com_data.com_version === '0'" v-bind="com_data">
+  <nc_component v-if="com_data && com_data.com_version === '1'" v-bind="com_data">
   </nc_component>
 </template>
 
