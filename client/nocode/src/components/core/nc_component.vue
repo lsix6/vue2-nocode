@@ -176,7 +176,7 @@ export default {
             },
             ref: 'com',
         }
-        // console.log('[nc_component] data', comData)
+        // console.log('[nc_component] comData', comData)
         //
         const vnode = createElement(
             this.com_name,
