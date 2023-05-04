@@ -34,7 +34,8 @@ const product_list = (params) => {
         let list = listProducts
         if (params.search && params.search.keyWord) {
             list = listProducts.filter(item => {
-                return item.name.indexOf(params.search.keyWord) >= 0
+                return (item.name.indexOf(params.search.keyWord) >= 0
+                    || item.no.indexOf(params.search.keyWord) >= 0)
             })
         }
         //
