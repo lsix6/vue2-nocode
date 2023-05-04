@@ -181,9 +181,6 @@ export const createList = (moduleName, moduleFields) => {
         com_children: [
             {
                 com_name: 'span',
-                com_info: {
-                    slot: 'empty',
-                },
                 com_slot: 'empty',
                 com_children: [
                     {
