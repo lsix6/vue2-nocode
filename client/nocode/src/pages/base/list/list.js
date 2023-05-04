@@ -20,11 +20,13 @@ export const createList = (moduleName, moduleFields) => {
 
     const btnInRow = {
         com_name: 'el-button',
-        com_props: {
-            type: 'text',
+        com_info: {
             style: {
                 'margin-right': '10px',
             },
+        },
+        com_props: {
+            type: 'text',
         },
     }
 
@@ -160,8 +162,8 @@ export const createList = (moduleName, moduleFields) => {
                     },
                     column_components: [
                         {
-                            com_name: 'div',
-                            com_props: {
+                            com_info: {
+                                is: 'div',
                                 style: {
                                     'text-align': 'center',
                                     'margin-left': '10px',
@@ -179,6 +181,9 @@ export const createList = (moduleName, moduleFields) => {
         com_children: [
             {
                 com_name: 'div',
+                com_info: {
+                    slot: 'empty',
+                },
                 com_slot: 'empty',
                 com_children: [
                     {

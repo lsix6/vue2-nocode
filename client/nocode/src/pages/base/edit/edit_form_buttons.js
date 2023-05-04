@@ -58,7 +58,7 @@ const btnSave = {
 
 export const edit_form_buttons = {
     com_name: 'div',
-    com_props: {
+    com_info: {
         style: {
             width: '100%',
             'text-align': 'right',

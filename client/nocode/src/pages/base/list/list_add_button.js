@@ -2,11 +2,13 @@
 export const list_btnAdd = {
     com_name: 'el-button',
     com_text: '添加',
-    com_props: {
-        type: 'primary',
+    com_info: {
         style: {
             width: '100px',
         },
+    },
+    com_props: {
+        type: 'primary',
     },
     com_events: [
         {

@@ -11,7 +11,7 @@ export const createListPage = (moduleInfo) => {
     const list_page = {
         com_name: "div",
         com_version: '0',
-        com_props: {
+        com_info: {
             style: {
                 background: '#F5F6F7',
                 flex: 1,
@@ -22,6 +22,11 @@ export const createListPage = (moduleInfo) => {
             {
                 com_name: 'nc_data',
                 com_ref: 'list_page_data',
+                com_info: {
+                    style: {
+                        flex: 1,
+                    },
+                },
                 com_props: {
                     fetch_data: {
                         api: {
@@ -44,13 +49,10 @@ export const createListPage = (moduleInfo) => {
                                 },
                             },]
                     },
-                    style: {
-                        flex: 1,
-                    },
                     data_children: [
                         {
                             com_name: 'div',
-                            com_props: {
+                            com_info: {
                                 style: {
                                     height: '100%',
                                     display: 'flex',
@@ -61,7 +63,7 @@ export const createListPage = (moduleInfo) => {
                             com_children: [
                                 {
                                     com_name: 'div',
-                                    com_props: {
+                                    com_info: {
                                         style: {
                                             padding: '10px 0',
                                             display: 'flex',
@@ -72,7 +74,7 @@ export const createListPage = (moduleInfo) => {
                                         list_formSearch,
                                         {
                                             com_name: 'div',
-                                            com_props: {
+                                            com_info: {
                                                 style: {
                                                     flex: 1,
                                                 },
@@ -83,7 +85,7 @@ export const createListPage = (moduleInfo) => {
                                 },
                                 {
                                     com_name: 'div',
-                                    com_props: {
+                                    com_info: {
                                         style: {
                                             flex: 1,
                                             overflow: 'hidden',
@@ -95,7 +97,7 @@ export const createListPage = (moduleInfo) => {
                                 },
                                 {
                                     com_name: 'div',
-                                    com_props: {
+                                    com_info: {
                                         style: {
                                             padding: '10px 0'
                                         },

@@ -18,13 +18,13 @@ export default {
             type: String,
             default: ''
         },
-        com_props: {
+        com_info: {
             type: Object,
             default: () => { }
         },
-        com_directives: {
-            type: Array,
-            default: () => []
+        com_props: {
+            type: Object,
+            default: () => { }
         },
         com_ref: {
             type: String,
@@ -36,10 +36,6 @@ export default {
         },
         com_syncs: {
             type: Array,
-            default: null
-        },
-        com_slot: {
-            type: String,
             default: null
         },
         com_events: {
@@ -145,7 +141,7 @@ export default {
         },
     },
     render: function (createElement, hack) {
-        console.log('[nc_component] render', this.com_name)
+        // console.log('[nc_component] render', this.com_name)
         const children = []
         if (this.com_text) {
             children.push(this.com_text)
@@ -169,22 +165,18 @@ export default {
                 children.push(childCom)
             })
         }
-        console.log('[nc_component] children', children)
+        // console.log('[nc_component] children', children)
         //
         const comData = {
+            ...this.com_info,
             props: {
                 ...this.finalBinds,
                 com_props: this.com_props,
                 com_params: this.com_params,
             },
-            attrs: {
-                ...this.com_props,
-            },
-            style: this.com_props && this.com_props.style,
-            directives: this.com_directives,
             ref: 'com',
         }
-        console.log('[nc_component] data', comData)
+        // console.log('[nc_component] data', comData)
         //
         const vnode = createElement(
             this.com_name,

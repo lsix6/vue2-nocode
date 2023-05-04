@@ -12,11 +12,15 @@ export const createListSearch = (moduleFields) => {
 
     const inputSearch = {
         com_name: 'el-input',
+        com_info: {
+            attrs: {
+                placeholder: keyPlaceHolder,
+            },
+        },
         com_field: {
             field_name: 'formData.keyWord'
         },
         com_props: {
-            placeholder: keyPlaceHolder,
             clearable: true,
         },
     }
@@ -24,15 +28,17 @@ export const createListSearch = (moduleFields) => {
     const list_formSearch = {
         com_name: 'nc_form',
         com_ref: 'formSearch',
-        com_props: {
-            form_children: [
-                inputSearch,
-            ],
+        com_info: {
             style: {
                 'min-width': '270px',
                 'max-width': '570px',
                 'margin-right': '20px',
             },
+        },
+        com_props: {
+            form_children: [
+                inputSearch,
+            ],
         },
         com_events: [
             {

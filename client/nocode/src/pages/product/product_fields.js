@@ -19,11 +19,15 @@ export const product_fields = [
             ],
             edit_com: {
                 com_name: 'el-input',
+                com_info: {
+                    attrs: {
+                        placeholder: '请输入编号',
+                    },
+                },
                 com_props: {
                     maxlength: 8,
                     'show-word-limit': true,
                     clearable: true,
-                    placeholder: '请输入编号',
                 },
                 com_directives: [
                     {
@@ -51,11 +55,15 @@ export const product_fields = [
             ],
             edit_com: {
                 com_name: 'el-input',
+                com_info: {
+                    attrs: {
+                        placeholder: '请输入名称',
+                    },
+                },
                 com_props: {
                     maxlength: 20,
                     'show-word-limit': true,
                     clearable: true,
-                    placeholder: '请输入名称',
                 },
                 com_directives: [
                     {
@@ -80,9 +88,13 @@ export const product_fields = [
             ],
             edit_com: {
                 com_name: 'el-input',
+                com_info: {
+                    attrs: {
+                        placeholder: '请输入价格',
+                    },
+                },
                 com_props: {
                     clearable: true,
-                    placeholder: '请输入价格',
                 },
             },
         },

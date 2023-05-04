@@ -7,7 +7,7 @@ export const createEditPage = (moduleInfo) => {
     const edit_page = {
         com_name: "div",
         com_version: '0',
-        com_props: {
+        com_info: {
             style: {
                 background: '#F5F6F7',
                 flex: 1,
@@ -23,7 +23,7 @@ export const createEditPage = (moduleInfo) => {
                 com_children: [
                     {
                         com_name: 'el-header',
-                        com_props: {
+                        com_info: {
                             style: {
                                 padding: '50px',
                                 'text-align': 'center',
@@ -41,7 +41,7 @@ export const createEditPage = (moduleInfo) => {
                         com_children: [
                             {
                                 com_name: 'div',
-                                com_props: {
+                                com_info: {
                                     style: {
                                         width: '800px',
                                         margin: 'auto',
