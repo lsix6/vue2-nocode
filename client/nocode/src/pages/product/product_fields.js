@@ -58,6 +58,7 @@ export const product_fields = [
                 com_info: {
                     attrs: {
                         placeholder: '请输入名称',
+                        maxlength: 20,
                     },
                     directives: [
                         {
@@ -66,7 +67,6 @@ export const product_fields = [
                     ],
                 },
                 com_props: {
-                    maxlength: 20,
                     'show-word-limit': true,
                     clearable: true,
                 },
