@@ -23,17 +23,17 @@ export const product_fields = [
                     attrs: {
                         placeholder: '请输入编号',
                     },
+                    directives: [
+                        {
+                            name: 'blur-trim',
+                        }
+                    ],
                 },
                 com_props: {
                     maxlength: 8,
                     'show-word-limit': true,
                     clearable: true,
                 },
-                com_directives: [
-                    {
-                        name: 'blur-trim',
-                    }
-                ],
             },
         },
     },
@@ -59,17 +59,17 @@ export const product_fields = [
                     attrs: {
                         placeholder: '请输入名称',
                     },
+                    directives: [
+                        {
+                            name: 'blur-trim',
+                        }
+                    ],
                 },
                 com_props: {
                     maxlength: 20,
                     'show-word-limit': true,
                     clearable: true,
                 },
-                com_directives: [
-                    {
-                        name: 'blur-trim',
-                    }
-                ],
             },
         },
     },
