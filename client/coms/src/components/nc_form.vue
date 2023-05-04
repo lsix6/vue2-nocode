@@ -83,16 +83,14 @@ export default {
             this.form_children.forEach(item => {
                 let child = item
                 //
-                if (child.com_props && child.com_props.form_item_props && child.com_props.form_item_props.prop) {
-                    const error = this.formFieldsError[child.com_props.form_item_props.prop]
+                if (child.com_props && child.com_props.prop) {
+                    const error = this.formFieldsError[child.com_props.prop]
                     if (error) {
                         child = this.lodash_merge(
                             item,
                             {
                                 com_props: {
-                                    form_item_props: {
-                                        error,
-                                    },
+                                    error,
                                 }
                             }
                         )
