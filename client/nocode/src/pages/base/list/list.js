@@ -162,8 +162,8 @@ export const createList = (moduleName, moduleFields) => {
                     },
                     column_components: [
                         {
+                            com_name: 'div',
                             com_info: {
-                                is: 'div',
                                 style: {
                                     'text-align': 'center',
                                     'margin-left': '10px',
@@ -180,7 +180,7 @@ export const createList = (moduleName, moduleFields) => {
         },
         com_children: [
             {
-                com_name: 'div',
+                com_name: 'span',
                 com_info: {
                     slot: 'empty',
                 },
