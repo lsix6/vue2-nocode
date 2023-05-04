@@ -7,10 +7,13 @@ export const createFormItems = (fields) => {
         const edit_com = _.cloneDeep(field.in_form.edit_com)
         //
         if (i === 0) {
-            if (!edit_com.com_props) {
-                edit_com.com_props = {}
+            if (!edit_com.com_info) {
+                edit_com.com_info = {}
             }
-            edit_com.com_props.autofocus = true
+            if (!edit_com.com_info.attrs) {
+                edit_com.com_info.attrs = {}
+            }
+            edit_com.com_info.attrs.autofocus = true
         }
         //
         edit_com.com_field = {
