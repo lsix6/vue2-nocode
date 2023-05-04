@@ -3,6 +3,13 @@ export const init_vue = (Vue) => {
 
     console.log('init_vue', Vue)
 
+    // 自动获取焦点（vue 中的 autofocus 只在第一次时有效）
+    Vue.directive('focus', {
+        inserted: function (el) {
+            el.querySelector("input").focus();
+        }
+    })
+
     // 失去焦点后自动去除两边的空格
     Vue.directive('blur-trim', {
         bind: function (el, binding, vnode) {
