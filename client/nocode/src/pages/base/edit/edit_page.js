@@ -32,7 +32,7 @@ export const createEditPage = (moduleInfo) => {
                         com_children: [
                             {
                                 com_name: 'div',
-                                com_text: '修改产品信息',
+                                com_text: moduleInfo.edit_form.title,
                             },
                         ],
                     },
