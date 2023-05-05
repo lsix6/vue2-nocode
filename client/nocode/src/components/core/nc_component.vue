@@ -142,20 +142,27 @@ export default {
     },
     render: function (createElement, hack) {
         // console.log('[nc_component] render', this.com_name)
+        // 子组件
         const children = []
         if (this.com_text) {
+            // 如果有 'com_text'，则添加一个字符串子节点
             children.push(this.com_text)
         }
         if (this.com_children) {
             this.com_children.map((child, i) => {
+                // 创建一个子组件
                 const childCom = createElement(
                     'nc_component',
                     {
                         props: {
+                            // 子组件的数据
                             ...child,
+                            // 把 'com_params' 传入子组件
                             com_params: this.com_params,
                         },
+                        // 子组件所在的插槽
                         slot: child.com_slot,
+                        // 子组件的 key
                         key: '' + i,
                     },
                     null
@@ -166,7 +173,7 @@ export default {
             })
         }
         // console.log('[nc_component] children', children)
-        //
+        // 组件数据
         const comData = {
             ...this.com_info,
             props: {
@@ -177,7 +184,7 @@ export default {
             ref: 'com',
         }
         // console.log('[nc_component] comData', comData)
-        //
+        // 创建组件对象
         const vnode = createElement(
             this.com_name,
             comData,
