@@ -190,10 +190,10 @@ export default {
         // console.log('[nc_component] beforeUpdate', this.com_name, this.com_params)
     },
     created() {
-        console.log('[nc_component] created', this.com_name, this.com_ref, this.$refs.com)
+        // console.log('[nc_component] created', this.com_name, this.com_ref, this.$refs.com)
     },
     mounted() {
-        console.log('[nc_component] mounted', this.com_name, this.com_ref, this.$refs.com)
+        // console.log('[nc_component] mounted', this.com_name, this.com_ref, this.$refs.com)
         if (this.$refs.com) {
             this.inMounted()
         } else {
@@ -211,7 +211,7 @@ export default {
         }
     },
     destroyed() {
-        console.log('[nc_component] destroyed', this.com_name, this.com_ref, this.$refs.com)
+        // console.log('[nc_component] destroyed', this.com_name, this.com_ref, this.$refs.com)
         this.inDestroyed()
     },
     methods: {
