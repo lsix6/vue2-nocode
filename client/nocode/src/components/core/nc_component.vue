@@ -210,9 +210,9 @@ export default {
             }, 50);
         }
     },
-    destroyed() {
-        // console.log('[nc_component] destroyed', this.com_name, this.com_ref, this.$refs.com)
-        this.inDestroyed()
+    beforeDestroy() {
+        // console.log('[nc_component] beforeDestroy', this.com_name, this.com_ref, this.$refs.com)
+        this.inBeforeDestroy()
     },
     methods: {
         getComRef() {
@@ -244,8 +244,8 @@ export default {
             }
             if (this.com_field && comRef) {
                 const event_name = 'input'
-                eventsMap[event_name] = (value) => {
-                    // console.log('[nc_component] onInput, value: ', value, this)
+                const onInput = (value) => {
+                    console.log('[nc_component] onInput, value: ', value, this)
                     if (this.com_field) {
                         let v = parseValue(this.com_field.field_type, value)
                         setPropValue(this.com_params, this.com_field.field_name, v, this)
@@ -253,9 +253,14 @@ export default {
                 }
                 //
                 if (comRef.$on) {
+                    eventsMap[event_name] = onInput
                     comRef.$on(event_name, eventsMap[event_name])
+                    console.log('[nc_component] $on', event_name, this)
+                } else {
+                    eventsMap[event_name] = () => { onInput(comRef.value) }
+                    comRef.addEventListener(event_name, eventsMap[event_name])
+                    console.log('[nc_component] addEventListener', event_name, this)
                 }
-                // console.log('[nc_component] $on', event_name, this)
             }
             if (this.com_syncs && comRef) {
                 this.com_syncs.forEach(sync => {
@@ -275,7 +280,7 @@ export default {
             this.eventsMap = eventsMap
             // console.log('[nc_component] mounted', this.com_name, this.eventsMap)
         },
-        inDestroyed() {
+        inBeforeDestroy() {
             const comRef = this.$refs.com
             //
             if (this.com_ref) {
@@ -288,10 +293,11 @@ export default {
                 for (let event_name in eventsMap) {
                     if (comRef.$on) {
                         comRef.$off(event_name, eventsMap[event_name])
+                        console.log('[nc_component] $off', event_name)
                     } else {
                         comRef.removeEventListener(event_name, eventsMap[event_name])
+                        console.log('[nc_component] removeEventListener', event_name, this)
                     }
-                    // console.log('[nc_component] $off', event_name)
                 }
             }
         }
