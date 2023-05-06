@@ -109,12 +109,26 @@ export const product_fields = [
         field_info: {
             name: 'market',
             label: '市场',
-            default_value: 0,
+            default_value: '0',
         },
         in_list: {
             column_props: {
                 'min-width': '100',
             },
+            column_components: [
+                {
+                    com_name: 'nc_enum',
+                    com_field: {
+                        field_name: 'market',
+                    },
+                    com_props: {
+                        enum_map: {
+                            '0': '出口',
+                            '1': '内销',
+                        },
+                    },
+                }
+            ],
         },
         in_form: {
             edit_com: {
@@ -124,14 +138,14 @@ export const product_fields = [
                         com_name: 'el-radio',
                         com_text: '出口',
                         com_props: {
-                            label: 0,
+                            label: '0',
                         },
                     },
                     {
                         com_name: 'el-radio',
                         com_text: '内销',
                         com_props: {
-                            label: 1,
+                            label: '1',
                         },
                     },
                 ],

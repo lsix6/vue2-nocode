@@ -9,6 +9,7 @@ const createFields = (fields) => {
                 label: field.field_info.label,
                 ...field.in_list.column_props,
             },
+            column_components: field.in_list.column_components,
         })
     });
     console.log('createFields', arr)
