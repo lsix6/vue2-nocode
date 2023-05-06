@@ -99,4 +99,35 @@ export const product_fields = [
             },
         },
     },
+    {
+        field_info: {
+            name: 'market',
+            label: '市场',
+            default_value: 0,
+        },
+        in_list: {
+            'min-width': '100',
+        },
+        in_form: {
+            edit_com: {
+                com_name: 'el-radio-group',
+                com_children: [
+                    {
+                        com_name: 'el-radio',
+                        com_text: '出口',
+                        com_props: {
+                            label: 0,
+                        },
+                    },
+                    {
+                        com_name: 'el-radio',
+                        com_text: '内销',
+                        com_props: {
+                            label: 1,
+                        },
+                    },
+                ],
+            }
+        },
+    },
 ]
