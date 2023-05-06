@@ -6,7 +6,9 @@ export const product_fields = [
             label: '产品编号',
         },
         in_list: {
-            'min-width': '180',
+            column_props: {
+                'min-width': '180',
+            },
         },
         in_search: {
             type: 'key',
@@ -43,7 +45,9 @@ export const product_fields = [
             label: '产品名称',
         },
         in_list: {
-            'min-width': '200',
+            column_props: {
+                'min-width': '200',
+            },
         },
         in_search: {
             type: 'key',
@@ -80,7 +84,9 @@ export const product_fields = [
             default_value: 10,
         },
         in_list: {
-            'min-width': '100',
+            column_props: {
+                'min-width': '100',
+            },
         },
         in_form: {
             rules: [
@@ -106,7 +112,9 @@ export const product_fields = [
             default_value: 0,
         },
         in_list: {
-            'min-width': '100',
+            column_props: {
+                'min-width': '100',
+            },
         },
         in_form: {
             edit_com: {

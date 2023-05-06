@@ -7,7 +7,7 @@ const createFields = (fields) => {
             column_props: {
                 prop: field.field_info.name,
                 label: field.field_info.label,
-                ...field.in_list,
+                ...field.in_list.column_props,
             },
         })
     });
