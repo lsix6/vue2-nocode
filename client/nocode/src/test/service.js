@@ -1,31 +1,20 @@
 import _ from 'lodash'
 
 let listProducts = [
-    {
-        _id: '1',
-        no: '1',
-        name: '1',
-        price: 10,
-    },
-    {
-        _id: '2',
-        no: '2',
-        name: '2',
-        price: 20,
-    },
 ]
 
 const init_products = () => {
-    for (let i = 3; i <= 150; i++) {
+    for (let i = 1; i <= 5; i++) {
         listProducts.push({
             _id: '' + i,
             no: '' + i,
             name: '' + i,
             price: i * 10,
+            market: '0',
         })
     }
 }
-// init_products()
+init_products()
 
 const product_list = (params) => {
     console.log('product_list, params', params)
