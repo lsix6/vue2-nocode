@@ -126,15 +126,28 @@ const product_update = (params) => {
 export const request_api = function (api, data) {
     console.log('request_api', api.url, api.method, data)
     //
+    let process = null
     if (api.url === 'product/list') {
-        return product_list(data)
+        process = product_list(data)
     } else if (api.url === 'product/add') {
-        return product_add(data)
+        process = product_add(data)
     } else if (api.url === 'product/delete') {
-        return product_delete(data)
+        process = product_delete(data)
     } else if (api.url === 'product/detail') {
-        return product_detail(data)
+        process = product_detail(data)
     } else if (api.url === 'product/update') {
-        return product_update(data)
+        process = product_update(data)
     }
+    //
+    return new Promise((resolve, reject) => {
+        if (process) {
+            process.then(result => {
+                setTimeout(() => {
+                    resolve(result)
+                }, 1000);
+            })
+        } else {
+            reject()
+        }
+    })
 }
