@@ -19,9 +19,9 @@ export default {
             type: Object,
             default: null
         },
-        fetch_data: {
-            type: Object,
-            default: null
+        data_sources: {
+            type: Array,
+            default: () => []
         },
         data_children: {
             type: Array,
@@ -44,10 +44,18 @@ export default {
     methods: {
         refreshData() {
             return new Promise(resolve => {
-                if (this.fetch_data) {
-                    fetch_data(this, this.fetch_data).then(data => {
-                        console.log('[nc_data] fetch_data, return:', data)
-                        this.data = data
+                if (this.data_sources.length > 0) {
+                    Promise.all(
+                        this.data_sources.map(ds => {
+                            return fetch_data(this, ds)
+                        })
+                    ).then(results => {
+                        this.data = this.data || {}
+                        this.data_sources.forEach((ds, i) => {
+                            this.data[ds.set_name] = results[i]
+                        })
+                        //
+                        console.log('[nc_data] refreshData, data:', this.data)
                         this.$el.dispatchEvent(new Event('loaded'))
                         //
                         resolve(true)
