@@ -1,6 +1,6 @@
 <template>
     <el-form ref="form" :model="formData" v-bind="form_props" @submit.native.prevent>
-        <nc_children ref="children" :com_children="children" :com_params="{ formData, valid, changed, }">
+        <nc_children ref="children" :com_children="children" :com_params="{ ...com_params, formData, valid, changed, }">
         </nc_children>
     </el-form>
 </template>
