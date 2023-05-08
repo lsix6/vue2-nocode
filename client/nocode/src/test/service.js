@@ -123,6 +123,21 @@ const product_update = (params) => {
     })
 }
 
+const listProducePlace = {
+    0: '北京',
+    1: '上海',
+    2: '广州',
+    3: '深圳',
+    4: '武汉',
+    5: '重庆',
+}
+
+const produce_place = () => {
+    return new Promise((resolve) => {
+        resolve(listProducePlace)
+    })
+}
+
 export const request_api = function (api, data) {
     console.log('request_api', api.url, api.method, data)
     //
@@ -137,6 +152,8 @@ export const request_api = function (api, data) {
         process = product_detail(data)
     } else if (api.url === 'product/update') {
         process = product_update(data)
+    } else if (api.url === 'product/producePlace') {
+        process = produce_place(data)
     }
     //
     return new Promise((resolve, reject) => {
