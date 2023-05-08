@@ -51,20 +51,23 @@ export const createEditPage = (moduleInfo) => {
                                     {
                                         com_name: 'nc_data',
                                         com_props: {
-                                            fetch_data: {
-                                                api: {
-                                                    url: `${moduleInfo.name}/detail`,
-                                                    method: 'GET',
+                                            data_sources: [
+                                                {
+                                                    set_name: 'recordData',
+                                                    api: {
+                                                        url: `${moduleInfo.name}/detail`,
+                                                        method: 'GET',
+                                                    },
+                                                    fetch_params: [
+                                                        {
+                                                            params_source: 'route_query',
+                                                            params_fields: [
+                                                                '_id',
+                                                            ]
+                                                        }
+                                                    ]
                                                 },
-                                                fetch_params: [
-                                                    {
-                                                        params_source: 'route_query',
-                                                        params_fields: [
-                                                            '_id',
-                                                        ]
-                                                    }
-                                                ]
-                                            },
+                                            ],
                                             data_children: [
                                                 formEdit,
                                             ],
