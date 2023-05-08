@@ -50,7 +50,7 @@ export default {
                             return fetch_data(this, ds)
                         })
                     ).then(results => {
-                        this.data = this.data || {}
+                        this.data = {}
                         this.data_sources.forEach((ds, i) => {
                             this.data[ds.set_name] = results[i]
                         })
