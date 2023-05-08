@@ -51,15 +51,14 @@ export const createAddPage = (moduleInfo) => {
                                     {
                                         com_name: 'nc_data',
                                         com_props: {
-                                            data_sources: [
-                                                {
-                                                    set_name: '__producePlaceMap',
+                                            data_sources: {
+                                                __producePlaceMap: {
                                                     api: {
                                                         url: `${moduleInfo.name}/producePlace`,
                                                         method: 'GET',
                                                     },
                                                 },
-                                            ],
+                                            },
                                             data_children: [
                                                 formAdd,
                                             ],

@@ -28,9 +28,8 @@ export const createListPage = (moduleInfo) => {
                     },
                 },
                 com_props: {
-                    data_sources: [
-                        {
-                            set_name: '__listPageData',
+                    data_sources: {
+                        __listPageData: {
                             api: {
                                 url: `${moduleInfo.name}/list`,
                                 method: 'GET',
@@ -52,14 +51,13 @@ export const createListPage = (moduleInfo) => {
                                 },
                             ]
                         },
-                        {
-                            set_name: '__producePlaceMap',
+                        __producePlaceMap: {
                             api: {
                                 url: `${moduleInfo.name}/producePlace`,
                                 method: 'GET',
                             },
                         },
-                    ],
+                    },
                     data_children: [
                         {
                             com_name: 'div',

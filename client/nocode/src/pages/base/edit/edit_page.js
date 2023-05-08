@@ -51,9 +51,8 @@ export const createEditPage = (moduleInfo) => {
                                     {
                                         com_name: 'nc_data',
                                         com_props: {
-                                            data_sources: [
-                                                {
-                                                    set_name: 'recordData',
+                                            data_sources: {
+                                                __recordData: {
                                                     api: {
                                                         url: `${moduleInfo.name}/detail`,
                                                         method: 'GET',
@@ -67,14 +66,13 @@ export const createEditPage = (moduleInfo) => {
                                                         }
                                                     ]
                                                 },
-                                                {
-                                                    set_name: '__producePlaceMap',
+                                                __producePlaceMap: {
                                                     api: {
                                                         url: `${moduleInfo.name}/producePlace`,
                                                         method: 'GET',
                                                     },
                                                 },
-                                            ],
+                                            },
                                             data_children: [
                                                 formEdit,
                                             ],

@@ -20,8 +20,8 @@ export default {
             default: null
         },
         data_sources: {
-            type: Array,
-            default: () => []
+            type: Object,
+            default: () => { }
         },
         data_children: {
             type: Array,
@@ -44,14 +44,21 @@ export default {
     methods: {
         refreshData() {
             return new Promise(resolve => {
-                if (this.data_sources.length > 0) {
+                const arrDS = []
+                for (let k in this.data_sources) {
+                    arrDS.push({
+                        ...this.data_sources[k],
+                        set_name: k,
+                    })
+                }
+                if (arrDS.length > 0) {
                     Promise.all(
-                        this.data_sources.map(ds => {
+                        arrDS.map(ds => {
                             return fetch_data(this, ds)
                         })
                     ).then(results => {
                         this.data = {}
-                        this.data_sources.forEach((ds, i) => {
+                        arrDS.forEach((ds, i) => {
                             this.data[ds.set_name] = results[i]
                         })
                         //
