@@ -11,7 +11,7 @@ const init_products = () => {
             name: '' + i,
             price: i * 10,
             market: '0',
-            producePlace: 0,
+            producePlace: '1',
         })
     }
 }
