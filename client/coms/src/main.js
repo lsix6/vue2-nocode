@@ -13,6 +13,7 @@ const registerComponents = (Vue) => {
   Vue.component('nc_form_item', () => import('./components/nc_form_item.vue'))
   Vue.component('nc_input', () => import('./components/nc_input.vue'))
   Vue.component('nc_enum', () => import('./components/show/nc_enum.vue'))
+  Vue.component('nc_select', () => import('./components/edit/nc_select.vue'))
 }
 
 if (window.Vue) {
