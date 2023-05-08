@@ -28,27 +28,38 @@ export const createListPage = (moduleInfo) => {
                     },
                 },
                 com_props: {
-                    fetch_data: {
-                        api: {
-                            url: `${moduleInfo.name}/list`,
-                            method: 'GET',
-                        },
-                        fetch_params: [
-                            {
-                                params_source: 'com_ref',
-                                params_com_ref: 'formSearch',
-                                params_set_name: 'search',
+                    data_sources: [
+                        {
+                            set_name: 'listPageData',
+                            api: {
+                                url: `${moduleInfo.name}/list`,
+                                method: 'GET',
                             },
-                            {
-                                params_source: 'com_ref',
-                                params_com_ref: 'pagination',
-                                params_set_name: 'page',
-                                params_default_value: {
-                                    pageIndex: 1,
-                                    pageSize: 20,
+                            fetch_params: [
+                                {
+                                    params_source: 'com_ref',
+                                    params_com_ref: 'formSearch',
+                                    params_set_name: 'search',
                                 },
-                            },]
-                    },
+                                {
+                                    params_source: 'com_ref',
+                                    params_com_ref: 'pagination',
+                                    params_set_name: 'page',
+                                    params_default_value: {
+                                        pageIndex: 1,
+                                        pageSize: 20,
+                                    },
+                                },
+                            ]
+                        },
+                        {
+                            set_name: 'producePlace',
+                            api: {
+                                url: `${moduleInfo.name}/producePlace`,
+                                method: 'GET',
+                            },
+                        },
+                    ],
                     data_children: [
                         {
                             com_name: 'div',
