@@ -5,7 +5,7 @@ export const list_pagination = {
     com_binds: [
         {
             prop_name: 'page_data',
-            field_name: 'listPageData.pageData',
+            field_name: '__listPageData.pageData',
         }
     ],
     com_props: {

@@ -152,4 +152,51 @@ export const product_fields = [
             }
         },
     },
+    {
+        field_info: {
+            name: 'produceName',
+            label: '产地',
+            default_value: 0,
+        },
+        in_list: {
+            column_props: {
+                'min-width': '100',
+            },
+            column_components: [
+                {
+                    com_name: 'nc_enum',
+                    com_field: {
+                        field_name: 'market',
+                    },
+                    com_binds: [
+                        {
+                            prop_name: 'enum_map',
+                            field_name: '__producePlaceMap',
+                        }
+                    ],
+                }
+            ],
+        },
+        in_form: {
+            edit_com: {
+                com_name: 'el-radio-group',
+                com_children: [
+                    {
+                        com_name: 'el-radio',
+                        com_text: '出口',
+                        com_props: {
+                            label: '0',
+                        },
+                    },
+                    {
+                        com_name: 'el-radio',
+                        com_text: '内销',
+                        com_props: {
+                            label: '1',
+                        },
+                    },
+                ],
+            }
+        },
+    },
 ]

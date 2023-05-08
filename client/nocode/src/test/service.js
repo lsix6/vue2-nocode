@@ -11,6 +11,7 @@ const init_products = () => {
             name: '' + i,
             price: i * 10,
             market: '0',
+            producePlace: 0,
         })
     }
 }
@@ -161,7 +162,7 @@ export const request_api = function (api, data) {
             process.then(result => {
                 setTimeout(() => {
                     resolve(result)
-                }, 1000);
+                }, 0);
             })
         } else {
             reject()

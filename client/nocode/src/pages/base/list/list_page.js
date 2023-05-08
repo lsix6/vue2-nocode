@@ -30,7 +30,7 @@ export const createListPage = (moduleInfo) => {
                 com_props: {
                     data_sources: [
                         {
-                            set_name: 'listPageData',
+                            set_name: '__listPageData',
                             api: {
                                 url: `${moduleInfo.name}/list`,
                                 method: 'GET',
@@ -53,7 +53,7 @@ export const createListPage = (moduleInfo) => {
                             ]
                         },
                         {
-                            set_name: 'producePlace',
+                            set_name: '__producePlaceMap',
                             api: {
                                 url: `${moduleInfo.name}/producePlace`,
                                 method: 'GET',

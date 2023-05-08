@@ -142,7 +142,7 @@ export const createList = (moduleName, moduleFields) => {
         com_binds: [
             {
                 prop_name: 'listData',
-                field_name: 'listPageData.listData',
+                field_name: '__listPageData.listData',
             }
         ],
         com_props: {
