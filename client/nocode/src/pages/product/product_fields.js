@@ -154,9 +154,8 @@ export const product_fields = [
     },
     {
         field_info: {
-            name: 'produceName',
+            name: 'producePlace',
             label: '产地',
-            default_value: 0,
         },
         in_list: {
             column_props: {
@@ -166,7 +165,7 @@ export const product_fields = [
                 {
                     com_name: 'nc_enum',
                     com_field: {
-                        field_name: 'market',
+                        field_name: 'producePlace',
                     },
                     com_binds: [
                         {
@@ -179,22 +178,12 @@ export const product_fields = [
         },
         in_form: {
             edit_com: {
-                com_name: 'el-radio-group',
-                com_children: [
+                com_name: 'nc_select',
+                com_binds: [
                     {
-                        com_name: 'el-radio',
-                        com_text: '出口',
-                        com_props: {
-                            label: '0',
-                        },
-                    },
-                    {
-                        com_name: 'el-radio',
-                        com_text: '内销',
-                        com_props: {
-                            label: '1',
-                        },
-                    },
+                        prop_name: 'enum_map',
+                        field_name: '__producePlaceMap',
+                    }
                 ],
             }
         },

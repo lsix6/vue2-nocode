@@ -67,6 +67,13 @@ export const createEditPage = (moduleInfo) => {
                                                         }
                                                     ]
                                                 },
+                                                {
+                                                    set_name: '__producePlaceMap',
+                                                    api: {
+                                                        url: `${moduleInfo.name}/producePlace`,
+                                                        method: 'GET',
+                                                    },
+                                                },
                                             ],
                                             data_children: [
                                                 formEdit,
