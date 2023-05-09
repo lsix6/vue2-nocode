@@ -156,7 +156,6 @@ export const createList = (moduleName, moduleFields) => {
                 stripe: true,
                 height: '100%',
                 'tooltip-effect': 'light',
-                border: true,
             },
             fields: [
                 ...fields,
