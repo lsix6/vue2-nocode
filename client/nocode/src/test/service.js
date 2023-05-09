@@ -12,6 +12,7 @@ const init_products = () => {
             price: i * 10,
             market: '0',
             producePlace: '1',
+            storageDate: '2023-05-01 00:00:00',
         })
     }
 }
