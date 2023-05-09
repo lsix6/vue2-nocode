@@ -39,10 +39,10 @@ export default {
     },
     mounted() {
         // console.log('[nc_data] mounted, com_params:', this.com_params)
-        this.refreshData()
+        this.refreshAll()
     },
     methods: {
-        refreshData() {
+        refreshAll() {
             return new Promise(resolve => {
                 const arrDS = []
                 for (let k in this.data_sources) {
@@ -62,10 +62,26 @@ export default {
                             this.data[ds.set_name] = results[i]
                         })
                         //
-                        console.log('[nc_data] refreshData, data:', this.data)
+                        console.log('[nc_data] refreshAll, data:', this.data)
                         this.$el.dispatchEvent(new Event('loaded'))
                         //
                         resolve(true)
+                    })
+                } else {
+                    resolve(true)
+                }
+            })
+        },
+        refresh(params) {
+            return new Promise((resolve) => {
+                const dsName = params.ds_name
+                const ds = this.data_sources[dsName]
+                if (ds) {
+                    fetch_data(this, ds).then(result => {
+                        this.data = {
+                            ...this.data,
+                        }
+                        this.data[dsName] = result
                     })
                 } else {
                     resolve(true)

@@ -22,7 +22,12 @@ export const list_pagination = {
                     cmd_name: 'call_com_method',
                     cmd_params: {
                         com_ref: 'list_page_data',
-                        com_method_name: 'refreshData',
+                        com_method_name: 'refresh',
+                        com_method_params: [
+                            {
+                                ds_name: '__listPageData',
+                            }
+                        ],
                     },
                 }
             ],
