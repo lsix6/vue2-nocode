@@ -195,4 +195,29 @@ export const product_fields = [
             }
         },
     },
+    {
+        field_info: {
+            name: 'delivery',
+            label: '即时配送',
+            default_value: false,
+        },
+        in_list: {
+            column_props: {
+                'min-width': '100',
+            },
+            column_components: [
+                {
+                    com_name: 'el-switch',
+                    com_field: {
+                        field_name: 'delivery',
+                    },
+                }
+            ],
+        },
+        in_form: {
+            edit_com: {
+                com_name: 'el-switch',
+            }
+        },
+    },
 ]
