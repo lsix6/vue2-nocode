@@ -272,4 +272,32 @@ export const product_fields = [
             }
         },
     },
+    {
+        field_info: {
+            name: 'level',
+            label: '等级',
+            default: 0,
+        },
+        in_list: {
+            column_props: {
+                width: '150',
+            },
+            column_components: [
+                {
+                    com_name: 'el-rate',
+                    com_field: {
+                        field_name: 'level',
+                    },
+                    com_props: {
+                        disabled: true,
+                    },
+                }
+            ],
+        },
+        in_form: {
+            edit_com: {
+                com_name: 'el-rate',
+            }
+        },
+    },
 ]
