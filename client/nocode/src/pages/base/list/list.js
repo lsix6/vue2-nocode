@@ -24,6 +24,7 @@ export const createList = (moduleName, moduleFields) => {
         com_info: {
             style: {
                 'margin-right': '10px',
+                padding: 0,
             },
         },
         com_props: {
