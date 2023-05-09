@@ -1,7 +1,30 @@
 import { product_fields } from "./product_fields";
 
+const moduleName = 'product'
+
 export const product_info = {
-    name: 'product',
+    name: moduleName,
+    data_sources: {
+        __producePlaceMap: {
+            api: {
+                url: `${moduleName}/producePlace`,
+                method: 'GET',
+            },
+        },
+        __marketMap: {
+            fetch_params: [
+                {
+                    enumMap: {
+                        '0': '出口',
+                        '1': '内销',
+                    },
+                    params_fields: [
+                        'enumMap',
+                    ],
+                }
+            ],
+        },
+    },
     add_form: {
         title: '添加新产品',
     },

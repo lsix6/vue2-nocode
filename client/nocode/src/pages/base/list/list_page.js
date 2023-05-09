@@ -29,6 +29,7 @@ export const createListPage = (moduleInfo) => {
                 },
                 com_props: {
                     data_sources: {
+                        ...moduleInfo.data_sources,
                         __listPageData: {
                             api: {
                                 url: `${moduleInfo.name}/list`,
@@ -50,25 +51,6 @@ export const createListPage = (moduleInfo) => {
                                     },
                                 },
                             ]
-                        },
-                        __producePlaceMap: {
-                            api: {
-                                url: `${moduleInfo.name}/producePlace`,
-                                method: 'GET',
-                            },
-                        },
-                        __marketMap: {
-                            fetch_params: [
-                                {
-                                    enumMap: {
-                                        '0': '出口',
-                                        '1': '内销',
-                                    },
-                                    params_fields: [
-                                        'enumMap',
-                                    ],
-                                }
-                            ],
                         },
                     },
                     data_children: [

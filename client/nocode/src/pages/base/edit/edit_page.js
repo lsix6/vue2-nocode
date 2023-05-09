@@ -52,6 +52,7 @@ export const createEditPage = (moduleInfo) => {
                                         com_name: 'nc_data',
                                         com_props: {
                                             data_sources: {
+                                                ...moduleInfo.data_sources,
                                                 __recordData: {
                                                     api: {
                                                         url: `${moduleInfo.name}/detail`,
@@ -65,25 +66,6 @@ export const createEditPage = (moduleInfo) => {
                                                             ]
                                                         }
                                                     ]
-                                                },
-                                                __producePlaceMap: {
-                                                    api: {
-                                                        url: `${moduleInfo.name}/producePlace`,
-                                                        method: 'GET',
-                                                    },
-                                                },
-                                                __marketMap: {
-                                                    fetch_params: [
-                                                        {
-                                                            enumMap: {
-                                                                '0': '出口',
-                                                                '1': '内销',
-                                                            },
-                                                            params_fields: [
-                                                                'enumMap',
-                                                            ],
-                                                        }
-                                                    ],
                                                 },
                                             },
                                             data_children: [

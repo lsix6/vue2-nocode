@@ -52,25 +52,7 @@ export const createAddPage = (moduleInfo) => {
                                         com_name: 'nc_data',
                                         com_props: {
                                             data_sources: {
-                                                __producePlaceMap: {
-                                                    api: {
-                                                        url: `${moduleInfo.name}/producePlace`,
-                                                        method: 'GET',
-                                                    },
-                                                },
-                                                __marketMap: {
-                                                    fetch_params: [
-                                                        {
-                                                            enumMap: {
-                                                                '0': '出口',
-                                                                '1': '内销',
-                                                            },
-                                                            params_fields: [
-                                                                'enumMap',
-                                                            ],
-                                                        }
-                                                    ],
-                                                },
+                                                ...moduleInfo.data_sources,
                                             },
                                             data_children: [
                                                 formAdd,
