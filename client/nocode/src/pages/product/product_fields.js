@@ -220,4 +220,25 @@ export const product_fields = [
             }
         },
     },
+    {
+        field_info: {
+            name: 'storageDate',
+            label: '入库时间',
+        },
+        in_list: {
+            column_props: {
+                'min-width': '100',
+            },
+        },
+        in_form: {
+            edit_com: {
+                com_name: 'el-date-picker',
+                com_props: {
+                    type: 'datetime',
+                    placeholder: '请输入入库时间',
+                    'value-format': 'yyyy-MM-dd HH:mm:ss',
+                },
+            }
+        },
+    },
 ]
