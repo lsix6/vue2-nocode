@@ -14,6 +14,7 @@ const registerComponents = (Vue) => {
   Vue.component('nc_input', () => import('./components/nc_input.vue'))
   Vue.component('nc_enum', () => import('./components/show/nc_enum.vue'))
   Vue.component('nc_select', () => import('./components/edit/nc_select.vue'))
+  Vue.component('nc_radio_group', () => import('./components/edit/nc_radio_group.vue'))
 }
 
 if (window.Vue) {
