@@ -163,7 +163,7 @@ export const createList = (moduleName, moduleFields) => {
                 {
                     column_props: {
                         label: '操作',
-                        width: '160',
+                        width: '120',
                         align: 'center',
                         fixed: 'right',
                     },

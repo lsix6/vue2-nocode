@@ -227,7 +227,7 @@ export const product_fields = [
         },
         in_list: {
             column_props: {
-                'min-width': '100',
+                'min-width': '180',
             },
         },
         in_form: {
