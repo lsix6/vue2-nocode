@@ -72,6 +72,7 @@ const element = {
     registElComponent(Vue, 'Radio')
     registElComponent(Vue, 'RadioGroup')
     registElComponent(Vue, 'CheckboxGroup')
+    registElComponent(Vue, 'Rate')
     registElComponent(Vue, 'Tree')
     registElComponent(Vue, 'Icon')
     registElComponent(Vue, 'Progress')
