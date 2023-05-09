@@ -16,6 +16,7 @@ export const createListPage = (moduleInfo) => {
                 background: '#F5F6F7',
                 flex: 1,
                 display: 'flex',
+                overflow: 'hidden',
             },
         },
         com_children: [
@@ -25,6 +26,7 @@ export const createListPage = (moduleInfo) => {
                 com_info: {
                     style: {
                         flex: 1,
+                        overflow: 'hidden',
                     },
                 },
                 com_props: {
