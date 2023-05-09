@@ -129,23 +129,10 @@ export const product_fields = [
         },
         in_form: {
             edit_com: {
-                com_name: 'el-radio-group',
-                com_children: [
-                    {
-                        com_name: 'el-radio',
-                        com_text: '出口',
-                        com_props: {
-                            label: '0',
-                        },
-                    },
-                    {
-                        com_name: 'el-radio',
-                        com_text: '内销',
-                        com_props: {
-                            label: '1',
-                        },
-                    },
-                ],
+                com_name: 'nc_radio_group',
+                com_props: {
+                    data_source_name: '__marketMap',
+                },
             }
         },
     },

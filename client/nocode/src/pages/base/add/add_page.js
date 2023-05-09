@@ -58,6 +58,19 @@ export const createAddPage = (moduleInfo) => {
                                                         method: 'GET',
                                                     },
                                                 },
+                                                __marketMap: {
+                                                    fetch_params: [
+                                                        {
+                                                            enumMap: {
+                                                                '0': '出口',
+                                                                '1': '内销',
+                                                            },
+                                                            params_fields: [
+                                                                'enumMap',
+                                                            ],
+                                                        }
+                                                    ],
+                                                },
                                             },
                                             data_children: [
                                                 formAdd,
