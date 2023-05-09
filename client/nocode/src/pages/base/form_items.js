@@ -3,7 +3,7 @@ import _ from 'lodash'
 export const createFormItems = (fields) => {
     const arr = []
     //
-    fields.forEach((field, i) => {
+    const pushFieldToArr = (field, i) => {
         const edit_com = _.cloneDeep(field.in_form.edit_com)
         //
         if (i === 0) {
@@ -36,6 +36,12 @@ export const createFormItems = (fields) => {
                 edit_com,
             ]
         })
+    }
+    //
+    fields.forEach((field, i) => {
+        if (field.in_form) {
+            pushFieldToArr(field, i)
+        }
     })
     console.log('createFormItems', arr)
     //
