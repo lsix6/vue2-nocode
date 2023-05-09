@@ -166,4 +166,33 @@ export const product_fields = [
             }
         },
     },
+    {
+        field_info: {
+            name: 'inSale',
+            label: '状态',
+            default_value: false,
+        },
+        in_list: {
+            column_props: {
+                'min-width': '100',
+            },
+            column_components: [
+                {
+                    com_name: 'nc_enum',
+                    com_field: {
+                        field_name: 'inSale',
+                    },
+                    com_props: {
+                        data_source_name: '__stateMap',
+                    },
+                }
+            ],
+        },
+        in_form: {
+            edit_com: {
+                com_name: 'el-checkbox',
+                com_text: '已上架',
+            }
+        },
+    },
 ]
