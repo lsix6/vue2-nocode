@@ -12,6 +12,7 @@ import {
   Container, Header, Main, Footer,
   Scrollbar,
   Popconfirm,
+  Avatar,
 } from "element-ui"
 
 const load = () => import('./el_coms.js')
@@ -60,8 +61,9 @@ const element = {
     Vue.use(Main)
     Vue.use(Footer)
     Vue.use(Scrollbar)
-    Vue.use(DropdownMenu);
+    Vue.use(DropdownMenu)
     Vue.use(Popconfirm)
+    Vue.use(Avatar)
 
     // 使用懒加载的方法注册不会马上用到的 elementui 组件
     registElComponent(Vue, 'DatePicker')
