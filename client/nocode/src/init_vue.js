@@ -21,10 +21,10 @@ export const init_vue = (Vue) => {
                 'argument: ' + s(binding.arg) + '<br>' +
                 'modifiers: ' + s(binding.modifiers) + '<br>' +
                 'vnode keys: ' + Object.keys(vnode).join(', ')
-            console.log('[blur-trim] bind', str)
+            // console.log('[blur-trim] bind', str)
         },
         inserted: el => {
-            console.log('[blur-trim] inserted', el)
+            // console.log('[blur-trim] inserted', el)
             function getInput(el) {
                 let inputEle
                 if (el.tagName !== 'INPUT') {
