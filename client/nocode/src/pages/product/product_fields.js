@@ -122,10 +122,7 @@ export const product_fields = [
                         field_name: 'market',
                     },
                     com_props: {
-                        enum_map: {
-                            '0': '出口',
-                            '1': '内销',
-                        },
+                        data_source_name: '__marketMap',
                     },
                 }
             ],
@@ -167,24 +164,18 @@ export const product_fields = [
                     com_field: {
                         field_name: 'producePlace',
                     },
-                    com_binds: [
-                        {
-                            prop_name: 'enum_map',
-                            field_name: '__producePlaceMap',
-                        }
-                    ],
+                    com_props: {
+                        data_source_name: '__producePlaceMap',
+                    },
                 }
             ],
         },
         in_form: {
             edit_com: {
                 com_name: 'nc_select',
-                com_binds: [
-                    {
-                        prop_name: 'enum_map',
-                        field_name: '__producePlaceMap',
-                    }
-                ],
+                com_props: {
+                    data_source_name: '__producePlaceMap',
+                },
             }
         },
     },

@@ -15,17 +15,24 @@ export default {
             type: String,
             default: ''
         },
-        enum_map: {
+        data_source_name: {
+            type: String,
+            default: ''
+        },
+        com_params: {
             type: Object,
-            default: () => { }
+            default: null
         },
     },
     data() {
         return {
+            enum_map: {},
         }
     },
     mounted() {
-        // console.log('[nc_select] mounted', this.value, typeof(this.value), this.enum_map)
+        console.log('[nc_select] mounted', this.value, typeof (this.value), this.com_params)
+        //
+        this.enum_map = this.com_params[this.data_source_name]
     },
     methods: {
         onChange(v) {
