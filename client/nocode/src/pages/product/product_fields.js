@@ -79,6 +79,32 @@ export const product_fields = [
     },
     {
         field_info: {
+            name: 'picture',
+            label: '产品图片',
+        },
+        in_list: {
+            column_props: {
+                'min-width': '80',
+            },
+            column_components: [
+                {
+                    com_name: 'el-avatar',
+                    com_binds: [
+                        {
+                            prop_name: 'src',
+                            field_name: 'picture',
+                        },
+                    ],
+                    com_props: {
+                        shape: 'square',
+                        size: 'small',
+                    },
+                },
+            ],
+        },
+    },
+    {
+        field_info: {
             name: 'price',
             label: '价格',
             default_value: 10,

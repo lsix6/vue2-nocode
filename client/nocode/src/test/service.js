@@ -14,6 +14,7 @@ const init_products = () => {
             producePlace: '1',
             storageDate: '2023-05-01 00:00:00',
             color: '#0000ff',
+            picture: `/static/imgs/img${i % 5}.png`
         })
     }
 }
