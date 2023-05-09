@@ -2,7 +2,7 @@ import {
   Pagination, Dialog,
   Dropdown, DropdownItem, DropdownMenu,
   Input, InputNumber,
-  Checkbox, Switch,
+  Checkbox, CheckboxGroup, Switch,
   Select, Option, Button,
   Table, TableColumn,
   Popover, Tooltip, Breadcrumb, BreadcrumbItem,
@@ -39,6 +39,7 @@ const element = {
     Vue.use(Input)
     Vue.use(InputNumber)
     Vue.use(Checkbox)
+    Vue.use(CheckboxGroup)
     Vue.use(Switch)
     Vue.use(Select)
     Vue.use(Option)
@@ -71,7 +72,6 @@ const element = {
     registElComponent(Vue, 'Submenu')
     registElComponent(Vue, 'Radio')
     registElComponent(Vue, 'RadioGroup')
-    registElComponent(Vue, 'CheckboxGroup')
     registElComponent(Vue, 'Rate')
     registElComponent(Vue, 'Tree')
     registElComponent(Vue, 'Icon')
