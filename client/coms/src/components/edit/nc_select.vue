@@ -30,7 +30,7 @@ export default {
         }
     },
     mounted() {
-        console.log('[nc_select] mounted', this.value, typeof (this.value), this.com_params)
+        // console.log('[nc_select] mounted', this.value, typeof (this.value), this.com_params)
         //
         this.enum_map = this.com_params[this.data_source_name]
     },

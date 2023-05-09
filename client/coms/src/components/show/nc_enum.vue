@@ -29,7 +29,7 @@ export default {
         }
     },
     mounted() {
-        console.log('[nc_enum] mounted', this.value, typeof (this.value), this.com_params)
+        // console.log('[nc_enum] mounted', this.value, typeof (this.value), this.com_params)
         const enumMap = this.com_params[this.data_source_name]
         if (enumMap) {
             this.text = enumMap[this.value]
