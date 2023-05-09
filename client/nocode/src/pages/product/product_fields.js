@@ -241,4 +241,35 @@ export const product_fields = [
             }
         },
     },
+    {
+        field_info: {
+            name: 'color',
+            label: '产品颜色',
+        },
+        in_list: {
+            column_props: {
+                width: '80',
+            },
+            column_components: [
+                {
+                    com_name: 'nc_color',
+                    com_field: {
+                        field_name: 'color',
+                    },
+                    com_info: {
+                        style: {
+                            width: '30px',
+                            height: '23px',
+                            margin: 'auto',
+                        }
+                    },
+                }
+            ],
+        },
+        in_form: {
+            edit_com: {
+                com_name: 'el-color-picker',
+            }
+        },
+    },
 ]
