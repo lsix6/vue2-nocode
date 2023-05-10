@@ -163,10 +163,24 @@ export const product_fields = [
         in_search: {
             search_com: {
                 com_name: 'div',
+                com_info: {
+                    style: {
+                        display: 'flex',
+                        'flex-direction': 'row',
+                        'margin-right': '20px',
+                    },
+                },
                 com_children: [
                     {
-                        com_name: 'span',
+                        com_name: 'div',
                         com_text: '市场',
+                        com_info: {
+                            style: {
+                                'line-height': '40px',
+                                'white-space': 'nowrap',
+                                'margin-right': '10px',
+                            },
+                        },
                     },
                     {
                         com_name: 'nc_select',

@@ -26,6 +26,9 @@ export const createListSearch = (moduleFields) => {
             attrs: {
                 placeholder: keyPlaceHolder,
             },
+            style: {
+                'margin-right': '20px',
+            },
         },
         com_field: {
             field_name: 'formData.keyWord'
@@ -40,15 +43,24 @@ export const createListSearch = (moduleFields) => {
         com_ref: 'formSearch',
         com_info: {
             style: {
-                'min-width': '270px',
-                'max-width': '570px',
-                'margin-right': '20px',
+                'min-width': 'fit-content',
             },
         },
         com_props: {
             form_children: [
-                inputSearch,
-                ...search_coms,
+                {
+                    com_name: 'div',
+                    com_info: {
+                        style: {
+                            display: 'flex',
+                            'flex-direction': 'row',
+                        },
+                    },
+                    com_children: [
+                        inputSearch,
+                        ...search_coms,
+                    ],
+                },
             ],
         },
         com_events: [
