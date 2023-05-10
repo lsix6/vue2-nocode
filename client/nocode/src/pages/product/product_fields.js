@@ -84,7 +84,8 @@ export const product_fields = [
         },
         in_list: {
             column_props: {
-                'min-width': '80',
+                width: '80',
+                'header-align': 'center',
             },
             column_components: [
                 {
@@ -92,6 +93,7 @@ export const product_fields = [
                     com_info: {
                         style: {
                             display: 'block',
+                            margin: 'auto',
                         },
                     },
                     com_binds: [
@@ -280,6 +282,7 @@ export const product_fields = [
         in_list: {
             column_props: {
                 width: '80',
+                'header-align': 'center',
             },
             column_components: [
                 {
@@ -289,8 +292,8 @@ export const product_fields = [
                     },
                     com_info: {
                         style: {
-                            width: '30px',
-                            height: '23px',
+                            width: '28px',
+                            height: '28px',
                             margin: 'auto',
                         }
                     },
