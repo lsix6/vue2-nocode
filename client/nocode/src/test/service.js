@@ -9,12 +9,15 @@ const init_products = () => {
             _id: '' + i,
             no: '' + i,
             name: '' + i,
+            picture: `/static/imgs/img${i % 5}.png`,
             price: i * 10,
-            market: '0',
-            producePlace: '1',
+            market: (Math.random() > 0.5 ? '0' : '1'),
+            producePlace: (Math.floor(Math.random() * 5)).toString(),
+            inSale: (Math.random() > 0.5),
+            delivery: (Math.random() > 0.5),
             storageDate: '2023-05-01 00:00:00',
             color: '#0000ff',
-            picture: `/static/imgs/img${i % 5}.png`
+            level: (Math.floor(Math.random() * 6)),
         })
     }
 }
