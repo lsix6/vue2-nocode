@@ -232,6 +232,48 @@ export const product_fields = [
                 }
             ],
         },
+        in_search: {
+            search_com: {
+                com_name: 'div',
+                com_info: {
+                    style: {
+                        display: 'flex',
+                        'flex-direction': 'row',
+                        'margin-right': '20px',
+                    },
+                },
+                com_children: [
+                    {
+                        com_name: 'div',
+                        com_text: '产地',
+                        com_info: {
+                            style: {
+                                'line-height': '40px',
+                                'white-space': 'nowrap',
+                                'margin-right': '10px',
+                            },
+                        },
+                    },
+                    {
+                        com_name: 'nc_select',
+                        com_info: {
+                            style: {
+                                width: '120px',
+                            },
+                        },
+                        com_field: {
+                            field_name: 'formData.producePlace',
+                        },
+                        com_props: {
+                            enum_map: {
+                                '': '全部',
+                            },
+                            data_source_name: '__producePlaceMap',
+                        },
+                    },
+                ],
+            },
+        },
         in_form: {
             edit_com: {
                 com_name: 'nc_select',
