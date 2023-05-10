@@ -1,6 +1,6 @@
 <template>
     <el-select v-bind="{ ...$attrs, ...$props }" @change="onChange">
-        <el-option v-for="(v, k) in enum_map" :key="k" :label="v" :value="k">
+        <el-option v-for="(v, k) in enumMap" :key="k" :label="v" :value="k">
         </el-option>
     </el-select>
 </template>
@@ -15,6 +15,10 @@ export default {
             type: String,
             default: ''
         },
+        enum_map: {
+            type: Object,
+            default: null
+        },
         data_source_name: {
             type: String,
             default: ''
@@ -26,13 +30,16 @@ export default {
     },
     data() {
         return {
-            enum_map: {},
+            enumMap: {},
         }
     },
     mounted() {
         // console.log('[nc_select] mounted', this.value, typeof (this.value), this.com_params)
         //
-        this.enum_map = this.com_params[this.data_source_name]
+        this.enumMap = {
+            ...this.enum_map,
+            ...this.com_params[this.data_source_name],
+        }
     },
     methods: {
         onChange(v) {
