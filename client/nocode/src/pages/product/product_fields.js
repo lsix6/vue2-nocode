@@ -216,7 +216,10 @@ export const product_fields = [
                         field_name: 'inSale',
                     },
                     com_props: {
-                        data_source_name: '__stateMap',
+                        enum_map: {
+                            true: '已上架',
+                            false: '未上架',
+                        },
                     },
                 }
             ],

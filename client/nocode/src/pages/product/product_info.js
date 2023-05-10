@@ -24,19 +24,6 @@ export const product_info = {
                 }
             ],
         },
-        __stateMap: {
-            fetch_params: [
-                {
-                    enumMap: {
-                        true: '已上架',
-                        false: '未上架',
-                    },
-                    params_fields: [
-                        'enumMap',
-                    ],
-                }
-            ],
-        },
     },
     add_form: {
         title: '添加新产品',
