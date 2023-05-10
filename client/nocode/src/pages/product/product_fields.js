@@ -162,13 +162,30 @@ export const product_fields = [
         },
         in_search: {
             search_com: {
-                com_name: 'nc_select',
-                com_props: {
-                    enum_map: {
-                        '': '全部',
+                com_name: 'div',
+                com_children: [
+                    {
+                        com_name: 'span',
+                        com_text: '市场',
                     },
-                    data_source_name: '__marketMap',
-                },
+                    {
+                        com_name: 'nc_select',
+                        com_info: {
+                            style: {
+                                width: '80px',
+                            },
+                        },
+                        com_field: {
+                            field_name: 'formData.market',
+                        },
+                        com_props: {
+                            enum_map: {
+                                '': '全部',
+                            },
+                            data_source_name: '__marketMap',
+                        },
+                    },
+                ],
             },
         },
         in_form: {

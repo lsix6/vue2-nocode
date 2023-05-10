@@ -5,12 +5,6 @@ export const createListSearch = (moduleFields) => {
     const search_coms = []
     const pushFieldToArr = (field) => {
         const search_com = _.cloneDeep(field.in_search.search_com)
-        //
-        //
-        search_com.com_field = {
-            field_name: `formData.${field.field_info.name}`
-        }
-        //
         search_coms.push(search_com)
     }
     //
