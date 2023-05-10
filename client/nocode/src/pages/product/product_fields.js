@@ -160,6 +160,17 @@ export const product_fields = [
                 }
             ],
         },
+        in_search: {
+            search_com: {
+                com_name: 'nc_select',
+                com_props: {
+                    enum_map: {
+                        'all': '全部',
+                    },
+                    data_source_name: '__marketMap',
+                },
+            },
+        },
         in_form: {
             edit_com: {
                 com_name: 'nc_radio_group',

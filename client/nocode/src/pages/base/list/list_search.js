@@ -1,10 +1,26 @@
+import _ from 'lodash'
+
 export const createListSearch = (moduleFields) => {
 
+    const search_coms = []
+    const pushFieldToArr = (field) => {
+        const search_com = _.cloneDeep(field.in_search.search_com)
+        //
+        //
+        search_com.com_field = {
+            field_name: `formData.${field.field_info.name}`
+        }
+        //
+        search_coms.push(search_com)
+    }
+    //
     const key_fields_name = []
     moduleFields.forEach(field => {
         if (field.in_search) {
             if (field.in_search.type === 'key') {
                 key_fields_name.push(field.field_info.label)
+            } else {
+                pushFieldToArr(field)
             }
         }
     })
@@ -38,6 +54,7 @@ export const createListSearch = (moduleFields) => {
         com_props: {
             form_children: [
                 inputSearch,
+                ...search_coms,
             ],
         },
         com_events: [
