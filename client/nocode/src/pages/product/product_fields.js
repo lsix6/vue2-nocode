@@ -89,6 +89,11 @@ export const product_fields = [
             column_components: [
                 {
                     com_name: 'el-avatar',
+                    com_info: {
+                        style: {
+                            display: 'block',
+                        },
+                    },
                     com_binds: [
                         {
                             prop_name: 'src',
