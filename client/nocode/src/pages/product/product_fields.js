@@ -165,7 +165,7 @@ export const product_fields = [
                 com_name: 'nc_select',
                 com_props: {
                     enum_map: {
-                        'all': '全部',
+                        '': '全部',
                     },
                     data_source_name: '__marketMap',
                 },
