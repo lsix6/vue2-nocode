@@ -30,17 +30,28 @@ export default {
         }
     },
     mounted() {
-        // console.log('[nc_enum] mounted', this.value, typeof (this.value), this.com_params)
-        if (this.value !== undefined) {
-            if (this.data_source_name) {
-                const enumMap = this.com_params[this.data_source_name]
-                if (enumMap) {
-                    this.text = enumMap['' + this.value]
+        // console.log('[nc_enum] mounted', this.value, typeof (this.value))
+        //
+        this.updateText()
+    },
+    beforeUpdate() {
+        // console.log('[nc_enum] beforeUpdate', this.value, typeof (this.value))
+        //
+        this.updateText()
+    },
+    methods: {
+        updateText() {
+            if (this.value !== undefined) {
+                if (this.data_source_name) {
+                    const enumMap = this.com_params[this.data_source_name]
+                    if (enumMap) {
+                        this.text = enumMap['' + this.value]
+                    }
+                } else if (this.enum_map) {
+                    this.text = this.enum_map['' + this.value]
                 }
-            } else if (this.enum_map) {
-                this.text = this.enum_map['' + this.value]
             }
-        }
+        },
     },
 }
 </script>
