@@ -82,6 +82,7 @@ export default {
                             ...this.data,
                         }
                         this.data[dsName] = result
+                        console.log('[nc_data] refresh,', params, this.data)
                     })
                 } else {
                     resolve(true)
