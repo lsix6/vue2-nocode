@@ -41,7 +41,10 @@ const product_list = (params) => {
                         }
                     } else {
                         if (searchValue) {
-                            ret = (item[field] === searchValue)
+                            let vv = searchValue
+                            if (vv === 'true') vv = true
+                            if (vv === 'false') vv = false
+                            ret = (item[field] === vv)
                         }
                     }
                     //
