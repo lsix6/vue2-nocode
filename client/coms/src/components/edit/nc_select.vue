@@ -1,6 +1,6 @@
 <template>
     <el-select v-bind="{ ...$attrs, ...$props }" @change="onChange">
-        <el-option v-for="(v, k) in enumMap" :key="k" :label="v" :value="k">
+        <el-option v-for="(kv, i) in enumArr" :key="i" :label="kv.v" :value="kv.k">
         </el-option>
     </el-select>
 </template>
@@ -30,16 +30,30 @@ export default {
     },
     data() {
         return {
-            enumMap: {},
+            enumArr: [],
         }
     },
     mounted() {
         // console.log('[nc_select] mounted', this.value, typeof (this.value), this.com_params)
         //
-        this.enumMap = {
-            ...this.enum_map,
-            ...this.com_params[this.data_source_name],
+        if (this.enum_map) {
+            for (let k in this.enum_map) {
+                this.enumArr.push({
+                    k,
+                    v: this.enum_map[k]
+                })
+            }
         }
+        const dsMap = this.com_params[this.data_source_name]
+        if (dsMap) {
+            for (let k in dsMap) {
+                this.enumArr.push({
+                    k,
+                    v: dsMap[k]
+                })
+            }
+        }
+        console.log('[nc_select] enumArr', this.enumArr)
     },
     methods: {
         onChange(v) {
