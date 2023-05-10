@@ -28,10 +28,29 @@ const product_list = (params) => {
     return new Promise(resolve => {
         //
         let list = listProducts
-        if (params.search && params.search.keyWord) {
+        if (params.search) {
             list = listProducts.filter(item => {
-                return (item.name.indexOf(params.search.keyWord) >= 0
-                    || item.no.indexOf(params.search.keyWord) >= 0)
+                let ret = true
+                //
+                for (let field in params.search) {
+                    const searchValue = params.search[field]
+                    if (field === 'keyWord') {
+                        if (searchValue) {
+                            ret = (item.name.indexOf(params.search.keyWord) >= 0
+                                || item.no.indexOf(params.search.keyWord) >= 0)
+                        }
+                    } else {
+                        if (searchValue) {
+                            ret = (item[field] === searchValue)
+                        }
+                    }
+                    //
+                    if (ret === false) {
+                        break
+                    }
+                }
+                //
+                return ret
             })
         }
         //
