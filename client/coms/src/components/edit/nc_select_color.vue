@@ -1,5 +1,5 @@
 <template>
-    <div style="position: relative;">
+    <div style="position: relative; width: fit-content;">
         <el-select v-bind="{ ...$attrs, ...$props }" :value="select_value" @change="onChange">
             <el-option v-for="(kv, i) in enumArr" :key="i" :value="kv.k" style="padding: 8px 10px; display: flex;">
                 <div :style="{
