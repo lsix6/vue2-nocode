@@ -16,7 +16,7 @@ const init_products = () => {
             inSale: (Math.random() > 0.5),
             delivery: (Math.random() > 0.5),
             storageDate: '2023-05-01 00:00:00',
-            color: '#0000ff',
+            color: (Math.floor(Math.random() * 3)),
             level: (Math.floor(Math.random() * 6)),
         })
     }

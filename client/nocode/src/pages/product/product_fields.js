@@ -507,7 +507,7 @@ export const product_fields = [
             },
             column_components: [
                 {
-                    com_name: 'nc_color',
+                    com_name: 'nc_enum_color',
                     com_field: {
                         field_name: 'color',
                     },
@@ -517,6 +517,9 @@ export const product_fields = [
                             height: '28px',
                             margin: 'auto',
                         }
+                    },
+                    com_props: {
+                        data_source_name: '__colorMap',
                     },
                 }
             ],
@@ -558,11 +561,7 @@ export const product_fields = [
                         },
                         com_props: {
                             value_type: 'int',
-                            enum_map: {
-                                0: '#ff0000',
-                                1: '#00ff00',
-                                2: '#0000ff',
-                            },
+                            data_source_name: '__colorMap',
                         },
                     },
                 ],

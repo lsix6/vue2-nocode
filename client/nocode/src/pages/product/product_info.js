@@ -24,6 +24,20 @@ export const product_info = {
                 }
             ],
         },
+        __colorMap: {
+            fetch_params: [
+                {
+                    enumMap: {
+                        0: '#ff0000',
+                        1: '#00ff00',
+                        2: '#0000ff',
+                    },
+                    params_fields: [
+                        'enumMap',
+                    ],
+                }
+            ],
+        },
     },
     add_form: {
         title: '添加新产品',
