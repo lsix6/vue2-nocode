@@ -69,12 +69,12 @@ export default {
             // console.log('[nc_select] onChange', v)
             let vv = v
             //
-            if (this.value_type === 'Boolean') {
-                if (v !== '') {
+            if (v !== '') {
+                if (this.value_type === 'Boolean') {
                     vv = (v === 'true')
+                } else if (this.value_type === 'Number') {
+                    vv = parseInt(v)
                 }
-            } else if (this.value_type === 'Number') {
-                vv = parseInt(v)
             }
             //
             this.$emit('input', vv)
