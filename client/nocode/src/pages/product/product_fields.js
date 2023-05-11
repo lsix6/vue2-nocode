@@ -186,16 +186,16 @@ export const product_fields = [
                         com_name: 'nc_select',
                         com_info: {
                             style: {
-                                width: '80px',
+                                width: '90px',
+                            },
+                            attrs: {
+                                clearable: true,
                             },
                         },
                         com_field: {
                             field_name: 'formData.market',
                         },
                         com_props: {
-                            enum_map: {
-                                '': '全部',
-                            },
                             data_source_name: '__marketMap',
                         },
                     },
@@ -260,14 +260,14 @@ export const product_fields = [
                             style: {
                                 width: '120px',
                             },
+                            attrs: {
+                                clearable: true,
+                            },
                         },
                         com_field: {
                             field_name: 'formData.producePlace',
                         },
                         com_props: {
-                            enum_map: {
-                                '': '全部',
-                            },
                             data_source_name: '__producePlaceMap',
                         },
                     },
@@ -336,6 +336,9 @@ export const product_fields = [
                             style: {
                                 width: '90px',
                             },
+                            attrs: {
+                                clearable: true,
+                            },
                         },
                         com_field: {
                             field_name: 'formData.inSale',
@@ -343,7 +346,6 @@ export const product_fields = [
                         com_props: {
                             value_type: 'Boolean',
                             enum_map: {
-                                '': '全部',
                                 true: '已上架',
                                 false: '未上架',
                             },
@@ -406,6 +408,9 @@ export const product_fields = [
                             style: {
                                 width: '90px',
                             },
+                            attrs: {
+                                clearable: true,
+                            },
                         },
                         com_field: {
                             field_name: 'formData.delivery',
@@ -413,7 +418,6 @@ export const product_fields = [
                         com_props: {
                             value_type: 'Boolean',
                             enum_map: {
-                                '': '全部',
                                 true: '配送',
                                 false: '不配送',
                             },
@@ -573,6 +577,9 @@ export const product_fields = [
                             style: {
                                 width: '90px',
                             },
+                            attrs: {
+                                clearable: true,
+                            },
                         },
                         com_field: {
                             field_name: 'formData.level',
@@ -580,7 +587,6 @@ export const product_fields = [
                         com_props: {
                             value_type: 'Number',
                             enum_map: {
-                                '': '全部',
                                 '0': '0',
                                 '1': '1',
                                 '2': '2',
