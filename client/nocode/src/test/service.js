@@ -40,8 +40,15 @@ const product_list = (params) => {
                                 || item.no.indexOf(params.search.keyWord) >= 0)
                         }
                     } else {
-                        if (searchValue !== '') {
-                            ret = (item[field] === searchValue)
+                        if (searchValue !== '' && searchValue !== null) {
+                            if (field === 'storageDate') {
+                                const startDT = new Date(searchValue[0])
+                                const endDT = new Date(searchValue[1])
+                                const dt = new Date(item[field])
+                                ret = (dt >= startDT && dt <= endDT)
+                            } else {
+                                ret = (item[field] === searchValue)
+                            }
                         }
                     }
                     //

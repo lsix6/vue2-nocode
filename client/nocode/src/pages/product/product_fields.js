@@ -438,6 +438,48 @@ export const product_fields = [
                 'min-width': '180',
             },
         },
+        in_search: {
+            search_com: {
+                com_name: 'div',
+                com_info: {
+                    style: {
+                        display: 'flex',
+                        'flex-direction': 'row',
+                        'margin-right': '20px',
+                    },
+                },
+                com_children: [
+                    {
+                        com_name: 'div',
+                        com_text: '入库时间',
+                        com_info: {
+                            style: {
+                                'line-height': '40px',
+                                'white-space': 'nowrap',
+                                'margin-right': '10px',
+                            },
+                        },
+                    },
+                    {
+                        com_name: 'el-date-picker',
+                        com_info: {
+                            style: {
+                            },
+                        },
+                        com_field: {
+                            field_name: 'formData.storageDate',
+                        },
+                        com_props: {
+                            type: "daterange",
+                            'range-separator': "至",
+                            'start-placeholder': "开始日期",
+                            'end-placeholder': "结束日期",
+                            'value-format': 'yyyy-MM-dd HH:mm:ss',
+                        },
+                    },
+                ],
+            },
+        },
         in_form: {
             edit_com: {
                 com_name: 'el-date-picker',
