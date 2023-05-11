@@ -70,9 +70,10 @@ export default {
             let vv = v
             //
             if (v !== '') {
-                if (this.value_type === 'Boolean') {
+                const type = this.value_type.toLowerCase()
+                if (type === 'bool') {
                     vv = (v === 'true')
-                } else if (this.value_type === 'Number') {
+                } else if (type === 'int') {
                     vv = parseInt(v)
                 }
             }

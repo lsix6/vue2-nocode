@@ -344,7 +344,7 @@ export const product_fields = [
                             field_name: 'formData.inSale',
                         },
                         com_props: {
-                            value_type: 'Boolean',
+                            value_type: 'bool',
                             enum_map: {
                                 true: '已上架',
                                 false: '未上架',
@@ -416,7 +416,7 @@ export const product_fields = [
                             field_name: 'formData.delivery',
                         },
                         com_props: {
-                            value_type: 'Boolean',
+                            value_type: 'bool',
                             enum_map: {
                                 true: '配送',
                                 false: '不配送',
@@ -585,7 +585,7 @@ export const product_fields = [
                             field_name: 'formData.level',
                         },
                         com_props: {
-                            value_type: 'Number',
+                            value_type: 'int',
                             enum_map: {
                                 '0': '0',
                                 '1': '1',
