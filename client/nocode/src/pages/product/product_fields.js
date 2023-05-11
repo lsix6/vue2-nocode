@@ -569,8 +569,12 @@ export const product_fields = [
         },
         in_form: {
             edit_com: {
-                com_name: 'el-color-picker',
-            }
+                com_name: 'nc_select_color',
+                com_props: {
+                    value_type: 'int',
+                    data_source_name: '__colorMap',
+                },
+            },
         },
     },
     {
