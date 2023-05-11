@@ -1,5 +1,5 @@
 <template>
-    <el-select v-bind="{ ...$attrs, ...$props }" @change="onChange">
+    <el-select v-bind="{ ...$attrs, ...$props }" :value="select_value" @change="onChange">
         <el-option v-for="(kv, i) in enumArr" :key="i" :label="kv.v" :value="kv.k">
         </el-option>
     </el-select>
@@ -12,8 +12,12 @@ export default {
     },
     props: {
         value: {
-            type: String,
+            type: [String, Boolean, Number],
             default: ''
+        },
+        value_type: {
+            type: String,
+            default: 'string'
         },
         enum_map: {
             type: Object,
@@ -32,6 +36,11 @@ export default {
         return {
             enumArr: [],
         }
+    },
+    computed: {
+        select_value() {
+            return '' + this.value
+        },
     },
     mounted() {
         // console.log('[nc_select] mounted', this.value, typeof (this.value), this.com_params)
@@ -58,7 +67,17 @@ export default {
     methods: {
         onChange(v) {
             // console.log('[nc_select] onChange', v)
-            this.$emit('input', v)
+            let vv = v
+            //
+            if (this.value_type === 'Boolean') {
+                if (v !== '') {
+                    vv = (v === 'true')
+                }
+            } else if (this.value_type === 'Number') {
+                vv = parseInt(v)
+            }
+            //
+            this.$emit('input', vv)
         },
     },
 }

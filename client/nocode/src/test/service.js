@@ -40,11 +40,8 @@ const product_list = (params) => {
                                 || item.no.indexOf(params.search.keyWord) >= 0)
                         }
                     } else {
-                        if (searchValue) {
-                            let vv = searchValue
-                            if (vv === 'true') vv = true
-                            if (vv === 'false') vv = false
-                            ret = (item[field] === vv)
+                        if (searchValue !== '') {
+                            ret = (item[field] === searchValue)
                         }
                     }
                     //

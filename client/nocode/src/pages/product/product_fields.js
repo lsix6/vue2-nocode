@@ -341,6 +341,7 @@ export const product_fields = [
                             field_name: 'formData.inSale',
                         },
                         com_props: {
+                            value_type: 'Boolean',
                             enum_map: {
                                 '': '全部',
                                 true: '已上架',
