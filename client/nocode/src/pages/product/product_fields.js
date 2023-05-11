@@ -162,44 +162,18 @@ export const product_fields = [
         },
         in_search: {
             search_com: {
-                com_name: 'div',
+                com_name: 'nc_select',
                 com_info: {
                     style: {
-                        display: 'flex',
-                        'flex-direction': 'row',
-                        'margin-right': '20px',
+                        width: '90px',
+                    },
+                    attrs: {
+                        clearable: true,
                     },
                 },
-                com_children: [
-                    {
-                        com_name: 'div',
-                        com_text: '市场',
-                        com_info: {
-                            style: {
-                                'line-height': '40px',
-                                'white-space': 'nowrap',
-                                'margin-right': '10px',
-                            },
-                        },
-                    },
-                    {
-                        com_name: 'nc_select',
-                        com_info: {
-                            style: {
-                                width: '90px',
-                            },
-                            attrs: {
-                                clearable: true,
-                            },
-                        },
-                        com_field: {
-                            field_name: 'formData.market',
-                        },
-                        com_props: {
-                            data_source_name: '__marketMap',
-                        },
-                    },
-                ],
+                com_props: {
+                    data_source_name: '__marketMap',
+                },
             },
         },
         in_form: {
@@ -234,44 +208,18 @@ export const product_fields = [
         },
         in_search: {
             search_com: {
-                com_name: 'div',
+                com_name: 'nc_select',
                 com_info: {
                     style: {
-                        display: 'flex',
-                        'flex-direction': 'row',
-                        'margin-right': '20px',
+                        width: '120px',
+                    },
+                    attrs: {
+                        clearable: true,
                     },
                 },
-                com_children: [
-                    {
-                        com_name: 'div',
-                        com_text: '产地',
-                        com_info: {
-                            style: {
-                                'line-height': '40px',
-                                'white-space': 'nowrap',
-                                'margin-right': '10px',
-                            },
-                        },
-                    },
-                    {
-                        com_name: 'nc_select',
-                        com_info: {
-                            style: {
-                                width: '120px',
-                            },
-                            attrs: {
-                                clearable: true,
-                            },
-                        },
-                        com_field: {
-                            field_name: 'formData.producePlace',
-                        },
-                        com_props: {
-                            data_source_name: '__producePlaceMap',
-                        },
-                    },
-                ],
+                com_props: {
+                    data_source_name: '__producePlaceMap',
+                },
             },
         },
         in_form: {
@@ -310,48 +258,22 @@ export const product_fields = [
         },
         in_search: {
             search_com: {
-                com_name: 'div',
+                com_name: 'nc_select',
                 com_info: {
                     style: {
-                        display: 'flex',
-                        'flex-direction': 'row',
-                        'margin-right': '20px',
+                        width: '90px',
+                    },
+                    attrs: {
+                        clearable: true,
                     },
                 },
-                com_children: [
-                    {
-                        com_name: 'div',
-                        com_text: '状态',
-                        com_info: {
-                            style: {
-                                'line-height': '40px',
-                                'white-space': 'nowrap',
-                                'margin-right': '10px',
-                            },
-                        },
+                com_props: {
+                    value_type: 'bool',
+                    enum_map: {
+                        true: '已上架',
+                        false: '未上架',
                     },
-                    {
-                        com_name: 'nc_select',
-                        com_info: {
-                            style: {
-                                width: '90px',
-                            },
-                            attrs: {
-                                clearable: true,
-                            },
-                        },
-                        com_field: {
-                            field_name: 'formData.inSale',
-                        },
-                        com_props: {
-                            value_type: 'bool',
-                            enum_map: {
-                                true: '已上架',
-                                false: '未上架',
-                            },
-                        },
-                    },
-                ],
+                },
             },
         },
         in_form: {
@@ -382,48 +304,22 @@ export const product_fields = [
         },
         in_search: {
             search_com: {
-                com_name: 'div',
+                com_name: 'nc_select',
                 com_info: {
                     style: {
-                        display: 'flex',
-                        'flex-direction': 'row',
-                        'margin-right': '20px',
+                        width: '90px',
+                    },
+                    attrs: {
+                        clearable: true,
                     },
                 },
-                com_children: [
-                    {
-                        com_name: 'div',
-                        com_text: '配送',
-                        com_info: {
-                            style: {
-                                'line-height': '40px',
-                                'white-space': 'nowrap',
-                                'margin-right': '10px',
-                            },
-                        },
+                com_props: {
+                    value_type: 'bool',
+                    enum_map: {
+                        true: '配送',
+                        false: '不配送',
                     },
-                    {
-                        com_name: 'nc_select',
-                        com_info: {
-                            style: {
-                                width: '90px',
-                            },
-                            attrs: {
-                                clearable: true,
-                            },
-                        },
-                        com_field: {
-                            field_name: 'formData.delivery',
-                        },
-                        com_props: {
-                            value_type: 'bool',
-                            enum_map: {
-                                true: '配送',
-                                false: '不配送',
-                            },
-                        },
-                    },
-                ],
+                },
             },
         },
         in_form: {
@@ -444,44 +340,14 @@ export const product_fields = [
         },
         in_search: {
             search_com: {
-                com_name: 'div',
-                com_info: {
-                    style: {
-                        display: 'flex',
-                        'flex-direction': 'row',
-                        'margin-right': '20px',
-                    },
+                com_name: 'el-date-picker',
+                com_props: {
+                    type: "daterange",
+                    'range-separator': "至",
+                    'start-placeholder': "开始日期",
+                    'end-placeholder': "结束日期",
+                    'value-format': 'yyyy-MM-dd HH:mm:ss',
                 },
-                com_children: [
-                    {
-                        com_name: 'div',
-                        com_text: '入库时间',
-                        com_info: {
-                            style: {
-                                'line-height': '40px',
-                                'white-space': 'nowrap',
-                                'margin-right': '10px',
-                            },
-                        },
-                    },
-                    {
-                        com_name: 'el-date-picker',
-                        com_info: {
-                            style: {
-                            },
-                        },
-                        com_field: {
-                            field_name: 'formData.storageDate',
-                        },
-                        com_props: {
-                            type: "daterange",
-                            'range-separator': "至",
-                            'start-placeholder': "开始日期",
-                            'end-placeholder': "结束日期",
-                            'value-format': 'yyyy-MM-dd HH:mm:ss',
-                        },
-                    },
-                ],
             },
         },
         in_form: {
@@ -526,45 +392,19 @@ export const product_fields = [
         },
         in_search: {
             search_com: {
-                com_name: 'div',
+                com_name: 'nc_select_color',
                 com_info: {
                     style: {
-                        display: 'flex',
-                        'flex-direction': 'row',
-                        'margin-right': '20px',
+                        width: '90px',
+                    },
+                    attrs: {
+                        clearable: true,
                     },
                 },
-                com_children: [
-                    {
-                        com_name: 'div',
-                        com_text: '产品颜色',
-                        com_info: {
-                            style: {
-                                'line-height': '40px',
-                                'white-space': 'nowrap',
-                                'margin-right': '10px',
-                            },
-                        },
-                    },
-                    {
-                        com_name: 'nc_select_color',
-                        com_info: {
-                            style: {
-                                width: '90px',
-                            },
-                            attrs: {
-                                clearable: true,
-                            },
-                        },
-                        com_field: {
-                            field_name: 'formData.color',
-                        },
-                        com_props: {
-                            value_type: 'int',
-                            data_source_name: '__colorMap',
-                        },
-                    },
-                ],
+                com_props: {
+                    value_type: 'int',
+                    data_source_name: '__colorMap',
+                },
             },
         },
         in_form: {
@@ -601,52 +441,26 @@ export const product_fields = [
         },
         in_search: {
             search_com: {
-                com_name: 'div',
+                com_name: 'nc_select',
                 com_info: {
                     style: {
-                        display: 'flex',
-                        'flex-direction': 'row',
-                        'margin-right': '20px',
+                        width: '90px',
+                    },
+                    attrs: {
+                        clearable: true,
                     },
                 },
-                com_children: [
-                    {
-                        com_name: 'div',
-                        com_text: '等级',
-                        com_info: {
-                            style: {
-                                'line-height': '40px',
-                                'white-space': 'nowrap',
-                                'margin-right': '10px',
-                            },
-                        },
+                com_props: {
+                    value_type: 'int',
+                    enum_map: {
+                        '0': '0',
+                        '1': '1',
+                        '2': '2',
+                        '3': '3',
+                        '4': '4',
+                        '5': '5',
                     },
-                    {
-                        com_name: 'nc_select',
-                        com_info: {
-                            style: {
-                                width: '90px',
-                            },
-                            attrs: {
-                                clearable: true,
-                            },
-                        },
-                        com_field: {
-                            field_name: 'formData.level',
-                        },
-                        com_props: {
-                            value_type: 'int',
-                            enum_map: {
-                                '0': '0',
-                                '1': '1',
-                                '2': '2',
-                                '3': '3',
-                                '4': '4',
-                                '5': '5',
-                            },
-                        },
-                    },
-                ],
+                },
             },
         },
         in_form: {

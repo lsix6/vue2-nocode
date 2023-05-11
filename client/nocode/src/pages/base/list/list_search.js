@@ -5,7 +5,35 @@ export const createListSearch = (moduleFields) => {
     const search_coms = []
     const pushFieldToArr = (field) => {
         const search_com = _.cloneDeep(field.in_search.search_com)
-        search_coms.push(search_com)
+        search_coms.push({
+            com_name: 'div',
+            com_info: {
+                style: {
+                    display: 'flex',
+                    'flex-direction': 'row',
+                    'margin-right': '20px',
+                },
+            },
+            com_children: [
+                {
+                    com_name: 'div',
+                    com_text: field.field_info.label,
+                    com_info: {
+                        style: {
+                            'line-height': '40px',
+                            'white-space': 'nowrap',
+                            'margin-right': '10px',
+                        },
+                    },
+                },
+                {
+                    ...search_com,
+                    com_field: {
+                        field_name: `formData.${field.field_info.name}`,
+                    },
+                },
+            ],
+        })
     }
     //
     const key_fields_name = []
