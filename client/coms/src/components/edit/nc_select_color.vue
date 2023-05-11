@@ -1,18 +1,14 @@
 <template>
-    <div style="position: relative; width: fit-content;">
+    <div class="nc_select_color">
         <el-select v-bind="{ ...$attrs, ...$props }" :value="select_value" @change="onChange">
-            <el-option v-for="(kv, i) in enumArr" :key="i" :value="kv.k" style="padding: 8px 10px; display: flex;">
-                <div :style="{
-                    flex: 1,
+            <el-option class="nc_select_color_option" v-for="(kv, i) in enumArr" :key="i" :value="kv.k">
+                <div class="color_bar" :style="{
                     'background-color': kv.v,
                 }"></div>
             </el-option>
         </el-select>
-        <div v-if="select_value"
-            style=" width: 100%; height: 100%; position: absolute; top: 0; display: flex; pointer-events: none;">
-            <div :style="{
-                flex: 1,
-                margin: '10px 30px 10px 10px',
+        <div class="color_frame" v-if="select_value">
+            <div class="color_box" :style="{
                 'background-color': color_value
             }"></div>
         </div>
@@ -108,3 +104,34 @@ export default {
     },
 }
 </script>
+
+<style lang="scss">
+.nc_select_color {
+    position: relative;
+    width: fit-content;
+
+    .color_frame {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        display: flex;
+        pointer-events: none;
+
+        .color_box {
+            flex: 1;
+            margin: 10px 30px 10px 10px;
+        }
+    }
+}
+
+
+.nc_select_color_option {
+    padding: 8px 10px;
+    display: flex;
+
+    .color_bar {
+        flex: 1,
+    }
+}
+</style>
