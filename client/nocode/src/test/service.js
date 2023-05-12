@@ -60,6 +60,13 @@ const product_list = (params) => {
                 return ret
             })
         }
+        if (params.sort && params.sort.field) {
+            const fdName = params.sort.field
+            const order = (params.sort.order === 'ascending' ? 1 : -1)
+            list = list.sort((a, b) => {
+                return (a[fdName] - b[fdName]) * order
+            })
+        }
         //
         let pageData = {
             pageCount: 1,
