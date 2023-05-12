@@ -372,7 +372,7 @@ export const product_fields = [
         },
         in_list: {
             column_props: {
-                width: '80',
+                'min-width': '80',
                 'header-align': 'center',
                 sortable: 'custom',
             },
