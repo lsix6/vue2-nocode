@@ -19,10 +19,11 @@ export const createListSearch = (moduleFields) => {
                     com_name: 'div',
                     com_text: field.field_info.label,
                     com_info: {
+                        attrs: {
+                            class: 'el-form-item__label',
+                        },
                         style: {
-                            'line-height': '40px',
                             'white-space': 'nowrap',
-                            'margin-right': '10px',
                         },
                     },
                 },
