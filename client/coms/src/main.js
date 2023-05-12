@@ -14,6 +14,7 @@ const registerComponents = (Vue) => {
   Vue.component('nc_input', () => import('./components/nc_input.vue'))
   Vue.component('nc_enum', () => import('./components/show/nc_enum.vue'))
   Vue.component('nc_enum_color', () => import('./components/show/nc_enum_color.vue'))
+  Vue.component('nc_switch_in_show', () => import('./components/show/nc_switch_in_show.vue'))
   Vue.component('nc_color', () => import('./components/show/nc_color.vue'))
   Vue.component('nc_select', () => import('./components/edit/nc_select.vue'))
   Vue.component('nc_select_color', () => import('./components/edit/nc_select_color.vue'))
