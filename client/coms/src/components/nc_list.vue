@@ -53,9 +53,12 @@ export default {
         onSortChange({ column, prop, order }) {
             console.log('[nc_list] onSortChange', column, prop, order)
             if (order) {
-                this.sort[prop] = order
+                this.sort = {
+                    field: prop,
+                    order,
+                }
             } else {
-                delete this.sort[prop]
+                this.sort = {}
             }
             //
             this.$emit('sort-change')
