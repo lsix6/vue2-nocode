@@ -145,6 +145,7 @@ export const createList = (moduleName, moduleFields) => {
 
     const list = {
         com_name: 'nc_list',
+        com_ref: 'list',
         com_binds: [
             {
                 prop_name: 'listData',
@@ -193,6 +194,25 @@ export const createList = (moduleName, moduleFields) => {
                         com_name: 'div',
                         com_text: '暂 无 数 据',
                     },
+                ],
+            }
+        ],
+        com_events: [
+            {
+                event_name: 'sort-change',
+                commands: [
+                    {
+                        cmd_name: 'call_com_method',
+                        cmd_params: {
+                            com_ref: 'list_page_data',
+                            com_method_name: 'refresh',
+                            com_method_params: [
+                                {
+                                    ds_name: '__listPageData',
+                                }
+                            ],
+                        },
+                    }
                 ],
             }
         ],
