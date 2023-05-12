@@ -21,9 +21,9 @@ export const init_nocode = async () => {
     // console.log('***** product_info begin *****')
     // console.log(JSON.stringify(product_info))
     // console.log('***** product_info end *****')
-    // await request_json('/static/modules/product.json').then(product_info => {
-    //     register_module(product_info)
-    // })
-    register_module(product_info)
+    await request_json('/static/modules/product.json').then(product_info => {
+        register_module(product_info)
+    })
+    // register_module(product_info)
 
 }
