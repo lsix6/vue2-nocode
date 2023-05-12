@@ -1,4 +1,4 @@
-import { product_fields } from "./product_fields";
+import { getProductFields } from "./product_fields";
 
 const moduleName = 'product'
 
@@ -45,5 +45,5 @@ export const product_info = {
     edit_form: {
         title: '修改产品信息',
     },
-    fields: product_fields,
+    fields: getProductFields(moduleName),
 }
