@@ -27,7 +27,8 @@ export const get_params = (com, paramsDef, cmdData) => {
             } else if (obj.params_source === 'com_ref') {
                 const ref = get_com_ref(obj.params_com_ref)
                 if (ref) {
-                    source = ref.getData()
+                    const method_name = obj.params_com_method_name || 'getData'
+                    source = ref[method_name]()
                 } else {
                     source = obj.params_default_value
                 }
