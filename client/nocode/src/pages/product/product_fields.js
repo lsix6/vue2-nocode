@@ -119,6 +119,7 @@ export const product_fields = [
         in_list: {
             column_props: {
                 'min-width': '100',
+                sortable: 'custom',
             },
         },
         in_form: {
@@ -194,6 +195,7 @@ export const product_fields = [
         in_list: {
             column_props: {
                 'min-width': '100',
+                sortable: 'custom',
             },
             column_components: [
                 {
@@ -241,6 +243,7 @@ export const product_fields = [
         in_list: {
             column_props: {
                 'min-width': '100',
+                sortable: 'custom',
             },
             column_components: [
                 {
@@ -371,6 +374,7 @@ export const product_fields = [
             column_props: {
                 width: '80',
                 'header-align': 'center',
+                sortable: 'custom',
             },
             column_components: [
                 {
