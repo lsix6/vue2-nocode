@@ -4,7 +4,7 @@
             <el-table-column v-if="field.column_components" :key="'if' + index" v-bind="field.column_props">
                 <template slot-scope="scope">
                     <nc_component v-for="(com, comIndex) in field.column_components" :key="comIndex"
-                        :com_params="{...com_params, ...scope.row}" v-bind="com"></nc_component>
+                        :com_params="{ ...com_params, ...scope.row }" v-bind="com"></nc_component>
                 </template>
             </el-table-column>
             <el-table-column v-else :key="'else' + index" v-bind="field.column_props">
