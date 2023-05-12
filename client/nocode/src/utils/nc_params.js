@@ -32,9 +32,9 @@ export const get_params = (com, paramsDef, cmdData) => {
                 } else {
                     source = obj.params_default_value
                 }
-            } else if(obj.params_source === 'route_query') {
+            } else if (obj.params_source === 'route_query') {
                 source = com.$route.query
-            } else if(obj.params_source === 'cmd_data') {
+            } else if (obj.params_source === 'cmd_data') {
                 source = cmdData
             } else {
                 source = obj
