@@ -23,7 +23,32 @@ const init_products = () => {
 }
 init_products()
 
-const listUsers = []
+const listUsers = [
+    {
+        no: '1',
+        name: '1',
+        avatar: `/static/imgs/avatar1.webp`,
+        gender: 2,
+        huji: 3,
+        birthday: '2000-05-01',
+    },
+    {
+        no: '2',
+        name: '2',
+        avatar: `/static/imgs/avatar2.webp`,
+        gender: 1,
+        huji: 5,
+        birthday: '2001-02-01',
+    },
+    {
+        no: '3',
+        name: '3',
+        avatar: `/static/imgs/avatar3.webp`,
+        gender: 2,
+        huji: 1,
+        birthday: '2002-05-11',
+    },
+]
 
 const tables = {
     product: listProducts,

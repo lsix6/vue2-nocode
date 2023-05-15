@@ -81,7 +81,7 @@ export const getFields = (moduleName) => {
         },
         {
             field_info: {
-                name: 'picture',
+                name: 'avatar',
                 label: '头像',
             },
             in_list: {
@@ -101,7 +101,7 @@ export const getFields = (moduleName) => {
                         com_binds: [
                             {
                                 prop_name: 'src',
-                                field_name: 'picture',
+                                field_name: 'avatar',
                             },
                         ],
                         com_props: {
@@ -147,6 +147,7 @@ export const getFields = (moduleName) => {
                         },
                     },
                     com_props: {
+                        value_type: 'int',
                         data_source_name: '__genderMap',
                     },
                 },
@@ -194,6 +195,7 @@ export const getFields = (moduleName) => {
                         },
                     },
                     com_props: {
+                        value_type: 'int',
                         data_source_name: '__hujiMap',
                     },
                 },
@@ -225,7 +227,7 @@ export const getFields = (moduleName) => {
                         'range-separator': "至",
                         'start-placeholder': "开始日期",
                         'end-placeholder': "结束日期",
-                        'value-format': 'yyyy-MM-dd HH:mm:ss',
+                        'value-format': 'yyyy-MM-dd',
                     },
                 },
             },
@@ -233,9 +235,9 @@ export const getFields = (moduleName) => {
                 edit_com: {
                     com_name: 'el-date-picker',
                     com_props: {
-                        type: 'datetime',
+                        type: 'date',
                         placeholder: '请输入出生年月',
-                        'value-format': 'yyyy-MM-dd HH:mm:ss',
+                        'value-format': 'yyyy-MM-dd',
                     },
                 }
             },
