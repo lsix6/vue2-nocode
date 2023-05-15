@@ -23,13 +23,20 @@ const init_products = () => {
 }
 init_products()
 
-const product_list = (params) => {
-    console.log('product_list, params', params)
+const listUsers = []
+
+const tables = {
+    product: listProducts,
+    user: listUsers,
+}
+
+const _list = (moduleName, params) => {
+    console.log('_list, params', params)
     return new Promise(resolve => {
         //
-        let list = listProducts
+        let list = tables[moduleName]
         if (params.search) {
-            list = listProducts.filter(item => {
+            list = list.filter(item => {
                 let ret = true
                 //
                 for (let field in params.search) {
@@ -94,9 +101,10 @@ const product_list = (params) => {
     })
 }
 
-const product_add = (params) => {
+const _add = (moduleName, params) => {
     return new Promise(resolve => {
-        listProducts.push({
+        const list = tables[moduleName]
+        list.push({
             _id: '' + Date.now(),
             ...params.data
         })
@@ -105,13 +113,14 @@ const product_add = (params) => {
     })
 }
 
-const product_delete = (params) => {
+const _delete = (moduleName, params) => {
     return new Promise((resolve, reject) => {
-        const i = listProducts.findIndex(item => {
+        const list = tables[moduleName]
+        const i = list.findIndex(item => {
             return (item._id === params._id)
         })
         if (i >= 0) {
-            listProducts.splice(i, 1)
+            list.splice(i, 1)
             //
             resolve(true)
         } else {
@@ -122,14 +131,15 @@ const product_delete = (params) => {
     })
 }
 
-const product_detail = (params) => {
+const _detail = (moduleName, params) => {
     return new Promise((resolve, reject) => {
-        const i = listProducts.findIndex(item => {
+        const list = tables[moduleName]
+        const i = list.findIndex(item => {
             return (item._id === params._id)
         })
         if (i >= 0) {
             const result = {
-                data: _.cloneDeep(listProducts[i]),
+                data: _.cloneDeep(list[i]),
             }
             resolve(result)
         } else {
@@ -140,19 +150,20 @@ const product_detail = (params) => {
     })
 }
 
-const product_update = (params) => {
+const _update = (moduleName, params) => {
     return new Promise((resolve, reject) => {
-        const i = listProducts.findIndex(item => {
+        const list = tables[moduleName]
+        const i = list.findIndex(item => {
             return (item._id === params.data._id)
         })
         if (i >= 0) {
-            listProducts[i] = {
-                ...listProducts[i],
+            list[i] = {
+                ...list[i],
                 ...params.data,
             }
             //
             const result = {
-                data: _.cloneDeep(listProducts[i]),
+                data: _.cloneDeep(list[i]),
             }
             resolve(result)
         } else {
@@ -178,22 +189,49 @@ const produce_place = () => {
     })
 }
 
+const listHuJi = {
+    0: '北京',
+    1: '上海',
+    2: '广州',
+    3: '深圳',
+    4: '武汉',
+    5: '重庆',
+}
+
+const huji = () => {
+    return new Promise((resolve) => {
+        resolve(listHuJi)
+    })
+}
+
 export const request_api = function (api, data) {
     console.log('request_api', api.url, api.method, data)
     //
     let process = null
     if (api.url === 'product/list') {
-        process = product_list(data)
+        process = _list('product', data)
     } else if (api.url === 'product/add') {
-        process = product_add(data)
+        process = _add('product', data)
     } else if (api.url === 'product/delete') {
-        process = product_delete(data)
+        process = _delete('product', data)
     } else if (api.url === 'product/detail') {
-        process = product_detail(data)
+        process = _detail('product', data)
     } else if (api.url === 'product/update') {
-        process = product_update(data)
+        process = _update('product', data)
     } else if (api.url === 'product/producePlace') {
         process = produce_place(data)
+    } else if (api.url === 'user/list') {
+        process = _list('user', data)
+    } else if (api.url === 'user/add') {
+        process = _add('user', data)
+    } else if (api.url === 'user/delete') {
+        process = _delete('user', data)
+    } else if (api.url === 'user/detail') {
+        process = _detail('user', data)
+    } else if (api.url === 'user/update') {
+        process = _update('user', data)
+    } else if (api.url === 'user/huji') {
+        process = huji('user', data)
     }
     //
     return new Promise((resolve, reject) => {
