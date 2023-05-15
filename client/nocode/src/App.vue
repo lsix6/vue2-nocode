@@ -1,6 +1,16 @@
 <template>
   <div id="app">
-    <nc_view />
+    <el-aside width="160px" style="border: 1px solid #eee; background-color: rgb(238, 241, 246)">
+
+    </el-aside>
+    <el-container>
+      <el-header height="48px" style="border: 1px solid #eee; text-align: right; font-size: 12px">
+
+      </el-header>
+      <el-main style="display: flex;">
+        <nc_view />
+      </el-main>
+    </el-container>
   </div>
 </template>
 
@@ -22,6 +32,6 @@ export default {
   flex: 1;
   display: flex;
   overflow: hidden;
-  padding: 20px;
+
 }
 </style>
