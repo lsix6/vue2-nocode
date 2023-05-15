@@ -1,12 +1,11 @@
 <template>
   <div id="app">
     <el-aside width="160px" style="display: flex; border: 1px solid #eee; background-color: rgb(238, 241, 246)">
-      <el-menu style="flex: 1; display: flex; flex-direction: column;">
-        <el-menu-item index="1" route="product/list"
-          style="margin: 10px; text-align: center; background-color: aliceblue;">
+      <el-menu :router="true" style="flex: 1; display: flex; flex-direction: column;">
+        <el-menu-item index="/product/list" style="margin: 10px; text-align: center; background-color: aliceblue;">
           产品列表
         </el-menu-item>
-        <el-menu-item index="2" route="user/list" style="margin: 10px; text-align: center; background-color: aliceblue;">
+        <el-menu-item index="/user/list" style="margin: 10px; text-align: center; background-color: aliceblue;">
           用户列表
         </el-menu-item>
       </el-menu>
