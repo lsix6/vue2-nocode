@@ -73,7 +73,8 @@ const _list = (moduleName, params) => {
                         }
                     } else {
                         if (searchValue !== '' && searchValue !== null) {
-                            if (field === 'storageDate') {
+                            if (field === 'storageDate'
+                                || field === 'birthday') {
                                 const startDT = new Date(searchValue[0])
                                 const endDT = new Date(searchValue[1])
                                 const dt = new Date(item[field])
