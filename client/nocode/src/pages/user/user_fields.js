@@ -159,6 +159,7 @@ export const getFields = (moduleName) => {
             field_info: {
                 name: 'huji',
                 label: '户籍',
+                data_source: 'huji',
             },
             in_list: {
                 column_props: {
@@ -170,9 +171,6 @@ export const getFields = (moduleName) => {
                         com_name: 'nc_enum',
                         com_field: {
                             field_name: 'huji',
-                        },
-                        com_props: {
-                            data_source_name: '__hujiMap',
                         },
                     }
                 ],
@@ -190,7 +188,6 @@ export const getFields = (moduleName) => {
                     },
                     com_props: {
                         value_type: 'int',
-                        data_source_name: '__hujiMap',
                     },
                 },
             },
@@ -198,7 +195,7 @@ export const getFields = (moduleName) => {
                 edit_com: {
                     com_name: 'nc_select',
                     com_props: {
-                        data_source_name: '__hujiMap',
+                        value_type: 'int',
                     },
                 }
             },

@@ -21,6 +21,13 @@ export const create_date_sources = (moduleInfo) => {
                     }
                 ],
             }
+        } else if (fdInfo.data_source) {
+            data_sources[get_field_ds_name(fdInfo.name)] = {
+                api: {
+                    url: `${moduleInfo.name}/${fdInfo.data_source}`,
+                    method: 'GET',
+                },
+            }
         }
     })
     //

@@ -7,14 +7,6 @@ export const get_user_info = () => {
 
     const _info = {
         name: moduleName,
-        data_sources: {
-            __hujiMap: {
-                api: {
-                    url: `${moduleName}/huji`,
-                    method: 'GET',
-                },
-            },
-        },
         add_form: {
             title: '添加新用户',
         },
