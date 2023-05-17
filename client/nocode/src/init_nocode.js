@@ -13,7 +13,7 @@ import { register_request_api, request_json } from './utils/nc_request'
 
 import { register_module } from './pages/base/pages'
 import { product_info } from './pages/product/product_info'
-import { user_info } from './pages/user/user_info'
+import { get_user_info } from './pages/user/user_info'
 
 
 export const init_nocode = async () => {
@@ -26,6 +26,6 @@ export const init_nocode = async () => {
         register_module(product_info)
     })
     // register_module(product_info)
-    register_module(user_info)
+    register_module(get_user_info())
 
 }

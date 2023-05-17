@@ -1,15 +1,27 @@
 
+import _ from 'lodash'
+import { get_field_ds_name } from '../data_sources';
+
 const createFields = (fields) => {
     const arr = []
     //
     fields.forEach(field => {
+        const fdInfo = field.field_info
+        //
+        const colComs = _.cloneDeep(field.in_list.column_components)
+        //
+        if (fdInfo.enum_map) {
+            colComs[0].com_props = colComs[0].com_props || {}
+            colComs[0].com_props.data_source_name = get_field_ds_name(fdInfo.name)
+        }
+        //
         arr.push({
             column_props: {
-                prop: field.field_info.name,
-                label: field.field_info.label,
+                prop: fdInfo.name,
+                label: fdInfo.label,
                 ...field.in_list.column_props,
             },
-            column_components: field.in_list.column_components,
+            column_components: colComs,
         })
     });
     console.log('createFields', arr)

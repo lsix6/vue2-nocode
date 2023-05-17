@@ -1,10 +1,19 @@
 import _ from 'lodash'
+import { get_field_ds_name } from '../data_sources'
 
 export const createListSearch = (moduleFields) => {
 
     const search_coms = []
     const pushFieldToArr = (field) => {
+        const fdInfo = field.field_info
+        //
         const search_com = _.cloneDeep(field.in_search.search_com)
+        //
+        if (fdInfo.enum_map) {
+            search_com.com_props = search_com.com_props || {}
+            search_com.com_props.data_source_name = get_field_ds_name(fdInfo.name)
+        }
+        //
         search_coms.push({
             com_name: 'div',
             com_info: {

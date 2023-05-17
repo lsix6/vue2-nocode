@@ -116,7 +116,11 @@ export const getFields = (moduleName) => {
             field_info: {
                 name: 'gender',
                 label: '性别',
-                default_value: '0',
+                default_value: '',
+                enum_map: {
+                    'male': '男',
+                    'female': '女',
+                },
             },
             in_list: {
                 column_props: {
@@ -128,9 +132,6 @@ export const getFields = (moduleName) => {
                         com_name: 'nc_enum',
                         com_field: {
                             field_name: 'gender',
-                        },
-                        com_props: {
-                            data_source_name: '__genderMap',
                         },
                     }
                 ],
@@ -146,18 +147,11 @@ export const getFields = (moduleName) => {
                             clearable: true,
                         },
                     },
-                    com_props: {
-                        value_type: 'int',
-                        data_source_name: '__genderMap',
-                    },
                 },
             },
             in_form: {
                 edit_com: {
                     com_name: 'nc_radio_group',
-                    com_props: {
-                        data_source_name: '__genderMap',
-                    },
                 }
             },
         },

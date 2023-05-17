@@ -25,26 +25,29 @@ init_products()
 
 const listUsers = [
     {
+        _id: '1',
         no: '1',
         name: '1',
         avatar: `/static/imgs/avatar1.webp`,
-        gender: 2,
+        gender: 'female',
         huji: 3,
         birthday: '2000-05-01',
     },
     {
+        _id: '2',
         no: '2',
         name: '2',
         avatar: `/static/imgs/avatar2.webp`,
-        gender: 1,
+        gender: 'male',
         huji: 5,
         birthday: '2001-02-01',
     },
     {
+        _id: '3',
         no: '3',
         name: '3',
         avatar: `/static/imgs/avatar3.webp`,
-        gender: 2,
+        gender: 'female',
         huji: 1,
         birthday: '2002-05-11',
     },

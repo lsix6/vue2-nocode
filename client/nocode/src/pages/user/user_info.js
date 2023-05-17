@@ -1,35 +1,36 @@
+import { create_date_sources } from "../base/data_sources";
 import { getFields } from "./user_fields";
 
 const moduleName = 'user'
 
-export const user_info = {
-    name: moduleName,
-    data_sources: {
-        __hujiMap: {
-            api: {
-                url: `${moduleName}/huji`,
-                method: 'GET',
+export const get_user_info = () => {
+
+    const _info = {
+        name: moduleName,
+        data_sources: {
+            __hujiMap: {
+                api: {
+                    url: `${moduleName}/huji`,
+                    method: 'GET',
+                },
             },
         },
-        __genderMap: {
-            fetch_params: [
-                {
-                    enumMap: {
-                        1: '男',
-                        2: '女',
-                    },
-                    params_fields: [
-                        'enumMap',
-                    ],
-                }
-            ],
+        add_form: {
+            title: '添加新用户',
         },
-    },
-    add_form: {
-        title: '添加新用户',
-    },
-    edit_form: {
-        title: '修改用户信息',
-    },
-    fields: getFields(moduleName),
+        edit_form: {
+            title: '修改用户信息',
+        },
+        fields: getFields(moduleName),
+    }
+
+    //
+    const data_sources = create_date_sources(_info)
+    _info.data_sources = {
+        ..._info.data_sources,
+        ...data_sources,
+    }
+
+    //
+    return _info
 }

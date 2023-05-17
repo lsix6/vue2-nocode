@@ -1,10 +1,18 @@
 import _ from 'lodash'
+import { get_field_ds_name } from './data_sources'
 
 export const createFormItems = (fields) => {
     const arr = []
     //
     const pushFieldToArr = (field, i) => {
+        const fdInfo = field.field_info
+        //
         const edit_com = _.cloneDeep(field.in_form.edit_com)
+        //
+        if (fdInfo.enum_map) {
+            edit_com.com_props = edit_com.com_props || {}
+            edit_com.com_props.data_source_name = get_field_ds_name(fdInfo.name)
+        }
         //
         if (i === 0) {
             if (!edit_com.com_info) {
