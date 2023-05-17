@@ -116,10 +116,10 @@ export const getFields = (moduleName) => {
             field_info: {
                 name: 'gender',
                 label: '性别',
-                default_value: '',
+                default_value: 0,
                 enum_map: {
-                    'male': '男',
-                    'female': '女',
+                    1: '男',
+                    2: '女',
                 },
             },
             in_list: {
@@ -186,17 +186,11 @@ export const getFields = (moduleName) => {
                             clearable: true,
                         },
                     },
-                    com_props: {
-                        value_type: 'int',
-                    },
                 },
             },
             in_form: {
                 edit_com: {
                     com_name: 'nc_select',
-                    com_props: {
-                        value_type: 'int',
-                    },
                 }
             },
         },
