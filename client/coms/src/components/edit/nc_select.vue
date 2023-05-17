@@ -17,7 +17,7 @@ export default {
         },
         value_type: {
             type: String,
-            default: 'string'
+            default: 'int'
         },
         enum_map: {
             type: Object,
