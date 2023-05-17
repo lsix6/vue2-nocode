@@ -19,13 +19,20 @@ import { user_info } from './pages/user/user_info'
 export const init_nocode = async () => {
     register_request_api(request_api)
     //
-    // console.log('***** product_info begin *****')
-    // console.log(JSON.stringify(product_info))
-    // console.log('***** product_info end *****')
-    // await request_json('/static/modules/product.json').then(product_info => {
-    //     register_module(product_info)
-    // })
-    register_module(product_info)
-    register_module(user_info)
+    // console.log('***** module_info begin *****')
+    // console.log(JSON.stringify(user_info))
+    // console.log('***** module_info end *****')
+    //
+    // register_module(product_info)
+    // register_module(user_info)
+    //
+    await Promise.all([
+        request_json('/static/modules/product.json'),
+        request_json('/static/modules/user.json'),
+    ]).then(modules => {
+        modules.forEach(moduleInfo => {
+            register_module(moduleInfo)
+        })
+    })
 
 }

@@ -1,40 +1,5 @@
 {
     "name": "product",
-    "data_sources": {
-        "__producePlaceMap": {
-            "api": {
-                "url": "product/producePlace",
-                "method": "GET"
-            }
-        },
-        "__marketMap": {
-            "fetch_params": [
-                {
-                    "enumMap": {
-                        "0": "出口",
-                        "1": "内销"
-                    },
-                    "params_fields": [
-                        "enumMap"
-                    ]
-                }
-            ]
-        },
-        "__colorMap": {
-            "fetch_params": [
-                {
-                    "enumMap": {
-                        "0": "#ff0000",
-                        "1": "#00ff00",
-                        "2": "#0000ff"
-                    },
-                    "params_fields": [
-                        "enumMap"
-                    ]
-                }
-            ]
-        }
-    },
     "add_form": {
         "title": "添加新产品"
     },
@@ -220,7 +185,11 @@
             "field_info": {
                 "name": "market",
                 "label": "市场",
-                "default_value": "0"
+                "default_value": 0,
+                "enum_map": {
+                    "0": "出口",
+                    "1": "内销"
+                }
             },
             "in_list": {
                 "column_props": {
@@ -232,9 +201,6 @@
                         "com_name": "nc_enum",
                         "com_field": {
                             "field_name": "market"
-                        },
-                        "com_props": {
-                            "data_source_name": "__marketMap"
                         }
                     }
                 ]
@@ -249,25 +215,20 @@
                         "attrs": {
                             "clearable": true
                         }
-                    },
-                    "com_props": {
-                        "data_source_name": "__marketMap"
                     }
                 }
             },
             "in_form": {
                 "edit_com": {
-                    "com_name": "nc_radio_group",
-                    "com_props": {
-                        "data_source_name": "__marketMap"
-                    }
+                    "com_name": "nc_radio_group"
                 }
             }
         },
         {
             "field_info": {
                 "name": "producePlace",
-                "label": "产地"
+                "label": "产地",
+                "data_source": "producePlace"
             },
             "in_list": {
                 "column_props": {
@@ -279,9 +240,6 @@
                         "com_name": "nc_enum",
                         "com_field": {
                             "field_name": "producePlace"
-                        },
-                        "com_props": {
-                            "data_source_name": "__producePlaceMap"
                         }
                     }
                 ]
@@ -296,18 +254,12 @@
                         "attrs": {
                             "clearable": true
                         }
-                    },
-                    "com_props": {
-                        "data_source_name": "__producePlaceMap"
                     }
                 }
             },
             "in_form": {
                 "edit_com": {
-                    "com_name": "nc_select",
-                    "com_props": {
-                        "data_source_name": "__producePlaceMap"
-                    }
+                    "com_name": "nc_select"
                 }
             }
         },
@@ -315,7 +267,11 @@
             "field_info": {
                 "name": "inSale",
                 "label": "状态",
-                "default_value": false
+                "default_value": false,
+                "enum_map": {
+                    "true": "已上架",
+                    "false": "未上架"
+                }
             },
             "in_list": {
                 "column_props": {
@@ -327,12 +283,6 @@
                         "com_name": "nc_enum",
                         "com_field": {
                             "field_name": "inSale"
-                        },
-                        "com_props": {
-                            "enum_map": {
-                                "true": "已上架",
-                                "false": "未上架"
-                            }
                         }
                     }
                 ]
@@ -349,11 +299,7 @@
                         }
                     },
                     "com_props": {
-                        "value_type": "bool",
-                        "enum_map": {
-                            "true": "已上架",
-                            "false": "未上架"
-                        }
+                        "value_type": "bool"
                     }
                 }
             },
@@ -368,7 +314,11 @@
             "field_info": {
                 "name": "delivery",
                 "label": "即时配送",
-                "default_value": false
+                "default_value": false,
+                "enum_map": {
+                    "true": "配送",
+                    "false": "不配送"
+                }
             },
             "in_list": {
                 "column_props": {
@@ -422,11 +372,7 @@
                         }
                     },
                     "com_props": {
-                        "value_type": "bool",
-                        "enum_map": {
-                            "true": "配送",
-                            "false": "不配送"
-                        }
+                        "value_type": "bool"
                     }
                 }
             },
@@ -472,7 +418,12 @@
         {
             "field_info": {
                 "name": "color",
-                "label": "产品颜色"
+                "label": "产品颜色",
+                "enum_map": {
+                    "0": "#ff0000",
+                    "1": "#00ff00",
+                    "2": "#0000ff"
+                }
             },
             "in_list": {
                 "column_props": {
@@ -492,9 +443,6 @@
                                 "height": "28px",
                                 "margin": "auto"
                             }
-                        },
-                        "com_props": {
-                            "data_source_name": "__colorMap"
                         }
                     }
                 ]
@@ -509,20 +457,12 @@
                         "attrs": {
                             "clearable": true
                         }
-                    },
-                    "com_props": {
-                        "value_type": "int",
-                        "data_source_name": "__colorMap"
                     }
                 }
             },
             "in_form": {
                 "edit_com": {
-                    "com_name": "nc_select_color",
-                    "com_props": {
-                        "value_type": "int",
-                        "data_source_name": "__colorMap"
-                    }
+                    "com_name": "nc_select_color"
                 }
             }
         },
@@ -530,7 +470,15 @@
             "field_info": {
                 "name": "level",
                 "label": "等级",
-                "default": 0
+                "default": 0,
+                "enum_map": {
+                    "0": "0",
+                    "1": "1",
+                    "2": "2",
+                    "3": "3",
+                    "4": "4",
+                    "5": "5"
+                }
             },
             "in_list": {
                 "column_props": {
@@ -557,17 +505,6 @@
                         },
                         "attrs": {
                             "clearable": true
-                        }
-                    },
-                    "com_props": {
-                        "value_type": "int",
-                        "enum_map": {
-                            "0": "0",
-                            "1": "1",
-                            "2": "2",
-                            "3": "3",
-                            "4": "4",
-                            "5": "5"
                         }
                     }
                 }
