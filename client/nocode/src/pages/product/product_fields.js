@@ -228,6 +228,10 @@ export const getProductFields = (moduleName) => {
                 name: 'inSale',
                 label: '状态',
                 default_value: false,
+                enum_map: {
+                    true: '已上架',
+                    false: '未上架',
+                },
             },
             in_list: {
                 column_props: {
@@ -239,12 +243,6 @@ export const getProductFields = (moduleName) => {
                         com_name: 'nc_enum',
                         com_field: {
                             field_name: 'inSale',
-                        },
-                        com_props: {
-                            enum_map: {
-                                true: '已上架',
-                                false: '未上架',
-                            },
                         },
                     }
                 ],
@@ -262,10 +260,6 @@ export const getProductFields = (moduleName) => {
                     },
                     com_props: {
                         value_type: 'bool',
-                        enum_map: {
-                            true: '已上架',
-                            false: '未上架',
-                        },
                     },
                 },
             },
@@ -281,6 +275,10 @@ export const getProductFields = (moduleName) => {
                 name: 'delivery',
                 label: '即时配送',
                 default_value: false,
+                enum_map: {
+                    true: '配送',
+                    false: '不配送',
+                },
             },
             in_list: {
                 column_props: {
@@ -335,10 +333,6 @@ export const getProductFields = (moduleName) => {
                     },
                     com_props: {
                         value_type: 'bool',
-                        enum_map: {
-                            true: '配送',
-                            false: '不配送',
-                        },
                     },
                 },
             },
@@ -437,6 +431,14 @@ export const getProductFields = (moduleName) => {
                 name: 'level',
                 label: '等级',
                 default: 0,
+                enum_map: {
+                    0: '0',
+                    1: '1',
+                    2: '2',
+                    3: '3',
+                    4: '4',
+                    5: '5',
+                },
             },
             in_list: {
                 column_props: {
@@ -463,17 +465,6 @@ export const getProductFields = (moduleName) => {
                         },
                         attrs: {
                             clearable: true,
-                        },
-                    },
-                    com_props: {
-                        value_type: 'int',
-                        enum_map: {
-                            '0': '0',
-                            '1': '1',
-                            '2': '2',
-                            '3': '3',
-                            '4': '4',
-                            '5': '5',
                         },
                     },
                 },
