@@ -1,5 +1,5 @@
 <template>
-    <el-radio-group v-bind="{ ...$attrs, ...$props }" @input="onInput">
+    <el-radio-group v-bind="{ ...$attrs, ...$props }" :value="select_value" @input="onInput">
         <el-radio v-for="(v, k) in enum_map" :key="k" :label="k">
             {{ v }}
         </el-radio>
@@ -13,8 +13,12 @@ export default {
     },
     props: {
         value: {
-            type: String,
+            type: [String, Number],
             default: ''
+        },
+        value_type: {
+            type: String,
+            default: 'int'
         },
         data_source_name: {
             type: String,
@@ -30,6 +34,11 @@ export default {
             enum_map: {},
         }
     },
+    computed: {
+        select_value() {
+            return '' + this.value
+        },
+    },
     mounted() {
         console.log('[nc_radio_group] mounted', this.value, typeof (this.value), this.com_params)
         //
@@ -38,7 +47,16 @@ export default {
     methods: {
         onInput(v) {
             // console.log('[nc_radio_group] onInput', v)
-            this.$emit('input', v)
+            let vv = v
+            //
+            if (v !== '') {
+                const type = this.value_type.toLowerCase()
+                if (type === 'int') {
+                    vv = parseInt(v)
+                }
+            }
+            //
+            this.$emit('input', vv)
         },
     },
 }
