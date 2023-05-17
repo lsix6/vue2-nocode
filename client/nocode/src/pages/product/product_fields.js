@@ -145,7 +145,11 @@ export const getProductFields = (moduleName) => {
             field_info: {
                 name: 'market',
                 label: '市场',
-                default_value: '0',
+                default_value: 0,
+                enum_map: {
+                    0: '出口',
+                    1: '内销',
+                },
             },
             in_list: {
                 column_props: {
@@ -157,9 +161,6 @@ export const getProductFields = (moduleName) => {
                         com_name: 'nc_enum',
                         com_field: {
                             field_name: 'market',
-                        },
-                        com_props: {
-                            data_source_name: '__marketMap',
                         },
                     }
                 ],
@@ -175,17 +176,11 @@ export const getProductFields = (moduleName) => {
                             clearable: true,
                         },
                     },
-                    com_props: {
-                        data_source_name: '__marketMap',
-                    },
                 },
             },
             in_form: {
                 edit_com: {
                     com_name: 'nc_radio_group',
-                    com_props: {
-                        data_source_name: '__marketMap',
-                    },
                 }
             },
         },
@@ -398,6 +393,11 @@ export const getProductFields = (moduleName) => {
             field_info: {
                 name: 'color',
                 label: '产品颜色',
+                enum_map: {
+                    0: '#ff0000',
+                    1: '#00ff00',
+                    2: '#0000ff',
+                },
             },
             in_list: {
                 column_props: {
@@ -418,9 +418,6 @@ export const getProductFields = (moduleName) => {
                                 margin: 'auto',
                             }
                         },
-                        com_props: {
-                            data_source_name: '__colorMap',
-                        },
                     }
                 ],
             },
@@ -435,19 +432,11 @@ export const getProductFields = (moduleName) => {
                             clearable: true,
                         },
                     },
-                    com_props: {
-                        value_type: 'int',
-                        data_source_name: '__colorMap',
-                    },
                 },
             },
             in_form: {
                 edit_com: {
                     com_name: 'nc_select_color',
-                    com_props: {
-                        value_type: 'int',
-                        data_source_name: '__colorMap',
-                    },
                 },
             },
         },
