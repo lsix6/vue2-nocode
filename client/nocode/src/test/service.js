@@ -12,7 +12,7 @@ const init_products = () => {
             picture: `/static/imgs/img${i % 5}.png`,
             price: i * 10,
             market: (Math.random() > 0.5 ? 0 : 1),
-            producePlace: (Math.floor(Math.random() * 5)).toString(),
+            producePlace: (Math.floor(Math.random() * 5)),
             inSale: (Math.random() > 0.5),
             delivery: (Math.random() > 0.5),
             storageDate: '2023-05-01 00:00:00',

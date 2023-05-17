@@ -188,6 +188,7 @@ export const getProductFields = (moduleName) => {
             field_info: {
                 name: 'producePlace',
                 label: '产地',
+                data_source: 'producePlace',
             },
             in_list: {
                 column_props: {
@@ -199,9 +200,6 @@ export const getProductFields = (moduleName) => {
                         com_name: 'nc_enum',
                         com_field: {
                             field_name: 'producePlace',
-                        },
-                        com_props: {
-                            data_source_name: '__producePlaceMap',
                         },
                     }
                 ],
@@ -217,17 +215,11 @@ export const getProductFields = (moduleName) => {
                             clearable: true,
                         },
                     },
-                    com_props: {
-                        data_source_name: '__producePlaceMap',
-                    },
                 },
             },
             in_form: {
                 edit_com: {
                     com_name: 'nc_select',
-                    com_props: {
-                        data_source_name: '__producePlaceMap',
-                    },
                 }
             },
         },
