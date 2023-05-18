@@ -387,7 +387,7 @@ export const getProductFields = (moduleName) => {
             },
             in_list: {
                 column_props: {
-                    'min-width': '80',
+                    'min-width': '100',
                     'header-align': 'center',
                     sortable: 'custom',
                 },
