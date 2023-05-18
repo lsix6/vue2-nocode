@@ -1,7 +1,16 @@
 <template>
-    <div class="nocode-editor">
+    <el-container class="nocode-editor">
+        <el-aside class="left">
+            <el-tree class="node-tree">
 
-    </div>
+            </el-tree>
+        </el-aside>
+        <el-main class="right">
+            <div class="content">
+
+            </div>
+        </el-main>
+    </el-container>
 </template>
 
 <script>
@@ -11,7 +20,25 @@ export default {
 
 <style lang="scss">
 .nocode-editor {
-    flex: 1;
     background-color: aliceblue;
+
+    .left {
+        padding: 10px;
+        display: flex;
+
+        .node-tree {
+            flex: 1;
+        }
+    }
+
+    .right {
+        display: flex;
+        padding: 10px;
+
+        .content {
+            flex: 1;
+            background-color: white;
+        }
+    }
 }
 </style>

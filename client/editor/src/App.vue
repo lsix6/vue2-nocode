@@ -21,6 +21,5 @@ export default {
   flex: 1;
   display: flex;
   overflow: hidden;
-  padding: 10px;
 }
 </style>
