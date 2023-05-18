@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="nocode-editor">
 
     </div>
 </template>
@@ -8,3 +8,10 @@
 export default {
 }
 </script>
+
+<style lang="scss">
+.nocode-editor {
+    flex: 1;
+    background-color: aliceblue;
+}
+</style>
