@@ -84,14 +84,6 @@ export const createListPage = (moduleInfo) => {
                                     },
                                     com_children: [
                                         list_formSearch,
-                                        {
-                                            com_name: 'div',
-                                            com_info: {
-                                                style: {
-                                                    flex: 1,
-                                                },
-                                            }
-                                        },
                                         list_btnAdd,
                                     ],
                                 },

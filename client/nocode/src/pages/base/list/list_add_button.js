@@ -5,6 +5,8 @@ export const list_btnAdd = {
     com_info: {
         style: {
             width: '100px',
+            height: '40px',
+            margin: '5px 10px',
         },
     },
     com_props: {
