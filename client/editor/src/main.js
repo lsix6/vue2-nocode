@@ -1,8 +1,11 @@
 // css 样式
 import './assets/css/main.scss'
+import elementui from './elementui/index.js'
 
 import Vue from 'vue'
 import App from './App.vue'
+
+Vue.use(elementui)
 
 Vue.config.productionTip = false
 
