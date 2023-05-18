@@ -82,7 +82,6 @@ export const createListSearch = (moduleFields) => {
         com_ref: 'formSearch',
         com_info: {
             style: {
-                'min-width': '800px',
                 flex: 1,
             },
         },
