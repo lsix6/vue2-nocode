@@ -20,7 +20,7 @@ export const createListSearch = (moduleFields) => {
                 style: {
                     display: 'flex',
                     'flex-direction': 'row',
-                    'margin-right': '20px',
+                    margin: '5px 10px',
                 },
             },
             com_children: [
@@ -65,7 +65,8 @@ export const createListSearch = (moduleFields) => {
                 placeholder: keyPlaceHolder,
             },
             style: {
-                'margin-right': '20px',
+                margin: '5px 10px',
+                width: '200px',
             },
         },
         com_field: {
@@ -81,7 +82,8 @@ export const createListSearch = (moduleFields) => {
         com_ref: 'formSearch',
         com_info: {
             style: {
-                'min-width': 'fit-content',
+                'min-width': '800px',
+                flex: 1,
             },
         },
         com_props: {
@@ -92,6 +94,7 @@ export const createListSearch = (moduleFields) => {
                         style: {
                             display: 'flex',
                             'flex-direction': 'row',
+                            'flex-wrap': 'wrap',
                         },
                     },
                     com_children: [
