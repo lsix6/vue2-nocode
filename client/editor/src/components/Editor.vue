@@ -7,14 +7,43 @@
         </el-aside>
         <el-main class="right">
             <div class="content">
-
+                <el-button class="btn-add" @click="onAdd">
+                    <i class="el-icon-plus" />
+                </el-button>
             </div>
         </el-main>
+        <ComListDlg ref="dlgComList"></ComListDlg>
     </el-container>
 </template>
 
 <script>
+
+import ComListDlg from './ComListDlg.vue'
+
 export default {
+
+    components: {
+        ComListDlg,
+    },
+
+    data() {
+        return {
+            nodes: {
+                root: {
+                    id: 0,
+                    children: [],
+                },
+                listId: 1,
+            },
+        }
+    },
+    methods: {
+        onAdd(e) {
+            console.log('onAdd', e)
+            //
+            this.$refs.dlgComList.show()
+        },
+    },
 }
 </script>
 
@@ -37,7 +66,12 @@ export default {
 
         .content {
             flex: 1;
+            display: flex;
             background-color: white;
+
+            .btn-add {
+                margin: auto;
+            }
         }
     }
 }
