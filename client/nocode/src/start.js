@@ -1,5 +1,5 @@
 
-window.time_log('[main] start.js')
+window.time_log('[nocode] start.js')
 
 import importHtml from 'import-html-entry'
 
@@ -40,7 +40,7 @@ Promise.all([
     import('./main'),
     loadLib('/lib/coms/'),
 ]).then(results => {
-    window.time_log('[main] js loaded', results)
+    window.time_log('[nocode] js loaded', results)
     const [main] = results
     // window.time_log('main', main)
     //
