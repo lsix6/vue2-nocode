@@ -7,6 +7,7 @@
         </el-aside>
         <el-main class="right">
             <div class="content">
+                <nc_component v-bind="nodes.root"></nc_component>
                 <el-button class="btn-add" @click="onAdd">
                     <i class="el-icon-plus" />
                 </el-button>
@@ -31,7 +32,8 @@ export default {
             nodes: {
                 root: {
                     id: 0,
-                    children: [],
+                    com_name: 'div',
+                    com_children: [],
                 },
                 listId: 1,
             },
