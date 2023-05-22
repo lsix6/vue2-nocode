@@ -6,7 +6,16 @@ import importHtml from 'import-html-entry'
 // 启动脚本里引入'vue',让'vue'打包在 vendor 里，避免在懒加载的js里多次打包
 import Vue from 'vue'
 // 把 Vue 赋值给 window.Vue，让加载的组件库入口脚本中可以使用 window.Vue 注册组件库中提供的组件
-window.Vue = Vue
+if (!window.Vue) {
+    window.Vue = Vue
+}
+
+import nc_component from './components/core/nc_component.vue'
+window.Vue.use(nc_component)
+import nc_children from './components/base/nc_children.vue'
+window.Vue.use(nc_children)
+import nc_data from './components/base/nc_data.vue'
+window.Vue.use(nc_data)
 
 import { get_com_ref } from './utils/nc_refs'
 import { get_params } from './utils/nc_params'
