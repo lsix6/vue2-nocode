@@ -24,7 +24,7 @@ export const start = async () => {
   // 路由初始化 history模式
   const router = new VueRouter({
     mode: 'history',
-    base: '/',
+    base: '/nocode/',
     routes: [ncRoute]
   })
 

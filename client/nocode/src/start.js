@@ -44,5 +44,8 @@ Promise.all([
     const [main] = results
     // window.time_log('main', main)
     //
-    main.start()
+    // console.log('pathname', location.pathname)
+    if (location.pathname.startsWith('/nocode/')) {
+        main.start()
+    }
 })
