@@ -1,6 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
+  publicPath: '/editor/',
+  outputDir: './dist/editor/',
   pages: {
     index: {
       entry: './src/start.js'
