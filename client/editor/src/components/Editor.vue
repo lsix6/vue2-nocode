@@ -12,7 +12,7 @@
                 </el-button>
             </div>
         </el-main>
-        <ComListDlg ref="dlgComList"></ComListDlg>
+        <ComListDlg ref="dlgComList" @select="addCom"></ComListDlg>
     </el-container>
 </template>
 
@@ -42,6 +42,9 @@ export default {
             console.log('onAdd', e)
             //
             this.$refs.dlgComList.show()
+        },
+        addCom(comId) {
+            console.log('addCom', comId)
         },
     },
 }
