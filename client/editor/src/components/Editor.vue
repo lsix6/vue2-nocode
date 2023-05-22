@@ -12,18 +12,18 @@
                 </el-button>
             </div>
         </el-main>
-        <ComListDlg ref="dlgComList" @select="addCom"></ComListDlg>
+        <ComsListDlg ref="dlgComList" @select="addCom"></ComsListDlg>
     </el-container>
 </template>
 
 <script>
 
-import ComListDlg from './ComListDlg.vue'
+import ComsListDlg from './ComsListDlg.vue'
 
 export default {
 
     components: {
-        ComListDlg,
+        ComsListDlg,
     },
 
     data() {
