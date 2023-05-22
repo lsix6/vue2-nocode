@@ -14,9 +14,17 @@ const loadLib = (url) => {
     })
 }
 
+loadLib('/nocode/').then(() => {
 
-Promise.all([
-    loadLib('/nocode/'),
-]).then(results => {
-    window.time_log('[editor] js loaded', results)
+    Promise.all([
+        import('./main'),
+        loadLib('/lib/coms/'),
+    ]).then(results => {
+        window.time_log('[editor] js loaded', results)
+        const [main] = results
+        // window.time_log('main', main)
+        //
+        main.start()
+    })
+
 })

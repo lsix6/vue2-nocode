@@ -9,6 +9,10 @@ Vue.use(elementui)
 
 Vue.config.productionTip = false
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+export const start = async () => {
+
+  new Vue({
+    render: h => h(App),
+  }).$mount('#app')
+
+}
