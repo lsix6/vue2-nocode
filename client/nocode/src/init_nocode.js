@@ -27,8 +27,8 @@ export const init_nocode = async () => {
     // register_module(user_info)
     //
     await Promise.all([
-        request_json('/static/modules/product.json'),
-        request_json('/static/modules/user.json'),
+        request_json('/nocode/static/modules/product.json'),
+        request_json('/nocode/static/modules/user.json'),
     ]).then(modules => {
         modules.forEach(moduleInfo => {
             register_module(moduleInfo)
