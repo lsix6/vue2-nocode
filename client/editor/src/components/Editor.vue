@@ -8,9 +8,6 @@
         <el-main class="right">
             <div class="content">
                 <nc_component v-bind="nodes.root"></nc_component>
-                <el-button class="btn-add" @click="onAdd">
-                    <i class="el-icon-plus" />
-                </el-button>
             </div>
         </el-main>
         <ComsListDlg ref="dlgComList" @select="addCom"></ComsListDlg>
@@ -30,14 +27,14 @@ export default {
     data() {
         return {
             nodes: {
-                root: {
-                    id: 0,
-                    com_name: 'div',
-                    com_children: [],
-                },
-                listId: 1,
+                root: null,
+                lastId: 1,
             },
         }
+    },
+    mounted() {
+        window.nocode.register_com_ref('dlgComList', this.$refs.dlgComList)
+        this.nodes.root = this.createContainerNode()
     },
     methods: {
         onAdd(e) {
@@ -47,6 +44,62 @@ export default {
         },
         addCom(comId) {
             console.log('addCom', comId)
+        },
+        generateNewNode() {
+            const node = {
+                id: this.nodes.lastId,
+            }
+            //
+            this.nodes.lastId++
+            //
+            return node
+        },
+        createContainerNode() {
+            const base = this.generateNewNode()
+            //
+            const node = {
+                ...base,
+                com_name: 'div',
+                com_info: {
+                    style: {
+                        flex: 1,
+                        display: 'flex',
+                        'flex-direction': 'row',
+                    },
+                },
+                com_children: [
+                    {
+                        com_name: 'el-button',
+                        com_info: {
+                            class: 'btn-add',
+                        },
+                        com_children: [
+                            {
+                                com_name: 'i',
+                                com_info: {
+                                    class: 'el-icon-plus',
+                                },
+                            },
+                        ],
+                        com_events: [
+                            {
+                                event_name: 'click',
+                                commands: [
+                                    {
+                                        cmd_name: 'call_com_method',
+                                        cmd_params: {
+                                            com_ref: 'dlgComList',
+                                            com_method_name: 'show',
+                                        },
+                                    }
+                                ]
+                            }
+                        ],
+                    },
+                ],
+            }
+            //
+            return node
         },
     },
 }
