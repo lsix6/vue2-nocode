@@ -17,7 +17,7 @@ window.Vue.use(nc_children)
 import nc_data from './components/base/nc_data.vue'
 window.Vue.use(nc_data)
 
-import { get_com_ref } from './utils/nc_refs'
+import { register_com_ref, unregister_com_ref, get_com_ref } from './utils/nc_refs'
 import { get_params } from './utils/nc_params'
 import { fetch_data, request_api } from './utils/nc_request'
 import { register_msg_box, msg_box } from './utils/nc_msg_box'
@@ -25,6 +25,8 @@ import { register_msg_box, msg_box } from './utils/nc_msg_box'
 import { start } from './main'
 
 window.nocode = {
+    register_com_ref,
+    unregister_com_ref,
     get_com_ref,
     get_params,
     request_api,
