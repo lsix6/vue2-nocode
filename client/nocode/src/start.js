@@ -13,6 +13,8 @@ import { get_params } from './utils/nc_params'
 import { fetch_data, request_api } from './utils/nc_request'
 import { register_msg_box, msg_box } from './utils/nc_msg_box'
 
+import { start } from './main'
+
 window.nocode = {
     get_com_ref,
     get_params,
@@ -21,6 +23,8 @@ window.nocode = {
     register_msg_box,
     msg_box,
 }
+
+window.time_log('[nocode] js loaded')
 
 // import './prefetch.js'
 
@@ -35,17 +39,12 @@ const loadLib = (url) => {
     })
 }
 
-
-Promise.all([
-    import('./main'),
-    loadLib('/lib/coms/'),
-]).then(results => {
-    window.time_log('[nocode] js loaded', results)
-    const [main] = results
-    // window.time_log('main', main)
-    //
-    // console.log('pathname', location.pathname)
-    if (location.pathname.startsWith('/nocode/')) {
-        main.start()
-    }
-})
+// console.log('pathname', location.pathname)
+if (location.pathname.startsWith('/nocode/')) {
+    Promise.all([
+        loadLib('/lib/coms/'),
+    ]).then(() => {
+        //
+        start()
+    })
+}
