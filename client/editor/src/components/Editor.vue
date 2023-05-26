@@ -52,7 +52,7 @@ export default {
             const editor = grapesjs.init({
                 container: '#gjs',
                 fromElement: true,
-                height: '300px',
+                height: 'auto',
                 width: 'auto',
                 storageManager: false,
                 layerManager: {
@@ -163,42 +163,46 @@ export default {
 <style lang="scss">
 .editor-frame {
     flex: 1;
-}
-
-.panel__top {
-    padding: 0;
-    width: 100%;
     display: flex;
-    position: initial;
-    justify-content: center;
-    justify-content: space-between;
-}
+    flex-direction: column;
 
-.panel__basic-actions {
-    position: initial;
-}
+    .panel__top {
+        padding: 0;
+        width: 100%;
+        display: flex;
+        position: initial;
+        justify-content: center;
+        justify-content: space-between;
 
-.editor-row {
-    display: flex;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-wrap: nowrap;
-    height: 300px;
-}
+        .panel__basic-actions {
+            position: initial;
+        }
+    }
 
-.editor-canvas {
-    flex-grow: 1;
-}
+    .editor-row {
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+        flex-wrap: nowrap;
+        flex: 1;
 
-.panel__right {
-    flex-basis: 230px;
-    position: relative;
-    overflow-y: auto;
+        .editor-canvas {
+            flex-grow: 1;
+            display: flex;
+        }
+
+        .panel__right {
+            flex-basis: 230px;
+            position: relative;
+            overflow-y: auto;
+        }
+    }
 }
 
 /* Let's highlight canvas boundaries */
 #gjs {
-    border: 3px solid #444;
+    flex: 1;
+    /* border: 3px solid blue; */
 }
 
 /* Reset some default styling */
