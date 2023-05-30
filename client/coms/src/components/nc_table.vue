@@ -18,7 +18,7 @@
 
 export default {
     install(Vue) {
-        Vue.component('nc_list', this)
+        Vue.component('nc_table', this)
     },
     props: {
         table_props: {
@@ -44,14 +44,14 @@ export default {
         }
     },
     mounted() {
-        console.log('[nc_list] mounted, com_params:', this.com_params)
+        console.log('[nc_table] mounted, com_params:', this.com_params)
     },
     methods: {
         getSort() {
             return this.sort
         },
         onSortChange({ column, prop, order }) {
-            console.log('[nc_list] onSortChange', column, prop, order)
+            console.log('[nc_table] onSortChange', column, prop, order)
             if (order) {
                 this.sort = {
                     field: prop,
