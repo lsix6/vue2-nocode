@@ -5,7 +5,8 @@
         </div>
         <div class="editor-row">
             <div class="editor-canvas">
-                <div id="gjs">...</div>
+                <div id="gjs">
+                </div>
             </div>
             <div class="panel__right">
                 <div class="layers-container"></div>
@@ -20,6 +21,8 @@
 import 'grapesjs/dist/css/grapes.min.css'
 import grapesjs from 'grapesjs'
 
+import plugin_vue_coms from './grapes-components/plugin.js'
+
 export default {
     data() {
         return {
@@ -30,25 +33,6 @@ export default {
     },
     methods: {
         initGrapesjs() {
-            const initCustomComTypes = editor => {
-                editor.DomComponents.addType('my-type', {
-                    isComponent: el => el.tagName === 'MYCOM',
-                    model: {
-                        defaults: {
-                            tagName: 'div',
-                        },
-                    },
-                    view: {
-                        tagName: 'div',
-                        onRender({ el }) {
-                            const btn = document.createElement('button')
-                            btn.innerText = 'XXX'
-                            el.appendChild(btn)
-                        },
-                    },
-                })
-            }
-
             const editor = grapesjs.init({
                 container: '#gjs',
                 fromElement: true,
@@ -79,33 +63,11 @@ export default {
                     ]
                 },
                 plugins: [
-                    initCustomComTypes
+                    plugin_vue_coms,
                 ],
                 blockManager: {
                     appendTo: '#blocks',
-                    blocks: [
-                        {
-                            id: 'section', // id is mandatory
-                            label: '<b>Section</b>', // You can use HTML/SVG inside labels
-                            attributes: { class: 'gjs-block-section' },
-                            content: `<mycom>AAA</mycom>`,
-                        }, {
-                            id: 'text',
-                            label: 'Text',
-                            content: '<div data-gjs-type="text">Insert your text here</div>',
-                        }, {
-                            id: 'image',
-                            label: 'Image',
-                            // Select the component once it's dropped
-                            select: true,
-                            // You can pass components as a JSON instead of a simple HTML string,
-                            // in this case we also use a defined component type `image`
-                            content: { type: 'image' },
-                            // This triggers `active` event on dropped components and the `image`
-                            // reacts by opening the AssetManager
-                            activate: true,
-                        }
-                    ]
+                    blocks: []
                 },
             })
 
