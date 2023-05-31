@@ -1,0 +1,317 @@
+<template>
+        <div :class="[$style.container]">
+            <div
+                :class="{
+                    [$style.contentWrap]: true,
+                    [$style.closeToolbar]: closeToolbar
+                }"
+            >
+                <div :class="$style.toolBarWrap">
+                    <div :class="$style.toolsBar">
+                        <EditorToolBar
+                            :drag-group="dragOptions.group"
+                            :config-tools="configTools"
+                            @onFilter="$message.error('该组件添加数目已达上限！')"
+                        >
+                        </EditorToolBar>
+                    </div>
+                    <span
+                        :class="$style.leftCaret"
+                        @click="closeToolbar = !closeToolbar"
+                    >
+                        <i class="el-icon-caret-right"></i>
+                    </span>
+                </div>
+
+                <div :class="[$style.contentBox]">
+                    <el-form
+                        style="height: 100%"
+                        :model="rootFormData"
+                        v-bind="formProps"
+                        class="genFromComponent"
+                        :class="{
+                            layoutColumn: !formProps.inline,
+                            [`layoutColumn-${formProps.layoutColumn}`]: !formProps.inline,
+                            formInlineFooter: formProps.inlineFooter,
+                            formInline: formProps.inline,
+                            // [`genFromComponent_${schema.id}Form`]: !!schema.id,
+                        }"
+                    >
+                        <NestedEditor
+                            :child-component-list="componentList"
+                            :drag-options="dragOptions"
+                            :form-data="rootFormData"
+                            :form-props="formProps"
+                        >
+                            <el-form-item
+                                v-if="componentList.length > 0 && formFooter.show"
+                                :style="{
+                                    display: formProps.inline && formProps.inlineFooter ? 'inline-block' : 'block'
+                                }"
+                                class="formFooter_item w100 formFooter_item-editor"
+                            >
+                                <el-button @click="$emit('onCancel')">{{ formFooter.cancelBtn }}</el-button>
+                                <el-button
+                                    type="primary"
+                                    @click="$emit('onSubmit')"
+                                >
+                                    {{ formFooter.okBtn }}
+                                </el-button>
+                            </el-form-item>
+                        </NestedEditor>
+                    </el-form>
+                    <div
+                        v-if="componentList.length === 0"
+                        :class="$style.tipBox"
+                    >
+                        <p>拖拽左侧栏的组件进行添加</p>
+                    </div>
+                </div>
+                <div :class="$style.rightForm">
+                    <el-tabs v-model="activeName">
+                        <el-tab-pane
+                            v-if="curEditorItem"
+                            label="组件配置"
+                            name="compConfig"
+                        >
+                        </el-tab-pane>
+                        <el-tab-pane
+                            label="表单配置"
+                            name="formConfig"
+                        >
+                        </el-tab-pane>
+                    </el-tabs>
+                </div>
+            </div>
+        </div>
+</template>
+
+<script>
+
+import EditorToolBar from './EditorToolBar.vue';
+
+import { deepFreeze } from './common/utils';
+
+import configTools from './config/tools';
+
+import NestedEditor from './components/NestedEditor';
+
+deepFreeze(configTools);
+
+export default {
+    name: 'Editor',
+    components: {
+        EditorToolBar,
+        NestedEditor
+    },
+    provide() {
+        return {
+            genFormProvide: {
+                fallbackLabel: true
+            }
+        };
+    },
+    data() {
+        return {
+            closeToolbar: false,
+            configTools,
+            rootFormData: {},
+            curEditorItem: null, // 选中的formItem
+            componentList: [],
+            formConfig: {},
+            activeName: 'formConfig'
+        };
+    },
+
+    computed: {
+        formProps() {
+            if (!this.formConfig.formProps) return {};
+            return {
+                ...this.formConfig.formProps,
+                labelWidth: 100,
+            };
+        },
+        formFooter() {
+            return this.formConfig.formFooter || {};
+        },
+        dragOptions() {
+            return {
+                animation: 300,
+                group: 'listComponentsGroup',
+                disabled: false,
+                ghostClass: 'ghostItem',
+                filter: this.$style.disabled,
+                draggable: '.draggableItem',
+                tag: 'div',
+                swapThreshold: 0.3,
+                // forceFallback: true
+                // fallbackTolerance: 0
+            };
+        },
+    },
+    mounted() {
+        console.log('configTools', this.configTools);
+        window.document.body.classList.add('page-decorate-design');
+    },
+    destroyed() {
+        window.document.body.classList.remove('page-decorate-design');
+    },
+    created() {
+        this.$on('onSetCurEditorItem', ({ editorItem }) => {
+            this.activeName = editorItem ? 'compConfig' : 'formConfig';
+            this.curEditorItem = editorItem;
+        });
+    },
+    methods: {
+    }
+};
+</script>
+
+<style>
+    body.page-decorate-design{
+        overflow: hidden;
+    }
+    .flip-list-move {
+        transition: transform 0.3s;
+    }
+    .no-move {
+        transition: transform 0s;
+    }
+</style>
+<style module>
+    @import '../../assets/css/variable.css'
+    :root {
+        --site-top-height: 80px;
+        --tool-bar-width: 260px;
+        --right-form-width: 380px;
+        --drag-area-width: auto;
+    }
+    /*预览模式 同步样式重置*/
+    .container {
+        position: relative;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        transition: 0.2s ease;
+    }
+    .hasTools {
+        padding-left: var(--tool-bar-width);
+        :global .el-icon-caret-right {
+            transform: rotate(180deg);
+        }
+    }
+    /*tools*/
+    .toolBarWrap, .rightForm{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background: var(--color-white);
+        box-shadow: 0 0 0 1px rgba(171 171 171,0.3);
+        z-index: 2;
+    }
+
+    .rightForm, .toolsBar {
+        overflow: auto;
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+    }
+
+    .toolBarWrap {
+        padding-top: 10px;
+        width: var(--tool-bar-width);
+        left: 0;
+        overflow: visible;
+    }
+    .toolsBar {
+        height: 100%;
+    }
+    .leftCaret {
+        cursor: pointer;
+        position: absolute;
+        display: flex;
+        width: 18px;
+        height: 38px;
+        align-items: center;
+        justify-content: center;
+        top: 2px;
+        right: 0;
+        background: #FFFFFF;
+        box-shadow: 0 0 4px 0 color(var(--color-black) a(0.2));
+        border-radius: 2px 0 0 2px;
+        :global .el-icon-caret-right {
+            transition: all .3s ease;
+            transform: rotate(180deg);
+        }
+        &:hover {
+            box-shadow: 0 0 4px 0 color(var(--color-black) a(0.4));
+            opacity: 1;
+        }
+    }
+    .rightForm {
+        box-sizing: border-box;
+        padding: 10px;
+        right: 0;
+        width: var(--right-form-width);
+    }
+    .configForm {
+        padding: 0 20px;
+        &>h3 {
+            font-size: 15px;
+            font-weight: bold;
+        }
+    }
+
+    /*content area*/
+    .contentWrap {
+        position: relative;
+        overflow: auto;
+        height: 100%;
+        padding-left: var(--tool-bar-width);
+        padding-right: var(--right-form-width);
+        &::-webkit-scrollbar {
+            width: 6px;
+            height: 10px;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: var(--background-color-base);
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: var(--color-text-placeholder);
+        }
+    }
+    .closeToolbar {
+        padding-left: 0;
+        .toolBarWrap {
+            left: calc(0 - var(--tool-bar-width));
+            .leftCaret {
+                right: -18px;
+            }
+            :global {
+                .el-icon-caret-right {
+                    transform: rotate(0);
+                }
+            }
+        }
+    }
+    .contentBox {
+        position: relative;
+        padding: 0;
+        height: 100%;
+    }
+    .tipBox{
+        pointer-events: none;
+        top: 20px;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        margin: 30vh 0;
+        p {
+            margin: 20px 0;
+            font-size: 16px;
+        }
+    }
+</style>
