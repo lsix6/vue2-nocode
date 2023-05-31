@@ -45,6 +45,10 @@
                 @click="$emit('onOperate', { item: editorItem, command: 'remove' })"
             ></button>
         </div>
+        <SchemaField
+            v-bind="attrs"
+        >
+        </SchemaField>
 
         <NestedEditor
             v-if="showNestedEditor(editorItem)"
@@ -58,6 +62,7 @@
 </template>
 
 <script>
+import { SchemaField, globalOptions } from '@lljj/vue-json-schema-form';
 import emitter from '../../../mixins/emitter.js';
 import NestedEditor from './NestedEditor';
 import { editorItem2SchemaFieldProps } from '../common/editorData';
@@ -65,6 +70,7 @@ import { editorItem2SchemaFieldProps } from '../common/editorData';
 export default {
     name: 'ViewComponentWrap',
     components: {
+        SchemaField,
         NestedEditor
     },
     mixins: [emitter],
@@ -94,6 +100,7 @@ export default {
         attrs() {
             return {
                 formProps: this.formProps,
+                globalOptions,
                 ...editorItem2SchemaFieldProps(this.editorItem, this.formData)
             };
         }
