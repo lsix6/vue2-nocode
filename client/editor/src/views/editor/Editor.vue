@@ -202,7 +202,6 @@ export default {
     }
     /*tools*/
     .toolBarWrap, .rightForm{
-        position: absolute;
         top: 0;
         bottom: 0;
         background: var(--color-white);
@@ -220,7 +219,7 @@ export default {
 
     .toolBarWrap {
         padding-top: 10px;
-        width: var(--tool-bar-width);
+        width: 300px;
         left: 0;
         overflow: visible;
     }
@@ -267,9 +266,9 @@ export default {
     .contentWrap {
         position: relative;
         overflow: auto;
+        width: 100;
         height: 100%;
-        padding-left: var(--tool-bar-width);
-        padding-right: var(--right-form-width);
+        display: flex;
         &::-webkit-scrollbar {
             width: 6px;
             height: 10px;
@@ -297,9 +296,9 @@ export default {
         }
     }
     .contentBox {
+        flex: 1;
         position: relative;
         padding: 0;
-        height: 100%;
     }
     .tipBox{
         pointer-events: none;
