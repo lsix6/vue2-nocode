@@ -158,7 +158,7 @@ export default {
 </script>
 
 <style module>
-    @import "../../../assets/css/variable.css"
+    @import "../../../assets/css/variable.css";
     .viewBox {
         position: relative;
         margin-bottom: 10px;

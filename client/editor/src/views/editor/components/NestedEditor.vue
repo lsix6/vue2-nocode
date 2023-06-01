@@ -126,7 +126,7 @@ export default {
 </script>
 
 <style module>
-    @import "../../../assets/css/variable.css"
+    @import "../../../assets/css/variable.css";
     :global {
         .ghostItem {
             opacity: 0.6;
