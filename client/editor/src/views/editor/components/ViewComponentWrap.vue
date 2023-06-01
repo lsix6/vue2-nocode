@@ -17,7 +17,14 @@
         </div>
         <SchemaField v-bind="attrs">
         </SchemaField>
-        <nc_component v-bind="editorItem.componentPack.comSchema" />
+        <nc_com v-bind="editorItem.componentPack.comSchema">
+            <template v-slot="slotProps">
+                <div>
+                    {{ JSON.stringify(slotProps) }}
+                </div>
+                <nc_select data_source_name="_ds_aa" v-bind="slotProps"></nc_select>
+            </template>
+        </nc_com>
 
         <NestedEditor v-if="showNestedEditor(editorItem)" :child-component-list="editorItem.childList"
             :drag-options="dragOptions" :form-data="formData" :form-props="formProps">

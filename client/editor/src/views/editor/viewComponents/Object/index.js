@@ -33,14 +33,6 @@ export default {
                     ],
                 },
             },
-            data_children: [
-                {
-                    com_name: 'nc_select',
-                    com_props: {
-                        data_source_name: '_ds_aa',
-                    },
-                }
-            ],
         },
     },
 };
