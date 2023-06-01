@@ -223,7 +223,7 @@ export default {
     .container {
         position: relative;
         box-sizing: border-box;
-        height: calc(100vh - var(--site-top-height));
+        height: 100%;
         transition: 0.2s ease;
     }
     .hasTools {
