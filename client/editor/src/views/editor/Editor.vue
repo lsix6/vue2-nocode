@@ -223,6 +223,7 @@ export default {
     .container {
         position: relative;
         box-sizing: border-box;
+        width: 100%;
         height: 100%;
         transition: 0.2s ease;
     }
