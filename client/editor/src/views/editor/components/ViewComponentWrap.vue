@@ -17,6 +17,7 @@
         </div>
         <SchemaField v-bind="attrs">
         </SchemaField>
+        <nc_component v-bind="editorItem.componentPack.comSchema" />
 
         <NestedEditor v-if="showNestedEditor(editorItem)" :child-component-list="editorItem.childList"
             :drag-options="dragOptions" :form-data="formData" :form-props="formProps">
@@ -67,6 +68,9 @@ export default {
                 ...editorItem2SchemaFieldProps(this.editorItem, this.formData)
             };
         }
+    },
+    mounted() {
+        // console.log('[ViewComponentWrap] mounted(), comSchema', this.editorItem.componentPack.comSchema)
     },
     beforeDestroy() {
         this.hideEditForm();

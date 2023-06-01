@@ -14,5 +14,33 @@ const viewSchema = {
 
 export default {
     viewSchema,
-    propsSchema: genSchema({}, 'object')
+    propsSchema: genSchema({}, 'object'),
+    comSchema: {
+        com_name: 'nc_data',
+        com_props: {
+            data_sources: {
+                _ds_aa: {
+                    fetch_params: [
+                        {
+                            enumMap: {
+                                1: 'a',
+                                2: 'b',
+                            },
+                            params_fields: [
+                                'enumMap',
+                            ],
+                        }
+                    ],
+                },
+            },
+            data_children: [
+                {
+                    com_name: 'nc_select',
+                    com_props: {
+                        data_source_name: '_ds_aa',
+                    },
+                }
+            ],
+        },
+    },
 };
