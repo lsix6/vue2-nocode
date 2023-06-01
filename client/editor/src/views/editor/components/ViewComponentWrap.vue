@@ -1,62 +1,25 @@
 <template>
-    <div
-        :class="{
-            [$style.viewBox]: true,
-            [$style.active]: editorItem.isEdit,
-            js_viewComponentWrap: true
-        }"
-        @click="handleClickView"
-    >
+    <div :class="{
+        [$style.viewBox]: true,
+        [$style.active]: editorItem.isEdit,
+        js_viewComponentWrap: true
+    }" @click="handleClickView">
         <span :class="$style.formProperty"> {{ attrs.curNodePath }}</span>
-        <div
-            v-if="editorItem.isEdit"
-            :class="$style.editBar"
-        >
-            <button
-                :disabled="editorItem.toolBar.moveUpDisabled"
-                :class="$style.toolBarBtn"
-                class="el-icon-caret-top"
-                title="上移"
-                type="button"
-                @click="$emit('onOperate', { item: editorItem, command: 'moveUp'})"
-            ></button>
-            <button
-                :disabled="editorItem.toolBar.moveDownDisabled"
-                :class="$style.toolBarBtn"
-                class="el-icon-caret-bottom"
-                title="下移"
-                type="button"
-                @click="$emit('onOperate', { item: editorItem, command: 'moveDown'})"
-            ></button>
-            <button
-                :disabled="editorItem.toolBar.copyDisabled"
-                :class="[$style.toolBarBtn]"
-                class="el-icon-copy-document"
-                title="复制"
-                type="button"
-                @click="$emit('onOperate', { item: editorItem, command: 'copy' })"
-            ></button>
-            <button
-                :disabled="editorItem.toolBar.removeDisabled"
-                :class="$style.toolBarBtn"
-                class="el-icon-delete"
-                title="移除"
-                type="button"
-                @click="$emit('onOperate', { item: editorItem, command: 'remove' })"
-            ></button>
+        <div v-if="editorItem.isEdit" :class="$style.editBar">
+            <button :disabled="editorItem.toolBar.moveUpDisabled" :class="$style.toolBarBtn" class="el-icon-caret-top"
+                title="上移" type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveUp' })"></button>
+            <button :disabled="editorItem.toolBar.moveDownDisabled" :class="$style.toolBarBtn" class="el-icon-caret-bottom"
+                title="下移" type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveDown' })"></button>
+            <button :disabled="editorItem.toolBar.copyDisabled" :class="[$style.toolBarBtn]" class="el-icon-copy-document"
+                title="复制" type="button" @click="$emit('onOperate', { item: editorItem, command: 'copy' })"></button>
+            <button :disabled="editorItem.toolBar.removeDisabled" :class="$style.toolBarBtn" class="el-icon-delete"
+                title="移除" type="button" @click="$emit('onOperate', { item: editorItem, command: 'remove' })"></button>
         </div>
-        <SchemaField
-            v-bind="attrs"
-        >
+        <SchemaField v-bind="attrs">
         </SchemaField>
 
-        <NestedEditor
-            v-if="showNestedEditor(editorItem)"
-            :child-component-list="editorItem.childList"
-            :drag-options="dragOptions"
-            :form-data="formData"
-            :form-props="formProps"
-        >
+        <NestedEditor v-if="showNestedEditor(editorItem)" :child-component-list="editorItem.childList"
+            :drag-options="dragOptions" :form-data="formData" :form-props="formProps">
         </NestedEditor>
     </div>
 </template>
@@ -77,7 +40,7 @@ export default {
     props: {
         showNestedEditor: {
             type: Function,
-            default: () => {}
+            default: () => { }
         },
         editorItem: {
             type: Object,
@@ -158,78 +121,86 @@ export default {
 </script>
 
 <style module>
-    @import "../../../assets/css/variable.css";
-    .viewBox {
-        position: relative;
-        margin-bottom: 10px;
-        padding: 30px 10px 10px;
-        cursor: move;
-        outline: none;
-        border: 1px dashed #bbb;
-        overflow: hidden;
-        background-color: #ffffff;
-        @nest :global .draggableSlot :local & {
-            cursor: no-drop;
-        }
-        &:after {
-            pointer-events: none;
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
-            transition: box-shadow 0.3s ease;
-            z-index: 2;
-        }
+@import "../../../assets/css/variable.css";
 
-        &.active {
-            border: 1px dashed transparent;
-            &:after {
-                box-shadow: 0 0 2px 1px var(--color-primary) inset;
-            }
-        }
+.viewBox {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 30px 10px 10px;
+    cursor: move;
+    outline: none;
+    border: 1px dashed #bbb;
+    overflow: hidden;
+    background-color: #ffffff;
+
+    @nest :global .draggableSlot :local & {
+        cursor: no-drop;
     }
-    .formProperty {
+
+    &:after {
+        pointer-events: none;
+        content: '';
         position: absolute;
-        padding: 10px;
+        width: 100%;
+        height: 100%;
+        left: 0;
         top: 0;
-        right: 0;
-        font-size: 13px;
+        transition: box-shadow 0.3s ease;
+        z-index: 2;
     }
 
-    .editBar {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        height: 26px;
-        border-top-left-radius: 8px;
-        background: var(--color-primary);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 10px;
-        &> .toolBarBtn {
-            -webkit-appearance: none;
-            appearance: none;
-            padding: 0;
-            margin: 0;
-            outline: none;
-            border: none;
-            cursor: pointer;
-            display: block;
-            width: 26px;
-            line-height: 30px;
-            text-align: center;
-            background-color: transparent;
-            font-size: 16px;
-            color: #ffffff;
-            &[disabled] {
-                display: none;
-            }
-            &:hover {
-                opacity: 0.6;
-            }
+    &.active {
+        border: 1px dashed transparent;
+
+        &:after {
+            box-shadow: 0 0 2px 1px var(--color-primary) inset;
         }
     }
+}
+
+.formProperty {
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    right: 0;
+    font-size: 13px;
+}
+
+.editBar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 26px;
+    border-top-left-radius: 8px;
+    background: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+
+    &>.toolBarBtn {
+        -webkit-appearance: none;
+        appearance: none;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        display: block;
+        width: 26px;
+        line-height: 30px;
+        text-align: center;
+        background-color: transparent;
+        font-size: 16px;
+        color: #ffffff;
+
+        &[disabled] {
+            display: none;
+        }
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+}
 </style>
