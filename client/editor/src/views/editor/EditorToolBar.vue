@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style module>
-    @import '../../assets/css/variable.css'
+    @import '../../assets/css/variable.css';
     .box{
         padding: 10px;
     }
