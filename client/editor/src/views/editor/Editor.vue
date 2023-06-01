@@ -317,7 +317,7 @@ export default {
     .closeToolbar {
         padding-left: 0;
         .toolBarWrap {
-            left: calc(0 - var(--tool-bar-width));
+            left: calc(0px - var(--tool-bar-width));
             .leftCaret {
                 right: -18px;
             }
