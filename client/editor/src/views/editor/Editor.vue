@@ -1,106 +1,137 @@
 <template>
-        <div :class="[$style.container]">
-            <div
-                :class="{
-                    [$style.contentWrap]: true,
-                    [$style.closeToolbar]: closeToolbar
-                }"
-            >
-                <div :class="$style.toolBarWrap">
-                    <div :class="$style.toolsBar">
-                        <EditorToolBar
-                            :drag-group="dragOptions.group"
-                            :config-tools="configTools"
-                            @onFilter="$message.error('该组件添加数目已达上限！')"
-                        >
-                        </EditorToolBar>
-                    </div>
-                    <span
-                        :class="$style.leftCaret"
-                        @click="closeToolbar = !closeToolbar"
+    <div :class="[$style.container]">
+        <div
+            :class="{
+                [$style.contentWrap]: true,
+                [$style.closeToolbar]: closeToolbar
+            }"
+        >
+            <div :class="$style.toolBarWrap">
+                <div :class="$style.toolsBar">
+                    <EditorToolBar
+                        :drag-group="dragOptions.group"
+                        :config-tools="configTools"
+                        @onFilter="$message.error('该组件添加数目已达上限！')"
                     >
-                        <i class="el-icon-caret-right"></i>
-                    </span>
+                    </EditorToolBar>
                 </div>
+                <span
+                    :class="$style.leftCaret"
+                    @click="closeToolbar = !closeToolbar"
+                >
+                    <i class="el-icon-caret-right"></i>
+                </span>
+            </div>
 
-                <div :class="[$style.contentBox]">
-                    <el-form
-                        style="height: 100%"
-                        :model="rootFormData"
-                        v-bind="formProps"
-                        class="genFromComponent"
-                        :class="{
-                            layoutColumn: !formProps.inline,
-                            [`layoutColumn-${formProps.layoutColumn}`]: !formProps.inline,
-                            formInlineFooter: formProps.inlineFooter,
-                            formInline: formProps.inline,
-                            // [`genFromComponent_${schema.id}Form`]: !!schema.id,
-                        }"
+            <div :class="[$style.contentBox]">
+                <el-form
+                    style="height: 100%"
+                    :model="rootFormData"
+                    v-bind="formProps"
+                    class="genFromComponent"
+                    :class="{
+                        layoutColumn: !formProps.inline,
+                        [`layoutColumn-${formProps.layoutColumn}`]: !formProps.inline,
+                        formInlineFooter: formProps.inlineFooter,
+                        formInline: formProps.inline,
+                        // [`genFromComponent_${schema.id}Form`]: !!schema.id,
+                    }"
+                >
+                    <NestedEditor
+                        :child-component-list="componentList"
+                        :drag-options="dragOptions"
+                        :form-data="rootFormData"
+                        :form-props="formProps"
                     >
-                        <NestedEditor
-                            :child-component-list="componentList"
-                            :drag-options="dragOptions"
-                            :form-data="rootFormData"
-                            :form-props="formProps"
+                        <el-form-item
+                            v-if="componentList.length > 0 && formFooter.show"
+                            :style="{
+                                display: formProps.inline && formProps.inlineFooter ? 'inline-block' : 'block'
+                            }"
+                            class="formFooter_item w100 formFooter_item-editor"
                         >
-                            <el-form-item
-                                v-if="componentList.length > 0 && formFooter.show"
-                                :style="{
-                                    display: formProps.inline && formProps.inlineFooter ? 'inline-block' : 'block'
-                                }"
-                                class="formFooter_item w100 formFooter_item-editor"
+                            <el-button @click="$emit('onCancel')">{{ formFooter.cancelBtn }}</el-button>
+                            <el-button
+                                type="primary"
+                                @click="$emit('onSubmit')"
                             >
-                                <el-button @click="$emit('onCancel')">{{ formFooter.cancelBtn }}</el-button>
-                                <el-button
-                                    type="primary"
-                                    @click="$emit('onSubmit')"
-                                >
-                                    {{ formFooter.okBtn }}
-                                </el-button>
-                            </el-form-item>
-                        </NestedEditor>
-                    </el-form>
-                    <div
-                        v-if="componentList.length === 0"
-                        :class="$style.tipBox"
-                    >
-                        <p>拖拽左侧栏的组件进行添加</p>
-                    </div>
-                </div>
-                <div :class="$style.rightForm">
-                    <el-tabs v-model="activeName">
-                        <el-tab-pane
-                            v-if="curEditorItem"
-                            label="组件配置"
-                            name="compConfig"
-                        >
-                        </el-tab-pane>
-                        <el-tab-pane
-                            label="表单配置"
-                            name="formConfig"
-                        >
-                        </el-tab-pane>
-                    </el-tabs>
+                                {{ formFooter.okBtn }}
+                            </el-button>
+                        </el-form-item>
+                    </NestedEditor>
+                </el-form>
+                <div
+                    v-if="componentList.length === 0"
+                    :class="$style.tipBox"
+                >
+                    <p>拖拽左侧栏的组件进行添加</p>
                 </div>
             </div>
+            <div :class="$style.rightForm">
+                <el-tabs v-model="activeName">
+                    <el-tab-pane
+                        v-if="curEditorItem"
+                        label="组件配置"
+                        name="compConfig"
+                    >
+                        <VueJsonFrom
+                            v-model="curEditorItem.componentValue"
+                            :class="$style.configForm"
+                            :schema="curEditorItem.componentPack.propsSchema"
+                            :form-props="{
+                                labelPosition: 'right',
+                                labelWidth: '110px'
+                            }"
+                            :form-footer="{
+                                show: false
+                            }"
+                        >
+                        </VueJsonFrom>
+                    </el-tab-pane>
+                    <el-tab-pane
+                        label="表单配置"
+                        name="formConfig"
+                    >
+                        <VueJsonFrom
+                            v-model="formConfig"
+                            :class="$style.configForm"
+                            :schema="FormConfSchema"
+                            :form-props="{
+                                labelPosition: 'right',
+                                labelWidth: '110px'
+                            }"
+                            :form-footer="{
+                                show: false
+                            }"
+                        >
+                        </VueJsonFrom>
+                    </el-tab-pane>
+                </el-tabs>
+            </div>
         </div>
+    </div>
 </template>
 
 <script>
+import VueJsonFrom from '@lljj/vue-json-schema-form';
 
+import FormConfSchema from './viewComponents/FormConf';
 import EditorToolBar from './EditorToolBar.vue';
+
 
 import { deepFreeze } from './common/utils';
 
 import configTools from './config/tools';
 
 import NestedEditor from './components/NestedEditor';
+import { formatFormLabelWidth } from './common/editorData';
 
 deepFreeze(configTools);
 
 export default {
     name: 'Editor',
     components: {
+        VueJsonFrom,
         EditorToolBar,
         NestedEditor
     },
@@ -114,10 +145,12 @@ export default {
     data() {
         return {
             closeToolbar: false,
+            loading: false,
             configTools,
             rootFormData: {},
             curEditorItem: null, // 选中的formItem
             componentList: [],
+            FormConfSchema,
             formConfig: {},
             activeName: 'formConfig'
         };
@@ -128,7 +161,7 @@ export default {
             if (!this.formConfig.formProps) return {};
             return {
                 ...this.formConfig.formProps,
-                labelWidth: 100,
+                labelWidth: formatFormLabelWidth(this.formConfig.formProps.labelWidth)
             };
         },
         formFooter() {
@@ -179,7 +212,7 @@ export default {
     }
 </style>
 <style module>
-    @import '../../assets/css/variable.css'
+    @import '../../assets/css/variable.css';
     :root {
         --site-top-height: 80px;
         --tool-bar-width: 260px;
@@ -190,8 +223,7 @@ export default {
     .container {
         position: relative;
         box-sizing: border-box;
-        width: 100%;
-        height: 100%;
+        height: calc(100vh - var(--site-top-height));
         transition: 0.2s ease;
     }
     .hasTools {
@@ -202,6 +234,7 @@ export default {
     }
     /*tools*/
     .toolBarWrap, .rightForm{
+        position: absolute;
         top: 0;
         bottom: 0;
         background: var(--color-white);
@@ -219,7 +252,7 @@ export default {
 
     .toolBarWrap {
         padding-top: 10px;
-        width: 300px;
+        width: var(--tool-bar-width);
         left: 0;
         overflow: visible;
     }
@@ -266,9 +299,9 @@ export default {
     .contentWrap {
         position: relative;
         overflow: auto;
-        width: 100;
         height: 100%;
-        display: flex;
+        padding-left: var(--tool-bar-width);
+        padding-right: var(--right-form-width);
         &::-webkit-scrollbar {
             width: 6px;
             height: 10px;
@@ -296,9 +329,9 @@ export default {
         }
     }
     .contentBox {
-        flex: 1;
         position: relative;
         padding: 0;
+        height: 100%;
     }
     .tipBox{
         pointer-events: none;

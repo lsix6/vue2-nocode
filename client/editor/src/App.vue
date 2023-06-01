@@ -17,9 +17,5 @@ export default {
 
 <style>
 #app {
-  background-color: #fff;
-  flex: 1;
-  display: flex;
-  overflow: hidden;
 }
 </style>
