@@ -1,9 +1,6 @@
 <template>
-    <component :is="com_name" v-bind="com_props">
+    <component :is="com_name" v-bind="com_props" :com_params="com_params">
         <template v-slot="slotProps">
-            <div>
-                {{ JSON.stringify(slotProps) }}
-            </div>
             <slot v-bind="slotProps"></slot>
         </template>
     </component>

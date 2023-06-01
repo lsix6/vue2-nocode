@@ -1,6 +1,9 @@
 <template>
     <draggable ref="draggable" :list="childComponentList" v-bind="dragOptions"
         :class="[$style.dragArea, $style.formItemWrap]" @change="handleDragChange">
+        <div>
+            {{ JSON.stringify(com_params) }}
+        </div>
         <div v-for="item in childComponentList" :key="item.id" :class="{
             draggableItem: true,
             w100: showNestedEditor(item),
@@ -10,7 +13,8 @@
     flexBasis: item.componentValue.baseValue.uiOptions.width
 } : {}">
             <ViewComponentWrap :form-data="formData" :editor-item="item" :drag-options="dragOptions"
-                :show-nested-editor="showNestedEditor" :form-props="formProps" @onOperate="handleItemOperate">
+                :show-nested-editor="showNestedEditor" :form-props="formProps" @onOperate="handleItemOperate"
+                :com_params="com_params">
             </ViewComponentWrap>
         </div>
         <template slot="footer">
@@ -49,7 +53,11 @@ export default {
         formProps: {
             type: null,
             default: null
-        }
+        },
+        com_params: {
+            type: Object,
+            default: null
+        },
     },
     watch: {
         childComponentList() {
@@ -58,6 +66,9 @@ export default {
         }
     },
     created() {
+    },
+    mounted() {
+        console.log('[NestedEditor] mounted(), com_params', this.com_params)
     },
     methods: {
         showNestedEditor(editorItem) {
@@ -267,4 +278,5 @@ export default {
             vertical-align: top;
         }
     }
-}</style>
+}
+</style>

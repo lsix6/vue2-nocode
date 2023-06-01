@@ -15,25 +15,25 @@
             <button :disabled="editorItem.toolBar.removeDisabled" :class="$style.toolBarBtn" class="el-icon-delete"
                 title="移除" type="button" @click="$emit('onOperate', { item: editorItem, command: 'remove' })"></button>
         </div>
-        <SchemaField v-bind="attrs">
-        </SchemaField>
-        <nc_com v-bind="editorItem.componentPack.comSchema">
+        <div>
+            {{ JSON.stringify(com_params) }}
+        </div>
+        <nc_com v-bind="editorItem.componentPack.comSchema" :com_params="com_params">
             <template v-slot="slotProps">
                 <div>
                     {{ JSON.stringify(slotProps) }}
                 </div>
-                <nc_select data_source_name="_ds_aa" v-bind="slotProps"></nc_select>
+                <NestedEditor v-if="showNestedEditor(editorItem)" :child-component-list="editorItem.childList"
+                    :drag-options="dragOptions" :form-data="formData" :form-props="formProps" v-bind="slotProps">
+                </NestedEditor>
             </template>
         </nc_com>
 
-        <NestedEditor v-if="showNestedEditor(editorItem)" :child-component-list="editorItem.childList"
-            :drag-options="dragOptions" :form-data="formData" :form-props="formProps">
-        </NestedEditor>
     </div>
 </template>
 
 <script>
-import { SchemaField, globalOptions } from '@lljj/vue-json-schema-form';
+import { globalOptions } from '@lljj/vue-json-schema-form';
 import emitter from '../../../mixins/emitter.js';
 import NestedEditor from './NestedEditor';
 import { editorItem2SchemaFieldProps } from '../common/editorData';
@@ -41,7 +41,6 @@ import { editorItem2SchemaFieldProps } from '../common/editorData';
 export default {
     name: 'ViewComponentWrap',
     components: {
-        SchemaField,
         NestedEditor
     },
     mixins: [emitter],
@@ -65,7 +64,11 @@ export default {
         formProps: {
             type: null,
             default: null
-        }
+        },
+        com_params: {
+            type: Object,
+            default: null
+        },
     },
     computed: {
         attrs() {
@@ -77,7 +80,7 @@ export default {
         }
     },
     mounted() {
-        // console.log('[ViewComponentWrap] mounted(), comSchema', this.editorItem.componentPack.comSchema)
+        console.log('[ViewComponentWrap] mounted(), com_params', this.attrs.curNodePath, this.com_params)
     },
     beforeDestroy() {
         this.hideEditForm();
