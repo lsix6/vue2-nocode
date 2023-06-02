@@ -18,7 +18,7 @@
         <div>
             {{ JSON.stringify(com_params) }}
         </div>
-        <nc_component v-bind="editorItem.componentPack.comSchema" :com_params="com_params">
+        <nc_component v-bind="comFinalBind">
             <template v-slot="slotProps">
                 <NestedEditor v-if="showNestedEditor(editorItem)" :child-component-list="editorItem.childList"
                     :drag-options="dragOptions" :form-data="formData" :form-props="formProps" v-bind="slotProps">
@@ -74,7 +74,20 @@ export default {
                 globalOptions,
                 ...editorItem2SchemaFieldProps(this.editorItem, this.formData)
             };
-        }
+        },
+        comFinalBind() {
+            let finalBind = {
+                ...this.editorItem.componentPack.comSchema,
+                com_params: this.com_params,
+                com_props: {
+                    ...this.editorItem.componentPack?.comSchema?.com_props,
+                    editorItem: this.editorItem,
+                },
+            }
+            //
+            console.log('[ViewComponentWrap] comFinalBind', finalBind)
+            return finalBind
+        },
     },
     mounted() {
         console.log('[ViewComponentWrap] mounted(), com_params', this.attrs.curNodePath, this.com_params)
