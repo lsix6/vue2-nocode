@@ -34,7 +34,7 @@ export default {
             ]
             //
             this.editorItem.childList.forEach(child => {
-                console.log('[e_nc_table] fields, child', child)
+                // console.log('[e_nc_table] fields, child', child)
                 const schemaOptions = child.componentValue.baseValue.schemaOptions
                 arr.push(
                     {
@@ -45,16 +45,16 @@ export default {
                     }
                 )
             })
-            console.log('[e_nc_table] fields', arr)
+            // console.log('[e_nc_table] fields', arr)
             //
             return arr
         },
     },
     mounted() {
-        console.log('[e_nc_table] mounted()', this)
+        // console.log('[e_nc_table] mounted()', this)
     },
     beforeUpdate() {
-        console.log('[e_nc_table] beforeUpdate()', this.editorItem)
+        // console.log('[e_nc_table] beforeUpdate()', this.editorItem)
     },
 }
 </script>
