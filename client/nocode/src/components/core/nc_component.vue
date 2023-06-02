@@ -141,7 +141,7 @@ export default {
         },
     },
     render: function (createElement, hack) {
-        // console.log('[nc_component] render', this.com_name)
+        console.log('[nc_component] render', this.com_name, this)
         // 子组件
         const children = []
         if (this.com_text) {
@@ -181,6 +181,7 @@ export default {
                 com_props: this.com_props,
                 com_params: this.com_params,
             },
+            scopedSlots: this.$scopedSlots,
             ref: 'com',
         }
         // console.log('[nc_component] comData', comData)
