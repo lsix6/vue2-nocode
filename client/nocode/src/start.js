@@ -21,6 +21,9 @@ import { register_com_ref, unregister_com_ref, get_com_ref } from './utils/nc_re
 import { get_params } from './utils/nc_params'
 import { fetch_data, request_api } from './utils/nc_request'
 import { register_msg_box, msg_box } from './utils/nc_msg_box'
+import { register_request_api } from './utils/nc_request'
+import * as testService from './test/service'
+register_request_api(testService.request_api)
 
 import { start } from './main'
 
