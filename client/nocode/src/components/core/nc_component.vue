@@ -141,7 +141,7 @@ export default {
         },
     },
     render: function (createElement, hack) {
-        console.log('[nc_component] render', this.com_name, this)
+        // console.log('[nc_component] render', this.com_name, this)
         // 子组件
         const children = []
         if (this.com_text) {
