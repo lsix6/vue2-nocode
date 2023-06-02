@@ -156,7 +156,7 @@ export const createList = (moduleName, moduleFields) => {
     const fields = createFields(moduleFields)
 
     const list = {
-        com_name: 'nc_list',
+        com_name: 'nc_table',
         com_ref: 'list',
         com_binds: [
             {

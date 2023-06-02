@@ -1,7 +1,7 @@
 <template>
     <div>
         <slot></slot>
-        <nc_list v-bind="$props" :fields="fields"></nc_list>
+        <nc_table v-bind="$props" :fields="fields"></nc_table>
     </div>
 </template>
 

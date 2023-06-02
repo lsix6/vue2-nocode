@@ -40,7 +40,7 @@ export default {
         }
     }),
     comSchema: {
-        com_name: 'nc_list',
+        com_name: 'nc_table',
         com_ref: 'list',
         com_binds: [
             {
