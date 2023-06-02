@@ -17,7 +17,7 @@ export default {
     comSchema: {
         com_name: 'nc_select',
         com_props: {
-            data_source_name: '__ds_aa',
+            data_source_name: '__ds_gender',
         },
     },
 };
