@@ -48,6 +48,7 @@ import componentPackDateTimeRangeString from '../viewComponents/DateTimeRange/st
 // 布局 Object Array
 import componentPackObject from '../viewComponents/Object';
 import componentPackArray from '../viewComponents/Array';
+import componentPackTable from '../viewComponents/Table';
 
 /**
  * hidden 隐藏，不显示在工具栏
@@ -68,7 +69,11 @@ const tools = [
             title: 'Array',
             btnClass: 'w100',
             componentPack: componentPackArray
-        }]
+        }, {
+            title: 'Table',
+            btnClass: 'w100',
+            componentPack: componentPackTable
+        },]
     },
     {
         groupName: '基础组件',
@@ -125,6 +130,7 @@ const tools = [
             componentPack: componentPackUpload
         }, {
             title: '多个文件',
+            btnClass: 'w100',
             componentPack: componentPackMultiUpload
         }]
     },
