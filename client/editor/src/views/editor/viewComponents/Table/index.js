@@ -16,7 +16,7 @@ export default {
     viewSchema,
     propsSchema: genSchema({}, 'object'),
     comSchema: {
-        com_name: 'nc_list',
+        com_name: 'e_nc_table',
         com_ref: 'list',
         com_binds: [
             {
