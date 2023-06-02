@@ -3,6 +3,7 @@ import { get_params } from "./nc_params"
 const nc_requests = {}
 
 export const register_request_api = (func) => {
+    console.log('[nc_requests] register_request_api', func)
     nc_requests['request_api'] = func
 }
 
@@ -46,7 +47,7 @@ export const fetch_data = (com, fetchData) => {
  * @param {*} url 要请求的 json 文件的 url
  * @returns 返回 json 文本转成的对象
  */
- export const request_json = function (url) {
+export const request_json = function (url) {
     return new Promise((resolve, reject) => {
         var request = new XMLHttpRequest();
         request.open("get", url);/*设置请求方法与路径*/
