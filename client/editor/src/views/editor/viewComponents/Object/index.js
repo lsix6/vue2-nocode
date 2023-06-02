@@ -19,18 +19,24 @@ export default {
         com_name: 'nc_data',
         com_props: {
             data_sources: {
-                __ds_aa: {
+                __ds_gender: {
                     fetch_params: [
                         {
                             enumMap: {
-                                1: 'a',
-                                2: 'b',
+                                1: "男",
+                                2: "女"
                             },
                             params_fields: [
-                                'enumMap',
-                            ],
+                                "enumMap"
+                            ]
                         }
-                    ],
+                    ]
+                },
+                "__ds_huji": {
+                    "api": {
+                        "url": "user/huji",
+                        "method": "GET"
+                    }
                 },
                 __ds_listPageData: {
                     api: {
