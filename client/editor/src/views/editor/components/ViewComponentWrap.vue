@@ -18,16 +18,13 @@
         <div>
             {{ JSON.stringify(com_params) }}
         </div>
-        <nc_com v-bind="editorItem.componentPack.comSchema" :com_params="com_params">
+        <nc_component v-bind="editorItem.componentPack.comSchema" :com_params="com_params">
             <template v-slot="slotProps">
-                <div>
-                    {{ JSON.stringify(slotProps) }}
-                </div>
                 <NestedEditor v-if="showNestedEditor(editorItem)" :child-component-list="editorItem.childList"
                     :drag-options="dragOptions" :form-data="formData" :form-props="formProps" v-bind="slotProps">
                 </NestedEditor>
             </template>
-        </nc_com>
+        </nc_component>
 
     </div>
 </template>

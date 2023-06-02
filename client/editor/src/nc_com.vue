@@ -58,9 +58,6 @@ export default {
             default: null
         },
     },
-    mounted() {
-        // console.log('[nc_com] mounted(),', this.com_name, this, this.$scopedSlots.default())
-    },
 
 }
 </script>
