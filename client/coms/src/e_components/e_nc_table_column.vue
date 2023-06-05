@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="font-size: 14px;">
         {{ label }}
     </div>
 </template>
@@ -10,9 +10,17 @@ export default {
         Vue.component('e_nc_table_column', this)
     },
     props: {
-        label: {
-            type: String,
-            default: '',
+        editorItem: {
+            type: Object,
+            default: null,
+        },
+    },
+    computed: {
+        label() {
+            if (this.editorItem) {
+                return this.editorItem.componentValue.options.uiOptions.label
+            }
+            return ''
         },
     },
     mounted() {

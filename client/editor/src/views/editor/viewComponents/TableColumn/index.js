@@ -14,7 +14,29 @@ const viewSchema = {
 
 export default {
     viewSchema,
-    propsSchema: genSchema({}, 'object'),
+    propsSchema: genSchema({
+        options: {
+            type: 'object',
+            title: '选项',
+            required: [],
+            properties: {
+                uiOptions: {
+                    type: 'object',
+                    properties: {
+                        label: {
+                            type: 'string',
+                            title: 'label',
+                        },
+                        prop: {
+                            type: 'string',
+                            title: 'prop',
+                        },
+                    }
+                }
+            }
+        },
+
+    }, 'object'),
     comSchema: {
         com_name: 'e_nc_table_column',
     },

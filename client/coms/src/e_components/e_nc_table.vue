@@ -35,12 +35,12 @@ export default {
             //
             this.editorItem.childList.forEach(child => {
                 // console.log('[e_nc_table] fields, child', child)
-                const schemaOptions = child.componentValue.baseValue.schemaOptions
+                const schemaOptions = child.componentValue.options.uiOptions
                 arr.push(
                     {
                         column_props: {
-                            prop: schemaOptions.description,
-                            label: schemaOptions.title,
+                            prop: schemaOptions.prop,
+                            label: schemaOptions.label,
                         }
                     }
                 )
