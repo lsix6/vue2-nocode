@@ -16,6 +16,8 @@ import nc_children from './components/base/nc_children.vue'
 window.Vue.use(nc_children)
 import nc_data from './components/base/nc_data.vue'
 window.Vue.use(nc_data)
+import e_nc_data_source from './e_components/base/e_nc_data_source.vue'
+window.Vue.use(e_nc_data_source)
 
 import { register_com_ref, unregister_com_ref, get_com_ref } from './utils/nc_refs'
 import { get_params } from './utils/nc_params'
