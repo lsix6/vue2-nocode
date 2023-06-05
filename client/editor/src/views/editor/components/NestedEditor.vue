@@ -1,6 +1,6 @@
 <template>
     <draggable ref="draggable" :list="childComponentList" v-bind="dragOptions"
-        :class="[$style.dragArea, $style.formItemWrap]" @change="handleDragChange">
+        :class="[$style.dragArea, $style.formItemWrap, 'items-direction']" @change="handleDragChange">
         <div v-for="item in childComponentList" :key="item.id" :class="{
             draggableItem: true,
             w100: showNestedEditor(item),
@@ -116,6 +116,16 @@ export default {
     }
 };
 </script>
+
+<style lang="scss">
+.items-direction_right {
+
+    .items-direction {
+        display: flex;
+        flex-direction: row;
+    }
+}
+</style>
 
 <style module>
 @import "../../../assets/css/variable.css";

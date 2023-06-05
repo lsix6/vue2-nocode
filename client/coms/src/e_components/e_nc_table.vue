@@ -1,6 +1,8 @@
 <template>
     <div>
-        <slot></slot>
+        <div class="items-direction_right">
+            <slot></slot>
+        </div>
         <nc_table v-bind="$props" :fields="fields"></nc_table>
     </div>
 </template>

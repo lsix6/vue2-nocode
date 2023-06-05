@@ -4,7 +4,7 @@
         [$style.active]: editorItem.isEdit,
         js_viewComponentWrap: true
     }" @click="handleClickView">
-        <span :class="$style.formProperty"> {{ attrs.curNodePath }}</span>
+        <!-- <span :class="$style.formProperty"> {{ attrs.curNodePath }}</span> -->
         <div v-if="editorItem.isEdit" :class="$style.editBar">
             <button :disabled="editorItem.toolBar.moveUpDisabled" :class="$style.toolBarBtn" class="el-icon-caret-top"
                 title="上移" type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveUp' })"></button>
