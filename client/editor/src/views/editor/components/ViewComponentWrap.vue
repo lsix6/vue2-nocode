@@ -15,9 +15,6 @@
             <button :disabled="editorItem.toolBar.removeDisabled" :class="$style.toolBarBtn" class="el-icon-delete"
                 title="移除" type="button" @click="$emit('onOperate', { item: editorItem, command: 'remove' })"></button>
         </div>
-        <div>
-            {{ JSON.stringify(com_params) }}
-        </div>
         <nc_component v-bind="comFinalBind">
             <template v-slot="slotProps">
                 <NestedEditor v-if="showNestedEditor(editorItem)" :child-component-list="editorItem.childList"

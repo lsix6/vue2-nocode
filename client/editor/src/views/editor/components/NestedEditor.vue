@@ -1,9 +1,6 @@
 <template>
     <draggable ref="draggable" :list="childComponentList" v-bind="dragOptions"
         :class="[$style.dragArea, $style.formItemWrap]" @change="handleDragChange">
-        <div>
-            {{ JSON.stringify(com_params) }}
-        </div>
         <div v-for="item in childComponentList" :key="item.id" :class="{
             draggableItem: true,
             w100: showNestedEditor(item),
