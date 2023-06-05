@@ -49,6 +49,7 @@ import componentPackDateTimeRangeString from '../viewComponents/DateTimeRange/st
 // 布局 Object Array
 import componentPackObject from '../viewComponents/Object';
 import componentPackArray from '../viewComponents/Array';
+import componentPackDataSource from '../viewComponents/DataSource';
 import componentPackTable from '../viewComponents/Table';
 
 /**
@@ -62,19 +63,28 @@ import componentPackTable from '../viewComponents/Table';
 const tools = [
     {
         groupName: '布局组件',
-        componentList: [{
-            title: 'Object',
-            btnClass: 'w100',
-            componentPack: componentPackObject
-        }, {
-            title: 'Array',
-            btnClass: 'w100',
-            componentPack: componentPackArray
-        }, {
-            title: 'Table',
-            btnClass: 'w100',
-            componentPack: componentPackTable
-        },]
+        componentList: [
+            {
+                title: 'Object',
+                btnClass: 'w100',
+                componentPack: componentPackObject
+            },
+            {
+                title: 'Array',
+                btnClass: 'w100',
+                componentPack: componentPackArray
+            },
+            {
+                title: 'Data Source',
+                btnClass: 'w100',
+                componentPack: componentPackDataSource
+            },
+            {
+                title: 'Table',
+                btnClass: 'w100',
+                componentPack: componentPackTable
+            },
+        ]
     },
     {
         groupName: '基础组件',
