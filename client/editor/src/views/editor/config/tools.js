@@ -3,6 +3,7 @@
  */
 
 // 基础组件
+import componentPackTableColumn from '../viewComponents/TableColumn';
 import componentPackInput from '../viewComponents/Input';
 import componentPackColor from '../viewComponents/Color';
 import componentPackInputNumber from '../viewComponents/InputNumber';
@@ -77,19 +78,24 @@ const tools = [
     },
     {
         groupName: '基础组件',
-        componentList: [{
-            title: '输入框',
-            componentPack: componentPackInput
-        }, {
-            title: '数字(slider)', // 这里顺便必须在 componentPackInputNumber 前，导入匹配的时候优先匹配
-            componentPack: componentPackSlider
-        }, {
-            title: '数字输入框',
-            componentPack: componentPackInputNumber
-        }, {
-            title: '颜色选择',
-            componentPack: componentPackColor
-        }]
+        componentList: [
+            {
+                title: 'Table Column',
+                componentPack: componentPackTableColumn,
+            },
+            {
+                title: '输入框',
+                componentPack: componentPackInput
+            }, {
+                title: '数字(slider)', // 这里顺便必须在 componentPackInputNumber 前，导入匹配的时候优先匹配
+                componentPack: componentPackSlider
+            }, {
+                title: '数字输入框',
+                componentPack: componentPackInputNumber
+            }, {
+                title: '颜色选择',
+                componentPack: componentPackColor
+            }]
     },
     {
         groupName: '是否Bool',

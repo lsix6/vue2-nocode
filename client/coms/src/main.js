@@ -9,6 +9,7 @@ const registerComponents = (Vue) => {
   //
   Vue.component('nc_table', () => import('./components/nc_table.vue'))
   Vue.component('e_nc_table', () => import('./e_components/e_nc_table.vue'))
+  Vue.component('e_nc_table_column', () => import('./e_components/e_nc_table_column.vue'))
   Vue.component('nc_pagination', () => import('./components/nc_pagination.vue'))
   Vue.component('nc_form', () => import('./components/nc_form.vue'))
   Vue.component('nc_form_item', () => import('./components/nc_form_item.vue'))
