@@ -109,7 +109,15 @@ export default {
             activeName: 'formConfig'
         };
     },
-
+    watch: {
+        componentList: {
+            handler() {
+                // console.log('watch componentList')
+                this.saveData()
+            },
+            deep: true,
+        },
+    },
     computed: {
         formProps() {
             if (!this.formConfig.formProps) return {};
@@ -139,6 +147,8 @@ export default {
     mounted() {
         console.log('configTools', this.configTools);
         window.document.body.classList.add('page-decorate-design');
+        //
+        this.loadData()
     },
     destroyed() {
         window.document.body.classList.remove('page-decorate-design');
@@ -150,6 +160,15 @@ export default {
         });
     },
     methods: {
+        saveData() {
+            localStorage.setItem('componentList', JSON.stringify(this.componentList))
+        },
+        loadData() {
+            const s = localStorage.getItem('componentList')
+            if (s) {
+                this.componentList = JSON.parse(s)
+            }
+        },
     }
 };
 </script>

@@ -4,7 +4,7 @@
             <nc_children :com_children="data_children" :com_params="{ ...com_params, ...data }">
             </nc_children>
         </template>
-        <slot v-bind:com_params="{ ...com_params, ...data }"></slot>
+        <slot v-if="data" v-bind:com_params="{ ...com_params, ...data }"></slot>
     </div>
 </template>
 
