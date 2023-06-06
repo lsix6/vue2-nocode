@@ -8,6 +8,9 @@
 </template>
 
 <script>
+
+import { get_e_children } from './e_utils'
+
 export default {
     install(Vue) {
         Vue.component('e_nc_table', this)
@@ -61,6 +64,19 @@ export default {
             const arr = [
             ]
             //
+            const cols = get_e_children(this, 'editorItem')
+            console.log('[e_nc_table] fields, cols', cols)
+            if (cols) {
+                cols.forEach(col => {
+                    const coms = get_e_children(col, 'getComValue')
+                    coms.forEach(com => {
+                        console.log('[e_nc_table] fields, getComValue()', com.getComValue())
+                        //
+                        arr.push(com.getComValue())
+                    })
+                })
+            }
+            //
             this.editorItem.childList.forEach(child => {
                 // console.log('[e_nc_table] fields, child', child)
                 const schemaOptions = child.componentValue.options.uiOptions
@@ -73,7 +89,7 @@ export default {
                     }
                 )
             })
-            // console.log('[e_nc_table] fields', arr)
+            console.log('[e_nc_table] fields', arr)
             //
             return arr
         },
