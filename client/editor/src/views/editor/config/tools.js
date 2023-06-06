@@ -3,7 +3,6 @@
  */
 
 // 基础组件
-import componentPackTableColumn from '../viewComponents/TableColumn';
 import componentPackInput from '../viewComponents/Input';
 import componentPackColor from '../viewComponents/Color';
 import componentPackInputNumber from '../viewComponents/InputNumber';
@@ -51,6 +50,7 @@ import componentPackObject from '../viewComponents/Object';
 import componentPackArray from '../viewComponents/Array';
 import componentPackDataSource from '../viewComponents/DataSource';
 import componentPackTable from '../viewComponents/Table';
+import componentPackTableColumn from '../viewComponents/TableColumn';
 
 /**
  * hidden 隐藏，不显示在工具栏
@@ -84,15 +84,15 @@ const tools = [
                 btnClass: 'w100',
                 componentPack: componentPackTable
             },
+            {
+                title: 'Table Column',
+                componentPack: componentPackTableColumn,
+            },
         ]
     },
     {
         groupName: '基础组件',
         componentList: [
-            {
-                title: 'Table Column',
-                componentPack: componentPackTableColumn,
-            },
             {
                 title: '输入框',
                 componentPack: componentPackInput
