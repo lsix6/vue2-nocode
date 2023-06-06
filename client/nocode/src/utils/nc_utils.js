@@ -1,10 +1,13 @@
 
 export const getPropValue = (obj, propName) => {
-    const names = propName.split('.')
-    let ret = obj
-    names.forEach(name => {
-        ret = ret[name]
-    })
+    let ret = null
+    if (propName) {
+        ret = obj
+        const names = propName.split('.')
+        names.forEach(name => {
+            ret = ret[name]
+        })
+    }
     //
     return ret
 }
