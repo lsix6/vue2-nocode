@@ -16,7 +16,6 @@ export function generateEditorItem(toolItem) {
 
     const ret = {
         ...toolItem,
-        isEdit: false,
         toolBar: {
             moveDownDisabled: false,
             moveUpDisabled: false,

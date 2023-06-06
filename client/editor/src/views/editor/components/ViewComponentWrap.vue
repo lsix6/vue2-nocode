@@ -1,11 +1,11 @@
 <template>
     <div :class="{
         [$style.viewBox]: true,
-        [$style.active]: editorItem.isEdit,
+        [$style.active]: isEdit,
         js_viewComponentWrap: true
     }" @click="handleClickView">
         <!-- <span :class="$style.formProperty"> {{ attrs.curNodePath }}</span> -->
-        <div v-if="editorItem.isEdit" :class="$style.editBar">
+        <div v-if="isEdit" :class="$style.editBar">
             <button :disabled="editorItem.toolBar.moveUpDisabled" :class="$style.toolBarBtn" class="el-icon-caret-top"
                 title="上移" type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveUp' })"></button>
             <button :disabled="editorItem.toolBar.moveDownDisabled" :class="$style.toolBarBtn" class="el-icon-caret-bottom"
@@ -38,6 +38,7 @@ export default {
         NestedEditor
     },
     mixins: [emitter],
+    inject: ['getCurEditorItem'],
     props: {
         showNestedEditor: {
             type: Function,
@@ -85,6 +86,10 @@ export default {
             console.log('[ViewComponentWrap] comFinalBind', finalBind)
             return finalBind
         },
+        isEdit() {
+            const curEditorItem = this.getCurEditorItem()
+            return (this.editorItem === curEditorItem)
+        },
     },
     mounted() {
         console.log('[ViewComponentWrap] mounted(), com_params', this.attrs.curNodePath, this.com_params)
@@ -97,7 +102,7 @@ export default {
         handleClickView(e) {
             // 阻止浏览器默认事件
             e.stopPropagation();
-            if (!this.editorItem.isEdit) {
+            if (!this.isEdit) {
                 this.showEditForm();
             } else {
                 // 设置当前选中tab
@@ -107,7 +112,6 @@ export default {
 
         // 显示编辑form
         showEditForm() {
-            this.editorItem.isEdit = true;
             // 打开时才注册一个关闭事件，关闭弹窗时移除事件
             this.closeHandle = (event) => {
                 // 点击的自己兄弟view关闭自己
@@ -127,7 +131,6 @@ export default {
             this.setCurEditorItem(this.editorItem);
         },
         hideEditForm() {
-            this.editorItem.isEdit = false;
             document.removeEventListener('click', this.closeHandle, true);
             this.setCurEditorItem(null);
         },

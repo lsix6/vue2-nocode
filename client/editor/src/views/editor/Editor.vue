@@ -93,7 +93,8 @@ export default {
         return {
             genFormProvide: {
                 fallbackLabel: true
-            }
+            },
+            getCurEditorItem: () => this.curEditorItem,
         };
     },
     data() {
