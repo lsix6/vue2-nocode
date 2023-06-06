@@ -1,6 +1,8 @@
 <template>
     <nc_data :data_sources="data_sources">
-        <slot></slot>
+        <template v-slot="slotProps">
+            <slot v-bind="slotProps"></slot>
+        </template>
     </nc_data>
 </template>
 
