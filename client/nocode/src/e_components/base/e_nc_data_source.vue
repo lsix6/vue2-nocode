@@ -29,7 +29,7 @@ export default {
             //
             const options = this.editorItem.componentValue.options
             options.forEach(item => {
-                ds['__ds_' + item.name] = {
+                ds[item.name] = {
                     api: {
                         url: item.api,
                         method: 'GET',
