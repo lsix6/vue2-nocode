@@ -3,7 +3,7 @@
         <div class="items-direction_right">
             <slot></slot>
         </div>
-        <nc_table v-bind="$props" :fields="fields"></nc_table>
+        <nc_component v-bind="finalBinds" :com_params="com_params"></nc_component>
     </div>
 </template>
 
@@ -17,20 +17,46 @@ export default {
             type: Object,
             default: () => ({})
         },
-        table_props: {
-            type: Object,
-            default: null
-        },
         com_params: {
             type: Object,
             default: null
         },
-        listData: {
-            type: Array,
-            default: () => [],
-        },
     },
     computed: {
+        finalBinds() {
+            const options = this.editorItem.componentValue.options
+            const binds = {
+                com_name: 'nc_table',
+                com_ref: 'list',
+                com_binds: [
+                    {
+                        prop_name: 'listData',
+                        field_name: options.uiOptions.bind,
+                    }
+                ],
+                com_props: {
+                    table_props: {
+                        stripe: true,
+                        height: '100%',
+                        'tooltip-effect': 'light',
+                    },
+                    fields: this.fields,
+                },
+                com_children: [
+                    {
+                        com_name: 'span',
+                        com_slot: 'empty',
+                        com_children: [
+                            {
+                                com_name: 'div',
+                                com_text: '暂 无 数 据',
+                            },
+                        ],
+                    }
+                ],
+            }
+            return binds
+        },
         fields() {
             const arr = [
             ]
