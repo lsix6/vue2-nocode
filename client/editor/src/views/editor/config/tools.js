@@ -52,6 +52,9 @@ import componentPackDataSource from '../viewComponents/DataSource';
 import componentPackTable from '../viewComponents/Table';
 import componentPackTableColumn from '../viewComponents/TableColumn';
 
+//
+import comPackEnum from '../viewComponents/Enum';
+
 /**
  * hidden 隐藏，不显示在工具栏
  * maxNum Number 最大可配置数
@@ -94,9 +97,14 @@ const tools = [
         groupName: '基础组件',
         componentList: [
             {
+                title: 'enum',
+                componentPack: comPackEnum
+            },
+            {
                 title: '输入框',
                 componentPack: componentPackInput
-            }, {
+            }, 
+            {
                 title: '数字(slider)', // 这里顺便必须在 componentPackInputNumber 前，导入匹配的时候优先匹配
                 componentPack: componentPackSlider
             }, {
