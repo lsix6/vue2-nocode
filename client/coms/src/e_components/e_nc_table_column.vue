@@ -37,21 +37,19 @@ export default {
             //
             const cols = get_e_children(this, 'editorItem')
             console.log('[e_nc_table_column] fields, cols', cols)
-            if (cols) {
-                cols.forEach(col => {
-                    const coms = get_e_children(col, 'getComValue')
-                    coms.forEach(com => {
-                        console.log('[e_nc_table_column] fields, getComValue()', com.getComValue())
-                        //
-                        column_components.push({
-                            ...com.getComValue(),
-                            com_field: {
-                                field_name: schemaOptions.prop
-                            },
-                        })
+            cols && cols.forEach(col => {
+                const coms = get_e_children(col, 'getComValue')
+                coms && coms.forEach(com => {
+                    console.log('[e_nc_table_column] fields, getComValue()', com.getComValue())
+                    //
+                    column_components.push({
+                        ...com.getComValue(),
+                        com_field: {
+                            field_name: schemaOptions.prop
+                        },
                     })
                 })
-            }
+            })
             //
             const com = {
                 column_props: {

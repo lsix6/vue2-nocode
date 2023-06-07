@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="items-direction_right">
+        <div class="items-direction_right" ref="slotRoot">
             <slot></slot>
         </div>
         <nc_component v-bind="finalBinds" :com_params="com_params"></nc_component>
@@ -23,6 +23,21 @@ export default {
         com_params: {
             type: Object,
             default: null
+        },
+    },
+    data() {
+        return {
+            fields: null,
+            observer: null,
+        }
+    },
+    watch: {
+        editorItem: {
+            handler() {
+                // console.log('watch editorItem')
+                this.updateFields()
+            },
+            deep: true,
         },
     },
     computed: {
@@ -60,45 +75,45 @@ export default {
             }
             return binds
         },
-        fields() {
-            const arr = [
-            ]
+    },
+    mounted() {
+        console.log('[e_nc_table] mounted()', this)
+        //
+        this.observer = new MutationObserver((mutationList) => {
+            console.log('[e_nc_table] mounted(), mutationList', mutationList)
+            //
+            this.updateFields()
+        })
+        // 监听 slot 节点
+        this.observer.observe(this.$refs.slotRoot, {
+            childList: true,
+            subtree: true,
+        })
+    },
+    beforeDestroy() {
+        // 解除监听
+        this.observer.disconnect()
+        this.observe = null
+    },
+    methods: {
+        updateFields() {
+            const arr = []
             //
             const cols = get_e_children(this, 'editorItem')
             console.log('[e_nc_table] fields, cols', cols)
-            if (cols) {
-                cols.forEach(col => {
-                    const coms = get_e_children(col, 'getComValue')
-                    coms.forEach(com => {
-                        console.log('[e_nc_table] fields, getComValue()', com.getComValue())
-                        //
-                        arr.push(com.getComValue())
-                    })
+            cols && cols.forEach(col => {
+                const coms = get_e_children(col, 'getComValue')
+                coms && coms.forEach(com => {
+                    console.log('[e_nc_table] fields, getComValue()', com.getComValue())
+                    //
+                    arr.push(com.getComValue())
                 })
-            }
-            //
-            this.editorItem.childList.forEach(child => {
-                // console.log('[e_nc_table] fields, child', child)
-                const schemaOptions = child.componentValue.options.uiOptions
-                arr.push(
-                    {
-                        column_props: {
-                            prop: schemaOptions.prop,
-                            label: schemaOptions.label,
-                        }
-                    }
-                )
             })
+            //
             console.log('[e_nc_table] fields', arr)
             //
-            return arr
+            this.fields = arr
         },
-    },
-    mounted() {
-        // console.log('[e_nc_table] mounted()', this)
-    },
-    beforeUpdate() {
-        // console.log('[e_nc_table] beforeUpdate()', this.editorItem)
     },
 }
 </script>
