@@ -24,34 +24,29 @@ export default {
             default: null
         },
     },
-    data() {
-        return {
-            text: '-',
-        }
-    },
-    mounted() {
-        // console.log('[nc_enum] mounted', this.value, typeof (this.value))
-        //
-        this.updateText()
-    },
-    beforeUpdate() {
-        // console.log('[nc_enum] beforeUpdate', this.value, typeof (this.value))
-        //
-        this.updateText()
-    },
-    methods: {
-        updateText() {
+    computed: {
+        text() {
+            let ret = '-'
+            //
             if (this.value !== undefined) {
                 if (this.data_source_name) {
                     const enumMap = this.com_params[this.data_source_name]
                     if (enumMap) {
-                        this.text = enumMap['' + this.value]
+                        ret = enumMap['' + this.value]
                     }
                 } else if (this.enum_map) {
-                    this.text = this.enum_map['' + this.value]
+                    ret = this.enum_map['' + this.value]
                 }
             }
+            //
+            return ret
         },
+    },
+    mounted() {
+        // console.log('[nc_enum] mounted', this.value, typeof (this.value))
+    },
+    beforeUpdate() {
+        // console.log('[nc_enum] beforeUpdate', this.value, this.data_source_name)
     },
 }
 </script>
