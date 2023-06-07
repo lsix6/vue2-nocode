@@ -38,6 +38,14 @@ export default {
             data: null,
         }
     },
+    watch: {
+        data_sources: {
+            handler() {
+                this.refreshAll()
+            },
+            deep: true,
+        },
+    },
     mounted() {
         // console.log('[nc_data] mounted, com_params:', this.com_params)
         this.refreshAll()
@@ -67,8 +75,12 @@ export default {
                         this.$el.dispatchEvent(new Event('loaded'))
                         //
                         resolve(true)
+                    }).catch(errs => {
+                        this.data = {}
+                        console.error('[nc_data] refreshAll, fetch_data errors:', errs)
                     })
                 } else {
+                    this.data = {}
                     resolve(true)
                 }
             })
@@ -84,6 +96,8 @@ export default {
                         }
                         this.data[dsName] = result
                         console.log('[nc_data] refresh,', params, this.data)
+                    }).catch(e => {
+                        console.error('[nc_data] refresh, fetch_data error:', e)
                     })
                 } else {
                     resolve(true)

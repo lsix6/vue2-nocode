@@ -21,11 +21,33 @@ export default {
             default: null
         },
     },
-    computed: {
-        data_sources() {
+    data() {
+        return {
+            data_sources: null,
+        }
+    },
+    watch: {
+        'editorItem.componentValue': {
+            handler() {
+                console.log('[e_nc_data_source] watch, editorItem', this.editorItem)
+                //
+                this.updateDataSources()
+            },
+            deep: true,
+        },
+    },
+    mounted() {
+        // console.log('[e_nc_data_source] mounted()', this)
+        this.updateDataSources()
+    },
+    beforeUpdate() {
+        // console.log('[e_nc_data_source] beforeUpdate()', this.editorItem)
+    },
+    methods: {
+        updateDataSources() {
             const ds = {}
             //
-            console.log('[e_nc_data_source] data_sources, editorItem', this.editorItem)
+            console.log('[e_nc_data_source] updateDataSources, editorItem', this.editorItem)
             //
             const options = this.editorItem.componentValue.options
             options.forEach(item => {
@@ -36,16 +58,10 @@ export default {
                     },
                 }
             })
-            console.log('[e_nc_data_source] data_sources, ds', ds)
+            console.log('[e_nc_data_source] updateDataSources, ds', ds)
             //
-            return ds
+            this.data_sources = ds
         },
-    },
-    mounted() {
-        // console.log('[e_nc_data_source] mounted()', this)
-    },
-    beforeUpdate() {
-        // console.log('[e_nc_data_source] beforeUpdate()', this.editorItem)
     },
 }
 </script>
