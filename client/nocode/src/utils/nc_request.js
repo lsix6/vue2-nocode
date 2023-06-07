@@ -24,13 +24,15 @@ export const request_api = (api, data) => {
 }
 
 export const fetch_data = (com, fetchData) => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         if (fetchData.api) {
             //  请求 api 获取数据
             const fetchParams = get_params(com, fetchData.fetch_params)
             const requestParams = { ...fetchParams }
             request_api(fetchData.api, requestParams).then(data => {
                 resolve(data)
+            }).catch(e => {
+                reject(e)
             })
         } else {
             // 参数里获取到的就是数据

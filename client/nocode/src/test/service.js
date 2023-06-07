@@ -234,7 +234,7 @@ const huji = () => {
 }
 
 export const request_api = function (api, data) {
-    console.log('request_api', api.url, api.method, data)
+    console.log('[service] request_api', api.url, api.method, data)
     //
     let process = null
     if (api.url === 'product/list') {
@@ -271,7 +271,7 @@ export const request_api = function (api, data) {
                 }, 0);
             })
         } else {
-            reject()
+            reject(`[service] request_api, not found ${api.url}`)
         }
     })
 }
