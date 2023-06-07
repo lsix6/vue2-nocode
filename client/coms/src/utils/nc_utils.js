@@ -5,7 +5,9 @@ export const getPropValue = (obj, propName) => {
         ret = obj
         const names = propName.split('.')
         names.forEach(name => {
-            ret = ret[name]
+            if (ret) {
+                ret = ret[name]
+            }
         })
     }
     //
