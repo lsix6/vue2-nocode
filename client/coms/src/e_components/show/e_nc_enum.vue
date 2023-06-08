@@ -1,6 +1,7 @@
 <template>
     <div style="font-size: 14px;">
-        enum
+        [enum]
+        <div>{{ prop }}</div>
     </div>
 </template>
 
@@ -13,6 +14,14 @@ export default {
         editorItem: {
             type: Object,
             default: null,
+        },
+    },
+    computed: {
+        prop() {
+            if (this.editorItem) {
+                return this.editorItem.componentValue.options.uiOptions.prop
+            }
+            return ''
         },
     },
     mounted() {

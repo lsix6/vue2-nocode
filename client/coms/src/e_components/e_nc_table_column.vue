@@ -1,6 +1,9 @@
 <template>
     <div style="font-size: 14px;">
-        {{ label }}
+        [column]
+        <div>
+            {{ label }}
+        </div>
         <slot></slot>
     </div>
 </template>

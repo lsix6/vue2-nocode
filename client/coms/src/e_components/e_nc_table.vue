@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div style="font-size: 14px;">
+            [table]
+        </div>
         <div class="items-direction_right" ref="slotRoot">
             <slot></slot>
         </div>
