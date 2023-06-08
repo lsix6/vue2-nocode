@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { get_e_children } from './e_utils'
+import { find_e_com_in_children } from './e_utils'
 
 export default {
     install(Vue) {
@@ -35,20 +35,14 @@ export default {
             //
             const column_components = []
             //
-            const cols = get_e_children(this, 'editorItem')
-            console.log('[e_nc_table_column] fields, cols', cols)
-            cols && cols.forEach(col => {
-                const coms = get_e_children(col, 'getComValue')
-                coms && coms.forEach(com => {
-                    console.log('[e_nc_table_column] fields, getComValue()', com.getComValue())
-                    //
-                    column_components.push({
-                        ...com.getComValue(),
-                        com_field: {
-                            field_name: schemaOptions.prop
-                        },
-                    })
-                })
+            const childList = this.editorItem.childList
+            childList && childList.forEach(child => {
+                const com = find_e_com_in_children(this, 'getComValue', child.id)
+                // console.log('[e_nc_table_column] find_e_com_in_children', com)
+                //
+                if (com) {
+                    column_components.push(com.getComValue())
+                }
             })
             //
             const com = {

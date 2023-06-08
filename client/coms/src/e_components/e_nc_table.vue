@@ -9,7 +9,7 @@
 
 <script>
 
-import { get_e_children } from './e_utils'
+import { find_e_com_in_children } from './e_utils'
 
 export default {
     install(Vue) {
@@ -102,15 +102,14 @@ export default {
         updateFields() {
             const arr = []
             //
-            const cols = get_e_children(this, 'editorItem')
-            console.log('[e_nc_table] fields, cols', cols)
-            cols && cols.forEach(col => {
-                const coms = get_e_children(col, 'getComValue')
-                coms && coms.forEach(com => {
-                    console.log('[e_nc_table] fields, getComValue()', com.getComValue())
-                    //
+            const childList = this.editorItem.childList
+            childList && childList.forEach(child => {
+                const com = find_e_com_in_children(this, 'getComValue', child.id)
+                // console.log('[e_nc_table] find_e_com_in_children', com)
+                //
+                if (com) {
                     arr.push(com.getComValue())
-                })
+                }
             })
             //
             console.log('[e_nc_table] fields', arr)

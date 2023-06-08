@@ -1,18 +1,23 @@
 
-export const get_e_children = (eCom, propName) => {
-    let children = null
+export const find_e_com_in_children = (eCom, propName, id) => {
     //
-    function check_e_children(arr) {
-        if (arr.length > 0) {
-            const first = arr[0]
-            if (first[propName]) {
-                children = arr
-            } else {
-                check_e_children(first.$children)
+    function find_in_children(children) {
+        let com = null
+        if (children) {
+            for (let child of children) {
+                if (child[propName] && child.editorItem.id === id) {
+                    com = child
+                } else {
+                    com = find_in_children(child.$children)
+                }
+                //
+                if (com) {
+                    break
+                }
             }
         }
+        return com
     }
-    check_e_children(eCom.$children)
     //
-    return children
+    return find_in_children(eCom.$children)
 }
