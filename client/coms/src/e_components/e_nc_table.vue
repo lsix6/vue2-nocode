@@ -30,15 +30,20 @@ export default {
             fields: null,
             observer: null,
             refreshCounter: 0,
+            preEditorItem: '',
         }
     },
     watch: {
         editorItem: {
             handler() {
-                // console.log('watch editorItem')
-                this.updateFields()
-                //
-                this.refreshCounter++
+                const s = JSON.stringify(this.editorItem)
+                if (s !== this.preEditorItem) {
+                    this.preEditorItem = s
+                    //
+                    this.updateFields()
+                    //
+                    this.refreshCounter++
+                }
             },
             deep: true,
         },
