@@ -23,6 +23,9 @@ export default {
             const options = this.editorItem.componentValue.options
             const obj = {
                 com_name: "nc_enum",
+                com_field: {
+                    field_name: options.uiOptions.prop
+                },
                 com_props: {
                     data_source_name: options.uiOptions.data_source_name
                 }

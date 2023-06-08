@@ -23,6 +23,10 @@ export default {
                 uiOptions: {
                     type: 'object',
                     properties: {
+                        prop: {
+                            type: 'string',
+                            title: 'prop',
+                        },
                         data_source_name: {
                             type: 'string',
                             title: 'data source',
