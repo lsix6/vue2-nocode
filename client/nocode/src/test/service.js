@@ -32,6 +32,10 @@ const listUsers = [
         gender: 2,
         huji: 3,
         birthday: '2000-05-01',
+        obj: {
+            a: 2,
+            b: 3,
+        },
     },
     {
         _id: '2',
@@ -41,6 +45,10 @@ const listUsers = [
         gender: 1,
         huji: 5,
         birthday: '2001-02-01',
+        obj: {
+            a: 1,
+            b: 5,
+        },
     },
     {
         _id: '3',
@@ -50,6 +58,10 @@ const listUsers = [
         gender: 2,
         huji: 1,
         birthday: '2002-05-11',
+        obj: {
+            a: 2,
+            b: 1,
+        },
     },
 ]
 
