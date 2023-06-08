@@ -3,7 +3,7 @@
         <div class="items-direction_right" ref="slotRoot">
             <slot></slot>
         </div>
-        <nc_component v-bind="finalBinds" :com_params="com_params"></nc_component>
+        <nc_component :key="refreshCounter" v-bind="finalBinds" :com_params="com_params"></nc_component>
     </div>
 </template>
 
@@ -29,6 +29,7 @@ export default {
         return {
             fields: null,
             observer: null,
+            refreshCounter: 0,
         }
     },
     watch: {
@@ -36,6 +37,8 @@ export default {
             handler() {
                 // console.log('watch editorItem')
                 this.updateFields()
+                //
+                this.refreshCounter++
             },
             deep: true,
         },
