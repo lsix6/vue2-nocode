@@ -35,6 +35,9 @@ export default {
                 com_field: {
                     field_name: options.uiOptions.prop
                 },
+                com_props: {
+                    items_direction: options.uiOptions.items_direction,
+                },
             }
             return binds
         },

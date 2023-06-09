@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :style="{ display: 'flex', 'flex-direction': items_direction }">
         <slot v-bind="{ com_params: { ...com_params, ...value } }"></slot>
     </div>
 </template>
@@ -14,6 +14,10 @@ export default {
         value: {
             type: Object,
             default: null
+        },
+        items_direction: {
+            type: String,
+            default: 'column'
         },
         com_params: {
             type: Object,

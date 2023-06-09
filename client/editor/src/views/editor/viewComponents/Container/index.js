@@ -23,6 +23,17 @@ export default {
                 uiOptions: {
                     type: 'object',
                     properties: {
+                        items_direction: {
+                            type: 'string',
+                            title: 'items dir',
+                            enum: [
+                                'row',
+                                'row-reverse',
+                                'column',
+                                'column-reverse',
+                            ],
+                            default: 'column'
+                        },
                         prop: {
                             type: 'string',
                             title: 'prop',
