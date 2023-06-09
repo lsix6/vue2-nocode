@@ -1,5 +1,5 @@
 <template>
-  <nc_component v-if="com_data && com_data.com_version === '1'" v-bind="com_data">
+  <nc_component v-if="comObj && comObj.com_version === '1'" v-bind="comObj">
   </nc_component>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      com_data: null
+      comObj: null
     }
   },
   watch: {
@@ -31,7 +31,7 @@ export default {
       const pageRoute = path.substring(nc_view_route.length)
       console.log('[nc_view] switchPage', path, pageRoute)
       // 先要把根节点清空一下才能保证子组件的生命周期被正确调用
-      this.com_data = null
+      this.comObj = null
       // 获取页面数据的函数
       function getPageData() {
         return new Promise(resolve => {
@@ -48,8 +48,8 @@ export default {
       setTimeout(() => {
         // 延迟一帧后获取数据
         getPageData().then(pageData => {
-          this.com_data = pageData
-          // console.log('[nc_view] com_data', this.com_data)
+          this.comObj = pageData
+          // console.log('[nc_view] comObj', this.comObj)
         })
       }, 0)
     }
