@@ -51,11 +51,44 @@ export default {
             //
             const options = this.editorItem.componentValue.options
             options.forEach(item => {
-                ds[item.name] = {
-                    api: {
-                        url: item.api,
-                        method: 'GET',
-                    },
+                if (item.api) {
+                    ds[item.name] = {
+                        api: {
+                            url: item.api,
+                            method: 'GET',
+                        },
+                    }
+                } else if (item.enum.length > 0) {
+                    const enumMap = {}
+                    item.enum.forEach((v, i) => {
+                        enumMap[i] = v
+                    })
+                    ds[item.name] = {
+                        fetch_params: [
+                            {
+                                enumMap,
+                                params_fields: [
+                                    "enumMap"
+                                ]
+                            }
+                        ]
+                    }
+                } else if (item.obj) {
+                    try {
+                        const objMap = JSON.parse(item.obj)
+                        ds[item.name] = {
+                            fetch_params: [
+                                {
+                                    objMap,
+                                    params_fields: [
+                                        "objMap"
+                                    ]
+                                }
+                            ]
+                        }
+                    } catch (e) {
+                        console.warn('[e_nc_data_source] updateDataSources, parse error:', item.obj)
+                    }
                 }
             })
             console.log('[e_nc_data_source] updateDataSources, ds', ds)

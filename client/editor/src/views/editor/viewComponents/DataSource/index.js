@@ -34,8 +34,16 @@ export default {
                     },
                     enum: {
                         title: 'enum',
+                        type: 'array',
+                        minItems: 0,
+                        items: {
+                            type: 'string',
+                        }
+                    },
+                    obj: {
+                        title: 'object',
                         type: 'string'
-                    }
+                    },
                 }
             }
         }
