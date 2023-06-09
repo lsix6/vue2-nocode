@@ -21,7 +21,7 @@ export default {
             type: Object,
             default: () => ({})
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },

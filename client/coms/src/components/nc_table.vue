@@ -4,7 +4,7 @@
             <el-table-column v-if="field.column_components" :key="'_if' + index" v-bind="field.column_props">
                 <template slot-scope="scope">
                     <nc_component v-for="(com, comIndex) in field.column_components" :key="comIndex"
-                        :com_params="{ ...com_params, ...scope.row }" v-bind="com"></nc_component>
+                        :com_data="{ ...com_data, ...scope.row }" v-bind="com"></nc_component>
                 </template>
             </el-table-column>
             <el-table-column v-else :key="'_else' + index" v-bind="field.column_props">
@@ -31,7 +31,7 @@ export default {
             type: Array,
             default: () => []
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },
@@ -55,7 +55,7 @@ export default {
         },
     },
     mounted() {
-        // console.log('[nc_table] mounted, com_params:', this.com_params)
+        // console.log('[nc_table] mounted, com_data:', this.com_data)
     },
     beforeUpdate() {
         // console.log('[nc_table] beforeUpdate, fields:', this.fields)

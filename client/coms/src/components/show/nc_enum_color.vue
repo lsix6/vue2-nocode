@@ -18,7 +18,7 @@ export default {
             type: Object,
             default: null
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },
@@ -42,7 +42,7 @@ export default {
         updateColor() {
             if (this.value !== undefined) {
                 if (this.data_source_name) {
-                    const enumMap = this.com_params[this.data_source_name]
+                    const enumMap = this.com_data[this.data_source_name]
                     if (enumMap) {
                         this.color = enumMap['' + this.value]
                     }

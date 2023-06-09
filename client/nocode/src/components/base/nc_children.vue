@@ -4,7 +4,7 @@
             v-for="(child, index) in com_children" 
             :key="'child_' + index" 
             v-bind="child"
-            :com_params="com_params" 
+            :com_data="com_data" 
             :slot="child.com_slot"
         >
         </nc_component>
@@ -22,7 +22,7 @@ export default {
             type: Array,
             default: () => []
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },

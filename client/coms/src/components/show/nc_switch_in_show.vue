@@ -20,16 +20,16 @@ export default {
             type: Object,
             default: null
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },
     },
     mounted() {
-        // console.log('[nc_switch_in_show] mounted', this.value, typeof (this.value), this.com_params)
+        // console.log('[nc_switch_in_show] mounted', this.value, typeof (this.value), this.com_data)
     },
     beforeUpdate() {
-        // console.log('[nc_switch_in_show] mounted', this.value, typeof (this.value), this.com_params)
+        // console.log('[nc_switch_in_show] mounted', this.value, typeof (this.value), this.com_data)
     },
     methods: {
         onChange(v) {
@@ -40,7 +40,7 @@ export default {
                 // console.log('fieldName', fieldName)
                 if (fieldName) {
                     const data = {
-                        _id: this.com_params._id,
+                        _id: this.com_data._id,
                         [fieldName]: v
                     }
                     //

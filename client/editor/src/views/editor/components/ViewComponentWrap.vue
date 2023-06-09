@@ -60,7 +60,7 @@ export default {
             type: null,
             default: null
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },
@@ -76,7 +76,7 @@ export default {
         comFinalBind() {
             let finalBind = {
                 ...this.editorItem.componentPack.comSchema,
-                com_params: this.com_params,
+                com_data: this.com_data,
                 com_props: {
                     ...this.editorItem.componentPack?.comSchema?.com_props,
                     editorItem: this.editorItem,
@@ -92,7 +92,7 @@ export default {
         },
     },
     mounted() {
-        console.log('[ViewComponentWrap] mounted(), com_params', this.attrs.curNodePath, this.com_params)
+        console.log('[ViewComponentWrap] mounted(), com_data', this.attrs.curNodePath, this.com_data)
     },
     beforeDestroy() {
         this.hideEditForm();

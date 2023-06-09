@@ -24,7 +24,7 @@ export default {
             type: String,
             default: ''
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },
@@ -40,9 +40,9 @@ export default {
         },
     },
     mounted() {
-        console.log('[nc_radio_group] mounted', this.value, typeof (this.value), this.com_params)
+        console.log('[nc_radio_group] mounted', this.value, typeof (this.value), this.com_data)
         //
-        this.enum_map = this.com_params[this.data_source_name]
+        this.enum_map = this.com_data[this.data_source_name]
     },
     methods: {
         onInput(v) {

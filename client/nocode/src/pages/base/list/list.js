@@ -57,7 +57,7 @@ export const createList = (moduleName, moduleFields) => {
                             path: 'edit',
                             route_params: [
                                 {
-                                    params_source: 'com_params',
+                                    params_source: 'com_data',
                                     params_fields: [
                                         '_id',
                                     ]
@@ -79,7 +79,7 @@ export const createList = (moduleName, moduleFields) => {
             },
             request_params: [
                 {
-                    params_source: 'com_params',
+                    params_source: 'com_data',
                     params_fields: [
                         '_id'
                     ],

@@ -1,6 +1,6 @@
 <template>
     <div :style="{ display: 'flex', 'flex-direction': items_direction }">
-        <slot v-bind="{ com_params: { ...com_params, ...value } }"></slot>
+        <slot v-bind="{ com_data: { ...com_data, ...value } }"></slot>
     </div>
 </template>
 
@@ -19,13 +19,13 @@ export default {
             type: String,
             default: 'column'
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },
     },
     mounted() {
-        console.log('[nc_container] mounted, com_params:', this.com_params, this.value)
+        console.log('[nc_container] mounted, com_data:', this.com_data, this.value)
     },
 }
 </script>

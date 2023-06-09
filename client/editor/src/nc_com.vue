@@ -1,5 +1,5 @@
 <template>
-    <component :is="com_name" v-bind="com_props" :com_params="com_params">
+    <component :is="com_name" v-bind="com_props" :com_data="com_data">
         <template v-slot="slotProps">
             <slot v-bind="slotProps"></slot>
         </template>
@@ -53,7 +53,7 @@ export default {
             type: Object,
             default: null
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },

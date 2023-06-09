@@ -453,7 +453,7 @@
                                                                                         "path": "edit",
                                                                                         "route_params": [
                                                                                             {
-                                                                                                "params_source": "com_params",
+                                                                                                "params_source": "com_data",
                                                                                                 "params_fields": [
                                                                                                     "_id"
                                                                                                 ]
@@ -485,7 +485,7 @@
                                                                                         },
                                                                                         "request_params": [
                                                                                             {
-                                                                                                "params_source": "com_params",
+                                                                                                "params_source": "com_data",
                                                                                                 "params_fields": [
                                                                                                     "_id"
                                                                                                 ]

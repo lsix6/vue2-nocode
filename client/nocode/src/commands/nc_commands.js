@@ -14,7 +14,7 @@ function clone(obj) {
 }
 
 const execute_command = async (com, command, cmd_data) => {
-    console.log('[nc_commands] execute_command, cmd_name, command, cmd_data, com_params:', command.cmd_name, clone(command), clone(cmd_data), clone(com.com_params))
+    console.log('[nc_commands] execute_command, cmd_name, command, cmd_data, com_data:', command.cmd_name, clone(command), clone(cmd_data), clone(com.com_data))
     //
     const cmd_func = nc_command_functions[command.cmd_name]
     if (cmd_func) {

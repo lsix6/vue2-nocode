@@ -27,7 +27,7 @@ export default {
             type: String,
             default: ''
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },
@@ -43,7 +43,7 @@ export default {
         },
     },
     mounted() {
-        // console.log('[nc_select] mounted', this.value, typeof (this.value), this.com_params)
+        // console.log('[nc_select] mounted', this.value, typeof (this.value), this.com_data)
         //
         if (this.enum_map) {
             for (let k in this.enum_map) {
@@ -53,7 +53,7 @@ export default {
                 })
             }
         }
-        const dsMap = this.com_params[this.data_source_name]
+        const dsMap = this.com_data[this.data_source_name]
         if (dsMap) {
             for (let k in dsMap) {
                 this.enumArr.push({

@@ -18,7 +18,7 @@ export default {
             type: Object,
             default: null,
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },
@@ -31,7 +31,7 @@ export default {
                 com_field: {
                     field_name: options.uiOptions.prop
                 },
-                com_params: this.com_params,
+                com_data: this.com_data,
             }
             return binds
         },

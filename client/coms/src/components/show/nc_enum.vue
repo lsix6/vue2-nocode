@@ -19,7 +19,7 @@ export default {
             type: Object,
             default: null
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },
@@ -32,8 +32,8 @@ export default {
                 ret = this.value
                 //
                 if (this.data_source_name) {
-                    if (this.com_params) {
-                        const enumMap = this.com_params[this.data_source_name]
+                    if (this.com_data) {
+                        const enumMap = this.com_data[this.data_source_name]
                         if (enumMap) {
                             ret = enumMap['' + this.value]
                         }
@@ -47,7 +47,7 @@ export default {
         },
     },
     mounted() {
-        console.log('[nc_enum] mounted', this.value, typeof (this.value), this.com_params)
+        console.log('[nc_enum] mounted', this.value, typeof (this.value), this.com_data)
     },
     beforeUpdate() {
         // console.log('[nc_enum] beforeUpdate', this.value, this.data_source_name)

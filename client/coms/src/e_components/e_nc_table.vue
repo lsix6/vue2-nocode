@@ -6,7 +6,7 @@
         <div ref="slotRoot" style="display: flex; flex-direction: row;">
             <slot></slot>
         </div>
-        <nc_component :key="refreshCounter" v-bind="finalBinds" :com_params="com_params"></nc_component>
+        <nc_component :key="refreshCounter" v-bind="finalBinds" :com_data="com_data"></nc_component>
     </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
             type: Object,
             default: () => ({})
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },

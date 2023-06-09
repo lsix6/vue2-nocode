@@ -54,7 +54,7 @@ export default {
             type: Object,
             default: null
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },
@@ -64,7 +64,7 @@ export default {
             if (this.com_binds) {
                 let m = {}
                 this.com_binds.forEach(bind => {
-                    const fieldValue = getPropValue(this.com_params, bind.field_name)
+                    const fieldValue = getPropValue(this.com_data, bind.field_name)
                     if (!(bind.field_value === null || bind.field_value === undefined)) {
                         m[bind.prop_name] = (fieldValue === bind.field_value)
                     } else {
@@ -79,7 +79,7 @@ export default {
             if (this.com_syncs) {
                 let m = {}
                 this.com_syncs.forEach(sync => {
-                    const fieldValue = getPropValue(this.com_params, sync.field_name)
+                    const fieldValue = getPropValue(this.com_data, sync.field_name)
                     if (!(sync.field_value === null || sync.field_value === undefined)) {
                         m[sync.prop_name] = (fieldValue === sync.field_value)
                     } else {
@@ -93,8 +93,8 @@ export default {
         fields() {
             if (this.com_field) {
                 let m = {}
-                // console.log('[nc_component] fields, ', this.com_params, this.com_field.field_name)
-                const fieldValue = getPropValue(this.com_params, this.com_field.field_name)
+                // console.log('[nc_component] fields, ', this.com_data, this.com_field.field_name)
+                const fieldValue = getPropValue(this.com_data, this.com_field.field_name)
                 if (this.com_field.prop_name) {
                     m[this.com_field.prop_name] = fieldValue
                 } else {
@@ -116,11 +116,11 @@ export default {
             return ret
         },
         shouldShow() {
-            // console.log('[nc_component] shouldShow', this.com_name, this.com_params, this.com_if)
-            // const ret = (!this.com_if || (this.com_params[this.com_if.field_name] === this.com_if.field_value))
+            // console.log('[nc_component] shouldShow', this.com_name, this.com_data, this.com_if)
+            // const ret = (!this.com_if || (this.com_data[this.com_if.field_name] === this.com_if.field_value))
             let ret = true
             if (this.com_if) {
-                const a = getPropValue(this.com_params, this.com_if.field_name)
+                const a = getPropValue(this.com_data, this.com_if.field_name)
                 const b = this.com_if.field_value
                 const s = this.com_if.compare_symbol || '='
                 if (s === '=') {
@@ -157,8 +157,8 @@ export default {
                         props: {
                             // 子组件的数据
                             ...child,
-                            // 把 'com_params' 传入子组件
-                            com_params: this.com_params,
+                            // 把 'com_data' 传入子组件
+                            com_data: this.com_data,
                         },
                         // 子组件所在的插槽
                         slot: child.com_slot,
@@ -179,7 +179,7 @@ export default {
             props: {
                 ...this.finalBinds,
                 com_props: this.com_props,
-                com_params: this.com_params,
+                com_data: this.com_data,
             },
             scopedSlots: this.$scopedSlots,
             ref: 'com',
@@ -195,7 +195,7 @@ export default {
         return vnode
     },
     beforeUpdate() {
-        // console.log('[nc_component] beforeUpdate', this.com_name, this.com_params)
+        // console.log('[nc_component] beforeUpdate', this.com_name, this.com_data)
     },
     created() {
         // console.log('[nc_component] created', this.com_name, this.com_ref, this.$refs.com)
@@ -256,7 +256,7 @@ export default {
                     // console.log('[nc_component] onInput, value: ', value, this)
                     if (this.com_field) {
                         let v = parseValue(this.com_field.field_type, value)
-                        setPropValue(this.com_params, this.com_field.field_name, v, this)
+                        setPropValue(this.com_data, this.com_field.field_name, v, this)
                     }
                 }
                 //
@@ -276,7 +276,7 @@ export default {
                     eventsMap[event_name] = (value) => {
                         console.log('[nc_component] onSync, value: ', value, this)
                         let v = parseValue(sync.field_type, value)
-                        setPropValue(this.com_params, sync.field_name, v, this)
+                        setPropValue(this.com_data, sync.field_name, v, this)
                     }
                     //
                     if (comRef.$on) {

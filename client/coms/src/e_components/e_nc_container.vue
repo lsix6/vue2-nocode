@@ -3,7 +3,7 @@
         <div style="font-size: 14px;">
             [container]
         </div>
-        <nc_component :com_params="com_params" v-bind="finalBinds">
+        <nc_component :com_data="com_data" v-bind="finalBinds">
             <template v-slot="slotProps">
                 <slot v-bind="slotProps"></slot>
             </template>
@@ -22,7 +22,7 @@ export default {
             type: Object,
             default: () => ({})
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },

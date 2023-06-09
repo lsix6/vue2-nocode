@@ -11,7 +11,7 @@
 } : {}" style="flex: 1;">
             <ViewComponentWrap :form-data="formData" :editor-item="item" :drag-options="dragOptions"
                 :show-nested-editor="showNestedEditor" :form-props="formProps" @onOperate="handleItemOperate"
-                :com_params="com_params">
+                :com_data="com_data">
             </ViewComponentWrap>
         </div>
         <template slot="footer">
@@ -51,7 +51,7 @@ export default {
             type: null,
             default: null
         },
-        com_params: {
+        com_data: {
             type: Object,
             default: null
         },
@@ -65,7 +65,7 @@ export default {
     created() {
     },
     mounted() {
-        console.log('[NestedEditor] mounted(), com_params', this.com_params)
+        console.log('[NestedEditor] mounted(), com_data', this.com_data)
     },
     methods: {
         showNestedEditor(editorItem) {

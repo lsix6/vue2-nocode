@@ -22,8 +22,8 @@ export const get_params = (com, paramsDef, cmdData) => {
             const func = nc_params_source[obj.params_source]
             if (func) {
                 source = func(obj)
-            } else if (obj.params_source === 'com_params') {
-                source = com.com_params
+            } else if (obj.params_source === 'com_data') {
+                source = com.com_data
             } else if (obj.params_source === 'com_ref') {
                 const ref = get_com_ref(obj.params_com_ref)
                 if (ref) {

@@ -11,7 +11,7 @@ const commands = {
             request_api(command.cmd_params.api, requestParams).then(data => {
                 console.log(`[nc_commands_request] request_api('${command.cmd_params.api}') return`, data)
                 if (data) {
-                    Object.assign(com.com_params, data)
+                    Object.assign(com.com_data, data)
                 }
                 //
                 resolve(true)
