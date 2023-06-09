@@ -32,9 +32,11 @@ export default {
                 ret = this.value
                 //
                 if (this.data_source_name) {
-                    const enumMap = this.com_params[this.data_source_name]
-                    if (enumMap) {
-                        ret = enumMap['' + this.value]
+                    if (this.com_params) {
+                        const enumMap = this.com_params[this.data_source_name]
+                        if (enumMap) {
+                            ret = enumMap['' + this.value]
+                        }
                     }
                 } else if (this.enum_map) {
                     ret = this.enum_map['' + this.value]
@@ -45,7 +47,7 @@ export default {
         },
     },
     mounted() {
-        console.log('[nc_enum] mounted', this.value, typeof (this.value))
+        console.log('[nc_enum] mounted', this.value, typeof (this.value), this.com_params)
     },
     beforeUpdate() {
         // console.log('[nc_enum] beforeUpdate', this.value, this.data_source_name)
