@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { getPropValue } from '@/utils/nc_utils'
+
 export default {
     install(Vue) {
         Vue.component('nc_enum', this)
@@ -33,7 +35,7 @@ export default {
                 //
                 if (this.data_source_name) {
                     if (this.com_data) {
-                        const enumMap = this.com_data[this.data_source_name]
+                        const enumMap = getPropValue(this.com_data, this.data_source_name)
                         if (enumMap) {
                             ret = enumMap['' + this.value]
                         }
