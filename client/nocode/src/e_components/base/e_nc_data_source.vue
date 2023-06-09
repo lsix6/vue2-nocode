@@ -1,9 +1,14 @@
 <template>
-    <nc_data :data_sources="data_sources">
-        <template v-slot="slotProps">
-            <slot v-bind="slotProps"></slot>
-        </template>
-    </nc_data>
+    <div>
+        <div style="font-size: 14px;">
+            [data source]
+        </div>
+        <nc_data :data_sources="data_sources">
+            <template v-slot="slotProps">
+                <slot v-bind="slotProps"></slot>
+            </template>
+        </nc_data>
+    </div>
 </template>
 
 <script>
@@ -61,7 +66,7 @@ export default {
                 } else if (item.enum.length > 0) {
                     const enumMap = {}
                     item.enum.forEach((v, i) => {
-                        enumMap[i] = v
+                        enumMap[(i + 1)] = v
                     })
                     ds[item.name] = {
                         fetch_params: [
