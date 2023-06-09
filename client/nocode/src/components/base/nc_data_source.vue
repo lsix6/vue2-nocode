@@ -13,7 +13,7 @@ import { fetch_data } from '../../utils/nc_request'
 
 export default {
     install(Vue) {
-        Vue.component('nc_data', this)
+        Vue.component('nc_data_source', this)
     },
     props: {
         node_props: {
@@ -47,7 +47,7 @@ export default {
         },
     },
     mounted() {
-        // console.log('[nc_data] mounted, com_params:', this.com_params)
+        // console.log('[nc_data_source] mounted, com_params:', this.com_params)
         this.refreshAll()
     },
     methods: {
@@ -71,13 +71,13 @@ export default {
                             this.data[ds.set_name] = results[i]
                         })
                         //
-                        console.log('[nc_data] refreshAll, data:', this.data)
+                        console.log('[nc_data_source] refreshAll, data:', this.data)
                         this.$el.dispatchEvent(new Event('loaded'))
                         //
                         resolve(true)
                     }).catch(errs => {
                         this.data = {}
-                        console.error('[nc_data] refreshAll, fetch_data errors:', errs)
+                        console.error('[nc_data_source] refreshAll, fetch_data errors:', errs)
                     })
                 } else {
                     this.data = {}
@@ -95,9 +95,9 @@ export default {
                             ...this.data,
                         }
                         this.data[dsName] = result
-                        console.log('[nc_data] refresh,', params, this.data)
+                        console.log('[nc_data_source] refresh,', params, this.data)
                     }).catch(e => {
-                        console.error('[nc_data] refresh, fetch_data error:', e)
+                        console.error('[nc_data_source] refresh, fetch_data error:', e)
                     })
                 } else {
                     resolve(true)

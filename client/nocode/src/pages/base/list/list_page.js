@@ -21,7 +21,7 @@ export const createListPage = (moduleInfo) => {
         },
         com_children: [
             {
-                com_name: 'nc_data',
+                com_name: 'nc_data_source',
                 com_ref: 'list_page_data',
                 com_info: {
                     style: {

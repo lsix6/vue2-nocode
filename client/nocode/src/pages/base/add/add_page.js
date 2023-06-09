@@ -49,7 +49,7 @@ export const createAddPage = (moduleInfo) => {
                                 },
                                 com_children: [
                                     {
-                                        com_name: 'nc_data',
+                                        com_name: 'nc_data_source',
                                         com_props: {
                                             data_sources: {
                                                 ...moduleInfo.data_sources,

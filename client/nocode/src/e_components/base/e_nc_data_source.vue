@@ -3,11 +3,11 @@
         <div style="font-size: 14px;">
             [data source]
         </div>
-        <nc_data :data_sources="data_sources">
+        <nc_data_source :data_sources="data_sources">
             <template v-slot="slotProps">
                 <slot v-bind="slotProps"></slot>
             </template>
-        </nc_data>
+        </nc_data_source>
     </div>
 </template>
 
