@@ -7,6 +7,8 @@ window.time_log('[coms] main.js')
 const registerComponents = (Vue) => {
   window.time_log('[coms] register components')
   //
+  Vue.component('nc_container', () => import('./components/nc_container.vue'))
+  Vue.component('e_nc_container', () => import('./e_components/e_nc_container.vue'))
   Vue.component('nc_table', () => import('./components/nc_table.vue'))
   Vue.component('e_nc_table', () => import('./e_components/e_nc_table.vue'))
   Vue.component('e_nc_table_column', () => import('./e_components/e_nc_table_column.vue'))
