@@ -49,6 +49,7 @@ import componentPackDateTimeRangeString from '../viewComponents/DateTimeRange/st
 import componentPackObject from '../viewComponents/Object';
 import componentPackArray from '../viewComponents/Array';
 import componentPackDataSource from '../viewComponents/DataSource';
+import componentPackContainer from '../viewComponents/Container';
 import componentPackTable from '../viewComponents/Table';
 import componentPackTableColumn from '../viewComponents/TableColumn';
 
@@ -83,6 +84,11 @@ const tools = [
                 componentPack: componentPackDataSource
             },
             {
+                title: 'Container',
+                btnClass: 'w100',
+                componentPack: componentPackContainer
+            },
+            {
                 title: 'Table',
                 btnClass: 'w100',
                 componentPack: componentPackTable
@@ -103,7 +109,7 @@ const tools = [
             {
                 title: '输入框',
                 componentPack: componentPackInput
-            }, 
+            },
             {
                 title: '数字(slider)', // 这里顺便必须在 componentPackInputNumber 前，导入匹配的时候优先匹配
                 componentPack: componentPackSlider
