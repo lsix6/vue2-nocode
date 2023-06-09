@@ -1,10 +1,10 @@
 <template>
     <div v-bind="node_props" :data="data">
         <template v-if="data_children && data">
-            <nc_children :com_children="data_children" :com_data="{ ...com_data, ...data }">
+            <nc_children :com_children="data_children" :com_data="finalComData">
             </nc_children>
         </template>
-        <slot v-if="data" v-bind:com_data="{ ...com_data, ...data }"></slot>
+        <slot v-if="data" v-bind:com_data="finalComData"></slot>
     </div>
 </template>
 
@@ -38,6 +38,16 @@ export default {
             data: null,
         }
     },
+    computed: {
+        finalComData() {
+            const comData = {
+                ...this.com_data,
+                __ds: this.data,
+            }
+            console.log('[nc_data_source] finalComData:', comData)
+            return comData
+        },
+    },
     watch: {
         data_sources: {
             handler() {
@@ -47,7 +57,7 @@ export default {
         },
     },
     mounted() {
-        // console.log('[nc_data_source] mounted, com_data:', this.com_data)
+        console.log('[nc_data_source] mounted, com_data:', this.com_data)
         this.refreshAll()
     },
     methods: {
