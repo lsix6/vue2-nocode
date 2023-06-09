@@ -29,6 +29,8 @@ export default {
             let ret = '-'
             //
             if (this.value !== undefined) {
+                ret = this.value
+                //
                 if (this.data_source_name) {
                     const enumMap = this.com_params[this.data_source_name]
                     if (enumMap) {
@@ -43,7 +45,7 @@ export default {
         },
     },
     mounted() {
-        // console.log('[nc_enum] mounted', this.value, typeof (this.value))
+        console.log('[nc_enum] mounted', this.value, typeof (this.value))
     },
     beforeUpdate() {
         // console.log('[nc_enum] beforeUpdate', this.value, this.data_source_name)

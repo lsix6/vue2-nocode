@@ -1,7 +1,10 @@
 <template>
     <div style="font-size: 14px;">
-        [enum]
-        <div>{{ prop }}</div>
+        <div>
+            [enum]
+        </div>
+        <nc_component v-bind="finalBinds">
+        </nc_component>
     </div>
 </template>
 
@@ -15,13 +18,25 @@ export default {
             type: Object,
             default: null,
         },
+        com_params: {
+            type: Object,
+            default: null
+        },
     },
     computed: {
-        prop() {
-            if (this.editorItem) {
-                return this.editorItem.componentValue.options.uiOptions.prop
+        finalBinds() {
+            const options = this.editorItem.componentValue.options
+            const binds = {
+                com_name: 'nc_enum',
+                com_field: {
+                    field_name: options.uiOptions.prop
+                },
+                com_props: {
+                    data_source_name: options.uiOptions.data_source_name
+                },
+                com_params: this.com_params,
             }
-            return ''
+            return binds
         },
     },
     mounted() {
