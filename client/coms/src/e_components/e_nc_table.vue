@@ -3,7 +3,7 @@
         <div style="font-size: 14px;">
             [table]
         </div>
-        <div class="items-direction_right" ref="slotRoot">
+        <div ref="slotRoot">
             <slot></slot>
         </div>
         <nc_component :key="refreshCounter" v-bind="finalBinds" :com_params="com_params"></nc_component>

@@ -1,6 +1,6 @@
 <template>
     <draggable ref="draggable" :list="childComponentList" v-bind="dragOptions"
-        :class="[$style.dragArea, $style.formItemWrap, 'items-direction']" @change="handleDragChange">
+        :class="[$style.dragArea, $style.formItemWrap, 'NestedEditor_items-direction']" @change="handleDragChange">
         <div v-for="item in childComponentList" :key="item.id" :class="{
             draggableItem: true,
             w100: showNestedEditor(item),
@@ -8,7 +8,7 @@
         }" :style="item.componentValue.baseValue.uiOptions.width ? {
     width: item.componentValue.baseValue.uiOptions.width,
     flexBasis: item.componentValue.baseValue.uiOptions.width
-} : {}">
+} : {}" style="flex: 1;">
             <ViewComponentWrap :form-data="formData" :editor-item="item" :drag-options="dragOptions"
                 :show-nested-editor="showNestedEditor" :form-props="formProps" @onOperate="handleItemOperate"
                 :com_params="com_params">
@@ -118,12 +118,9 @@ export default {
 </script>
 
 <style lang="scss">
-.items-direction_right {
-
-    .items-direction {
-        display: flex;
-        flex-direction: row;
-    }
+.NestedEditor_items-direction {
+    display: inherit;
+    flex-direction: inherit;
 }
 </style>
 
