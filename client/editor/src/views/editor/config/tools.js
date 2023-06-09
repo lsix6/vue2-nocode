@@ -54,6 +54,7 @@ import componentPackTable from '../viewComponents/Table';
 import componentPackTableColumn from '../viewComponents/TableColumn';
 
 //
+import comPackDiv from '../viewComponents/Div';
 import comPackEnum from '../viewComponents/Enum';
 
 /**
@@ -102,6 +103,10 @@ const tools = [
     {
         groupName: '基础组件',
         componentList: [
+            {
+                title: 'div',
+                componentPack: comPackDiv
+            },
             {
                 title: 'enum',
                 componentPack: comPackEnum

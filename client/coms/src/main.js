@@ -24,6 +24,9 @@ const registerComponents = (Vue) => {
   Vue.component('nc_select', () => import('./components/edit/nc_select.vue'))
   Vue.component('nc_select_color', () => import('./components/edit/nc_select_color.vue'))
   Vue.component('nc_radio_group', () => import('./components/edit/nc_radio_group.vue'))
+  //
+  Vue.component('nc_div', () => import('./components/show/nc_div.vue'))
+  Vue.component('e_nc_div', () => import('./e_components/show/e_nc_div.vue'))
 }
 
 if (window.Vue) {
