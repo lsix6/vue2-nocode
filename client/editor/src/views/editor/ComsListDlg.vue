@@ -9,43 +9,50 @@
                 </template>
             </el-table-column>
         </el-table>
+        <el-button @click="onCreate">
+            Create
+        </el-button>
     </el-dialog>
 </template>
 
 <script>
+import { MessageBox } from 'element-ui';
+import { loadComsList, saveComsList } from './ComsList';
+
 export default {
     name: 'ComsListDlg',
     data() {
         return {
-            gridData: [{
-                date: '2016-05-02',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-04',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-01',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-03',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-            }],
+            gridData: [],
             dialogVisible: false,
         };
     },
+    mounted() {
+    },
     methods: {
         show() {
+            this.gridData = loadComsList()
+            //
             this.dialogVisible = true
         },
+        onCreate() {
+            MessageBox.prompt('请输入组件名称', '新建组件').then(({ value }) => {
+                this.gridData.push({
+                    name: value,
+                })
+                //
+                saveComsList(this.gridData)
+            })
+        },
         handleOpen(index, row) {
-            console.log(index, row);
+            console.log('[ComsListDlg] handleOpen', index, row);
         },
         handleDelete(index, row) {
-            console.log(index, row);
+            console.log('[ComsListDlg] handleDelete', index, row);
+            //
+            this.gridData.splice(index, 1)
+            //
+            saveComsList()
         }
     },
 }
