@@ -3,7 +3,7 @@
         <div style="font-size: 14px;">
             [table]
         </div>
-        <nc_component v-bind="finalBinds" :com_data="com_data"></nc_component>
+        <nc_component :key="refreshCounter" v-bind="finalBinds" :com_data="com_data"></nc_component>
     </div>
 </template>
 
@@ -26,12 +26,13 @@ export default {
     data() {
         return {
             fields: null,
+            refreshCounter: 0,
         }
     },
     watch: {
         editorItem: {
             handler() {
-                // 这里虽然什么也没做，但是可以保证属性修改后 table 可以刷新
+                this.refreshCounter++
             },
             deep: true,
         },
