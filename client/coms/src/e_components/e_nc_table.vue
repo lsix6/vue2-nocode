@@ -3,13 +3,11 @@
         <div style="font-size: 14px;">
             [table]
         </div>
-        <nc_component :key="refreshCounter" v-bind="finalBinds" :com_data="com_data"></nc_component>
+        <nc_component v-bind="finalBinds" :com_data="com_data"></nc_component>
     </div>
 </template>
 
 <script>
-
-import { find_e_com_in_children } from './e_utils'
 
 export default {
     install(Vue) {
@@ -28,22 +26,12 @@ export default {
     data() {
         return {
             fields: null,
-            observer: null,
-            refreshCounter: 0,
-            preEditorItem: '',
         }
     },
     watch: {
         editorItem: {
             handler() {
-                const s = JSON.stringify(this.editorItem)
-                if (s !== this.preEditorItem) {
-                    this.preEditorItem = s
-                    //
-                    this.updateFields()
-                    //
-                    this.refreshCounter++
-                }
+                // 这里虽然什么也没做，但是可以保证属性修改后 table 可以刷新
             },
             deep: true,
         },
@@ -97,41 +85,8 @@ export default {
     },
     mounted() {
         console.log('[e_nc_table] mounted()', this)
-        //
-        this.observer = new MutationObserver((mutationList) => {
-            console.log('[e_nc_table] mounted(), mutationList', mutationList)
-            //
-            this.updateFields()
-        })
-        // 监听 slot 节点
-        this.observer.observe(this.$refs.slotRoot, {
-            childList: true,
-            subtree: true,
-        })
-    },
-    beforeDestroy() {
-        // 解除监听
-        this.observer.disconnect()
-        this.observe = null
     },
     methods: {
-        updateFields() {
-            const arr = []
-            //
-            const childList = this.editorItem.childList
-            childList && childList.forEach(child => {
-                const com = find_e_com_in_children(this, 'getComValue', child.id)
-                // console.log('[e_nc_table] find_e_com_in_children', com)
-                //
-                if (com) {
-                    arr.push(com.getComValue())
-                }
-            })
-            //
-            console.log('[e_nc_table] fields', arr)
-            //
-            this.fields = arr
-        },
     },
 }
 </script>
