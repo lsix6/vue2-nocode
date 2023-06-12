@@ -18,7 +18,7 @@
 
 <script>
 import { MessageBox } from 'element-ui';
-import { loadComsList, saveComsList } from './ComsList';
+import { loadComsList, removeComData, saveComsList } from './ComsList';
 
 export default {
     name: 'ComsListDlg',
@@ -61,6 +61,8 @@ export default {
             this.gridData.splice(index, 1)
             //
             saveComsList()
+            //
+            removeComData(row.name)
         }
     },
 }

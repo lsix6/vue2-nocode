@@ -17,3 +17,30 @@ export const saveComsList = (comsList) => {
         localStorage.setItem(C_COMS_LIST, JSON.stringify(comsList))
     }
 }
+
+const getComSaveName = (comName) => {
+    return 'com_' + comName
+}
+
+export const loadComData = (comName) => {
+    let comData = []
+    //
+    const s = localStorage.getItem(getComSaveName(comName))
+    if (s) {
+        comData = JSON.parse(s)
+    }
+    //
+    return comData
+}
+
+export const saveComData = (comName, comData) => {
+    if (comName && comData) {
+        localStorage.setItem(getComSaveName(comName), JSON.stringify(comData))
+    }
+}
+
+export const removeComData = (comName) => {
+    if (comName) {
+        localStorage.removeItem(getComSaveName(comName))
+    }
+}

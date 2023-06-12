@@ -79,6 +79,7 @@ import configTools from './config/tools';
 
 import NestedEditor from './components/NestedEditor';
 import { formatFormLabelWidth } from './common/editorData';
+import { loadComData, saveComData } from './ComsList';
 
 deepFreeze(configTools);
 
@@ -96,6 +97,12 @@ export default {
             },
             getCurEditorItem: () => this.curEditorItem,
         };
+    },
+    props: {
+        com_name: {
+            type: String,
+            default: ''
+        },
     },
     data() {
         return {
@@ -162,13 +169,10 @@ export default {
     },
     methods: {
         saveData() {
-            localStorage.setItem('componentList', JSON.stringify(this.componentList))
+            saveComData(this.com_name, this.componentList)
         },
         loadData() {
-            const s = localStorage.getItem('componentList')
-            if (s) {
-                this.componentList = JSON.parse(s)
-            }
+            this.componentList = loadComData(this.com_name)
         },
     }
 };
