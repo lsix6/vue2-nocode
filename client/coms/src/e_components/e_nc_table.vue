@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { loadComData } from '../../../editor/src/views/editor/ComsList'
 
 export default {
     install(Vue) {
@@ -43,11 +44,25 @@ export default {
             //
             const fields = []
             options.uiOptions.columns.forEach(col => {
+                let column_components = null
+                if (col.com) {
+                    const comData = loadComData(col.com)
+                    if (comData && comData.length > 0) {
+                        column_components = [{
+                            com_name: 'NestedEditor',
+                            com_props: {
+                                childComponentList: comData,
+                            }
+                        }]
+                    }
+                }
+                //
                 fields.push({
                     column_props: {
                         prop: col.prop,
                         label: col.label,
                     },
+                    column_components,
                 })
             })
             //

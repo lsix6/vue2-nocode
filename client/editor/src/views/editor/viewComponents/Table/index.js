@@ -44,6 +44,10 @@ export default {
                                         title: 'prop',
                                         type: 'string'
                                     },
+                                    com: {
+                                        title: 'com',
+                                        type: 'string'
+                                    },
                                 }
                             }
                         },

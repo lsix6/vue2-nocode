@@ -78,6 +78,8 @@ import { deepFreeze } from './common/utils';
 import configTools from './config/tools';
 
 import NestedEditor from './components/NestedEditor';
+window.Vue.component('NestedEditor', NestedEditor)
+
 import { formatFormLabelWidth } from './common/editorData';
 import { loadComData, saveComData } from './ComsList';
 
