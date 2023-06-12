@@ -1,20 +1,25 @@
 <template>
-  <el-tabs class="com-editor-tabs" v-model="editableTabsValue" type="card" editable @edit="handleTabsEdit">
-    <el-tab-pane class="tabs-content" :key="item.name" v-for="(item) in editableTabs" :label="item.title"
-      :name="item.name">
-      {{ item.content }}
-      <Editor />
-    </el-tab-pane>
-  </el-tabs>
+  <div class="coms-editor-frame">
+    <el-tabs class="coms-editor-tabs" v-model="editableTabsValue" type="card" editable @edit="handleTabsEdit">
+      <el-tab-pane class="tabs-content" :key="item.name" v-for="(item) in editableTabs" :label="item.title"
+        :name="item.name">
+        {{ item.content }}
+        <Editor />
+      </el-tab-pane>
+    </el-tabs>
+    <ComsListDlg ref="comsListDlg" />
+  </div>
 </template>
 
 <script>
+import ComsListDlg from './ComsListDlg.vue'
 import Editor from './Editor.vue'
 
 export default {
   name: 'ComsEditor',
   components: {
-    Editor
+    Editor,
+    ComsListDlg,
   },
   data() {
     return {
@@ -34,13 +39,14 @@ export default {
   methods: {
     handleTabsEdit(targetName, action) {
       if (action === 'add') {
-        let newTabName = ++this.tabIndex + '';
-        this.editableTabs.push({
-          title: 'New Tab',
-          name: newTabName,
-          content: 'New Tab content'
-        });
-        this.editableTabsValue = newTabName;
+        // let newTabName = ++this.tabIndex + '';
+        // this.editableTabs.push({
+        //   title: 'New Tab',
+        //   name: newTabName,
+        //   content: 'New Tab content'
+        // });
+        // this.editableTabsValue = newTabName;
+        this.$refs.comsListDlg.show()
       }
       if (action === 'remove') {
         let tabs = this.editableTabs;
@@ -65,17 +71,22 @@ export default {
 </script>
 
 <style lang="scss">
-.com-editor-tabs {
+.coms-editor-frame {
   flex: 1;
   display: flex;
-  flex-direction: column;
 
-  .el-tabs__content {
+  .coms-editor-tabs {
     flex: 1;
     display: flex;
+    flex-direction: column;
 
-    .tabs-content {
+    .el-tabs__content {
       flex: 1;
+      display: flex;
+
+      .tabs-content {
+        flex: 1;
+      }
     }
   }
 
