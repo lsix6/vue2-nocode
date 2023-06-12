@@ -3,15 +3,15 @@
     <el-tabs class="coms-editor-tabs" v-model="editableTabsValue" type="card" editable @edit="handleTabsEdit">
       <el-tab-pane class="tabs-content" :key="item.name" v-for="(item) in editableTabs" :label="item.title"
         :name="item.name">
-        {{ item.content }}
-        <Editor />
+        <Editor :com_name="item.name" />
       </el-tab-pane>
     </el-tabs>
-    <ComsListDlg ref="comsListDlg" />
+    <ComsListDlg ref="comsListDlg" @openCom="onOpenCom" />
   </div>
 </template>
 
 <script>
+import { loadComsList, saveComsList } from './ComsList'
 import ComsListDlg from './ComsListDlg.vue'
 import Editor from './Editor.vue'
 
@@ -23,30 +23,54 @@ export default {
   },
   data() {
     return {
-      editableTabsValue: '2',
-      editableTabs: [{
-        title: 'Tab 1',
-        name: '1',
-        content: 'Tab 1 content'
-      }, {
-        title: 'Tab 2',
-        name: '2',
-        content: 'Tab 2 content'
-      }],
-      tabIndex: 2
+      editableTabsValue: '',
+      editableTabs: [],
     }
   },
+  mounted() {
+    this.loadOpenedComs()
+  },
   methods: {
+    loadOpenedComs() {
+      const list = loadComsList()
+      //
+      list.forEach(com => {
+        if (com.opened) {
+          this.editableTabs.push({
+            title: com.name,
+            name: com.name
+          })
+          //
+          this.editableTabsValue = com.name
+        }
+      })
+    },
+    setComOpended(comName, opened) {
+      const list = loadComsList()
+      //
+      for (let com of list) {
+        if (com.name === comName) {
+          com.opened = opened
+          break
+        }
+      }
+      //
+      saveComsList(list)
+    },
+    onOpenCom(comName) {
+      console.log('[ComsEditor] onOpenCom', comName)
+      //
+      this.editableTabs.push({
+        title: comName,
+        name: comName,
+      })
+      this.editableTabsValue = comName
+      //
+      this.setComOpended(comName, true)
+    },
     handleTabsEdit(targetName, action) {
       if (action === 'add') {
-        // let newTabName = ++this.tabIndex + '';
-        // this.editableTabs.push({
-        //   title: 'New Tab',
-        //   name: newTabName,
-        //   content: 'New Tab content'
-        // });
-        // this.editableTabsValue = newTabName;
-        this.$refs.comsListDlg.show()
+        this.$refs.comsListDlg.open()
       }
       if (action === 'remove') {
         let tabs = this.editableTabs;
@@ -64,6 +88,9 @@ export default {
 
         this.editableTabsValue = activeName;
         this.editableTabs = tabs.filter(tab => tab.name !== targetName);
+
+        //
+        this.setComOpended(targetName, false)
       }
     }
   }
