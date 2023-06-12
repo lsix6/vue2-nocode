@@ -3,9 +3,6 @@
         <div style="font-size: 14px;">
             [table]
         </div>
-        <div ref="slotRoot" style="display: flex; flex-direction: row;">
-            <slot></slot>
-        </div>
         <nc_component :key="refreshCounter" v-bind="finalBinds" :com_data="com_data"></nc_component>
     </div>
 </template>
@@ -54,6 +51,17 @@ export default {
     computed: {
         finalBinds() {
             const options = this.editorItem.componentValue.options
+            //
+            const fields = []
+            options.uiOptions.columns.forEach(col => {
+                fields.push({
+                    column_props: {
+                        prop: col.prop,
+                        label: col.label,
+                    },
+                })
+            })
+            //
             const binds = {
                 com_name: 'nc_table',
                 com_ref: 'list',
@@ -69,7 +77,7 @@ export default {
                         height: '100%',
                         'tooltip-effect': 'light',
                     },
-                    fields: this.fields,
+                    fields,
                 },
                 com_children: [
                     {

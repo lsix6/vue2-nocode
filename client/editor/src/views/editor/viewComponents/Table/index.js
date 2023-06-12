@@ -27,6 +27,26 @@ export default {
                             type: 'string',
                             title: 'bind',
                         },
+                        columns: {
+                            title: 'columns',
+                            type: 'array',
+                            minItems: 0,
+                            'ui:showIndexNumber': true,
+                            items: {
+                                title: 'column',
+                                type: 'object',
+                                properties: {
+                                    label: {
+                                        title: 'label',
+                                        type: 'string',
+                                    },
+                                    prop: {
+                                        title: 'prop',
+                                        type: 'string'
+                                    },
+                                }
+                            }
+                        },
                     }
                 }
             }
