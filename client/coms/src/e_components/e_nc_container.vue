@@ -45,5 +45,23 @@ export default {
     mounted() {
         console.log('[e_nc_container] mounted()', this)
     },
+    methods: {
+        getComObj() {
+            const options = this.editorItem.componentValue.options
+            const obj = {
+                com_name: "nc_container",
+                com_props: {
+                    items_direction: options.uiOptions.items_direction,
+                }
+            }
+            if (options.uiOptions.prop) {
+                obj.com_field = {
+                    field_name: options.uiOptions.prop
+                }
+            }
+            //
+            return obj
+        },
+    },
 }
 </script>

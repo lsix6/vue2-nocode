@@ -82,6 +82,7 @@ window.Vue.component('NestedEditor', NestedEditor)
 
 import { formatFormLabelWidth } from './common/editorData';
 import { loadComData, saveComData } from './ComsList';
+import { find_e_com_in_children } from '../../../../coms/src/e_components/e_utils';
 
 deepFreeze(configTools);
 
@@ -170,7 +171,31 @@ export default {
         });
     },
     methods: {
+        getComObjs(comsList) {
+            let arr = null
+            //
+            if (comsList && comsList.length > 0) {
+                arr = []
+                comsList.forEach(item => {
+                    const com = find_e_com_in_children(this, 'finalBinds', item.id)
+                    if (com) {
+                        let obj = {
+                            ...com.getComObj(),
+                        }
+                        const com_children = this.getComObjs(item.childList)
+                        if (com_children) {
+                            obj.com_children = com_children
+                        }
+                        arr.push(obj)
+                    }
+                })
+            }
+            //
+            return arr
+        },
         saveData() {
+            const comObjs = this.getComObjs(this.componentList)
+            console.log('saveData, comObjs', comObjs)
             saveComData(this.com_name, this.componentList)
         },
         loadData() {
