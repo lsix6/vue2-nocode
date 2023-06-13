@@ -117,14 +117,20 @@ export default {
             componentList: [],
             FormConfSchema,
             formConfig: {},
-            activeName: 'formConfig'
+            activeName: 'formConfig',
+            preComponentList: '',
         };
     },
     watch: {
         componentList: {
             handler() {
                 // console.log('watch componentList')
-                this.saveData()
+                const s = JSON.stringify(this.componentList)
+                if (this.preComponentList !== s) {
+                    this.preComponentList = s
+                    //
+                    this.saveData()
+                }
             },
             deep: true,
         },
@@ -200,6 +206,8 @@ export default {
         },
         loadData() {
             this.componentList = loadComData(this.com_name)
+            //
+            this.preComponentList = JSON.stringify(this.componentList)
         },
     }
 };
