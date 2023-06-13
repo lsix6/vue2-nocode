@@ -25,7 +25,7 @@ export default {
         },
     },
     mounted() {
-        console.log('[nc_container] mounted, com_data:', this.com_data, this.value)
+        // console.log('[nc_container] mounted, com_data:', this.com_data, this.value)
     },
 }
 </script>

@@ -137,10 +137,7 @@ export default {
         },
     },
     render: function (createElement, hack) {
-        console.log('[nc_component] render', this.com_name, this)
-        if (this.$scopedSlots.default) {
-            console.log('[nc_component] scoped__Slots', this.com_name, this.$scopedSlots.default())
-        }
+        // console.log('[nc_component] render', this.com_name, this)
         // 子组件
         const children = []
         if (this.com_text) {
@@ -158,7 +155,7 @@ export default {
             scopedSlots: this.$scopedSlots,
             ref: 'com',
         }
-        console.log('[nc_component] comData', comData)
+        // console.log('[nc_component] comData', comData)
         // 创建组件对象
         const vnode = createElement(
             this.com_name,

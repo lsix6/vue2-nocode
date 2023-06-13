@@ -28,7 +28,7 @@ export default {
         },
     },
     mounted() {
-        console.log('[nc_com] mounted()', this)
+        // console.log('[nc_com] mounted()', this)
     },
 }
 </script>
