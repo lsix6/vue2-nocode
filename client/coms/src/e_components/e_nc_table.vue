@@ -47,13 +47,8 @@ export default {
                 let column_components = null
                 if (col.com) {
                     const comData = loadComData(col.com)
-                    if (comData && comData.length > 0) {
-                        column_components = [{
-                            com_name: 'NestedEditor',
-                            com_props: {
-                                childComponentList: comData,
-                            }
-                        }]
+                    if (comData && comData.comObjs.length > 0) {
+                        column_components = comData.comObjs
                     }
                 }
                 //
