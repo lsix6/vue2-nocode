@@ -12,6 +12,8 @@ if (!window.Vue) {
 
 import nc_component from './components/core/nc_component.vue'
 window.Vue.use(nc_component)
+import nc_com from './components/core/nc_com.vue'
+window.Vue.use(nc_com)
 import nc_children from './components/base/nc_children.vue'
 window.Vue.use(nc_children)
 import nc_data_source from './components/base/nc_data_source.vue'
