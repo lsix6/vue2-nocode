@@ -129,7 +129,9 @@ export default {
                 if (this.preComponentList !== s) {
                     this.preComponentList = s
                     //
-                    this.saveData()
+                    this.$nextTick(() => {
+                        this.saveData()
+                    })
                 }
             },
             deep: true,
@@ -201,11 +203,17 @@ export default {
         },
         saveData() {
             const comObjs = this.getComObjs(this.componentList)
-            console.log('saveData, comObjs', comObjs)
-            saveComData(this.com_name, this.componentList)
+            const saveData = {
+                componentList: this.componentList,
+                comObjs,
+            }
+            saveComData(this.com_name, saveData)
         },
         loadData() {
-            this.componentList = loadComData(this.com_name)
+            const saveData = loadComData(this.com_name)
+            if (saveData) {
+                this.componentList = saveData.componentList
+            }
             //
             this.preComponentList = JSON.stringify(this.componentList)
         },

@@ -23,23 +23,26 @@ const getComSaveName = (comName) => {
 }
 
 export const loadComData = (comName) => {
-    let comData = []
+    let comData = null
     //
     const s = localStorage.getItem(getComSaveName(comName))
     if (s) {
         comData = JSON.parse(s)
     }
     //
+    console.log('loadComData', comName, comData)
     return comData
 }
 
 export const saveComData = (comName, comData) => {
+    console.log('saveComData', comName, comData)
     if (comName && comData) {
         localStorage.setItem(getComSaveName(comName), JSON.stringify(comData))
     }
 }
 
 export const removeComData = (comName) => {
+    console.log('removeComData', comName)
     if (comName) {
         localStorage.removeItem(getComSaveName(comName))
     }
