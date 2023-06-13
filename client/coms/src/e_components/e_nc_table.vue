@@ -3,7 +3,8 @@
         <div style="font-size: 14px;">
             [table]
         </div>
-        <nc_component :key="refreshCounter" v-bind="finalBinds" :com_data="com_data"></nc_component>
+        <nc_com :key="refreshCounter" v-bind="finalBinds" :com_data="com_data">
+        </nc_com>
     </div>
 </template>
 
