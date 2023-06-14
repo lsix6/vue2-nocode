@@ -1,6 +1,6 @@
 <template>
     <el-form-item ref="refFormItem" v-bind="com_props">
-        <slot></slot>
+        <slot v-bind="{ com_data }"></slot>
     </el-form-item>
 </template>
 
@@ -14,6 +14,10 @@ export default {
         com_props: {
             type: Object,
             default: () => { }
+        },
+        com_data: {
+            type: Object,
+            default: null
         },
     },
     mounted() {
