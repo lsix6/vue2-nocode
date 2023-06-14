@@ -3,11 +3,11 @@
         <div style="font-size: 14px;">
             [data source]
         </div>
-        <nc_data_source :data_sources="data_sources">
+        <nc_component :com_data="com_data" v-bind="finalBinds">
             <template v-slot="slotProps">
                 <slot v-bind="slotProps"></slot>
             </template>
-        </nc_data_source>
+        </nc_component>
     </div>
 </template>
 
@@ -24,6 +24,18 @@ export default {
         com_data: {
             type: Object,
             default: null
+        },
+    },
+    computed: {
+        finalBinds() {
+            const options = this.editorItem.componentValue.options
+            const binds = {
+                com_name: 'nc_data_source',
+                com_props: {
+                    data_sources: this.data_sources,
+                },
+            }
+            return binds
         },
     },
     data() {
@@ -99,6 +111,9 @@ export default {
             console.log('[e_nc_data_source] updateDataSources, ds', ds)
             //
             this.data_sources = ds
+        },
+        getComObj() {
+            return this.finalBinds
         },
     },
 }
