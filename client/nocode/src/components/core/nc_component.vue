@@ -141,40 +141,81 @@ export default {
         },
     },
     render: function (createElement, hack) {
-        console.log('[nc_component] render', this.com_name, this)
+        // console.log('[nc_component] render', this.com_name, this)
         // 子组件
-        const createChildren = (props) => {
-            const children = []
-            if (this.com_text) {
-                // 如果有 'com_text'，则添加一个字符串子节点
-                children.push(this.com_text)
-            }
-            if (this.com_children) {
+        const createChildNode = (child, i, props) => {
+            // 创建一个子组件
+            const node = createElement(
+                'nc_component',
+                {
+                    props: {
+                        // 子组件的数据
+                        ...child,
+                        // 把 'com_data' 传入子组件
+                        com_data: props.com_data,
+                    },
+                    // 子组件所在的插槽
+                    slot: child.com_slot,
+                    // 子组件的 key
+                    key: '' + i,
+                },
+                null
+                ,
+                true,
+            )
+            //
+            return node
+        }
+        //
+        let childrenNodes = []
+        if (this.com_text) {
+            // 如果有 'com_text'，则添加一个字符串子节点
+            childrenNodes.push(this.com_text)
+        }
+        //
+        let scopedSlots = this.$scopedSlots
+        //
+        if (this.com_children) {
+            if (window.Vue.component(this.com_name)) {
+                // vue 组件
+                const slots = {}
+                // 把不同插槽的子对象过滤出来
+                this.com_children.map((child) => {
+                    if (child.com_slot) {
+                        slots[child.com_slot] = slots[child.com_slot] || []
+                        slots[child.com_slot].push(child)
+                    } else {
+                        slots.default = slots.default || []
+                        slots.default.push(child)
+                    }
+                })
+                // 不同的插槽创建对应的函数
+                scopedSlots = {}
+                for (let slot in slots) {
+                    const arr = slots[slot]
+                    //
+                    scopedSlots[slot] = (props) => {
+                        // console.log('[nc_component] scopedSlots', slot, props)
+                        //
+                        if (this.$scopedSlots[slot]) {
+                            const ret = this.$scopedSlots[slot](props)
+                            // console.log('[nc_component] scopedSlots, call', slot, ret)
+                            return ret
+                        }
+                        // 在对应的插槽下创建子节点，并传入父节点传下来的参数
+                        const children = arr.map((child, i) => {
+                            return createChildNode(child, i, props)
+                        })
+                        // console.log('[nc_component] scopedSlots, children', slot, children)
+                        return children
+                    }
+                }
+            } else {
+                // 非 vue 组件
                 this.com_children.map((child, i) => {
-                    // 创建一个子组件
-                    const childCom = createElement(
-                        'nc_component',
-                        {
-                            props: {
-                                // 子组件的数据
-                                ...child,
-                                // 把 'com_data' 传入子组件
-                                com_data: props.com_data,
-                            },
-                            // 子组件所在的插槽
-                            slot: child.com_slot,
-                            // 子组件的 key
-                            key: '' + i,
-                        },
-                        null
-                        ,
-                        true,
-                    )
-                    children.push(childCom)
+                    childrenNodes.push(createChildNode(child, i, this.$props))
                 })
             }
-            //
-            return children
         }
         // 组件数据
         const comData = {
@@ -184,19 +225,7 @@ export default {
                 com_props: this.com_props,
                 com_data: this.com_data,
             },
-            scopedSlots: {
-                default: (props) => {
-                    console.log('[nc_component] scopedSlots, props', props)
-                    //
-                    if (this.$scopedSlots.default) {
-                        return this.$scopedSlots.default(props)
-                    }
-                    //
-                    const children = createChildren(props)
-                    console.log('[nc_component] children', children)
-                    return children
-                }
-            },
+            scopedSlots,
             ref: 'com',
         }
         // console.log('[nc_component] comData', comData)
@@ -204,6 +233,7 @@ export default {
         const vnode = createElement(
             this.com_name,
             comData,
+            childrenNodes,
         )
         // console.log('vnode', vnode)
         return vnode
