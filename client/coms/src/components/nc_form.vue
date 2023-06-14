@@ -132,6 +132,8 @@ export default {
         }
     },
     mounted() {
+        // console.log('[nc_form] mounted', this.$props)
+        //
         this.initFormData().then(() => {
             this.$refs.form.clearValidate()
             //
