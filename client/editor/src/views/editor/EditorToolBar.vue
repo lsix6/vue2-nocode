@@ -1,5 +1,8 @@
 <template>
     <div :class="$style.box">
+        <el-button @click="$emit('preview')">
+            预览
+        </el-button>
         <div
             v-for="(group, index) in configTools"
             :key="index"

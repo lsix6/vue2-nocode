@@ -7,7 +7,7 @@
             <div :class="$style.toolBarWrap">
                 <div :class="$style.toolsBar">
                     <EditorToolBar :drag-group="dragOptions.group" :config-tools="configTools"
-                        @onFilter="$message.error('该组件添加数目已达上限！')">
+                        @onFilter="$message.error('该组件添加数目已达上限！')" @preview="onPreview">
                     </EditorToolBar>
                 </div>
                 <span :class="$style.leftCaret" @click="closeToolbar = !closeToolbar">
@@ -63,6 +63,7 @@
                 </el-tabs>
             </div>
         </div>
+        <ComPreviewDlg ref="comPreviewDlg" />
     </div>
 </template>
 
@@ -80,6 +81,8 @@ import configTools from './config/tools';
 import NestedEditor from './components/NestedEditor';
 window.Vue.component('NestedEditor', NestedEditor)
 
+import ComPreviewDlg from './ComPreviewDlg.vue'
+
 import { formatFormLabelWidth } from './common/editorData';
 import { loadComData, saveComData } from './ComsList';
 import { find_e_com_in_children } from '../../../../coms/src/e_components/e_utils';
@@ -91,7 +94,8 @@ export default {
     components: {
         VueJsonFrom,
         EditorToolBar,
-        NestedEditor
+        NestedEditor,
+        ComPreviewDlg,
     },
     provide() {
         return {
@@ -216,6 +220,11 @@ export default {
             }
             //
             this.preComponentList = JSON.stringify(this.componentList)
+        },
+        onPreview() {
+            console.log('[Editor] onPreview')
+            //
+            this.$refs.comPreviewDlg.open(this.com_name)
         },
     }
 };
