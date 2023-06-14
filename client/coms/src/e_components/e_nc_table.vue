@@ -3,8 +3,8 @@
         <div style="font-size: 14px;">
             [table]
         </div>
-        <nc_com :key="refreshCounter" v-bind="finalBinds" :com_data="com_data">
-        </nc_com>
+        <nc_component :key="refreshCounter" v-bind="finalBinds" :com_data="com_data">
+        </nc_component>
     </div>
 </template>
 
@@ -86,7 +86,7 @@ export default {
                         com_children: [
                             {
                                 com_name: 'div',
-                                com_text: '暂 无 数 据',
+                                com_text: '-- 暂 无 数 据 --',
                             },
                         ],
                     }

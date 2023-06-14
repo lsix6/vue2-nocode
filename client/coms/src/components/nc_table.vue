@@ -3,9 +3,9 @@
         <template v-for="(field, index) in fields">
             <el-table-column v-if="field.column_components" :key="'_if' + index" v-bind="field.column_props">
                 <template slot-scope="scope">
-                    <nc_com v-for="(com, comIndex) in field.column_components" :key="comIndex"
+                    <nc_component v-for="(com, comIndex) in field.column_components" :key="comIndex"
                         :com_data="{ ...com_data, ...scope.row }" v-bind="com">
-                    </nc_com>
+                    </nc_component>
                 </template>
             </el-table-column>
             <el-table-column v-else :key="'_else' + index" v-bind="field.column_props">
