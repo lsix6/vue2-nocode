@@ -4,6 +4,7 @@
 </template>
 
 <script>
+import { getPropValue } from '../../utils/nc_utils'
 export default {
     install(Vue) {
         Vue.component('nc_enum_color', this)
@@ -42,7 +43,7 @@ export default {
         updateColor() {
             if (this.value !== undefined) {
                 if (this.data_source_name) {
-                    const enumMap = this.com_data[this.data_source_name]
+                    const enumMap = getPropValue(this.com_data, this.data_source_name)
                     if (enumMap) {
                         this.color = enumMap['' + this.value]
                     }

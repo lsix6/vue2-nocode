@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { getPropValue } from '../../utils/nc_utils'
 export default {
     install(Vue) {
         Vue.component('nc_select_color', this)
@@ -71,7 +72,7 @@ export default {
                 })
             }
         }
-        const dsMap = this.com_data[this.data_source_name]
+        const dsMap = getPropValue(this.com_data, this.data_source_name)
         if (dsMap) {
             this.enumMap = {
                 ...this.enumMap,

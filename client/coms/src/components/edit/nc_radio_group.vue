@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { getPropValue } from '../../utils/nc_utils'
 export default {
     install(Vue) {
         Vue.component('nc_radio_group', this)
@@ -42,7 +43,7 @@ export default {
     mounted() {
         console.log('[nc_radio_group] mounted', this.value, typeof (this.value), this.com_data)
         //
-        this.enum_map = this.com_data[this.data_source_name]
+        this.enum_map = getPropValue(this.com_data, this.data_source_name)
     },
     methods: {
         onInput(v) {
