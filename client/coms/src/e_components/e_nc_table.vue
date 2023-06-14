@@ -94,6 +94,9 @@ export default {
         console.log('[e_nc_table] mounted()', this)
     },
     methods: {
+        getComObj() {
+            return this.finalBinds
+        },
     },
 }
 </script>
