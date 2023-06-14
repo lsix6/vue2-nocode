@@ -185,7 +185,7 @@ export default {
             if (comsList && comsList.length > 0) {
                 arr = []
                 comsList.forEach(item => {
-                    const com = find_e_com_in_children(this, 'finalBinds', item.id)
+                    const com = find_e_com_in_children(this, 'getComObj', item.id)
                     if (com) {
                         let obj = {
                             ...com.getComObj(),
