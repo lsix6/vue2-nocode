@@ -33,7 +33,7 @@ export const createListPage = (moduleInfo) => {
                 com_props: {
                     data_sources: {
                         ...moduleInfo.data_sources,
-                        __listPageData: {
+                        listPageData: {
                             api: {
                                 url: `${moduleInfo.name}/list`,
                                 method: 'GET',

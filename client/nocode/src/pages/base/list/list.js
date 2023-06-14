@@ -102,7 +102,7 @@ export const createList = (moduleName, moduleFields) => {
                         com_method_name: 'refresh',
                         com_method_params: [
                             {
-                                ds_name: '__listPageData',
+                                ds_name: 'listPageData',
                             }
                         ],
                     }
@@ -161,7 +161,7 @@ export const createList = (moduleName, moduleFields) => {
         com_binds: [
             {
                 prop_name: 'listData',
-                field_name: '__listPageData.listData',
+                field_name: '__ds.listPageData.listData',
             }
         ],
         com_props: {
@@ -220,7 +220,7 @@ export const createList = (moduleName, moduleFields) => {
                             com_method_name: 'refresh',
                             com_method_params: [
                                 {
-                                    ds_name: '__listPageData',
+                                    ds_name: 'listPageData',
                                 }
                             ],
                         },

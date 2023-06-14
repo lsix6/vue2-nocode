@@ -114,7 +114,7 @@ export const createListSearch = (moduleFields) => {
                             com_method_name: 'refresh',
                             com_method_params: [
                                 {
-                                    ds_name: '__listPageData',
+                                    ds_name: 'listPageData',
                                 }
                             ],
                         },
