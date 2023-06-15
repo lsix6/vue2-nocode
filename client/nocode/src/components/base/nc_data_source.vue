@@ -21,8 +21,8 @@ export default {
             default: null
         },
         data_sources: {
-            type: Object,
-            default: () => { }
+            type: Array,
+            default: () => []
         },
         data_children: {
             type: Array,
@@ -39,6 +39,13 @@ export default {
         }
     },
     computed: {
+        data_sources_map() {
+            const map = {}
+            this.data_sources.forEach(ds => {
+                map[ds.name] = ds
+            })
+            return map
+        },
         finalComData() {
             const comData = {
                 ...this.com_data,
@@ -64,10 +71,10 @@ export default {
         refreshAll() {
             return new Promise(resolve => {
                 const arrDS = []
-                for (let k in this.data_sources) {
+                for (let ds of this.data_sources) {
                     arrDS.push({
-                        ...this.data_sources[k],
-                        set_name: k,
+                        ...ds,
+                        set_name: ds.name,
                     })
                 }
                 if (arrDS.length > 0) {
@@ -98,7 +105,7 @@ export default {
         refresh(params) {
             return new Promise((resolve) => {
                 const dsName = params.ds_name
-                const ds = this.data_sources[dsName]
+                const ds = this.data_sources_map[dsName]
                 if (ds) {
                     fetch_data(this, ds).then(result => {
                         this.data = {
