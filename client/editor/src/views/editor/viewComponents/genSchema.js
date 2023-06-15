@@ -15,6 +15,26 @@ function genBaseVal() {
                 type: 'string',
                 title: 'text',
             },
+            com_binds: {
+                title: 'binds',
+                type: 'array',
+                minItems: 0,
+                'ui:showIndexNumber': true,
+                items: {
+                    type: 'object',
+                    title: 'bind',
+                    properties: {
+                        prop_name: {
+                            type: 'string',
+                            title: 'prop',
+                        },
+                        field_name: {
+                            type: 'string',
+                            title: 'field',
+                        },
+                    },
+                },
+            },
             schemaOptions: {
                 type: 'object',
                 properties: {
