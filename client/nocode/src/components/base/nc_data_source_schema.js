@@ -13,37 +13,47 @@ const viewSchema = {
 export default {
     viewSchema,
     propsSchema: {
-        options: {
-            title: 'Date Sources',
-            type: 'array',
-            minItems: 0,
-            'ui:showIndexNumber': true,
-            items: {
-                title: 'Data Source',
-                type: 'object',
-                properties: {
-                    name: {
-                        title: 'name',
-                        type: 'string',
-                    },
-                    api: {
-                        title: 'api',
-                        type: 'string'
-                    },
-                    enum: {
-                        title: 'enum',
-                        type: 'array',
-                        minItems: 0,
-                        items: {
-                            type: 'string',
-                            uniqueItems: true,
+        com_props: {
+            type: 'object',
+            title: 'props',
+            properties: {
+                data_sources: {
+                    title: 'Date Sources',
+                    type: 'array',
+                    minItems: 0,
+                    'ui:showIndexNumber': true,
+                    items: {
+                        title: 'Data Source',
+                        type: 'object',
+                        properties: {
+                            name: {
+                                title: 'name',
+                                type: 'string',
+                            },
+                            api: {
+                                title: 'api',
+                                type: 'string'
+                            },
+                            enum: {
+                                title: 'enum',
+                                type: 'array',
+                                minItems: 0,
+                                items: {
+                                    type: 'string',
+                                }
+                            },
+                            obj: {
+                                title: 'object',
+                                type: 'string'
+                            },
                         }
-                    },
-                    obj: {
-                        title: 'object',
-                        type: 'string'
-                    },
-                }
+                    }
+                },
+                prop: {
+                    type: 'string',
+                    title: 'prop',
+                    default: 'a'
+                },
             }
         }
     },
