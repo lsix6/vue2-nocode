@@ -14,10 +14,15 @@ import nc_component from './components/core/nc_component.vue'
 window.Vue.use(nc_component)
 import nc_children from './components/base/nc_children.vue'
 window.Vue.use(nc_children)
-import nc_data_source from './components/base/nc_data_source.vue'
-window.Vue.use(nc_data_source)
 import e_nc_data_source from './e_components/base/e_nc_data_source.vue'
 window.Vue.use(e_nc_data_source)
+
+import { ComsManager } from './utils/coms_manager'
+const comsManager = new ComsManager(window.Vue)
+
+import nc_data_source from './components/base/nc_data_source.vue'
+import nc_data_source_schema from './components/base/nc_data_source_schema'
+comsManager.register('default', 'nc_data_source', nc_data_source, nc_data_source_schema)
 
 import { register_com_ref, unregister_com_ref, get_com_ref } from './utils/nc_refs'
 import { get_params } from './utils/nc_params'
@@ -38,6 +43,7 @@ window.nocode = {
     fetch_data,
     register_msg_box,
     msg_box,
+    comsManager,
 }
 
 window.time_log('[nocode] js loaded')

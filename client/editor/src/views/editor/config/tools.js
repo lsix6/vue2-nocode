@@ -56,6 +56,7 @@ import componentPackTableColumn from '../viewComponents/TableColumn';
 //
 import comPackDiv from '../viewComponents/Div';
 import comPackEnum from '../viewComponents/Enum';
+import genSchema from '../viewComponents/genSchema';
 
 /**
  * hidden 隐藏，不显示在工具栏
@@ -201,5 +202,29 @@ const tools = [
         }]
     }
 ];
+
+const coms = window.nocode.comsManager.getComs()
+console.log('coms', coms)
+for (let groupName in coms) {
+    const groupComs = coms[groupName]
+    const group = {
+        groupName,
+        componentList: [],
+    }
+    for (let comName in groupComs) {
+        const com = groupComs[comName]
+        //
+        group.componentList.push({
+            title: com.viewSchema.title,
+            btnClass: 'w100',
+            componentPack: {
+                ...com,
+                propsSchema: genSchema(com.propsSchema, 'object')
+            },
+        })
+    }
+    //
+    tools.unshift(group)
+}
 
 export default tools;
