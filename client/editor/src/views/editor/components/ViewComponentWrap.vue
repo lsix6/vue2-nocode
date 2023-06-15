@@ -76,9 +76,11 @@ export default {
         comFinalBind() {
             let finalBind = {
                 ...this.editorItem.componentPack.comSchema,
+                ...this.editorItem.componentValue.baseValue,
                 com_data: this.com_data,
                 com_props: {
                     ...this.editorItem.componentPack?.comSchema?.com_props,
+                    ...this.editorItem.componentValue.com_props,
                     editorItem: this.editorItem,
                 },
             }
