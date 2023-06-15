@@ -31,8 +31,22 @@ export default {
                                 type: 'string',
                             },
                             api: {
+                                type: 'object',
                                 title: 'api',
-                                type: 'string'
+                                properties: {
+                                    url: {
+                                        title: 'url',
+                                        type: 'string'
+                                    },
+                                    method: {
+                                        type: 'string',
+                                        title: 'method',
+                                        enum: [
+                                            'GET',
+                                        ],
+                                        default: 'GET'
+                                    },
+                                },
                             },
                             enum: {
                                 title: 'enum',
@@ -48,11 +62,6 @@ export default {
                             },
                         }
                     }
-                },
-                prop: {
-                    type: 'string',
-                    title: 'prop',
-                    default: 'a'
                 },
             }
         }
