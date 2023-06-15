@@ -9,7 +9,9 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import { fetch_data } from '../../utils/nc_request'
+import { arr2enum } from '../../utils/nc_utils'
 
 export default {
     install(Vue) {
@@ -80,7 +82,7 @@ export default {
                 if (arrDS.length > 0) {
                     Promise.all(
                         arrDS.map(ds => {
-                            return fetch_data(this, ds)
+                            return this.fetchData(this, ds)
                         })
                     ).then(results => {
                         this.data = {}
@@ -94,7 +96,7 @@ export default {
                         resolve(true)
                     }).catch(errs => {
                         this.data = {}
-                        console.error('[nc_data_source] refreshAll, fetch_data errors:', errs)
+                        console.error('[nc_data_source] refreshAll, fetchData errors:', errs)
                     })
                 } else {
                     this.data = {}
@@ -107,19 +109,28 @@ export default {
                 const dsName = params.ds_name
                 const ds = this.data_sources_map[dsName]
                 if (ds) {
-                    fetch_data(this, ds).then(result => {
+                    this.fetchData(this, ds).then(result => {
                         this.data = {
                             ...this.data,
                         }
                         this.data[dsName] = result
                         console.log('[nc_data_source] refresh,', params, this.data)
                     }).catch(e => {
-                        console.error('[nc_data_source] refresh, fetch_data error:', e)
+                        console.error('[nc_data_source] refresh, fetchData error:', e)
                     })
                 } else {
                     resolve(true)
                 }
             })
+        },
+        fetchData(com, ds) {
+            if (ds.enum && ds.enum.length > 0) {
+                return new Promise((resolve) => {
+                    resolve(arr2enum(ds.enum))
+                })
+            }
+            //
+            return fetch_data(com, ds)
         },
     }
 }
