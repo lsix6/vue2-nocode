@@ -14,8 +14,6 @@ import nc_component from './components/core/nc_component.vue'
 window.Vue.use(nc_component)
 import nc_children from './components/base/nc_children.vue'
 window.Vue.use(nc_children)
-import e_nc_data_source from './e_components/base/e_nc_data_source.vue'
-window.Vue.use(e_nc_data_source)
 
 import { ComsManager } from './utils/coms_manager'
 const comsManager = new ComsManager(window.Vue)
