@@ -4,9 +4,16 @@ import { DomMessage } from './elementui/messageDeduplication.js'
 
 window.time_log('[coms] main.js')
 
+import nc_container_schema from './components/nc_container_schema.js'
+
 const registerComponents = (Vue) => {
   window.time_log('[coms] register components')
   //
+  window.nocode.comsManager.register(
+    'default', 'nc_container',
+    () => import('./components/nc_container.vue'),
+    nc_container_schema
+  )
   Vue.component('nc_container', () => import('./components/nc_container.vue'))
   Vue.component('e_nc_container', () => import('./e_components/e_nc_container.vue'))
   Vue.component('nc_table', () => import('./components/nc_table.vue'))
