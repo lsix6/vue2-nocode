@@ -5,6 +5,7 @@ import { DomMessage } from './elementui/messageDeduplication.js'
 window.time_log('[coms] main.js')
 
 import nc_container_schema from './components/nc_container_schema.js'
+import nc_table_schema from './components/nc_table_schema.js'
 
 const registerComponents = (Vue) => {
   window.time_log('[coms] register components')
@@ -14,11 +15,11 @@ const registerComponents = (Vue) => {
     () => import('./components/nc_container.vue'),
     nc_container_schema
   )
-  Vue.component('nc_container', () => import('./components/nc_container.vue'))
-  Vue.component('e_nc_container', () => import('./e_components/e_nc_container.vue'))
-  Vue.component('nc_table', () => import('./components/nc_table.vue'))
-  Vue.component('e_nc_table', () => import('./e_components/e_nc_table.vue'))
-  Vue.component('e_nc_table_column', () => import('./e_components/e_nc_table_column.vue'))
+  window.nocode.comsManager.register(
+    'default', 'nc_table',
+    () => import('./components/nc_table.vue'),
+    nc_table_schema
+  )
   Vue.component('nc_pagination', () => import('./components/nc_pagination.vue'))
   Vue.component('nc_form', () => import('./components/nc_form.vue'))
   Vue.component('nc_form_item', () => import('./components/nc_form_item.vue'))
