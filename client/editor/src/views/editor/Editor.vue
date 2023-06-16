@@ -43,7 +43,7 @@
                 <el-tabs v-model="activeName">
                     <el-tab-pane v-if="curEditorItem" label="组件配置" name="compConfig">
                         <VueJsonFrom v-model="curEditorItem.componentValue" :class="$style.configForm"
-                            :schema="curEditorItem.componentPack.propsSchema" :form-props="{
+                            :schema="getEditorItem(curEditorItem.comName).componentPack.propsSchema" :form-props="{
                                 labelPosition: 'right',
                                 labelWidth: '110px'
                             }" :form-footer="{
@@ -76,7 +76,7 @@ import EditorToolBar from './EditorToolBar.vue';
 
 import { deepFreeze } from './common/utils';
 
-import configTools from './config/tools';
+import configTools, { getCom } from './config/tools';
 
 import NestedEditor from './components/NestedEditor';
 window.Vue.component('NestedEditor', NestedEditor)
@@ -103,6 +103,7 @@ export default {
                 fallbackLabel: true
             },
             getCurEditorItem: () => this.curEditorItem,
+            getEditorItem: (comName) => this.getEditorItem(comName)
         };
     },
     props: {
@@ -183,6 +184,9 @@ export default {
         });
     },
     methods: {
+        getEditorItem(comName) {
+            return getCom(comName)
+        },
         getComObjs(comsList) {
             let arr = null
             //

@@ -203,6 +203,8 @@ const tools = [
     }
 ];
 
+const comsMap = {}
+
 const coms = window.nocode.comsManager.getComs()
 console.log('coms', coms)
 for (let groupName in coms) {
@@ -214,17 +216,26 @@ for (let groupName in coms) {
     for (let comName in groupComs) {
         const com = groupComs[comName]
         //
-        group.componentList.push({
+        const _com = {
             title: com.viewSchema.title,
             btnClass: 'w100',
+            groupName,
+            comName,
             componentPack: {
                 ...com,
                 propsSchema: genSchema(com.propsSchema, 'object')
             },
-        })
+        }
+        //
+        comsMap[comName] = _com
+        group.componentList.push(_com)
     }
     //
     tools.unshift(group)
+}
+
+export const getCom = (comName) => {
+    return comsMap[comName]
 }
 
 export default tools;

@@ -34,6 +34,9 @@ export default {
         Draggable,
         ViewComponentWrap,
     },
+    inject: [
+        'getEditorItem',
+    ],
     props: {
         dragOptions: {
             type: Object,
@@ -69,7 +72,7 @@ export default {
     },
     methods: {
         showNestedEditor(editorItem) {
-            return editorItem.childList && !editorItem.componentPack.viewSchema.format;
+            return editorItem.childList && !this.getEditorItem(editorItem.comName)?.componentPack.viewSchema.format;
         },
         handleDragChange(...args) {
             console.log(args);

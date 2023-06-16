@@ -35,6 +35,7 @@ export function generateEditorItem(toolItem) {
             ? { childList: [] }
             : {}
     };
+    delete ret.componentPack
     console.log('generateEditorItem, return', ret);
     return ret;
 }

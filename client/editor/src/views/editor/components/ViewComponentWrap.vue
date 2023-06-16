@@ -38,7 +38,10 @@ export default {
         NestedEditor
     },
     mixins: [emitter],
-    inject: ['getCurEditorItem'],
+    inject: [
+        'getCurEditorItem',
+        'getEditorItem',
+    ],
     props: {
         showNestedEditor: {
             type: Function,
@@ -67,19 +70,24 @@ export default {
     },
     computed: {
         attrs() {
+            const componentPack = this.getEditorItem(this.editorItem.comName)?.componentPack
             return {
                 formProps: this.formProps,
                 globalOptions,
-                ...editorItem2SchemaFieldProps(this.editorItem, this.formData)
+                ...editorItem2SchemaFieldProps({
+                    ...this.editorItem,
+                    componentPack,
+                }, this.formData)
             };
         },
         comFinalBind() {
+            const componentPack = this.getEditorItem(this.editorItem.comName)?.componentPack
             let finalBind = {
-                ...this.editorItem.componentPack.comSchema,
+                com_name: this.editorItem.comName,
                 ...this.editorItem.componentValue.baseValue,
                 com_data: this.com_data,
                 com_props: {
-                    ...this.editorItem.componentPack?.comSchema?.com_props,
+                    ...componentPack?.comSchema?.com_props,
                     ...this.editorItem.componentValue.com_props,
                     editorItem: this.editorItem,
                 },
