@@ -49,7 +49,7 @@ export default {
         },
     },
     mounted() {
-        // console.log('[nc_enum] mounted', this.value, typeof (this.value), this.com_data)
+        console.log('[nc_enum] mounted', this.value, typeof (this.value), this.com_data)
     },
     beforeUpdate() {
         // console.log('[nc_enum] beforeUpdate', this.value, this.data_source_name)

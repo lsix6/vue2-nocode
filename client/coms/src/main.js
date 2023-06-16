@@ -6,6 +6,7 @@ window.time_log('[coms] main.js')
 
 import nc_container_schema from './components/nc_container_schema.js'
 import nc_table_schema from './components/nc_table_schema.js'
+import nc_enum_schema from './components/show/nc_enum_schema.js'
 
 const registerComponents = (Vue) => {
   window.time_log('[coms] register components')
@@ -20,13 +21,16 @@ const registerComponents = (Vue) => {
     () => import('./components/nc_table.vue'),
     nc_table_schema
   )
+  window.nocode.comsManager.register(
+    'default', 'nc_enum',
+    () => import('./components/show/nc_enum.vue'),
+    nc_enum_schema
+  )
   Vue.component('nc_pagination', () => import('./components/nc_pagination.vue'))
   Vue.component('nc_form', () => import('./components/nc_form.vue'))
   Vue.component('nc_form_item', () => import('./components/nc_form_item.vue'))
   Vue.component('nc_input', () => import('./components/nc_input.vue'))
   Vue.component('nc_enum', () => import('./components/show/nc_enum.vue'))
-  Vue.component('e_nc_enum', () => import('./e_components/show/e_nc_enum.vue'))
-  Vue.component('nc_enum_color', () => import('./components/show/nc_enum_color.vue'))
   Vue.component('nc_switch_in_show', () => import('./components/show/nc_switch_in_show.vue'))
   Vue.component('nc_color', () => import('./components/show/nc_color.vue'))
   Vue.component('nc_select', () => import('./components/edit/nc_select.vue'))
