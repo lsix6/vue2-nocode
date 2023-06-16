@@ -15,7 +15,7 @@
             <button :disabled="editorItem.toolBar.removeDisabled" :class="$style.toolBarBtn" class="el-icon-delete"
                 title="移除" type="button" @click="$emit('onOperate', { item: editorItem, command: 'remove' })"></button>
         </div>
-        <nc_component v-bind="comFinalBind">
+        <nc_component v-bind="comFinalBind" class="com_in_editor">
             <template v-slot="slotProps">
                 <NestedEditor v-if="showNestedEditor(editorItem)" :child-component-list="editorItem.childList"
                     :drag-options="dragOptions" :form-data="formData" :form-props="formProps" v-bind="slotProps">
@@ -153,6 +153,12 @@ export default {
     }
 };
 </script>
+
+<style lang="scss">
+.com_in_editor {
+    font-size: medium;
+}
+</style>
 
 <style module>
 @import "../../../assets/css/variable.css";
