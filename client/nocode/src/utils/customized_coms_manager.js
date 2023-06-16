@@ -30,4 +30,18 @@ export class CustomizedComsManager {
             localStorage.removeItem(getComSaveName(comName))
         }
     }
+
+    getComObj(editorItem) {
+        let comObj = {
+            com_name: editorItem.comName,
+            ...editorItem.componentValue.baseValue,
+            com_props: {
+                ...editorItem.componentValue.com_props,
+            },
+        }
+        //
+        console.log('[customized_coms_manager] getComObj', comObj)
+        return comObj
+    }
+
 }

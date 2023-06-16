@@ -32,6 +32,7 @@ import { globalOptions } from '@lljj/vue-json-schema-form';
 import emitter from '../../../mixins/emitter.js';
 import NestedEditor from './NestedEditor';
 import { editorItem2SchemaFieldProps } from '../common/editorData';
+import _ from 'lodash'
 
 export default {
     name: 'ViewComponentWrap',
@@ -82,17 +83,13 @@ export default {
             };
         },
         comFinalBind() {
-            const componentPack = this.getEditorItem(this.editorItem.comName)?.componentPack
-            let finalBind = {
-                com_name: this.editorItem.comName,
-                ...this.editorItem.componentValue.baseValue,
+            const comObj = window.nocode.customizedComsManager.getComObj(this.editorItem)
+            const finalBind = _.merge(comObj, {
                 com_data: this.com_data,
                 com_props: {
-                    ...componentPack?.comSchema?.com_props,
-                    ...this.editorItem.componentValue.com_props,
                     editorItem: this.editorItem,
                 },
-            }
+            })
             //
             console.log('[ViewComponentWrap] comFinalBind', finalBind)
             return finalBind
