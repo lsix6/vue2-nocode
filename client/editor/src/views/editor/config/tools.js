@@ -16,6 +16,33 @@ const tools = [];
 
 const comsMap = {}
 
+const html = {
+    groupName: 'html',
+    componentList: [],
+}
+
+const tags = ['div', 'span']
+tags.forEach(tag => {
+    const _com = {
+        title: tag,
+        btnClass: 'w100',
+        groupName: html.groupName,
+        comName: tag,
+        componentPack: {
+            viewSchema: {
+                title: tag,
+                type: 'object',
+            },
+            propsSchema: genSchema({}, 'object')
+        },
+    }
+    //
+    comsMap[tag] = _com
+    html.componentList.push(_com)
+
+});
+tools.push(html)
+
 const coms = window.nocode.comsManager.getComs()
 console.log('coms', coms)
 for (let groupName in coms) {
@@ -42,7 +69,7 @@ for (let groupName in coms) {
         group.componentList.push(_com)
     }
     //
-    tools.unshift(group)
+    tools.push(group)
 }
 
 export const getCom = (comName) => {
