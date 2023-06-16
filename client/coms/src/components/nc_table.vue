@@ -1,15 +1,8 @@
 <template>
     <el-table style="width: 100%" v-bind="table_props" :data="finalListData" @sort-change="onSortChange">
         <template v-for="(field, index) in fields">
-            <el-table-column v-if="field.column_components" :key="'_if' + index" v-bind="field.column_props">
-                <template slot-scope="scope">
-                    <nc_component v-for="(com, comIndex) in field.column_components" :key="comIndex"
-                        :com_data="{ ...com_data, ...scope.row }" v-bind="com">
-                    </nc_component>
-                </template>
-            </el-table-column>
-            <el-table-column v-else :key="'_else' + index" v-bind="field.column_props">
-            </el-table-column>
+            <nc_table_column :key="index" v-bind="field">
+            </nc_table_column>
         </template>
         <slot slot="empty" name="empty"></slot>
     </el-table>

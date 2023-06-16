@@ -37,11 +37,11 @@ export default {
                                         type: 'string',
                                         title: 'label',
                                     },
-                                    com_name: {
-                                        type: 'string',
-                                        title: 'com',
-                                    },
                                 },
+                            },
+                            ref_com_name: {
+                                type: 'string',
+                                title: 'ref com',
                             },
                         },
                     }

@@ -17,6 +17,7 @@ const registerComponents = (Vue) => {
     () => import('./components/nc_container.vue'),
     nc_container_schema
   )
+  Vue.component('nc_table_column', () => import('./components/nc_table_column.vue'))
   window.nocode.comsManager.register(
     'default', 'nc_table',
     () => import('./components/nc_table.vue'),
