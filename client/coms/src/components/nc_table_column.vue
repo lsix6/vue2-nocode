@@ -2,9 +2,6 @@
     <span>
 
         <template v-if="column_components.length > 0">
-            <div>
-                {{ column_components.length }}
-            </div>
             <el-table-column v-bind="column_props">
                 <template slot-scope="scope">
                     <nc_component v-for="(com, comIndex) in column_components" :key="comIndex"
@@ -48,6 +45,9 @@ export default {
             console.log('[nc_table_column] column_components', comObjs)
             return comObjs
         },
+    },
+    mounted() {
+        // console.log('[nc_table_column] mounted', this.com_data)
     },
 }
 </script>
