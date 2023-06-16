@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import { loadComData } from './ComsList';
 
 export default {
     name: 'ComPreviewDlg',
@@ -19,7 +18,7 @@ export default {
     },
     methods: {
         open(comName) {
-            const comData = loadComData(comName)
+            const comData = window.nocode.customizedComsManager.loadComData(comName)
             if (comData) {
                 this.comObjs = comData.comObjs
             }

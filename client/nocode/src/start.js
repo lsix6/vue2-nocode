@@ -18,6 +18,9 @@ window.Vue.use(nc_children)
 import { ComsManager } from './utils/coms_manager'
 const comsManager = new ComsManager(window.Vue)
 
+import { CustomizedComsManager } from './utils/customized_coms_manager'
+const customizedComsManager = new CustomizedComsManager()
+
 import nc_data_source from './components/base/nc_data_source.vue'
 import nc_data_source_schema from './components/base/nc_data_source_schema'
 comsManager.register('default', 'nc_data_source', nc_data_source, nc_data_source_schema)
@@ -42,6 +45,7 @@ window.nocode = {
     register_msg_box,
     msg_box,
     comsManager,
+    customizedComsManager,
 }
 
 window.time_log('[nocode] js loaded')

@@ -37,6 +37,10 @@ export default {
                                         type: 'string',
                                         title: 'label',
                                     },
+                                    com_name: {
+                                        type: 'string',
+                                        title: 'com',
+                                    },
                                 },
                             },
                         },

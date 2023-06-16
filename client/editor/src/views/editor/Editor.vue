@@ -84,7 +84,6 @@ window.Vue.component('NestedEditor', NestedEditor)
 import ComPreviewDlg from './ComPreviewDlg.vue'
 
 import { formatFormLabelWidth } from './common/editorData';
-import { loadComData, saveComData } from './ComsList';
 
 deepFreeze(configTools);
 
@@ -190,10 +189,10 @@ export default {
             const saveData = {
                 componentList: this.componentList,
             }
-            saveComData(this.com_name, saveData)
+            window.nocode.customizedComsManager.saveComData(this.com_name, saveData)
         },
         loadData() {
-            const saveData = loadComData(this.com_name)
+            const saveData = window.nocode.customizedComsManager.loadComData(this.com_name)
             if (saveData) {
                 this.componentList = saveData.componentList
             }
