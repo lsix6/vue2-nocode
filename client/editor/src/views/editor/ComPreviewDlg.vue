@@ -18,10 +18,7 @@ export default {
     },
     methods: {
         open(comName) {
-            const comData = window.nocode.customizedComsManager.loadComData(comName)
-            if (comData) {
-                this.comObjs = comData.comObjs
-            }
+            this.comObjs = window.nocode.customizedComsManager.loadComObjs(comName)
             //
             this.dialogVisible = true
         },
