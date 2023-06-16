@@ -128,6 +128,15 @@ export default {
                 return new Promise((resolve) => {
                     resolve(arr2enum(ds.enum))
                 })
+            } else if (ds.obj) {
+                return new Promise((resolve, reject) => {
+                    try {
+                        const obj = JSON.parse(ds.obj)
+                        resolve(obj)
+                    } catch (e) {
+                        reject(e)
+                    }
+                })
             }
             //
             return fetch_data(com, ds)
