@@ -8,8 +8,13 @@ function genBaseVal() {
         type: 'object',
         properties: {
             com_field: {
-                type: 'string',
-                title: 'field',
+                type: 'object',
+                properties: {
+                    field_name: {
+                        type: 'string',
+                        title: 'field name',
+                    },
+                },
             },
             com_text: {
                 type: 'string',
