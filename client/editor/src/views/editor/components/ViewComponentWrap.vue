@@ -83,7 +83,7 @@ export default {
             };
         },
         comFinalBind() {
-            const comObj = window.nocode.customizedComsManager.getComObj(this.editorItem)
+            const comObj = window.nocode.customizedComsManager.schemaItem2ComObj(this.editorItem)
             const finalBind = _.merge(comObj, {
                 com_data: this.com_data,
                 com_props: {

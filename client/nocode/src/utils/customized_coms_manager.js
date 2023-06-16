@@ -31,7 +31,7 @@ export class CustomizedComsManager {
         }
     }
 
-    getComObj(editorItem) {
+    schemaItem2ComObj(editorItem) {
         let comObj = {
             com_name: editorItem.comName,
             ...editorItem.componentValue.baseValue,
@@ -40,7 +40,7 @@ export class CustomizedComsManager {
             },
         }
         //
-        console.log('[customized_coms_manager] getComObj', comObj)
+        console.log('[customized_coms_manager] schemaItem2ComObj', comObj)
         return comObj
     }
 
