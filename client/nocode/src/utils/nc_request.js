@@ -27,7 +27,7 @@ export const fetch_data = (com, fetchData) => {
     return new Promise((resolve, reject) => {
         if (fetchData.api) {
             //  请求 api 获取数据
-            const fetchParams = get_params(com, fetchData.fetch_params)
+            const fetchParams = get_params(com, fetchData.api.fetch_params)
             const requestParams = { ...fetchParams }
             request_api(fetchData.api, requestParams).then(data => {
                 resolve(data)

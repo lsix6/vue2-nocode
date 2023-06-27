@@ -57,15 +57,15 @@ export const createEditPage = (moduleInfo) => {
                                                     api: {
                                                         url: `${moduleInfo.name}/detail`,
                                                         method: 'GET',
+                                                        fetch_params: [
+                                                            {
+                                                                params_source: 'route_query',
+                                                                params_fields: [
+                                                                    '_id',
+                                                                ]
+                                                            }
+                                                        ]
                                                     },
-                                                    fetch_params: [
-                                                        {
-                                                            params_source: 'route_query',
-                                                            params_fields: [
-                                                                '_id',
-                                                            ]
-                                                        }
-                                                    ]
                                                 },
                                             },
                                             data_children: [
