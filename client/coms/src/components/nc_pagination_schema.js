@@ -14,6 +14,22 @@ export default {
             type: 'object',
             title: 'props',
             properties: {
+                pagination_props: {
+                    type: 'object',
+                    properties: {
+                        'page-sizes': {
+                            type: 'array',
+                            title: 'page sizes',
+                            items: {
+                                type: 'number',
+                            },
+                        },
+                        layout: {
+                            type: 'string',
+                            title: 'layout',
+                        },
+                    },
+                },
             }
         },
         com_events: {
