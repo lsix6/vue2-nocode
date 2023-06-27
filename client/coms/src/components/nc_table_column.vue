@@ -46,12 +46,12 @@ export default {
             if (this.ref_com_name) {
                 comObjs = window.nocode.customizedComsManager.loadComObjs(this.ref_com_name)
             }
-            console.log('[nc_table_column] column_children', comObjs)
+            // console.log('[nc_table_column] column_children', comObjs)
             return comObjs
         },
     },
     mounted() {
-        console.log('[nc_table_column] mounted', this.$props)
+        // console.log('[nc_table_column] mounted', this.$props)
     },
 }
 </script>

@@ -44,7 +44,7 @@ export default {
         },
     },
     mounted() {
-        console.log('[nc_select] mounted', this.value, typeof (this.value), this.com_data)
+        // console.log('[nc_select] mounted', this.value, typeof (this.value), this.com_data)
         //
         if (this.enum_map) {
             for (let k in this.enum_map) {
@@ -63,7 +63,7 @@ export default {
                 })
             }
         }
-        console.log('[nc_select] enumArr', this.enumArr)
+        // console.log('[nc_select] enumArr', this.enumArr)
     },
     methods: {
         onChange(v) {
