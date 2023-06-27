@@ -31,9 +31,10 @@ export const createListPage = (moduleInfo) => {
                     },
                 },
                 com_props: {
-                    data_sources: {
+                    data_sources: [
                         ...moduleInfo.data_sources,
-                        listPageData: {
+                        {
+                            name: 'listPageData',
                             api: {
                                 url: `${moduleInfo.name}/list`,
                                 method: 'GET',
@@ -61,7 +62,7 @@ export const createListPage = (moduleInfo) => {
                                 },
                             ]
                         },
-                    },
+                    ],
                     data_children: [
                         {
                             com_name: 'div',

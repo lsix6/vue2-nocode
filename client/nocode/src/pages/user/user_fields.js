@@ -117,10 +117,10 @@ export const getFields = (moduleName) => {
                 name: 'gender',
                 label: '性别',
                 default_value: 0,
-                enum_map: {
-                    1: '男',
-                    2: '女',
-                },
+                enum: [
+                    '男',
+                    '女'
+                ],
             },
             in_list: {
                 column_props: {

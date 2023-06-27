@@ -9,10 +9,9 @@ const preProcessModuleInfo = (moduleInfo) => {
 
     // 根据模块信息添加数据源
     const data_sources = create_date_sources(moduleInfo)
-    moduleInfo.data_sources = {
-        ...moduleInfo.data_sources,
+    moduleInfo.data_sources = [
         ...data_sources,
-    }
+    ]
     //
     return moduleInfo
 }
