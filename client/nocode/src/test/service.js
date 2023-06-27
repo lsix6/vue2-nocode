@@ -24,46 +24,26 @@ const init_products = () => {
 init_products()
 
 const listUsers = [
-    {
-        _id: '1',
-        no: '1',
-        name: '1',
-        avatar: `/nocode/static/imgs/avatar1.webp`,
-        gender: 2,
-        huji: 3,
-        birthday: '2000-05-01',
-        obj: {
-            a: 2,
-            b: 3,
-        },
-    },
-    {
-        _id: '2',
-        no: '2',
-        name: '2',
-        avatar: `/nocode/static/imgs/avatar2.webp`,
-        gender: 1,
-        huji: 5,
-        birthday: '2001-02-01',
-        obj: {
-            a: 1,
-            b: 5,
-        },
-    },
-    {
-        _id: '3',
-        no: '3',
-        name: '3',
-        avatar: `/nocode/static/imgs/avatar3.webp`,
-        gender: 2,
-        huji: 1,
-        birthday: '2002-05-11',
-        obj: {
-            a: 2,
-            b: 1,
-        },
-    },
 ]
+
+const init_users = () => {
+    for (let i = 0; i < 25; i++) {
+        listUsers.push({
+            _id: '' + (i + 1),
+            no: '' + (i + 1),
+            name: '' + (i + 1),
+            avatar: `/nocode/static/imgs/avatar${i % 3 + 1}.webp`,
+            gender: (Math.floor(Math.random() * 2) + 1),
+            huji: (Math.floor(Math.random() * 3) + 1),
+            birthday: '2000-05-01',
+            obj: {
+                a: 2,
+                b: 3,
+            },
+        })
+    }
+}
+init_users()
 
 const tables = {
     product: listProducts,
