@@ -105,6 +105,7 @@ export default {
             })
         },
         refresh(params) {
+            // console.log('[nc_data_source] refresh,', params)
             return new Promise((resolve) => {
                 const dsName = params.ds_name
                 const ds = this.data_sources_map[dsName]
@@ -119,6 +120,7 @@ export default {
                         console.error('[nc_data_source] refresh, fetchData error:', e)
                     })
                 } else {
+                    console.error('[nc_data_source] refresh, not found ds', dsName, this.data_sources_map)
                     resolve(true)
                 }
             })
