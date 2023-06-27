@@ -46,6 +46,32 @@ export default {
                                         ],
                                         default: 'GET'
                                     },
+                                    fetch_params: {
+                                        type: 'array',
+                                        title: 'params',
+                                        items: {
+                                            type: 'object',
+                                            title: 'param',
+                                            properties: {
+                                                params_source: {
+                                                    type: 'string',
+                                                    title: 'source',
+                                                },
+                                                params_com_ref: {
+                                                    type: 'string',
+                                                    title: 'com ref',
+                                                },
+                                                params_com_method_name: {
+                                                    type: 'string',
+                                                    title: 'method name',
+                                                },
+                                                params_set_name: {
+                                                    type: 'string',
+                                                    title: 'set name',
+                                                },
+                                            },
+                                        },
+                                    },
                                 },
                             },
                             enum: {
