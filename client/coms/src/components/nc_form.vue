@@ -2,6 +2,7 @@
     <el-form ref="form" :model="formData" v-bind="form_props" @submit.native.prevent>
         <nc_children ref="children" :com_children="children" :com_data="{ ...com_data, formData, valid, changed, }">
         </nc_children>
+        <slot v-bind="{ com_data: { ...com_data, ...value } }"></slot>
     </el-form>
 </template>
 
