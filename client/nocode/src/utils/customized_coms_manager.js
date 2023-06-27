@@ -38,6 +38,9 @@ export class CustomizedComsManager {
             com_props: {
                 ...editorItem.componentValue.com_props,
             },
+            com_events: [
+                ...(editorItem.componentValue.com_events || []),
+            ],
         }
         //
         console.log('[customized_coms_manager] schemaItem2ComObj', comObj)

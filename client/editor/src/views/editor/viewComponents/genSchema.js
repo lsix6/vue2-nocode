@@ -7,6 +7,10 @@ function genBaseVal() {
         title: 'base',
         type: 'object',
         properties: {
+            com_ref: {
+                type: 'string',
+                title: 'ref name',
+            },
             com_field: {
                 type: 'object',
                 properties: {
