@@ -11,6 +11,7 @@ import nc_text_schema from './components/show/nc_text_schema.js'
 import nc_pagination_schema from './components/nc_pagination_schema.js'
 import nc_form_schema from './components/nc_form_schema.js'
 import el_input_schema from './elementui/el_input_schema.js'
+import nc_select_schema from './components/edit/nc_select_schema.js'
 
 const registerComponents = (Vue) => {
   window.time_log('[coms] register components')
@@ -51,13 +52,17 @@ const registerComponents = (Vue) => {
     null,
     el_input_schema
   )
+  window.nocode.comsManager.register(
+    'default', 'nc_select',
+    () => import('./components/edit/nc_select.vue'),
+    nc_select_schema
+  )
   Vue.component('nc_pagination', () => import('./components/nc_pagination.vue'))
   Vue.component('nc_form_item', () => import('./components/nc_form_item.vue'))
   Vue.component('nc_input', () => import('./components/nc_input.vue'))
   Vue.component('nc_enum', () => import('./components/show/nc_enum.vue'))
   Vue.component('nc_switch_in_show', () => import('./components/show/nc_switch_in_show.vue'))
   Vue.component('nc_color', () => import('./components/show/nc_color.vue'))
-  Vue.component('nc_select', () => import('./components/edit/nc_select.vue'))
   Vue.component('nc_select_color', () => import('./components/edit/nc_select_color.vue'))
   Vue.component('nc_radio_group', () => import('./components/edit/nc_radio_group.vue'))
 }
