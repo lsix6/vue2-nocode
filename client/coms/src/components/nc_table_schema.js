@@ -37,6 +37,10 @@ export default {
                                         type: 'string',
                                         title: 'label',
                                     },
+                                    sortable: {
+                                        type: 'boolean',
+                                        title: 'sortable',
+                                    },
                                 },
                             },
                             ref_com_name: {
