@@ -16,9 +16,13 @@
             </div>
 
             <div :class="[$style.contentBox]">
-                <NestedEditor :child-component-list="componentList" :drag-options="dragOptions" :form-data="rootFormData"
-                    :form-props="formProps">
-                </NestedEditor>
+                <nc_root>
+                    <template slot-scope="slotScope">
+                        <NestedEditor :child-component-list="componentList" :drag-options="dragOptions"
+                            :form-data="rootFormData" :form-props="formProps" :com_root="slotScope.com_root">
+                        </NestedEditor>
+                    </template>
+                </nc_root>
                 <div v-if="componentList.length === 0" :class="$style.tipBox">
                     <p>拖拽左侧栏的组件进行添加</p>
                 </div>

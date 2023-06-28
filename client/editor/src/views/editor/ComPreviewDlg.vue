@@ -1,6 +1,6 @@
 <template>
     <el-dialog title="自定义组件列表" :visible.sync="dialogVisible">
-        <nc_component v-for="(com, i) in comObjs" :key="i" v-bind="com" />
+        <nc_root :com_list="comObjs" />
     </el-dialog>
 </template>
 

@@ -65,6 +65,10 @@ export default {
             type: null,
             default: null
         },
+        com_root: {
+            type: Object,
+            default: null
+        },
         com_data: {
             type: Object,
             default: null
@@ -89,6 +93,7 @@ export default {
                     editorItem: this.editorItem,
                 },
             })
+            finalBind.com_root = this.com_root
             finalBind.com_data = this.com_data
             //
             console.log('[ViewComponentWrap] comFinalBind', finalBind)

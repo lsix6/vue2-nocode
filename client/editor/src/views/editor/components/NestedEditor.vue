@@ -11,7 +11,7 @@
 } : {}" style="flex: 1;">
             <ViewComponentWrap :form-data="formData" :editor-item="item" :drag-options="dragOptions"
                 :show-nested-editor="showNestedEditor" :form-props="formProps" @onOperate="handleItemOperate"
-                :com_data="com_data">
+                :com_root="com_root" :com_data="com_data">
             </ViewComponentWrap>
         </div>
         <template slot="footer">
@@ -52,6 +52,10 @@ export default {
         },
         formProps: {
             type: null,
+            default: null
+        },
+        com_root: {
+            type: Object,
             default: null
         },
         com_data: {
