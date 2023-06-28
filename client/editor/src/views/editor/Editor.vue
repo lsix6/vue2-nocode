@@ -16,25 +16,9 @@
             </div>
 
             <div :class="[$style.contentBox]">
-                <el-form style="height: 100%" :model="rootFormData" v-bind="formProps" class="genFromComponent" :class="{
-                    layoutColumn: !formProps.inline,
-                    [`layoutColumn-${formProps.layoutColumn}`]: !formProps.inline,
-                    formInlineFooter: formProps.inlineFooter,
-                    formInline: formProps.inline,
-                    // [`genFromComponent_${schema.id}Form`]: !!schema.id,
-                }">
-                    <NestedEditor :child-component-list="componentList" :drag-options="dragOptions"
-                        :form-data="rootFormData" :form-props="formProps">
-                        <el-form-item v-if="componentList.length > 0 && formFooter.show" :style="{
-                            display: formProps.inline && formProps.inlineFooter ? 'inline-block' : 'block'
-                        }" class="formFooter_item w100 formFooter_item-editor">
-                            <el-button @click="$emit('onCancel')">{{ formFooter.cancelBtn }}</el-button>
-                            <el-button type="primary" @click="$emit('onSubmit')">
-                                {{ formFooter.okBtn }}
-                            </el-button>
-                        </el-form-item>
-                    </NestedEditor>
-                </el-form>
+                <NestedEditor :child-component-list="componentList" :drag-options="dragOptions" :form-data="rootFormData"
+                    :form-props="formProps">
+                </NestedEditor>
                 <div v-if="componentList.length === 0" :class="$style.tipBox">
                     <p>拖拽左侧栏的组件进行添加</p>
                 </div>
