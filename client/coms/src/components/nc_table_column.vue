@@ -4,7 +4,7 @@
         <template v-if="column_children.length > 0">
             <el-table-column v-bind="column_props">
                 <template slot-scope="scope">
-                    <nc_component v-for="(com, comIndex) in column_children" :key="comIndex"
+                    <nc_component v-for="(com, comIndex) in column_children" :key="comIndex" :com_root="com_root"
                         :com_data="{ ...com_data, ...scope.row }" v-bind="com">
                     </nc_component>
                 </template>
@@ -34,6 +34,10 @@ export default {
         ref_com_name: {
             type: String,
             default: '',
+        },
+        com_root: {
+            type: Object,
+            default: null
         },
         com_data: {
             type: Object,

@@ -1,6 +1,6 @@
 <template>
     <div :style="{ display: 'flex', 'flex-direction': items_direction }">
-        <slot v-bind="{ com_data: { ...com_data, ...value } }"></slot>
+        <slot v-bind="{ com_root, com_data: { ...com_data, ...value } }"></slot>
     </div>
 </template>
 
@@ -18,6 +18,10 @@ export default {
         items_direction: {
             type: String,
             default: 'column'
+        },
+        com_root: {
+            type: Object,
+            default: null
         },
         com_data: {
             type: Object,

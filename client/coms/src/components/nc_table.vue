@@ -1,7 +1,7 @@
 <template>
     <el-table style="width: 100%" v-bind="table_props" :data="finalListData" @sort-change="onSortChange">
         <template v-for="(field, index) in fields">
-            <nc_table_column :key="index" v-bind="field" :com_data="com_data">
+            <nc_table_column :key="index" v-bind="field" :com_root="com_root" :com_data="com_data">
             </nc_table_column>
         </template>
         <slot slot="empty" name="empty"></slot>
@@ -24,6 +24,10 @@ export default {
         fields: {
             type: Array,
             default: () => []
+        },
+        com_root: {
+            type: Object,
+            default: null
         },
         com_data: {
             type: Object,

@@ -2,7 +2,7 @@
     <el-form ref="form" :model="formData" v-bind="form_props" @submit.native.prevent>
         <nc_children ref="children" :com_children="children" :com_data="{ ...com_data, formData, valid, changed, }">
         </nc_children>
-        <slot v-bind="{ com_data: { ...com_data, formData, valid, changed, } }"></slot>
+        <slot v-bind="{ com_root, com_data: { ...com_data, formData, valid, changed, } }"></slot>
     </el-form>
 </template>
 
@@ -22,6 +22,10 @@ export default {
         Vue.component('nc_form', this)
     },
     props: {
+        com_root: {
+            type: Object,
+            default: null
+        },
         com_ref: {
             type: String,
             default: null

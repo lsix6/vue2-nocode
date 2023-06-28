@@ -10,6 +10,10 @@ export default {
     },
     name: 'nc_component',
     props: {
+        com_root: {
+            type: Object,
+            default: null
+        },
         com_text: {
             type: String,
             default: null
@@ -149,6 +153,7 @@ export default {
                 'nc_component',
                 {
                     props: {
+                        com_root: this.com_root,
                         // 子组件的数据
                         ...child,
                         // 把 'com_data' 传入子组件
@@ -221,6 +226,7 @@ export default {
         const comData = {
             ...this.com_info,
             props: {
+                com_root: this.com_root,
                 ...this.finalBinds,
                 com_props: this.com_props,
                 com_data: this.com_data,
@@ -245,6 +251,7 @@ export default {
         // console.log('[nc_component] created', this.com_name, this.com_ref, this.$refs.com)
     },
     mounted() {
+        console.log('[nc_component] mounted, com_root', this.com_name, this.com_root)
         // console.log('[nc_component] mounted', this.com_name, this.com_ref, this.$refs.com)
         if (this.$refs.com) {
             this.inMounted()

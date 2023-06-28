@@ -4,7 +4,7 @@
             <nc_children :com_children="data_children" :com_data="finalComData">
             </nc_children>
         </template>
-        <slot v-if="data" v-bind:com_data="finalComData"></slot>
+        <slot v-if="data" v-bind="{ com_root, com_data: finalComData }"></slot>
     </div>
 </template>
 
@@ -28,6 +28,10 @@ export default {
         },
         data_children: {
             type: Array,
+            default: null
+        },
+        com_root: {
+            type: Object,
             default: null
         },
         com_data: {
