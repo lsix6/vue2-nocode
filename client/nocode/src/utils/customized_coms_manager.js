@@ -35,6 +35,9 @@ export class CustomizedComsManager {
         let comObj = {
             com_name: editorItem.comName,
             ...editorItem.componentValue.baseValue,
+            com_info: {
+                ...editorItem.componentValue.com_info,
+            },
             com_props: {
                 ...editorItem.componentValue.com_props,
             },
