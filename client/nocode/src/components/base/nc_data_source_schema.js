@@ -65,6 +65,10 @@ export default {
                                                     type: 'string',
                                                     title: 'method name',
                                                 },
+                                                params_default_value: {
+                                                    type: 'string',
+                                                    title: 'default value',
+                                                },
                                                 params_set_name: {
                                                     type: 'string',
                                                     title: 'set name',
