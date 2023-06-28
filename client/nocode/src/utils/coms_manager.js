@@ -9,7 +9,9 @@ export class ComsManager {
     }
 
     register(groupName, comName, component, schema) {
-        this.Vue.component(comName, component)
+        if (component) {
+            this.Vue.component(comName, component)
+        }
         //
         this.coms[groupName] = (this.coms[groupName] || {})
         this.coms[groupName][comName] = schema
