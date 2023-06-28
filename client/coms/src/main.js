@@ -8,8 +8,9 @@ import nc_container_schema from './components/nc_container_schema.js'
 import nc_table_schema from './components/nc_table_schema.js'
 import nc_enum_schema from './components/show/nc_enum_schema.js'
 import nc_text_schema from './components/show/nc_text_schema.js'
-import nc_form_schema from './components/nc_form_schema.js'
 import nc_pagination_schema from './components/nc_pagination_schema.js'
+import nc_form_schema from './components/nc_form_schema.js'
+import el_input_schema from './elementui/el_input_schema.js'
 
 const registerComponents = (Vue) => {
   window.time_log('[coms] register components')
@@ -36,14 +37,19 @@ const registerComponents = (Vue) => {
     nc_text_schema
   )
   window.nocode.comsManager.register(
+    'default', 'nc_pagination',
+    () => import('./components/nc_pagination.vue'),
+    nc_pagination_schema
+  )
+  window.nocode.comsManager.register(
     'default', 'nc_form',
     () => import('./components/nc_form.vue'),
     nc_form_schema
   )
   window.nocode.comsManager.register(
-    'default', 'nc_pagination',
-    () => import('./components/nc_pagination.vue'),
-    nc_pagination_schema
+    'default', 'el-input',
+    null,
+    el_input_schema
   )
   Vue.component('nc_pagination', () => import('./components/nc_pagination.vue'))
   Vue.component('nc_form_item', () => import('./components/nc_form_item.vue'))
