@@ -104,9 +104,9 @@ const _list = (moduleName, params) => {
         }
         //
         const page = params.page
-        if (page && page.pageIndex) {
-            pageData.pageNumber = page.pageIndex
-            pageData.pageSize = page.pageSize
+        if (page) {
+            pageData.pageNumber = page.pageIndex || pageData.pageNumber
+            pageData.pageSize = page.pageSize || pageData.pageSize
         }
         pageData.pageCount = Math.floor((pageData.totalCount - 1) / pageData.pageSize) + 1
         pageData.pageNumber = Math.min(pageData.pageNumber, pageData.pageCount)
