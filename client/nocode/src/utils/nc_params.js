@@ -1,5 +1,5 @@
 
-import { isObject } from 'lodash'
+import _ from 'lodash'
 import { get_com_ref } from './nc_refs'
 import { getPropValue, setPropValue } from './nc_utils'
 
@@ -30,7 +30,15 @@ export const get_params = (com, paramsDef, cmdData) => {
                     const method_name = obj.params_com_method_name || 'getData'
                     source = ref[method_name]()
                 } else {
-                    source = obj.params_default_value
+                    if (_.isString(obj.params_default_value)) {
+                        try {
+                            source = JSON.parse(obj.params_default_value)
+                        } catch (e) {
+                            console.error('[nc_params] get_params, parse params_default_value failed', e)
+                        }
+                    } else {
+                        source = obj.params_default_value
+                    }
                 }
             } else if (obj.params_source === 'route_query') {
                 source = com.$route.query
@@ -48,7 +56,7 @@ export const get_params = (com, paramsDef, cmdData) => {
                 // 如果指定了字段列表
                 // 则设置各字段的值
                 for (let field of obj.params_fields) {
-                    if (isObject(field)) {
+                    if (_.isObject(field)) {
                         // 字段是对象类型
                         if (field.target_name) {
                             // 如果有目标字段名，则把字段值设置到目标字段中
