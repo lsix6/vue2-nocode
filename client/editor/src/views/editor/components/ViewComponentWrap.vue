@@ -85,11 +85,11 @@ export default {
         comFinalBind() {
             const comObj = window.nocode.customizedComsManager.schemaItem2ComObj(this.editorItem)
             const finalBind = _.merge(comObj, {
-                com_data: this.com_data,
                 com_props: {
                     editorItem: this.editorItem,
                 },
             })
+            finalBind.com_data = this.com_data
             //
             console.log('[ViewComponentWrap] comFinalBind', finalBind)
             return finalBind
