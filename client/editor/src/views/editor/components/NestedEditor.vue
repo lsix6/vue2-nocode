@@ -251,7 +251,7 @@ export default {
     font-size: 0;
     background-color: #f5f5f5;
     height: 100%;
-    padding: 15px;
+    /* padding: 15px; */
     overflow: auto;
 
     .dragArea {
