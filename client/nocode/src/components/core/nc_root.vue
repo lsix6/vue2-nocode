@@ -26,9 +26,11 @@ export default {
         };
     },
     created() {
-        this.root = {
-            refsMgr: new ComRefsManager(),
-        }
+        this.root = Object.freeze(
+            {
+                refsMgr: Object.freeze(new ComRefsManager()),
+            }
+        )
         console.log('[nc_root] created, com_root', this.root)
     },
     mounted() {
