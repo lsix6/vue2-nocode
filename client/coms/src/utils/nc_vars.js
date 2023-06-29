@@ -27,11 +27,11 @@ export const nc_vars = {
                 changed = {}
                 console.log('[nc_vars] formChanged.clearAllChanged, changed:', changed)
             },
-            getUnsaveWarning() {
+            getUnsaveWarning(com) {
                 const forms = Object.keys(changed)
                 console.log('[nc_vars] formChanged.getUnsaveWarning, forms:', forms)
                 if (forms.length > 0) {
-                    const formRef = window.nocode.get_com_ref(forms[0])
+                    const formRef = com.com_root.refsMgr.get_com_ref(forms[0])
                     return formRef.unsave_warning
                 }
                 //

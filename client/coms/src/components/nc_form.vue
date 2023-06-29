@@ -14,7 +14,6 @@ import { filterFields } from '../utils/nc_utils'
 
 const request_api = window.nocode.request_api
 const get_params = window.nocode.get_params
-const get_com_ref = window.nocode.get_com_ref
 const msg_box = window.nocode.msg_box
 
 export default {
@@ -296,7 +295,7 @@ export default {
                     // 弹出确认框
                     let refDialog = null
                     if (methodParams.dialog_ref) {
-                        refDialog = get_com_ref(methodParams.dialog_ref)
+                        refDialog = this.com_root.refsMgr.get_com_ref(methodParams.dialog_ref)
                         refDialog.hide(true)
                     }
                     function confirm_resovle(result) {

@@ -1,6 +1,5 @@
 
 import _ from 'lodash'
-import { get_com_ref } from './nc_refs'
 import { getPropValue, setPropValue } from './nc_utils'
 
 const nc_params_source = {}
@@ -25,7 +24,7 @@ export const get_params = (com, paramsDef, cmdData) => {
             } else if (obj.params_source === 'com_data') {
                 source = com.com_data
             } else if (obj.params_source === 'com_ref') {
-                const ref = get_com_ref(obj.params_com_ref)
+                const ref = com.com_root.refsMgr.get_com_ref(obj.params_com_ref)
                 if (ref) {
                     const method_name = obj.params_com_method_name || 'getData'
                     source = ref[method_name]()

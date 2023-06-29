@@ -1,7 +1,6 @@
 
 <script>
 import { execute_commands } from '../../commands/nc_commands'
-import { register_com_ref, unregister_com_ref } from '../../utils/nc_refs'
 import { getPropValue, parseValue, setPropValue } from '../../utils/nc_utils'
 
 export default {
@@ -251,7 +250,7 @@ export default {
         // console.log('[nc_component] created', this.com_name, this.com_ref, this.$refs.com)
     },
     mounted() {
-        console.log('[nc_component] mounted, com_root', this.com_name, this.com_root)
+        // console.log('[nc_component] mounted, com_root', this.com_name, this.com_root)
         // console.log('[nc_component] mounted', this.com_name, this.com_ref, this.$refs.com)
         if (this.$refs.com) {
             this.inMounted()
@@ -281,7 +280,7 @@ export default {
             const comRef = this.$refs.com
             //
             if (this.com_ref) {
-                register_com_ref(this.com_ref, comRef)
+                this.com_root.refsMgr.register_com_ref(this.com_ref, comRef)
             }
             // 注册组件里定义的事件
             let eventsMap = {}
@@ -343,7 +342,7 @@ export default {
             const comRef = this.$refs.com
             //
             if (this.com_ref) {
-                unregister_com_ref(this.com_ref)
+                this.com_root.refsMgr.unregister_com_ref(this.com_ref)
             }
             // 注销组件里定义的事件
             // console.log('[nc_component] beforeDestroy', this.com_name, this.eventsMap)
