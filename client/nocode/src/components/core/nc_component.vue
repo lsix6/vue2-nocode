@@ -280,6 +280,7 @@ export default {
             const comRef = this.$refs.com
             //
             if (this.com_ref) {
+                // console.log('[nc_component] register_com_ref', this.com_ref, this.com_root)
                 this.com_root.refsMgr.register_com_ref(this.com_ref, comRef)
             }
             // 注册组件里定义的事件
