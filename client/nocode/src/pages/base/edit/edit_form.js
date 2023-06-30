@@ -11,7 +11,7 @@ export const createEditForm = (moduleInfo) => {
         com_binds: [
             {
                 prop_name: 'init_data',
-                field_name: '__recordData.data',
+                field_name: '__ds.recordData.data',
             },
         ],
         com_props: {

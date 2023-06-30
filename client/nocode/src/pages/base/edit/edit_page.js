@@ -51,9 +51,10 @@ export const createEditPage = (moduleInfo) => {
                                     {
                                         com_name: 'nc_data_source',
                                         com_props: {
-                                            data_sources: {
+                                            data_sources: [
                                                 ...moduleInfo.data_sources,
-                                                __recordData: {
+                                                {
+                                                    name: 'recordData',
                                                     api: {
                                                         url: `${moduleInfo.name}/detail`,
                                                         method: 'GET',
@@ -67,11 +68,11 @@ export const createEditPage = (moduleInfo) => {
                                                         ]
                                                     },
                                                 },
-                                            },
-                                            data_children: [
-                                                formEdit,
                                             ],
                                         },
+                                        com_children: [
+                                            formEdit,
+                                        ],
                                     },
                                 ],
                             },
