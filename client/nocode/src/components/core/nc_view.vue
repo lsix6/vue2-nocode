@@ -1,16 +1,15 @@
 <template>
-  <nc_component v-if="comObj && comObj.com_version === '1'" v-bind="comObj">
-  </nc_component>
+  <nc_root v-if="comObj && comObj.com_version === '1'" :com_list="[comObj]" />
 </template>
 
 <script>
 
 import { get_page, nc_view_route } from './nc_pages.js';
-import nc_component from './nc_component.vue'
+import nc_root from './nc_root.vue'
 
 export default {
   components: {
-    nc_component
+    nc_root
   },
   data() {
     return {
