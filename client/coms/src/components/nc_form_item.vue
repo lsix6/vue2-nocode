@@ -1,6 +1,6 @@
 <template>
     <el-form-item ref="refFormItem" v-bind="com_props">
-        <slot v-bind="{ com_data }"></slot>
+        <slot v-bind="{ com_root, com_data }"></slot>
     </el-form-item>
 </template>
 
@@ -11,6 +11,10 @@ export default {
         Vue.component('nc_form_item', this)
     },
     props: {
+        com_root: {
+            type: Object,
+            default: null
+        },
         com_props: {
             type: Object,
             default: () => { }

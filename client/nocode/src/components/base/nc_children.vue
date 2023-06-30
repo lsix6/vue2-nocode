@@ -4,6 +4,7 @@
             v-for="(child, index) in com_children" 
             :key="'child_' + index" 
             v-bind="child"
+            :com_root="com_root"
             :com_data="com_data" 
             :slot="child.com_slot"
         >
@@ -18,6 +19,10 @@ export default {
         Vue.component('nc_children', this)
     },
     props: {
+        com_root: {
+            type: Object,
+            default: null
+        },
         com_children: {
             type: Array,
             default: () => []
