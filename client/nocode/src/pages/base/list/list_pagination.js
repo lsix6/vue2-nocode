@@ -10,7 +10,7 @@ export const list_pagination = {
     ],
     com_props: {
         pagination_props: {
-            'page-sizes': [20, 50, 100],
+            'page-sizes': [10, 50, 100],
             layout: "total, sizes, prev, pager, next, jumper",
         },
     },

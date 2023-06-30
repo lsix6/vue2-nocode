@@ -56,65 +56,65 @@ export const createListPage = (moduleInfo) => {
                                         params_set_name: 'page',
                                         params_default_value: {
                                             pageIndex: 1,
-                                            pageSize: 20,
+                                            pageSize: 10,
                                         },
                                     },
                                 ]
                             },
                         },
                     ],
-                    data_children: [
-                        {
-                            com_name: 'div',
-                            com_info: {
-                                style: {
-                                    height: '100%',
-                                    display: 'flex',
-                                    'flex-direction': 'column',
-                                },
-                            },
-                            com_children: [
-                                {
-                                    com_name: 'div',
-                                    com_info: {
-                                        style: {
-                                            padding: '10px 0',
-                                            display: 'flex',
-                                            'flex-direction': 'row',
-                                        },
-                                    },
-                                    com_children: [
-                                        list_formSearch,
-                                        list_btnAdd,
-                                    ],
-                                },
-                                {
-                                    com_name: 'div',
-                                    com_info: {
-                                        style: {
-                                            flex: 1,
-                                            overflow: 'hidden',
-                                        },
-                                    },
-                                    com_children: [
-                                        list,
-                                    ],
-                                },
-                                {
-                                    com_name: 'div',
-                                    com_info: {
-                                        style: {
-                                            padding: '10px 0'
-                                        },
-                                    },
-                                    com_children: [
-                                        list_pagination,
-                                    ],
-                                },
-                            ],
-                        },
-                    ],
                 },
+                com_children: [
+                    {
+                        com_name: 'div',
+                        com_info: {
+                            style: {
+                                height: '100%',
+                                display: 'flex',
+                                'flex-direction': 'column',
+                            },
+                        },
+                        com_children: [
+                            {
+                                com_name: 'div',
+                                com_info: {
+                                    style: {
+                                        padding: '10px 0',
+                                        display: 'flex',
+                                        'flex-direction': 'row',
+                                    },
+                                },
+                                com_children: [
+                                    list_formSearch,
+                                    list_btnAdd,
+                                ],
+                            },
+                            {
+                                com_name: 'div',
+                                com_info: {
+                                    style: {
+                                        flex: 1,
+                                        overflow: 'hidden',
+                                    },
+                                },
+                                com_children: [
+                                    list,
+                                ],
+                            },
+                            {
+                                com_name: 'div',
+                                com_info: {
+                                    style: {
+                                        padding: '10px 0'
+                                    },
+                                },
+                                com_children: [
+                                    list_pagination,
+                                ],
+                            },
+                        ],
+                    },
+                ],
             }
         ],
     }
