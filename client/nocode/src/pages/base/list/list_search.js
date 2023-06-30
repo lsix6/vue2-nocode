@@ -9,7 +9,7 @@ export const createListSearch = (moduleFields) => {
         //
         const search_com = _.cloneDeep(field.in_search.search_com)
         //
-        if (fdInfo.enum_map || fdInfo.data_source) {
+        if (fdInfo.enum || fdInfo.data_source) {
             search_com.com_props = search_com.com_props || {}
             search_com.com_props.data_source_name = get_field_ds_name(fdInfo.name)
         }
