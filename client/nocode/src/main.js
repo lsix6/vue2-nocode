@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-Vue.use(VueRouter)
 import { init_nocode } from './init_nocode'
 import { get_nc_view_route } from './components/core/nc_pages'
 import App from './App.vue'
@@ -22,7 +21,7 @@ export const start = async () => {
   const ncRoute = get_nc_view_route()
 
   // 路由初始化 history模式
-  const router = new VueRouter({
+  const router = new window.nocode.VueRouter({
     mode: 'history',
     base: '/nocode/',
     routes: [ncRoute]

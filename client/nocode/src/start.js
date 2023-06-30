@@ -10,6 +10,8 @@ if (!window.Vue) {
     window.Vue = Vue
 }
 
+import VueRouter from 'vue-router'
+window.Vue.use(VueRouter)
 import nc_component from './components/core/nc_component.vue'
 window.Vue.use(nc_component)
 import nc_children from './components/base/nc_children.vue'
@@ -37,6 +39,7 @@ register_request_api(testService.request_api)
 import { start } from './main'
 
 window.nocode = {
+    VueRouter,
     get_params,
     request_api,
     fetch_data,
