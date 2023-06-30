@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-    <ComsEditor />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import ComsEditor from './views/editor/ComsEditor.vue'
 
 export default {
   name: 'App',
-  components: {
-    ComsEditor
-  }
 }
 </script>
 
