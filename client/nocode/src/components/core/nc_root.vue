@@ -1,7 +1,9 @@
 <template>
     <div>
-        <nc_component v-for="(com, i) in com_list" :key="i" :com_root="root" v-bind="com" />
-        <slot v-if="root" v-bind="{ com_root: root }"></slot>
+        <template v-if="root">
+            <nc_component v-for="(com, i) in com_list" :key="i" :com_root="root" v-bind="com" />
+            <slot v-if="root" v-bind="{ com_root: root }"></slot>
+        </template>
     </div>
 </template>
 
