@@ -379,11 +379,11 @@ export const getProductFields = (moduleName) => {
             field_info: {
                 name: 'color',
                 label: '产品颜色',
-                enum_map: {
-                    0: '#ff0000',
-                    1: '#00ff00',
-                    2: '#0000ff',
-                },
+                enum: [
+                    '#ff0000',
+                    '#00ff00',
+                    '#0000ff',
+                ],
             },
             in_list: {
                 column_props: {
