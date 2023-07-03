@@ -1,5 +1,5 @@
 <template>
-    <div :style="{ display: 'flex', 'flex-direction': items_direction }">
+    <div class="nc-container" :style="{ 'flex-direction': items_direction }">
         <slot v-bind="{ com_root, com_data: { ...com_data, ...value } }"></slot>
     </div>
 </template>
