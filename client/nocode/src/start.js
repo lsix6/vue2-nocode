@@ -31,6 +31,9 @@ import nc_data_source from './components/base/nc_data_source.vue'
 import nc_data_source_schema from './components/base/nc_data_source_schema'
 comsManager.register('default', 'nc_data_source', nc_data_source, nc_data_source_schema)
 
+import { PagesManager } from './utils/pages_manager'
+const pagesManager = new PagesManager()
+
 import { get_params } from './utils/nc_params'
 import { fetch_data, request_api } from './utils/nc_request'
 import { register_msg_box, msg_box } from './utils/nc_msg_box'
@@ -47,6 +50,7 @@ window.nocode = {
     fetch_data,
     register_msg_box,
     msg_box,
+    pagesManager,
     comsManager,
     customizedComsManager,
 }

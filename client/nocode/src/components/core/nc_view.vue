@@ -4,7 +4,6 @@
 
 <script>
 
-import { get_page, nc_view_route } from './nc_pages.js';
 import nc_root from './nc_root.vue'
 
 export default {
@@ -31,14 +30,16 @@ export default {
   },
   methods: {
     switchPage(path) {
-      const pageRoute = path.substring(nc_view_route.length)
+      const pagesManager = window.nocode.pagesManager
+      //
+      const pageRoute = path.substring(pagesManager.get_base_path().length)
       console.log('[nc_view] switchPage', path, pageRoute)
       // 先要把根节点清空一下才能保证子组件的生命周期被正确调用
       this.comObj = null
       // 获取页面数据的函数
       function getPageData() {
         return new Promise(resolve => {
-          const page = get_page(pageRoute)
+          const page = pagesManager.get_page(pageRoute)
           if (typeof page === 'function') {
             page().then(ret => {
               resolve(ret.default)
