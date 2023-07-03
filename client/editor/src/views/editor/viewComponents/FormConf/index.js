@@ -10,5 +10,15 @@ export default {
             type: 'string',
             title: 'path',
         },
+        menu: {
+            type: 'object',
+            title: 'menu',
+            properties: {
+                label: {
+                    type: 'string',
+                    title: 'label',
+                },
+            },
+        },
     }
 };
