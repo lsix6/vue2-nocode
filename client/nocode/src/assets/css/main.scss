@@ -7,3 +7,10 @@ body {
   display: flex;
   overflow: hidden;
 }
+
+.nc-container {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}

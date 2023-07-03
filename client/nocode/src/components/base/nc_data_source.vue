@@ -1,5 +1,5 @@
 <template>
-    <div v-bind="node_props" :data="data">
+    <div class="nc-container" v-bind="node_props" :data="data">
         <template v-if="data_children && data">
             <nc_children :com_children="data_children" :com_data="finalComData">
             </nc_children>

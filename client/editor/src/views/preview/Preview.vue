@@ -47,6 +47,9 @@ export default {
                     const rootObj = {
                         com_name: 'div',
                         com_version: '1',
+                        com_info: {
+                            class: 'nc-container',
+                        },
                         com_children: comObjs,
                     }
                     pagesManager.register_page(page.path, rootObj)

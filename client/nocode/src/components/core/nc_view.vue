@@ -1,5 +1,5 @@
 <template>
-  <nc_root class="nc-root" v-if="comObj && comObj.com_version === '1'" :com_list="[comObj]" />
+  <nc_root class="nc-container" v-if="comObj && comObj.com_version === '1'" :com_list="[comObj]" />
 </template>
 
 <script>
@@ -60,11 +60,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.nc-root {
-  flex: 1;
-  overflow: hidden;
-  display: flex;
-}
-</style>
