@@ -39,7 +39,7 @@
 }">
                         </VueJsonFrom>
                     </el-tab-pane>
-                    <el-tab-pane label="表单配置" name="formConfig">
+                    <el-tab-pane label="页面配置" name="formConfig">
                         <VueJsonFrom v-model="formConfig" :class="$style.configForm" :schema="FormConfSchema" :form-props="{
                             labelPosition: 'right',
                             labelWidth: '110px'
@@ -127,6 +127,14 @@ export default {
             },
             deep: true,
         },
+        formConfig: {
+            handler() {
+                this.$nextTick(() => {
+                    this.saveData()
+                })
+            },
+            deep: true,
+        }
     },
     computed: {
         formProps() {
@@ -176,6 +184,7 @@ export default {
         saveData() {
             const saveData = {
                 componentList: this.componentList,
+                page: this.formConfig,
             }
             window.nocode.customizedComsManager.saveComData(this.com_name, saveData)
         },
@@ -183,6 +192,7 @@ export default {
             const saveData = window.nocode.customizedComsManager.loadComData(this.com_name)
             if (saveData) {
                 this.componentList = saveData.componentList
+                this.formConfig = saveData.page || {}
             }
             //
             this.preComponentList = JSON.stringify(this.componentList)
