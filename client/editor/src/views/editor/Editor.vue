@@ -183,16 +183,24 @@ export default {
         },
         saveData() {
             const saveData = {
-                componentList: this.componentList,
-                page: this.formConfig,
+                componentList: [
+                    ...this.componentList
+                ],
+                page: {
+                    ...this.formConfig
+                },
             }
             window.nocode.customizedComsManager.saveComData(this.com_name, saveData)
         },
         loadData() {
             const saveData = window.nocode.customizedComsManager.loadComData(this.com_name)
             if (saveData) {
-                this.componentList = saveData.componentList
-                this.formConfig = saveData.page || {}
+                this.componentList = [
+                    ...saveData.componentList
+                ]
+                this.formConfig = {
+                    ...saveData.page
+                }
             }
             //
             this.preComponentList = JSON.stringify(this.componentList)
