@@ -372,6 +372,7 @@ body.page-decorate-design {
     position: relative;
     padding: 0;
     height: 100%;
+    display: flex;
 }
 
 .tipBox {
