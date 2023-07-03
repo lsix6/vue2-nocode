@@ -6,7 +6,12 @@ const routes = [
     },
     {
         path: '/preview',
-        component: () => import('@/views/preview/Preview.vue')
+        component: () => import('@/views/preview/Preview.vue'),
+        children: [
+            {
+                path: '*',
+            }
+        ],
     },
     { path: '*', redirect: '/editor' }
 ]

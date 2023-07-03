@@ -2,11 +2,9 @@
     <div id="app">
         <el-aside width="160px" style="display: flex; border: 1px solid #eee; background-color: rgb(238, 241, 246)">
             <el-menu :router="true" style="flex: 1; display: flex; flex-direction: column;">
-                <el-menu-item index="/product/list" style="margin: 10px; text-align: center; background-color: aliceblue;">
-                    产品列表
-                </el-menu-item>
-                <el-menu-item index="/user/list" style="margin: 10px; text-align: center; background-color: aliceblue;">
-                    用户列表
+                <el-menu-item v-for="(menu, i) in menus" :key="i" :index="'/preview/' + menu.index"
+                    style="margin: 10px; text-align: center; background-color: aliceblue;">
+                    {{ menu.label }}
                 </el-menu-item>
             </el-menu>
         </el-aside>
@@ -22,9 +20,48 @@
 </template>
   
 <script>
+import { loadComsList } from '../editor/ComsList'
 
 export default {
     name: 'Preview',
+    data() {
+        return {
+            menus: [],
+        }
+    },
+    created() {
+        this.init()
+    },
+    methods: {
+        init() {
+            const pagesManager = window.nocode.pagesManager
+            //
+            pagesManager.set_base_path('/preview/')
+            //
+            const coms = loadComsList()
+            coms.forEach(com => {
+                const comData = window.nocode.customizedComsManager.loadComData(com.name)
+                const page = comData?.page
+                if (page && page.path) {
+                    const comObjs = window.nocode.customizedComsManager.loadComObjs(com.name)
+                    const rootObj = {
+                        com_name: 'div',
+                        com_version: '1',
+                        com_children: comObjs,
+                    }
+                    pagesManager.register_page(page.path, rootObj)
+                    //
+                    if (page.menu && page.menu.label) {
+                        this.menus.push({
+                            index: page.path,
+                            label: page.menu.label,
+                        })
+                    }
+                }
+            })
+            //
+        },
+    },
 }
 </script>
   
