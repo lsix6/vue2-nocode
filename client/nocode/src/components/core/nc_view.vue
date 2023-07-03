@@ -8,6 +8,10 @@ import { get_page, nc_view_route } from './nc_pages.js';
 import nc_root from './nc_root.vue'
 
 export default {
+  install(Vue) {
+    Vue.component('nc_view', this)
+  },
+  name: 'nc_view',
   components: {
     nc_root
   },

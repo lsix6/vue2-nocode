@@ -18,6 +18,8 @@ import nc_children from './components/base/nc_children.vue'
 window.Vue.use(nc_children)
 import nc_root from './components/core/nc_root.vue'
 window.Vue.use(nc_root)
+import nc_view from './components/core/nc_view.vue'
+window.Vue.use(nc_view)
 
 import { ComsManager } from './utils/coms_manager'
 const comsManager = new ComsManager(window.Vue)
