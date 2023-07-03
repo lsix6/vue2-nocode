@@ -6,6 +6,7 @@
                 <template slot-scope="scope">
                     <el-button size="mini" :disabled="scope.row.opened"
                         @click="handleOpen(scope.$index, scope.row)">打开</el-button>
+                    <el-button size="mini" @click="handleRename(scope.$index, scope.row)">重命名</el-button>
                     <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
                 </template>
             </el-table-column>
@@ -46,6 +47,7 @@ export default {
                 })
                 //
                 saveComsList(this.gridData)
+            }).catch(() => {
             })
         },
         handleOpen(index, row) {
@@ -54,6 +56,14 @@ export default {
             this.$emit('openCom', row.name)
             //
             this.close()
+        },
+        handleRename(index, row) {
+            console.log('[ComsListDlg] handleDelete', index, row);
+            //
+            MessageBox.prompt('请输入新名字', '重命名').then(({ value }) => {
+                console.log('[ComsListDlg] new com name', value);
+            }).catch(() => {
+            })
         },
         handleDelete(index, row) {
             console.log('[ComsListDlg] handleDelete', index, row);
