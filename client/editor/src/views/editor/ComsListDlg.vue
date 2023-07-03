@@ -18,7 +18,7 @@
 
 <script>
 import { MessageBox } from 'element-ui';
-import { loadComsList, removeComData, saveComsList } from './ComsList';
+import { loadComsList, saveComsList } from './ComsList';
 
 export default {
     name: 'ComsListDlg',
@@ -62,7 +62,7 @@ export default {
             //
             saveComsList()
             //
-            removeComData(row.name)
+            window.nocode.customizedComsManager.removeComData(row.name)
         }
     },
 }
