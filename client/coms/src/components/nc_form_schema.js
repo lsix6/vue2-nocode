@@ -14,6 +14,37 @@ export default {
             type: 'object',
             title: 'props',
             properties: {
+                commit_data: {
+                    type: 'object',
+                    title: 'commit',
+                    properties: {
+                        api: {
+                            type: 'object',
+                            title: 'api',
+                            properties: {
+                                url: {
+                                    type: 'string',
+                                    title: 'url',
+                                },
+                                method: {
+                                    type: 'string',
+                                    title: 'method',
+                                    default: 'POST',
+                                },
+                            },
+                        },
+                        success_message: {
+                            type: 'string',
+                            title: 'success',
+                            default: '修改成功',
+                        },
+                        error_message: {
+                            type: 'string',
+                            title: 'error',
+                            default: '修改失败',
+                        },
+                    },
+                },
             }
         },
         com_events: {
