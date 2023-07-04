@@ -181,7 +181,7 @@ export default {
             })
         },
         initFormData() {
-            console.log('[nc_form] initFormData')
+            console.log('[nc_form] initFormData', this.init_data)
             //
             return new Promise(resolve => {
                 if (this.init_data) {
