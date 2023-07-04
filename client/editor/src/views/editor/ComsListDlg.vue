@@ -19,7 +19,8 @@
 
 <script>
 import { MessageBox } from 'element-ui';
-import { loadComsList, saveComsList } from './ComsList';
+
+const custComsMgr = window.nocode.customizedComsManager
 
 export default {
     name: 'ComsListDlg',
@@ -33,7 +34,7 @@ export default {
     },
     methods: {
         open() {
-            this.comsData = loadComsList()
+            this.comsData = custComsMgr.loadComsList()
             //
             this.dialogVisible = true
         },
@@ -47,7 +48,7 @@ export default {
                     id: 'com_' + Date.now(),
                 })
                 //
-                saveComsList(this.comsData)
+                custComsMgr.saveComsList(this.comsData)
             }).catch(() => {
             })
         },
@@ -71,7 +72,7 @@ export default {
             //
             this.comsData.splice(index, 1)
             //
-            saveComsList(this.comsData)
+            custComsMgr.saveComsList(this.comsData)
             //
             window.nocode.customizedComsManager.removeComData(row.name)
         }

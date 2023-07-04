@@ -11,9 +11,10 @@
 </template>
 
 <script>
-import { loadComsList, saveComsList } from './ComsList'
 import ComsListDlg from './ComsListDlg.vue'
 import Editor from './Editor.vue'
+
+const custComsMgr = window.nocode.customizedComsManager
 
 export default {
   name: 'ComsEditor',
@@ -32,7 +33,7 @@ export default {
   },
   methods: {
     loadOpenedComs() {
-      const list = loadComsList()
+      const list = custComsMgr.loadComsList()
       //
       list.forEach(com => {
         if (com.opened) {
@@ -47,7 +48,7 @@ export default {
       })
     },
     setComOpended(comName, opened) {
-      const list = loadComsList()
+      const list = custComsMgr.loadComsList()
       //
       for (let com of list) {
         if (com.name === comName) {
@@ -56,7 +57,7 @@ export default {
         }
       }
       //
-      saveComsList(list)
+      custComsMgr.saveComsList(list)
     },
     onOpenCom(com) {
       console.log('[ComsEditor] onOpenCom', com.name)

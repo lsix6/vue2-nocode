@@ -48,7 +48,10 @@ export default {
         column_children() {
             let comObjs = [...this.column_components]
             if (this.ref_com_name) {
-                comObjs = window.nocode.customizedComsManager.loadComObjs(this.ref_com_name)
+                const comId = window.nocode.customizedComsManager.getComIdByName(this.ref_com_name)
+                if (comId) {
+                    comObjs = window.nocode.customizedComsManager.loadComObjs(comId)
+                }
             }
             // console.log('[nc_table_column] column_children', comObjs)
             return comObjs

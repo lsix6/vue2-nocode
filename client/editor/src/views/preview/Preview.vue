@@ -20,7 +20,8 @@
 </template>
   
 <script>
-import { loadComsList } from '../editor/ComsList'
+
+const custComsMgr = window.nocode.customizedComsManager
 
 export default {
     name: 'Preview',
@@ -38,7 +39,7 @@ export default {
             //
             pagesManager.set_base_path('/preview/')
             //
-            const coms = loadComsList()
+            const coms = custComsMgr.loadComsList()
             coms.forEach(com => {
                 const comData = window.nocode.customizedComsManager.loadComData(com.id)
                 const page = comData?.page

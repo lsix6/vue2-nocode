@@ -1,9 +1,45 @@
+const C_COMS_LIST = 'coms_list'
 
 const getComSaveName = (comId) => {
     return 'com_' + comId
 }
 
 export class CustomizedComsManager {
+
+    loadComsList() {
+        let comsList = []
+        const s = localStorage.getItem(C_COMS_LIST)
+        if (s) {
+            comsList = JSON.parse(s)
+        }
+        console.log('[customized_coms_manager] loadComsList', comsList)
+        //
+        return comsList
+    }
+
+    saveComsList(comsList) {
+        console.log('[customized_coms_manager] saveComsList', comsList)
+        if (comsList) {
+            localStorage.setItem(C_COMS_LIST, JSON.stringify(comsList))
+        }
+    }
+
+    getComIdByName(comName) {
+        let comId = null
+        //
+        const coms = this.loadComsList()
+        for (let i = 0; i < coms.length; i++) {
+            if (coms[i].name === comName) {
+                comId = coms[i].id
+                break
+            }
+        }
+        if (!comId) {
+            console.error('[customized_coms_manager] getComIdByName, not found com: ', comName)
+        }
+        //
+        return comId
+    }
 
     loadComData(comId) {
         let comData = null
