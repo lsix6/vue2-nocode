@@ -261,6 +261,8 @@ export const request_api = function (api, data) {
                 setTimeout(() => {
                     resolve(result)
                 }, 0);
+            }).catch(e => {
+                reject(e)
             })
         } else {
             reject(`[service] request_api, not found ${api.url}`)
