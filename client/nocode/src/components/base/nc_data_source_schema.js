@@ -57,6 +57,13 @@ export default {
                                                     type: 'string',
                                                     title: 'source',
                                                 },
+                                                params_fields: {
+                                                    type: 'array',
+                                                    title: 'fields',
+                                                    items: {
+                                                        type: 'string',
+                                                    },
+                                                },
                                                 params_com_ref: {
                                                     type: 'string',
                                                     title: 'com ref',
