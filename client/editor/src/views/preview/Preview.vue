@@ -40,10 +40,10 @@ export default {
             //
             const coms = loadComsList()
             coms.forEach(com => {
-                const comData = window.nocode.customizedComsManager.loadComData(com.name)
+                const comData = window.nocode.customizedComsManager.loadComData(com.id)
                 const page = comData?.page
                 if (page && page.path) {
-                    const comObjs = window.nocode.customizedComsManager.loadComObjs(com.name)
+                    const comObjs = window.nocode.customizedComsManager.loadComObjs(com.id)
                     const rootObj = {
                         com_name: 'div',
                         com_version: '1',

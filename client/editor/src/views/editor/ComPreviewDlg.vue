@@ -17,8 +17,8 @@ export default {
     mounted() {
     },
     methods: {
-        open(comName) {
-            this.comObjs = window.nocode.customizedComsManager.loadComObjs(comName)
+        open(comId) {
+            this.comObjs = window.nocode.customizedComsManager.loadComObjs(comId)
             //
             this.dialogVisible = true
         },

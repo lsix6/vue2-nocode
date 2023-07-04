@@ -1,33 +1,33 @@
 
-const getComSaveName = (comName) => {
-    return 'com_' + comName
+const getComSaveName = (comId) => {
+    return 'com_' + comId
 }
 
 export class CustomizedComsManager {
 
-    loadComData(comName) {
+    loadComData(comId) {
         let comData = null
         //
-        const s = localStorage.getItem(getComSaveName(comName))
+        const s = localStorage.getItem(getComSaveName(comId))
         if (s) {
             comData = JSON.parse(s)
         }
         //
-        console.log('loadComData', comName, comData)
+        console.log('loadComData', comId, comData)
         return comData
     }
 
-    saveComData(comName, comData) {
-        console.log('saveComData', comName, comData)
-        if (comName && comData) {
-            localStorage.setItem(getComSaveName(comName), JSON.stringify(comData))
+    saveComData(comId, comData) {
+        console.log('saveComData', comId, comData)
+        if (comId && comData) {
+            localStorage.setItem(getComSaveName(comId), JSON.stringify(comData))
         }
     }
 
-    removeComData(comName) {
-        console.log('removeComData', comName)
-        if (comName) {
-            localStorage.removeItem(getComSaveName(comName))
+    removeComData(comId) {
+        console.log('removeComData', comId)
+        if (comId) {
+            localStorage.removeItem(getComSaveName(comId))
         }
     }
 
@@ -62,10 +62,10 @@ export class CustomizedComsManager {
         return obj
     }
 
-    loadComObjs(comName) {
+    loadComObjs(comId) {
         const objs = []
         //
-        const schemaData = this.loadComData(comName)
+        const schemaData = this.loadComData(comId)
         if (schemaData) {
             schemaData.componentList.forEach(item => {
                 const comObj = this.schemaItem2ComObjWithChildren(item)
