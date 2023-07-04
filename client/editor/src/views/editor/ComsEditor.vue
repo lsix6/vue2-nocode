@@ -3,7 +3,7 @@
     <el-tabs class="coms-editor-tabs" v-model="editableTabsValue" type="card" editable @edit="handleTabsEdit">
       <el-tab-pane class="tabs-content" :key="item.name" v-for="(item) in editableTabs" :label="item.title"
         :name="item.name">
-        <Editor :com_name="item.name" />
+        <Editor :com_id="item.id" />
       </el-tab-pane>
     </el-tabs>
     <ComsListDlg ref="comsListDlg" @openCom="onOpenCom" />
@@ -38,7 +38,8 @@ export default {
         if (com.opened) {
           this.editableTabs.push({
             title: com.name,
-            name: com.name
+            name: com.name,
+            id: com.id,
           })
           //
           this.editableTabsValue = com.name
@@ -57,16 +58,17 @@ export default {
       //
       saveComsList(list)
     },
-    onOpenCom(comName) {
-      console.log('[ComsEditor] onOpenCom', comName)
+    onOpenCom(com) {
+      console.log('[ComsEditor] onOpenCom', com.name)
       //
       this.editableTabs.push({
-        title: comName,
-        name: comName,
+        title: com.name,
+        name: com.name,
+        id: com.id,
       })
-      this.editableTabsValue = comName
+      this.editableTabsValue = com.name
       //
-      this.setComOpended(comName, true)
+      this.setComOpended(com.name, true)
     },
     handleTabsEdit(targetName, action) {
       if (action === 'add') {

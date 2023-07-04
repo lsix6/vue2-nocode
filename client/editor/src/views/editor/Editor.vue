@@ -93,7 +93,7 @@ export default {
         };
     },
     props: {
-        com_name: {
+        com_id: {
             type: String,
             default: ''
         },
@@ -190,10 +190,10 @@ export default {
                     ...this.formConfig
                 },
             }
-            window.nocode.customizedComsManager.saveComData(this.com_name, saveData)
+            window.nocode.customizedComsManager.saveComData(this.com_id, saveData)
         },
         loadData() {
-            const saveData = window.nocode.customizedComsManager.loadComData(this.com_name)
+            const saveData = window.nocode.customizedComsManager.loadComData(this.com_id)
             if (saveData) {
                 this.componentList = [
                     ...saveData.componentList
@@ -208,7 +208,7 @@ export default {
         onPreview() {
             console.log('[Editor] onPreview')
             //
-            this.$refs.comPreviewDlg.open(this.com_name)
+            this.$refs.comPreviewDlg.open(this.com_id)
         },
     }
 };

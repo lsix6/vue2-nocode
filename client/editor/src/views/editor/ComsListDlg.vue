@@ -54,7 +54,7 @@ export default {
         handleOpen(index, row) {
             console.log('[ComsListDlg] handleOpen', index, row);
             //
-            this.$emit('openCom', row.name)
+            this.$emit('openCom', row)
             //
             this.close()
         },
