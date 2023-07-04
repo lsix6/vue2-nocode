@@ -43,12 +43,14 @@ export default {
         },
         onCreate() {
             MessageBox.prompt('请输入组件名称', '新建组件').then(({ value }) => {
-                this.comsData.push({
-                    name: value,
-                    id: 'com_' + Date.now(),
-                })
-                //
-                custComsMgr.saveComsList(this.comsData)
+                if (value) {
+                    this.comsData.push({
+                        name: value,
+                        id: 'com_' + Date.now(),
+                    })
+                    //
+                    custComsMgr.saveComsList(this.comsData)
+                }
             }).catch(() => {
             })
         },
@@ -60,10 +62,16 @@ export default {
             this.close()
         },
         handleRename(index, row) {
-            console.log('[ComsListDlg] handleDelete', index, row);
+            console.log('[ComsListDlg] handleRename', index, row);
             //
             MessageBox.prompt('请输入新名字', '重命名').then(({ value }) => {
                 console.log('[ComsListDlg] new com name', value);
+                //
+                if (value) {
+                    row.name = value
+                    //
+                    custComsMgr.saveComsList(this.comsData)
+                }
             }).catch(() => {
             })
         },
