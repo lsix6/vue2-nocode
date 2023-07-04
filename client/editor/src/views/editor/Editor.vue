@@ -60,18 +60,16 @@ import VueJsonFrom from '@lljj/vue-json-schema-form';
 
 import FormConfSchema from './viewComponents/FormConf';
 import EditorToolBar from './EditorToolBar.vue';
-
+import ComPreviewDlg from './ComPreviewDlg.vue'
 
 import { deepFreeze } from './common/utils';
-
 import configTools, { getCom } from './config/tools';
+import { formatFormLabelWidth } from './common/editorData';
 
 import NestedEditor from './components/NestedEditor';
 window.Vue.component('NestedEditor', NestedEditor)
-
-import ComPreviewDlg from './ComPreviewDlg.vue'
-
-import { formatFormLabelWidth } from './common/editorData';
+import SelectRefCom from './components/edit/SelectRefCom.vue'
+window.Vue.component('SelectRefCom', SelectRefCom)
 
 deepFreeze(configTools);
 
