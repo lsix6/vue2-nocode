@@ -88,6 +88,31 @@ export default {
                                                 },
                                             },
                                         },
+                                        com_ref: {
+                                            type: 'string',
+                                            title: 'ref',
+                                        },
+                                        com_method_name: {
+                                            type: 'string',
+                                            title: 'method name',
+                                        },
+                                        commands: {
+                                            type: 'array',
+                                            title: 'commands',
+                                            items: {
+                                                type: 'object',
+                                                properties: {
+                                                    cmd_name: {
+                                                        type: 'string',
+                                                        title: 'cmd name',
+                                                    },
+                                                    cmd_delay: {
+                                                        type: 'number',
+                                                        title: 'delay',
+                                                    },
+                                                },
+                                            },
+                                        },
                                     },
                                 },
                             },
