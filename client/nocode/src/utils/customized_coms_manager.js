@@ -88,7 +88,7 @@ export class CustomizedComsManager {
 
     schemaItem2ComObjWithChildren(item) {
         const obj = this.schemaItem2ComObj(item)
-        if (item.childList.length > 0) {
+        if (item.childList && item.childList.length > 0) {
             const com_children = item.childList.map(child => {
                 return this.schemaItem2ComObjWithChildren(child)
             })
