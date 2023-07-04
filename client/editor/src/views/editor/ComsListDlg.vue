@@ -43,6 +43,7 @@ export default {
         onCreate() {
             MessageBox.prompt('请输入组件名称', '新建组件').then(({ value }) => {
                 this.comsData.push({
+                    id: 'com_' + Date.now(),
                     name: value,
                 })
                 //
@@ -70,7 +71,7 @@ export default {
             //
             this.comsData.splice(index, 1)
             //
-            saveComsList()
+            saveComsList(this.comsData)
             //
             window.nocode.customizedComsManager.removeComData(row.name)
         }
