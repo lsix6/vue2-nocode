@@ -1,6 +1,6 @@
 <template>
     <el-dialog title="自定义组件列表" :visible.sync="dialogVisible">
-        <el-table :data="gridData">
+        <el-table :data="comsData">
             <el-table-column property="name" label="自定义组件名称" width="200"></el-table-column>
             <el-table-column label="操作">
                 <template slot-scope="scope">
@@ -25,7 +25,7 @@ export default {
     name: 'ComsListDlg',
     data() {
         return {
-            gridData: [],
+            comsData: [],
             dialogVisible: false,
         };
     },
@@ -33,7 +33,7 @@ export default {
     },
     methods: {
         open() {
-            this.gridData = loadComsList()
+            this.comsData = loadComsList()
             //
             this.dialogVisible = true
         },
@@ -42,11 +42,11 @@ export default {
         },
         onCreate() {
             MessageBox.prompt('请输入组件名称', '新建组件').then(({ value }) => {
-                this.gridData.push({
+                this.comsData.push({
                     name: value,
                 })
                 //
-                saveComsList(this.gridData)
+                saveComsList(this.comsData)
             }).catch(() => {
             })
         },
@@ -68,7 +68,7 @@ export default {
         handleDelete(index, row) {
             console.log('[ComsListDlg] handleDelete', index, row);
             //
-            this.gridData.splice(index, 1)
+            this.comsData.splice(index, 1)
             //
             saveComsList()
             //
