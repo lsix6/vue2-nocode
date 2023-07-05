@@ -51,7 +51,7 @@ export const get_params = (com, paramsDef, cmdData) => {
             if (obj.params_set_name) {
                 set = result[obj.params_set_name] = {}
             }
-            if (obj.params_fields) {
+            if (obj.params_fields && obj.params_fields.length > 0) {
                 // 如果指定了字段列表
                 // 则设置各字段的值
                 for (let field of obj.params_fields) {
