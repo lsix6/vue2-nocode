@@ -8,7 +8,7 @@
         }" :style="item.componentValue.baseValue.uiOptions.width ? {
     width: item.componentValue.baseValue.uiOptions.width,
     flexBasis: item.componentValue.baseValue.uiOptions.width
-} : {}" style="flex: 1;">
+} : {}">
             <ViewComponentWrap :form-data="formData" :editor-item="item" :drag-options="dragOptions"
                 :show-nested-editor="showNestedEditor" :form-props="formProps" @onOperate="handleItemOperate"
                 :com_root="com_root" :com_data="com_data">
