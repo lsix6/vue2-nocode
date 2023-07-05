@@ -46,7 +46,7 @@ export default {
                 if (value) {
                     this.comsData.push({
                         name: value,
-                        id: 'com_' + Date.now(),
+                        id: '' + Date.now(),
                     })
                     //
                     custComsMgr.saveComsList(this.comsData)
@@ -82,7 +82,7 @@ export default {
             //
             custComsMgr.saveComsList(this.comsData)
             //
-            window.nocode.customizedComsManager.removeComData(row.name)
+            window.nocode.customizedComsManager.removeComData(row.id)
         }
     },
 }
