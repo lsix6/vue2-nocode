@@ -11,7 +11,7 @@ export function generateEditorItem(toolItem) {
     console.log('generateEditorItem', toolItem);
     const currentComponentPack = toolItem.componentPack;
 
-    const ids = [currentComponentPack.viewSchema.format, currentComponentPack.viewSchema.type, genId()];
+    const ids = [currentComponentPack.viewSchema.type, genId()];
     const id = ids.filter(item => !!item).join('_');
 
     const ret = {
