@@ -43,7 +43,7 @@ export default {
                                     },
                                 },
                             },
-                            ref_com_name: {
+                            ref_com_id: {
                                 type: 'string',
                                 title: 'ref com',
                                 'ui:widget': 'SelectRefCom',

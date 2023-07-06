@@ -31,7 +31,7 @@ export default {
             type: Array,
             default: () => [],
         },
-        ref_com_name: {
+        ref_com_id: {
             type: String,
             default: '',
         },
@@ -47,8 +47,8 @@ export default {
     computed: {
         column_children() {
             let comObjs = [...this.column_components]
-            if (this.ref_com_name) {
-                comObjs = window.nocode.customizedComsManager.loadComObjs(this.ref_com_name)
+            if (this.ref_com_id) {
+                comObjs = window.nocode.customizedComsManager.loadComObjs(this.ref_com_id)
             }
             // console.log('[nc_table_column] column_children', comObjs)
             return comObjs
