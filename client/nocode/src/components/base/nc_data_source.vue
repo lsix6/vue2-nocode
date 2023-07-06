@@ -1,9 +1,5 @@
 <template>
     <div class="nc-container" v-bind="node_props" :data="data">
-        <template v-if="data_children && data">
-            <nc_children :com_children="data_children" :com_data="finalComData">
-            </nc_children>
-        </template>
         <slot v-if="data" v-bind="{ com_root, com_data: finalComData }"></slot>
     </div>
 </template>
@@ -25,10 +21,6 @@ export default {
         data_sources: {
             type: Array,
             default: () => []
-        },
-        data_children: {
-            type: Array,
-            default: null
         },
         com_root: {
             type: Object,
