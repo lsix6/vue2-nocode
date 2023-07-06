@@ -51,7 +51,9 @@ export default {
                         com_info: {
                             class: 'nc-container',
                         },
-                        com_children: comObjs,
+                        com_slots: {
+                            default: comObjs,
+                        },
                     }
                     pagesManager.register_page(page.path, rootObj)
                     //
