@@ -126,6 +126,12 @@ export default {
                 return new Promise((resolve) => {
                     resolve(arr2enum(ds.enum))
                 })
+            } else if (ds.enum_map) {
+                return new Promise((resolve) => {
+                    resolve({
+                        ...ds.enum_map
+                    })
+                })
             } else if (ds.obj) {
                 return new Promise((resolve, reject) => {
                     try {

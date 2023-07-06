@@ -15,6 +15,11 @@ export const create_date_sources = (moduleInfo) => {
                 name: fdInfo.name,
                 enum: fdInfo.enum,
             })
+        } else if (fdInfo.enum_map) {
+            data_sources.push({
+                name: fdInfo.name,
+                enum_map: fdInfo.enum_map,
+            })
         } else if (fdInfo.data_source) {
             data_sources.push({
                 name: fdInfo.name,

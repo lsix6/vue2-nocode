@@ -10,7 +10,7 @@ const createFields = (fields) => {
         //
         const colComs = _.cloneDeep(field.in_list.column_components)
         //
-        if (fdInfo.enum || fdInfo.data_source) {
+        if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
             colComs[0].com_props = colComs[0].com_props || {}
             colComs[0].com_props.data_source_name = get_field_ds_name(fdInfo.name)
         }
