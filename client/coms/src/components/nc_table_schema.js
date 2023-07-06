@@ -115,5 +115,8 @@ export default {
     },
     comSchema: {
         com_name: 'nc_table',
+        com_slots: {
+            empty: [],
+        },
     },
 };
