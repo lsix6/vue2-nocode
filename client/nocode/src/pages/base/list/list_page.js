@@ -19,104 +19,116 @@ export const createListPage = (moduleInfo) => {
                 overflow: 'auto',
             },
         },
-        com_children: [
-            {
-                com_name: 'nc_data_source',
-                com_ref: 'list_page_data',
-                com_info: {
-                    style: {
-                        flex: 1,
-                        overflow: 'hidden',
-                        'min-width': '900px',
+        com_slots: {
+            default: [
+                {
+                    com_name: 'nc_data_source',
+                    com_ref: 'list_page_data',
+                    com_info: {
+                        style: {
+                            flex: 1,
+                            overflow: 'hidden',
+                            'min-width': '900px',
+                        },
                     },
-                },
-                com_props: {
-                    data_sources: [
-                        ...moduleInfo.data_sources,
-                        {
-                            name: 'listPageData',
-                            api: {
-                                url: `${moduleInfo.name}/list`,
-                                method: 'GET',
-                                fetch_params: [
-                                    {
-                                        params_source: 'com_ref',
-                                        params_com_ref: 'formSearch',
-                                        params_set_name: 'search',
-                                    },
-                                    {
-                                        params_source: 'com_ref',
-                                        params_com_ref: 'list',
-                                        params_com_method_name: 'getSort',
-                                        params_set_name: 'sort',
-                                    },
-                                    {
-                                        params_source: 'com_ref',
-                                        params_com_ref: 'pagination',
-                                        params_set_name: 'page',
-                                        params_default_value: {
-                                            pageIndex: 1,
-                                            pageSize: 10,
+                    com_props: {
+                        data_sources: [
+                            ...moduleInfo.data_sources,
+                            {
+                                name: 'listPageData',
+                                api: {
+                                    url: `${moduleInfo.name}/list`,
+                                    method: 'GET',
+                                    fetch_params: [
+                                        {
+                                            params_source: 'com_ref',
+                                            params_com_ref: 'formSearch',
+                                            params_set_name: 'search',
                                         },
-                                    },
-                                ]
-                            },
-                        },
-                    ],
-                },
-                com_children: [
-                    {
-                        com_name: 'div',
-                        com_info: {
-                            style: {
-                                height: '100%',
-                                display: 'flex',
-                                'flex-direction': 'column',
-                            },
-                        },
-                        com_children: [
-                            {
-                                com_name: 'div',
-                                com_info: {
-                                    style: {
-                                        padding: '10px 0',
-                                        display: 'flex',
-                                        'flex-direction': 'row',
-                                    },
+                                        {
+                                            params_source: 'com_ref',
+                                            params_com_ref: 'list',
+                                            params_com_method_name: 'getSort',
+                                            params_set_name: 'sort',
+                                        },
+                                        {
+                                            params_source: 'com_ref',
+                                            params_com_ref: 'pagination',
+                                            params_set_name: 'page',
+                                            params_default_value: {
+                                                pageIndex: 1,
+                                                pageSize: 10,
+                                            },
+                                        },
+                                    ]
                                 },
-                                com_children: [
-                                    list_formSearch,
-                                    list_btnAdd,
-                                ],
-                            },
-                            {
-                                com_name: 'div',
-                                com_info: {
-                                    style: {
-                                        flex: 1,
-                                        overflow: 'hidden',
-                                    },
-                                },
-                                com_children: [
-                                    list,
-                                ],
-                            },
-                            {
-                                com_name: 'div',
-                                com_info: {
-                                    style: {
-                                        padding: '10px 0'
-                                    },
-                                },
-                                com_children: [
-                                    list_pagination,
-                                ],
                             },
                         ],
                     },
-                ],
-            }
-        ],
+                    com_slots: {
+                        default: [
+                            {
+                                com_name: 'div',
+                                com_info: {
+                                    style: {
+                                        height: '100%',
+                                        display: 'flex',
+                                        'flex-direction': 'column',
+                                    },
+                                },
+                                com_slots: {
+                                    default: [
+                                        {
+                                            com_name: 'div',
+                                            com_info: {
+                                                style: {
+                                                    padding: '10px 0',
+                                                    display: 'flex',
+                                                    'flex-direction': 'row',
+                                                },
+                                            },
+                                            com_slots: {
+                                                default: [
+                                                    list_formSearch,
+                                                    list_btnAdd,
+                                                ],
+                                            },
+                                        },
+                                        {
+                                            com_name: 'div',
+                                            com_info: {
+                                                style: {
+                                                    flex: 1,
+                                                    overflow: 'hidden',
+                                                },
+                                            },
+                                            com_slots: {
+                                                default: [
+                                                    list,
+                                                ],
+                                            },
+                                        },
+                                        {
+                                            com_name: 'div',
+                                            com_info: {
+                                                style: {
+                                                    padding: '10px 0'
+                                                },
+                                            },
+                                            com_slots: {
+                                                default: [
+                                                    list_pagination,
+                                                ],
+                                            },
+                                        },
+                                    ],
+                                },
+                            },
+                        ],
+                    },
+                }
+            ],
+        },
     }
 
     return list_page

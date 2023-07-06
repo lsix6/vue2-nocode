@@ -40,9 +40,11 @@ export const createFormItems = (fields) => {
                 prop: field.field_info.name,
                 rules: field.in_form.rules,
             },
-            com_children: [
-                edit_com,
-            ]
+            com_slots: {
+                default: [
+                    edit_com,
+                ],
+            },
         })
     }
     //

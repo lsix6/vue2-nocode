@@ -65,8 +65,10 @@ export const add_form_buttons = {
             'margin-top': '40px',
         }
     },
-    com_children: [
-        btnCancel,
-        btnSave,
-    ]
+    com_slots: {
+        default: [
+            btnCancel,
+            btnSave,
+        ],
+    },
 }

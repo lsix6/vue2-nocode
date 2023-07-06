@@ -23,26 +23,28 @@ export const createListSearch = (moduleFields) => {
                     margin: '5px 10px',
                 },
             },
-            com_children: [
-                {
-                    com_name: 'div',
-                    com_text: field.field_info.label,
-                    com_info: {
-                        attrs: {
-                            class: 'el-form-item__label',
-                        },
-                        style: {
-                            'white-space': 'nowrap',
+            com_slots: {
+                default: [
+                    {
+                        com_name: 'div',
+                        com_text: field.field_info.label,
+                        com_info: {
+                            attrs: {
+                                class: 'el-form-item__label',
+                            },
+                            style: {
+                                'white-space': 'nowrap',
+                            },
                         },
                     },
-                },
-                {
-                    ...search_com,
-                    com_field: {
-                        field_name: `formData.${field.field_info.name}`,
+                    {
+                        ...search_com,
+                        com_field: {
+                            field_name: `formData.${field.field_info.name}`,
+                        },
                     },
-                },
-            ],
+                ],
+            },
         })
     }
     //
@@ -96,10 +98,12 @@ export const createListSearch = (moduleFields) => {
                             'flex-wrap': 'wrap',
                         },
                     },
-                    com_children: [
-                        inputSearch,
-                        ...search_coms,
-                    ],
+                    com_slots: {
+                        default: [
+                            inputSearch,
+                            ...search_coms,
+                        ],
+                    },
                 },
             ],
         },

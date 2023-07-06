@@ -14,58 +14,70 @@ export const createAddPage = (moduleInfo) => {
                 display: 'flex',
             },
         },
-        com_children: [
-            {
-                com_name: 'el-container',
-                com_props: {
-                    direction: 'vertical',
-                },
-                com_children: [
-                    {
-                        com_name: 'el-header',
-                        com_info: {
-                            style: {
-                                padding: '50px',
-                                'text-align': 'center',
-                            },
-                        },
-                        com_children: [
-                            {
-                                com_name: 'div',
-                                com_text: moduleInfo.add_form.title,
-                            },
-                        ],
+        com_slots: {
+            default: [
+                {
+                    com_name: 'el-container',
+                    com_props: {
+                        direction: 'vertical',
                     },
-                    {
-                        com_name: 'el-main',
-                        com_children: [
+                    com_slots: {
+                        default: [
                             {
-                                com_name: 'div',
+                                com_name: 'el-header',
                                 com_info: {
                                     style: {
-                                        width: '800px',
-                                        margin: 'auto',
+                                        padding: '50px',
+                                        'text-align': 'center',
                                     },
                                 },
-                                com_children: [
-                                    {
-                                        com_name: 'nc_data_source',
-                                        com_props: {
-                                            data_sources: [
-                                                ...moduleInfo.data_sources,
-                                            ],
+                                com_slots: {
+                                    default: [
+                                        {
+                                            com_name: 'div',
+                                            com_text: moduleInfo.add_form.title,
                                         },
-                                        com_children: [
-                                            formAdd,
-                                        ],
-                                    },
-                                ],
+                                    ],
+                                },
+                            },
+                            {
+                                com_name: 'el-main',
+                                com_slots: {
+                                    default: [
+                                        {
+                                            com_name: 'div',
+                                            com_info: {
+                                                style: {
+                                                    width: '800px',
+                                                    margin: 'auto',
+                                                },
+                                            },
+                                            com_slots: {
+                                                default: [
+                                                    {
+                                                        com_name: 'nc_data_source',
+                                                        com_props: {
+                                                            data_sources: [
+                                                                ...moduleInfo.data_sources,
+                                                            ],
+                                                        },
+                                                        com_slots: {
+                                                            default: [
+                                                                formAdd,
+                                                            ],
+                                                        },
+                                                    },
+                                                ],
+                                            },
+                                        },
+                                    ],
+                                },
                             },
                         ],
                     },
-                ],
-            },
-        ],
+                },
+            ],
+        },
     }
 
     return add_page

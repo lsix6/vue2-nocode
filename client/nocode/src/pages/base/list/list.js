@@ -144,13 +144,15 @@ export const createList = (moduleName, moduleFields) => {
                 ],
             }
         ],
-        com_children: [
-            {
-                com_slot: 'reference',
-                ...btnInRow,
-                com_text: '删除',
-            },
-        ]
+        com_slots: {
+            default: [
+                {
+                    com_slot: 'reference',
+                    ...btnInRow,
+                    com_text: '删除',
+                },
+            ]
+        },
     }
 
     const fields = createFields(moduleFields)
@@ -188,27 +190,33 @@ export const createList = (moduleName, moduleFields) => {
                                     'margin-left': '10px',
                                 },
                             },
-                            com_children: [
-                                btnEdit,
-                                btnRemove,
-                            ]
+                            com_slots: {
+                                default: [
+                                    btnEdit,
+                                    btnRemove,
+                                ]
+                            },
                         },
                     ]
                 },
             ],
         },
-        com_children: [
-            {
-                com_name: 'span',
-                com_slot: 'empty',
-                com_children: [
-                    {
-                        com_name: 'div',
-                        com_text: '暂 无 数 据',
+        com_slots: {
+            default: [
+                {
+                    com_name: 'span',
+                    com_slot: 'empty',
+                    com_slots: {
+                        default: [
+                            {
+                                com_name: 'div',
+                                com_text: '暂 无 数 据',
+                            },
+                        ],
                     },
-                ],
-            }
-        ],
+                }
+            ],
+        },
         com_events: [
             {
                 event_name: 'sort-change',
