@@ -3,7 +3,7 @@
  */
 
 const viewSchema = {
-    title: 'el Input',
+    title: 'ElInput',
     type: 'object',
     required: [],
     properties: {},
@@ -40,6 +40,6 @@ export default {
         }
     },
     comSchema: {
-        com_name: 'el-input',
+        com_name: 'ElInput',
     },
 };

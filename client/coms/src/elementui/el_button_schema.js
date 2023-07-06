@@ -3,7 +3,7 @@
  */
 
 const viewSchema = {
-    title: 'el Button',
+    title: 'ElButton',
     type: 'object',
     required: [],
     properties: {},
@@ -123,6 +123,6 @@ export default {
         },
     },
     comSchema: {
-        com_name: 'el-button',
+        com_name: 'ElButton',
     },
 };

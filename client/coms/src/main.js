@@ -57,17 +57,17 @@ const registerComponents = (Vue) => {
   )
   //
   window.nocode.comsManager.register(
-    'default', 'el-input',
+    'default', 'ElInput',
     null,
     el_input_schema
   )
   window.nocode.comsManager.register(
-    'default', 'el-button',
+    'default', 'ElButton',
     null,
     el_button_schema
   )
   window.nocode.comsManager.register(
-    'default', 'el-popconfirm',
+    'default', 'ElPopconfirm',
     null,
     el_popconfirm_schema
   )

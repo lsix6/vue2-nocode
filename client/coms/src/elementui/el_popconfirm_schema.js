@@ -3,7 +3,7 @@
  */
 
 const viewSchema = {
-    title: 'el Popconfirm',
+    title: 'ElPopconfirm',
     type: 'object',
     required: [],
     properties: {},
@@ -31,6 +31,9 @@ export default {
         }
     },
     comSchema: {
-        com_name: 'el-popconfirm',
+        com_name: 'ElPopconfirm',
+        com_slots: {
+            reference: [],
+        },
     },
 };
