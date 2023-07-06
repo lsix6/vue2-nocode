@@ -19,7 +19,7 @@
         <nc_component v-bind="comFinalBind" class="com-in-editor">
             <template v-for="(children, slotName) in editorItem.slots" :slot="slotName" slot-scope="slotProps">
                 <div class="com-title" :key="'slot-' + slotName">
-                    ({{ slotName }})
+                    (slot: {{ slotName }})
                 </div>
                 <NestedEditor :key="slotName" :child-component-list="children" :drag-options="dragOptions"
                     :form-data="formData" :form-props="formProps" v-bind="slotProps">
