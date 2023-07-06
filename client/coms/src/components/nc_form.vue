@@ -11,7 +11,8 @@
 
 import _ from 'lodash'
 import { nc_vars } from '../utils/nc_vars.js'
-import { filterFields } from '../utils/nc_utils'
+
+const { filterFields } = window.nocode.utils
 
 const request_api = window.nocode.request_api
 const get_params = window.nocode.get_params

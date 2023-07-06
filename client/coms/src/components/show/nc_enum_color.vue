@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { getPropValue } from '../../utils/nc_utils'
+const { getPropValue } = window.nocode.utils
 export default {
     install(Vue) {
         Vue.component('nc_enum_color', this)

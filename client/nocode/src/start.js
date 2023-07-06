@@ -34,6 +34,7 @@ comsManager.register('default', 'nc_data_source', nc_data_source, nc_data_source
 import { PagesManager } from './utils/pages_manager'
 const pagesManager = new PagesManager()
 
+import * as utils from './utils/nc_utils'
 import { get_params } from './utils/nc_params'
 import { fetch_data, request_api } from './utils/nc_request'
 import { register_msg_box, msg_box } from './utils/nc_msg_box'
@@ -45,6 +46,7 @@ import { start } from './main'
 
 window.nocode = {
     VueRouter,
+    utils,
     get_params,
     request_api,
     fetch_data,
