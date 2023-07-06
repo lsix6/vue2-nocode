@@ -5,6 +5,7 @@ import { DomMessage } from './elementui/messageDeduplication.js'
 window.time_log('[coms] main.js')
 
 import nc_container_schema from './components/nc_container_schema.js'
+import nc_ref_cust_com_schema from './components/nc_ref_cust_com_schema.js'
 import nc_table_schema from './components/nc_table_schema.js'
 import nc_enum_schema from './components/show/nc_enum_schema.js'
 import nc_text_schema from './components/show/nc_text_schema.js'
@@ -23,6 +24,11 @@ const registerComponents = (Vue) => {
     'default', 'nc_container',
     () => import('./components/nc_container.vue'),
     nc_container_schema
+  )
+  window.nocode.comsManager.register(
+    'default', 'nc_ref_cust_com',
+    () => import('./components/nc_ref_cust_com.vue'),
+    nc_ref_cust_com_schema
   )
   Vue.component('nc_table_column', () => import('./components/nc_table_column.vue'))
   window.nocode.comsManager.register(
