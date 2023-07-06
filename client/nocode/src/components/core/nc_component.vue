@@ -144,7 +144,7 @@ export default {
         },
     },
     render: function (createElement, hack) {
-        console.log('[nc_component] render', this.com_name, this)
+        // console.log('[nc_component] render', this.com_name, this)
         // 子组件
         const createChildNode = (child, i, props) => {
             // 创建一个子组件
@@ -182,7 +182,7 @@ export default {
         if (this.com_slots) {
             if (window.Vue.component(this.com_name)) {
                 // vue 组件
-                console.log('[nc_component] vue com')
+                // console.log('[nc_component] vue com')
                 const slots = this.com_slots
                 // 不同的插槽创建对应的函数
                 scopedSlots = {}
@@ -207,7 +207,7 @@ export default {
                 }
             } else {
                 // 非 vue 组件
-                console.log('[nc_component] h5 tag')
+                // console.log('[nc_component] h5 tag')
                 if (this.com_slots.default) {
                     this.com_slots.default.map((child, i) => {
                         childrenNodes.push(createChildNode(child, i, this.$props))
@@ -227,14 +227,14 @@ export default {
             scopedSlots,
             ref: 'com',
         }
-        console.log('[nc_component] comData', comData, childrenNodes)
+        // console.log('[nc_component] comData', comData, childrenNodes)
         // 创建组件对象
         const vnode = createElement(
             this.com_name,
             comData,
             childrenNodes,
         )
-        console.log('[nc_component] vnode', vnode)
+        // console.log('[nc_component] vnode', vnode)
         return vnode
     },
     beforeUpdate() {
