@@ -17,9 +17,12 @@
         </div>
         <div class="com-title">[{{ editorItem.title }}]</div>
         <nc_component v-bind="comFinalBind" class="com-in-editor">
-            <template v-slot="slotProps">
-                <NestedEditor v-if="showNestedEditor(editorItem)" :child-component-list="editorItem.childList"
-                    :drag-options="dragOptions" :form-data="formData" :form-props="formProps" v-bind="slotProps">
+            <template v-for="(children, slotName) in editorItem.slots" :slot="slotName" slot-scope="slotProps">
+                <div class="com-title" :key="'slot-' + slotName">
+                    ({{ slotName }})
+                </div>
+                <NestedEditor :key="slotName" :child-component-list="children" :drag-options="dragOptions"
+                    :form-data="formData" :form-props="formProps" v-bind="slotProps">
                 </NestedEditor>
             </template>
         </nc_component>

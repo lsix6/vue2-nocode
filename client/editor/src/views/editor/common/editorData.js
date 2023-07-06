@@ -5,6 +5,7 @@
 import { getDefaultFormState } from '@lljj/vue-json-schema-form';
 import { genId } from '../../../utils/id';
 import { isObject, isEmptyObject } from './utils';
+import _ from 'lodash';
 
 // 生成一个新的editor item
 export function generateEditorItem(toolItem) {
@@ -31,8 +32,8 @@ export function generateEditorItem(toolItem) {
             property: (toolItem.componentValue && toolItem.componentValue.property) || id
         },
         id,
-        ...(currentComponentPack.viewSchema.properties || (currentComponentPack.viewSchema.items && currentComponentPack.viewSchema.items.properties))
-            ? { childList: [] }
+        ...(currentComponentPack.comSchema.com_slots)
+            ? { slots: _.cloneDeep(currentComponentPack.comSchema.com_slots) }
             : {}
     };
     delete ret.componentPack
@@ -190,7 +191,26 @@ export function componentList2JsonSchema(componentList) {
     let parentObj = baseObj;
     let queue = [{ $$parentFlag: parentObj }, ...componentList];
 
-    const hasChild = data => Array.isArray(data.childList) && data.childList.length > 0;
+    const hasChild = data => {
+        if (data.slots) {
+            for (let children in Object.values(data.slots)) {
+                if (children.length > 0) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    const getChildList = data => {
+        const childList = []
+        if (data.slots) {
+            for (let children in Object.values(data.slots)) {
+                childList.push(...children)
+            }
+        }
+        return childList
+    }
 
     // 队列广度，同时标记父节点
     while (queue.length) {
@@ -209,7 +229,7 @@ export function componentList2JsonSchema(componentList) {
 
             // 入队
             if (hasChild(item)) {
-                queue = [...queue, { $$parentFlag: curSchema }, ...item.childList];
+                queue = [...queue, { $$parentFlag: curSchema }, ...getChildList(item)];
             }
 
             // 连接数据

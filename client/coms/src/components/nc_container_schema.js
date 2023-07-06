@@ -33,5 +33,8 @@ export default {
     },
     comSchema: {
         com_name: 'nc_container',
+        com_slots: {
+            default: [],
+        },
     },
 };

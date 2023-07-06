@@ -88,11 +88,16 @@ export class CustomizedComsManager {
 
     schemaItem2ComObjWithChildren(item) {
         const obj = this.schemaItem2ComObj(item)
-        if (item.childList && item.childList.length > 0) {
-            const com_children = item.childList.map(child => {
-                return this.schemaItem2ComObjWithChildren(child)
-            })
-            obj.com_children = com_children
+        if (item.slots) {
+            const com_slots = {}
+            for (let slot in item.slots) {
+                com_slots[slot] = []
+                //
+                item.slots[slot].forEach(child => {
+                    com_slots[slot].push(this.schemaItem2ComObjWithChildren(child))
+                })
+            }
+            obj.com_slots = com_slots
         }
         //
         return obj

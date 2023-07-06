@@ -76,7 +76,7 @@ export default {
     },
     methods: {
         showNestedEditor(editorItem) {
-            return editorItem.childList;
+            return editorItem.slots;
         },
         handleDragChange(...args) {
             console.log(args);
