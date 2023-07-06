@@ -99,7 +99,7 @@ const _list = (moduleName, params) => {
         let pageData = {
             pageCount: 1,
             pageNumber: 1,
-            pageSize: 20,
+            pageSize: 5,
             totalCount: list.length,
         }
         //
