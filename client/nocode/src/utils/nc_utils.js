@@ -63,9 +63,11 @@ export const filterFields = (com, fields, binds) => {
         })
     }
     //
-    if (com.com_children) {
-        com.com_children.forEach(child => {
-            filterFields(child, fields, binds)
+    if (com.com_slots) {
+        Object.values(com.com_slots).forEach(arr => {
+            arr.forEach(child => {
+                filterFields(child, fields, binds)
+            })
         })
     }
 }

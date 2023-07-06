@@ -14,6 +14,7 @@ export function generateEditorItem(toolItem) {
 
     const ids = [currentComponentPack.viewSchema.type, genId()];
     const id = ids.filter(item => !!item).join('_');
+    const comSchema = currentComponentPack.comSchema
 
     const ret = {
         ...toolItem,
@@ -32,8 +33,8 @@ export function generateEditorItem(toolItem) {
             property: (toolItem.componentValue && toolItem.componentValue.property) || id
         },
         id,
-        ...(currentComponentPack.comSchema.com_slots)
-            ? { slots: _.cloneDeep(currentComponentPack.comSchema.com_slots) }
+        ...(comSchema && comSchema.com_slots)
+            ? { slots: _.cloneDeep(comSchema.com_slots) }
             : {}
     };
     delete ret.componentPack

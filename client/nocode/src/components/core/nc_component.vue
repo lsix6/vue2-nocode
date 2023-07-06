@@ -189,20 +189,22 @@ export default {
                 for (let slot in slots) {
                     const arr = slots[slot]
                     //
-                    scopedSlots[slot] = (props) => {
-                        // console.log('[nc_component] scopedSlots', slot, props)
-                        //
-                        if (this.$scopedSlots[slot]) {
-                            const ret = this.$scopedSlots[slot](props)
-                            // console.log('[nc_component] scopedSlots, call', slot, ret)
-                            return ret
+                    if (arr.length > 0) {
+                        scopedSlots[slot] = (props) => {
+                            // console.log('[nc_component] scopedSlots', slot, props)
+                            //
+                            if (this.$scopedSlots[slot]) {
+                                const ret = this.$scopedSlots[slot](props)
+                                // console.log('[nc_component] scopedSlots, call', slot, ret)
+                                return ret
+                            }
+                            // 在对应的插槽下创建子节点，并传入父节点传下来的参数
+                            const children = arr.map((child, i) => {
+                                return createChildNode(child, i, props)
+                            })
+                            // console.log('[nc_component] scopedSlots, children', slot, children)
+                            return children
                         }
-                        // 在对应的插槽下创建子节点，并传入父节点传下来的参数
-                        const children = arr.map((child, i) => {
-                            return createChildNode(child, i, props)
-                        })
-                        // console.log('[nc_component] scopedSlots, children', slot, children)
-                        return children
                     }
                 }
             } else {
