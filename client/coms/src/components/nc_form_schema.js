@@ -109,5 +109,8 @@ export default {
     },
     comSchema: {
         com_name: 'nc_form',
+        com_slots: {
+            default: [],
+        },
     },
 };
