@@ -5,16 +5,6 @@
         js_viewComponentWrap: true
     }" @click="handleClickView">
         <!-- <span :class="$style.formProperty"> {{ attrs.curNodePath }}</span> -->
-        <div v-show="isEdit" :class="$style.editBar">
-            <button :disabled="editorItem.toolBar.moveUpDisabled" :class="$style.toolBarBtn" class="el-icon-caret-top"
-                title="上移" type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveUp' })"></button>
-            <button :disabled="editorItem.toolBar.moveDownDisabled" :class="$style.toolBarBtn" class="el-icon-caret-bottom"
-                title="下移" type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveDown' })"></button>
-            <button :disabled="editorItem.toolBar.copyDisabled" :class="[$style.toolBarBtn]" class="el-icon-copy-document"
-                title="复制" type="button" @click="$emit('onOperate', { item: editorItem, command: 'copy' })"></button>
-            <button :disabled="editorItem.toolBar.removeDisabled" :class="$style.toolBarBtn" class="el-icon-delete"
-                title="移除" type="button" @click="$emit('onOperate', { item: editorItem, command: 'remove' })"></button>
-        </div>
         <div class="com-title">[{{ editorItem.title }}]</div>
         <nc_component v-bind="comFinalBind" class="com-in-editor">
             <template v-for="(children, slotName) in editorItem.slots" :slot="slotName" slot-scope="slotProps">
@@ -26,7 +16,16 @@
                 </NestedEditor>
             </template>
         </nc_component>
-
+        <div v-show="isEdit" :class="$style.editBar">
+            <button :disabled="editorItem.toolBar.moveUpDisabled" :class="$style.toolBarBtn" class="el-icon-caret-top"
+                title="上移" type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveUp' })"></button>
+            <button :disabled="editorItem.toolBar.moveDownDisabled" :class="$style.toolBarBtn" class="el-icon-caret-bottom"
+                title="下移" type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveDown' })"></button>
+            <button :disabled="editorItem.toolBar.copyDisabled" :class="[$style.toolBarBtn]" class="el-icon-copy-document"
+                title="复制" type="button" @click="$emit('onOperate', { item: editorItem, command: 'copy' })"></button>
+            <button :disabled="editorItem.toolBar.removeDisabled" :class="$style.toolBarBtn" class="el-icon-delete"
+                title="移除" type="button" @click="$emit('onOperate', { item: editorItem, command: 'remove' })"></button>
+        </div>
     </div>
 </template>
 
