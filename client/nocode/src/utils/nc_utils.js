@@ -36,7 +36,9 @@ export const getFinalFieldName = (fieldName) => {
 }
 
 const filterFields = (com, fields, binds) => {
-    if (com.com_field) {
+    // console.log('[nc_utils] filterFields', com.com_name, com)
+    //
+    if (com.com_field && com.com_field.field_name) {
         const fieldName = getFinalFieldName(com.com_field.field_name)
         fields[fieldName] = {
             field_default: com.com_field.field_default_value,
