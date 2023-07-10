@@ -1,6 +1,6 @@
 <template>
     <div class="nc-container" v-bind="node_props" :data="data">
-        <slot v-if="data" v-bind="{ com_root, com_data: finalComData }"></slot>
+        <slot v-if="data || !this.show_children_after_got_data" v-bind="{ com_root, com_data: finalComData }"></slot>
     </div>
 </template>
 
@@ -14,6 +14,10 @@ export default {
         Vue.component('nc_data_source', this)
     },
     props: {
+        show_children_after_got_data: {
+            type: Boolean,
+            default: false,
+        },
         node_props: {
             type: Object,
             default: null

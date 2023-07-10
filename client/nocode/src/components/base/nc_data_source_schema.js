@@ -17,6 +17,10 @@ export default {
             type: 'object',
             title: 'props',
             properties: {
+                show_children_after_got_data: {
+                    type: 'boolean',
+                    title: 'after got',
+                },
                 data_sources: {
                     title: 'Date Sources',
                     type: 'array',
