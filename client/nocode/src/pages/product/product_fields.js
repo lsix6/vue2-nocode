@@ -273,8 +273,12 @@ export const getProductFields = (moduleName) => {
         {
             field_info: {
                 name: 'delivery',
-                label: '即时配送',
+                label: '配送',
                 default_value: false,
+                enum_map: {
+                    true: '配送',
+                    false: '不配送',
+                },
             },
             in_list: {
                 column_props: {
