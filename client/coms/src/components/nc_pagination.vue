@@ -1,13 +1,12 @@
 <template>
-    <el-pagination v-bind="pagination_props" 
-        :current-page.sync="data.currentPage" :page-size.sync="data.pageSize"
-        :total.sync="data.total"
-        @current-change="onChange"
-        @size-change="onChange"
-    ></el-pagination>
+    <el-pagination v-bind="pagination_props" :current-page.sync="data.currentPage" :page-size.sync="data.pageSize"
+        :total.sync="data.total" @current-change="onChange" @size-change="onChange"></el-pagination>
 </template>
 
 <script>
+
+const storageManager = window.nocode.storageManager
+
 export default {
     install(Vue) {
         Vue.component('nc_pagination', this)
@@ -19,7 +18,7 @@ export default {
         },
         page_data: {
             type: Object,
-            default: () => {}
+            default: () => { }
         },
     },
     data() {
@@ -41,8 +40,16 @@ export default {
             deep: true,
         },
     },
+    created() {
+        // console.log('[nc_pagination] created, data:', { ...this.data }, this.$route)
+        // 获取之前保存在内存中的翻页数据
+        const savedData = storageManager.getItemInMem(this.$route.fullPath)
+        if (savedData) {
+            this.data = savedData
+        }
+    },
     mounted() {
-        // console.log('[nc_pagination] mounted, page_data:', this.page_data)
+        // console.log('[nc_pagination] mounted, data:', { ...this.data })
         this.updateData()
     },
     beforeUpdate() {
@@ -50,9 +57,11 @@ export default {
     },
     methods: {
         updateData() {
-            this.data.currentPage = this.page_data.pageNumber
-            this.data.pageSize = this.page_data.pageSize
-            this.data.total = this.page_data.totalCount
+            if (this.page_data) {
+                this.data.currentPage = this.page_data.pageNumber
+                this.data.pageSize = this.page_data.pageSize
+                this.data.total = this.page_data.totalCount
+            }
         },
         getData() {
             return {
@@ -64,7 +73,10 @@ export default {
             this.data.total = pageData.totalCount
         },
         onChange() {
-            // console.log('[nc_pagination] onChange, data:', this.data)
+            // console.log('[nc_pagination] onChange, data:', { ...this.data })
+            // 保存翻页数据到内存中
+            storageManager.setItemInMem(this.$route.fullPath, { ...this.data })
+            //
             this.$emit('change')
         }
     }
