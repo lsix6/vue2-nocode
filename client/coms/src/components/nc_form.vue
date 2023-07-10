@@ -1,8 +1,5 @@
 <template>
     <el-form ref="form" :model="formData" v-bind="form_props" @submit.native.prevent>
-        <nc_children ref="children" :com_children="children" :com_root="com_root"
-            :com_data="{ ...com_data, formData, valid, changed, }">
-        </nc_children>
         <slot v-bind="{ com_root, com_data: { ...com_data, formData, valid, changed, } }"></slot>
     </el-form>
 </template>
@@ -34,10 +31,6 @@ export default {
         form_props: {
             type: Object,
             default: null
-        },
-        form_children: {
-            type: Array,
-            default: () => []
         },
         init_data: {
             type: Object,
@@ -82,31 +75,6 @@ export default {
     computed: {
         valid_and_changed() {
             return (this.valid && this.changed)
-        },
-        children() {
-            let arr = []
-            //
-            this.form_children.forEach(item => {
-                let child = item
-                //
-                if (child.com_props && child.com_props.prop) {
-                    const error = this.formFieldsError[child.com_props.prop]
-                    if (error) {
-                        child = this.lodash_merge(
-                            item,
-                            {
-                                com_props: {
-                                    error,
-                                }
-                            }
-                        )
-                    }
-                }
-                //
-                arr.push(child)
-            })
-            //
-            return arr
         },
         fields() {
             let fields = {}
