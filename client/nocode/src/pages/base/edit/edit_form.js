@@ -26,11 +26,13 @@ export const createEditForm = (moduleInfo) => {
                 success_message: '修改成功',
                 error_message: '修改失败',
             },
-            form_children: [
+        },
+        com_slots: {
+            default: [
                 ...form_items,
                 edit_form_buttons,
-            ]
-        }
+            ],
+        },
     }
 
     return formEdit

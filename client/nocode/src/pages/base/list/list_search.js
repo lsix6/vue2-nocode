@@ -87,8 +87,8 @@ export const createListSearch = (moduleFields) => {
                 flex: 1,
             },
         },
-        com_props: {
-            form_children: [
+        com_slots: {
+            default: [
                 {
                     com_name: 'div',
                     com_info: {
