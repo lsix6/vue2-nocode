@@ -16,7 +16,7 @@ export default {
     props: {
         show_children_after_got_data: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         node_props: {
             type: Object,

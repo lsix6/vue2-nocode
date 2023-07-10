@@ -20,6 +20,7 @@ export default {
                 show_children_after_got_data: {
                     type: 'boolean',
                     title: 'after got',
+                    default: true,
                 },
                 data_sources: {
                     title: 'Date Sources',
