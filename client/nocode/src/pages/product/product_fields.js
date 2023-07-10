@@ -129,11 +129,12 @@ export const getProductFields = (moduleName) => {
                     { required: true, message: '请输入价格', trigger: 'blur' },
                 ],
                 edit_com: {
-                    com_name: 'el-input',
+                    com_name: 'el-input-number',
                     com_info: {
                         attrs: {
                             placeholder: '请输入价格',
                         },
+                        'controls-position': 'right',
                     },
                     com_props: {
                         clearable: true,
