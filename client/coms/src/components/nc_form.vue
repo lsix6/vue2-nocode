@@ -12,7 +12,7 @@
 import _ from 'lodash'
 import { nc_vars } from '../utils/nc_vars.js'
 
-const { filterFields } = window.nocode.utils
+const { filterChildrenFields } = window.nocode.utils
 
 const request_api = window.nocode.request_api
 const get_params = window.nocode.get_params
@@ -111,9 +111,7 @@ export default {
         fields() {
             let fields = {}
             let binds = {}
-            this.form_children.forEach(child => {
-                filterFields(child, fields, binds)
-            })
+            filterChildrenFields(this.$parent.com_slots, fields, binds)
             return fields
         },
     },

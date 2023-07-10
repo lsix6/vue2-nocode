@@ -35,7 +35,7 @@ export const getFinalFieldName = (fieldName) => {
     return names[names.length - 1]
 }
 
-export const filterFields = (com, fields, binds) => {
+const filterFields = (com, fields, binds) => {
     if (com.com_field) {
         const fieldName = getFinalFieldName(com.com_field.field_name)
         fields[fieldName] = {
@@ -63,8 +63,12 @@ export const filterFields = (com, fields, binds) => {
         })
     }
     //
-    if (com.com_slots) {
-        Object.values(com.com_slots).forEach(arr => {
+    filterChildrenFields(com.com_slots, fields, binds)
+}
+
+export const filterChildrenFields = (comSlots, fields, binds) => {
+    if (comSlots) {
+        Object.values(comSlots).forEach(arr => {
             arr.forEach(child => {
                 filterFields(child, fields, binds)
             })

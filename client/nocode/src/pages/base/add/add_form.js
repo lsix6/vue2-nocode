@@ -20,11 +20,13 @@ export const createAddForm = (moduleInfo) => {
                 success_message: '添加成功',
                 error_message: '添加失败',
             },
-            form_children: [
+        },
+        com_slots: {
+            default: [
                 ...form_items,
                 add_form_buttons,
-            ]
-        }
+            ],
+        },
     }
 
     return formAdd
