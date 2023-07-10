@@ -9,7 +9,7 @@ export const createFormItems = (fields) => {
         //
         const edit_com = _.cloneDeep(field.in_form.edit_com)
         //
-        if (fdInfo.enum || fdInfo.data_source) {
+        if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
             edit_com.com_props = edit_com.com_props || {}
             edit_com.com_props.data_source_name = get_field_ds_name(fdInfo.name)
         }
