@@ -27,6 +27,9 @@ const comsManager = new ComsManager(window.Vue)
 import { CustomizedComsManager } from './utils/customized_coms_manager'
 const customizedComsManager = new CustomizedComsManager()
 
+import { StorageManager } from './utils/storage_manager'
+const storageManager = new StorageManager()
+
 import nc_data_source from './components/base/nc_data_source.vue'
 import nc_data_source_schema from './components/base/nc_data_source_schema'
 comsManager.register('default', 'nc_data_source', nc_data_source, nc_data_source_schema)
@@ -55,6 +58,7 @@ window.nocode = {
     pagesManager,
     comsManager,
     customizedComsManager,
+    storageManager,
 }
 
 window.time_log('[nocode] js loaded')
