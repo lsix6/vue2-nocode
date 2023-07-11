@@ -113,6 +113,7 @@ export class CustomizedComsManager {
                 objs.push(comObj)
             })
         }
+        console.log('loadComObjs', comId, objs)
         //
         return objs
     }
