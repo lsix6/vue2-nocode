@@ -82,7 +82,7 @@ export class CustomizedComsManager {
             ],
         }
         //
-        console.log('[customized_coms_manager] schemaItem2ComObj', comObj)
+        // console.log('[customized_coms_manager] schemaItem2ComObj', comObj)
         return comObj
     }
 
