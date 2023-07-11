@@ -1,5 +1,5 @@
 <template>
-    <el-select :value="value" @change="onChange">
+    <el-select :value="value" :clearable="true" @change="onChange">
         <el-option v-for="(kv, i) in enumArr" :key="i" :label="kv.v" :value="kv.k">
         </el-option>
     </el-select>
