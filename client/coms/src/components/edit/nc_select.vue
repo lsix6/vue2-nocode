@@ -33,37 +33,36 @@ export default {
             default: null
         },
     },
-    data() {
-        return {
-            enumArr: [],
-        }
-    },
     computed: {
         select_value() {
             return '' + this.value
         },
+        enumArr() {
+            const arr = []
+            if (this.enum_map) {
+                for (let k in this.enum_map) {
+                    arr.push({
+                        k,
+                        v: this.enum_map[k]
+                    })
+                }
+            }
+            const dsMap = getPropValue(this.com_data, this.data_source_name)
+            if (dsMap) {
+                for (let k in dsMap) {
+                    arr.push({
+                        k,
+                        v: dsMap[k]
+                    })
+                }
+            }
+            // console.log('[nc_select] enumArr', arr)
+            //
+            return arr
+        },
     },
     mounted() {
         // console.log('[nc_select] mounted', this.value, typeof (this.value), this.com_data)
-        //
-        if (this.enum_map) {
-            for (let k in this.enum_map) {
-                this.enumArr.push({
-                    k,
-                    v: this.enum_map[k]
-                })
-            }
-        }
-        const dsMap = getPropValue(this.com_data, this.data_source_name)
-        if (dsMap) {
-            for (let k in dsMap) {
-                this.enumArr.push({
-                    k,
-                    v: dsMap[k]
-                })
-            }
-        }
-        // console.log('[nc_select] enumArr', this.enumArr)
     },
     methods: {
         onChange(v) {
