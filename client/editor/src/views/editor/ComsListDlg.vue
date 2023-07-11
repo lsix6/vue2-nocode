@@ -7,6 +7,7 @@
                     <el-button size="mini" :disabled="scope.row.opened"
                         @click="handleOpen(scope.$index, scope.row)">打开</el-button>
                     <el-button size="mini" @click="handleRename(scope.$index, scope.row)">重命名</el-button>
+                    <el-button size="mini" @click="handleCopy(scope.$index, scope.row)">复制</el-button>
                     <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
                 </template>
             </el-table-column>
@@ -19,6 +20,7 @@
 
 <script>
 import { MessageBox } from 'element-ui';
+import _ from 'lodash'
 
 const custComsMgr = window.nocode.customizedComsManager
 
@@ -41,15 +43,21 @@ export default {
         close() {
             this.dialogVisible = false
         },
+        createNewCom(comName) {
+            const com = {
+                name: comName,
+                id: '' + Date.now(),
+            }
+            this.comsData.push(com)
+            //
+            custComsMgr.saveComsList(this.comsData)
+            //
+            return com
+        },
         onCreate() {
             MessageBox.prompt('请输入组件名称', '新建组件').then(({ value }) => {
                 if (value) {
-                    this.comsData.push({
-                        name: value,
-                        id: '' + Date.now(),
-                    })
-                    //
-                    custComsMgr.saveComsList(this.comsData)
+                    this.createNewCom(value)
                 }
             }).catch(() => {
             })
@@ -69,6 +77,23 @@ export default {
                 //
                 if (value) {
                     row.name = value
+                    //
+                    custComsMgr.saveComsList(this.comsData)
+                }
+            }).catch(() => {
+            })
+        },
+        handleCopy(index, row) {
+            console.log('[ComsListDlg] handleCopy', index, row);
+            //
+            MessageBox.prompt('请输入新组件名字', '复制').then(({ value }) => {
+                console.log('[ComsListDlg] new copy com name', value);
+                //
+                if (value) {
+                    const newCom = this.createNewCom(value)
+                    //
+                    const comData = custComsMgr.loadComData(row.id)
+                    custComsMgr.saveComData(newCom.id, _.cloneDeep(comData))
                     //
                     custComsMgr.saveComsList(this.comsData)
                 }
