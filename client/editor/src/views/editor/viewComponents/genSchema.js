@@ -18,6 +18,10 @@ function genBaseVal() {
                         type: 'string',
                         title: 'field name',
                     },
+                    field_default_value: {
+                        type: 'string',
+                        title: 'default value',
+                    },
                 },
             },
             com_text: {
