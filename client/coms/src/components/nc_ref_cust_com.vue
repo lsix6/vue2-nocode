@@ -31,7 +31,7 @@ export default {
             if (this.ref_com_id) {
                 comObjs = window.nocode.customizedComsManager.loadComObjs(this.ref_com_id)
             }
-            // console.log('[nc_ref_cust_com] column_children', comObjs)
+            // console.log('[nc_ref_cust_com] comObjs', comObjs)
             return comObjs
         },
     },
