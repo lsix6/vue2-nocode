@@ -64,6 +64,16 @@ const filterFields = (com, fields, binds) => {
             }
         })
     }
+    if (com.com_name === 'nc_ref_cust_com') {
+        const refComId = com.com_props && com.com_props.ref_com_id
+        if (refComId) {
+            const comObjs = window.nocode.customizedComsManager.loadComObjs(refComId)
+            const slots = {
+                default: comObjs
+            }
+            filterChildrenFields(slots, fields, binds)
+        }
+    }
     //
     filterChildrenFields(com.com_slots, fields, binds)
 }
