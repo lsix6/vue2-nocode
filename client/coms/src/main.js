@@ -16,6 +16,7 @@ import nc_select_schema from './components/edit/nc_select_schema.js'
 import el_input_schema from './elementui/el_input_schema.js'
 import el_button_schema from './elementui/el_button_schema.js'
 import el_popconfirm_schema from './elementui/el_popconfirm_schema.js'
+import el_avatar_schema from './elementui/el_avatar_schema.js'
 
 const registerComponents = (Vue) => {
   window.time_log('[coms] register components')
@@ -76,6 +77,11 @@ const registerComponents = (Vue) => {
     'default', 'ElPopconfirm',
     null,
     el_popconfirm_schema
+  )
+  window.nocode.comsManager.register(
+    'default', 'ElAvatar',
+    null,
+    el_avatar_schema
   )
   Vue.component('nc_pagination', () => import('./components/nc_pagination.vue'))
   Vue.component('nc_form_item', () => import('./components/nc_form_item.vue'))
