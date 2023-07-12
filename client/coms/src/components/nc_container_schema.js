@@ -13,6 +13,25 @@ const viewSchema = {
 export default {
     viewSchema,
     propsSchema: {
+        com_info: {
+            type: 'object',
+            properties: {
+                style: {
+                    type: 'object',
+                    title: 'style',
+                    properties: {
+                        width: {
+                            type: 'string',
+                            title: 'width',
+                        },
+                        padding: {
+                            type: 'string',
+                            title: 'padding',
+                        },
+                    },
+                },
+            },
+        },
         com_props: {
             type: 'object',
             title: 'props',
