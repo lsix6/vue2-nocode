@@ -1,7 +1,12 @@
 <template>
-    <el-form-item ref="refFormItem" v-bind="com_props">
+    <el-form-item v-if="isInForm" ref="refFormItem" v-bind="com_props">
         <slot v-bind="{ com_root, com_data }"></slot>
     </el-form-item>
+    <el-form v-else>
+        <el-form-item ref="refFormItem" v-bind="com_props">
+            <slot v-bind="{ com_root, com_data }"></slot>
+        </el-form-item>
+    </el-form>
 </template>
 
 <script>
@@ -22,6 +27,20 @@ export default {
         com_data: {
             type: Object,
             default: null
+        },
+    },
+    computed: {
+        isInForm() {
+            var parent = this.$parent;
+            var parentName = parent.$options.componentName;
+            while (parentName !== 'ElForm') {
+                parent = parent.$parent;
+                if (!parent) {
+                    break
+                }
+                parentName = parent.$options.componentName;
+            }
+            return !!parent;
         },
     },
     mounted() {
