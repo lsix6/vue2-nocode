@@ -1,5 +1,5 @@
 <template>
-    <el-form ref="form" :model="formData" v-bind="form_props" @submit.native.prevent>
+    <el-form class="nc-form" ref="form" :model="formData" v-bind="form_props" @submit.native.prevent labelWidth="90px">
         <slot v-bind="{ com_root, com_data: { ...com_data, formData, valid, changed, } }"></slot>
     </el-form>
 </template>
