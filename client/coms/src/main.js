@@ -15,6 +15,7 @@ import nc_form_item_schema from './components/nc_form_item_schema.js'
 import nc_select_schema from './components/edit/nc_select_schema.js'
 
 import el_input_schema from './elementui/el_input_schema.js'
+import el_date_picker_schema from './elementui/el_date_picker_schema.js'
 import el_button_schema from './elementui/el_button_schema.js'
 import el_popconfirm_schema from './elementui/el_popconfirm_schema.js'
 import el_avatar_schema from './elementui/el_avatar_schema.js'
@@ -63,6 +64,10 @@ const registerComponents = (Vue) => {
   window.nocode.comsManager.register(
     null,
     el_input_schema
+  )
+  window.nocode.comsManager.register(
+    null,
+    el_date_picker_schema
   )
   window.nocode.comsManager.register(
     null,
