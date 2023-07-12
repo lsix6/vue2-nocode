@@ -11,6 +11,7 @@ import nc_enum_schema from './components/show/nc_enum_schema.js'
 import nc_text_schema from './components/show/nc_text_schema.js'
 import nc_pagination_schema from './components/nc_pagination_schema.js'
 import nc_form_schema from './components/nc_form_schema.js'
+import nc_form_item_schema from './components/nc_form_item_schema.js'
 import nc_select_schema from './components/edit/nc_select_schema.js'
 
 import el_input_schema from './elementui/el_input_schema.js'
@@ -49,6 +50,10 @@ const registerComponents = (Vue) => {
   window.nocode.comsManager.register(
     () => import('./components/nc_form.vue'),
     nc_form_schema
+  )
+  window.nocode.comsManager.register(
+    () => import('./components/nc_form_item.vue'),
+    nc_form_item_schema
   )
   window.nocode.comsManager.register(
     () => import('./components/edit/nc_select.vue'),
