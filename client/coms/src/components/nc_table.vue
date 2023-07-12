@@ -1,7 +1,8 @@
 <template>
     <el-table style="width: 100%" v-bind="table_props" :data="finalListData" @sort-change="onSortChange">
         <template v-for="(field, index) in fields">
-            <nc_table_column v-if="field.ref_com_id" :key="index" v-bind="field" :com_root="com_root" :com_data="com_data">
+            <nc_table_column v-if="field.ref_com_id || (field.column_components && field.column_components.length > 0)"
+                :key="index" v-bind="field" :com_root="com_root" :com_data="com_data">
             </nc_table_column>
             <el-table-column v-else :key="index" v-bind="field.column_props">
             </el-table-column>
