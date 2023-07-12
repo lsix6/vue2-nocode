@@ -17,6 +17,10 @@ export default {
             type: 'object',
             title: 'props',
             properties: {
+                flex: {
+                    type: 'boolean',
+                    title: 'flex',
+                },
                 items_direction: {
                     type: 'string',
                     title: 'items dir',

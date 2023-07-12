@@ -8,9 +8,14 @@ body {
   overflow: hidden;
 }
 
-.nc-container {
+.flex-container {
   flex: 1;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.nc-container {
+  overflow: hidden;
+  display: flex;
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="nc-container" :style="{ 'flex-direction': items_direction }">
+    <div class="nc-container" :style="style">
         <slot v-bind="{ com_root, com_data: { ...com_data, ...value } }"></slot>
     </div>
 </template>
@@ -15,6 +15,10 @@ export default {
             type: Object,
             default: null
         },
+        flex: {
+            type: Boolean,
+            default: false,
+        },
         items_direction: {
             type: String,
             default: 'column'
@@ -26,6 +30,18 @@ export default {
         com_data: {
             type: Object,
             default: null
+        },
+    },
+    computed: {
+        style() {
+            const ret = {
+                'flex-direction': this.items_direction,
+            }
+            if (this.flex) {
+                ret.flex = 1
+            }
+            //
+            return ret
         },
     },
     mounted() {

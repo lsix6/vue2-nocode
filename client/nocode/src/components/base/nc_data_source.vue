@@ -1,5 +1,5 @@
 <template>
-    <div class="nc-container" v-bind="node_props" :data="data">
+    <div class="flex-container" v-bind="node_props" :data="data">
         <slot v-if="data || !this.show_children_after_got_data" v-bind="{ com_root, com_data: finalComData }"></slot>
     </div>
 </template>

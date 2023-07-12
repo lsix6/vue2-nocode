@@ -49,7 +49,7 @@ export default {
                         com_name: 'div',
                         com_version: '1',
                         com_info: {
-                            class: 'nc-container',
+                            class: 'flex-container',
                         },
                         com_slots: {
                             default: comObjs,
