@@ -1,20 +1,11 @@
 <template>
-    <span>
-
-        <template v-if="column_children.length > 0">
-            <el-table-column v-bind="column_props">
-                <template slot-scope="scope">
-                    <nc_component v-for="(com, comIndex) in column_children" :key="comIndex" :com_root="com_root"
-                        :com_data="{ ...com_data, ...scope.row }" v-bind="com">
-                    </nc_component>
-                </template>
-            </el-table-column>
+    <el-table-column v-bind="column_props">
+        <template slot-scope="scope">
+            <nc_component v-for="(com, comIndex) in column_children" :key="comIndex" :com_root="com_root"
+                :com_data="{ ...com_data, ...scope.row }" v-bind="com">
+            </nc_component>
         </template>
-        <template v-else>
-            <el-table-column v-bind="column_props">
-            </el-table-column>
-        </template>
-    </span>
+    </el-table-column>
 </template>
 
 <script>
