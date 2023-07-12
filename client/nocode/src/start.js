@@ -30,7 +30,10 @@ const storageManager = new StorageManager()
 
 import nc_data_source from './components/base/nc_data_source.vue'
 import nc_data_source_schema from './components/base/nc_data_source_schema'
-comsManager.register('default', 'nc_data_source', nc_data_source, nc_data_source_schema)
+comsManager.register(
+    nc_data_source,
+    nc_data_source_schema
+)
 
 import { PagesManager } from './utils/pages_manager'
 const pagesManager = new PagesManager()

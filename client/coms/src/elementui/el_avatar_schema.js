@@ -3,6 +3,7 @@
  */
 
 const viewSchema = {
+    group: 'element ui',
     title: 'ElAvatar',
     type: 'object',
 };

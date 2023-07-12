@@ -3,6 +3,7 @@
  */
 
 const viewSchema = {
+    group: 'element ui',
     title: 'ElInput',
     type: 'object',
     required: [],

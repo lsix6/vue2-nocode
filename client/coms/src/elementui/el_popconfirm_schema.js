@@ -3,6 +3,7 @@
  */
 
 const viewSchema = {
+    group: 'element ui',
     title: 'ElPopconfirm',
     type: 'object',
     required: [],

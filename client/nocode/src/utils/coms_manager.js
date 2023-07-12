@@ -8,7 +8,10 @@ export class ComsManager {
         this.Vue = vue
     }
 
-    register(groupName, comName, component, schema) {
+    register(component, schema) {
+        const groupName = schema.viewSchema.group || 'default'
+        const comName = schema.comSchema.com_name
+        //
         if (component) {
             this.Vue.component(comName, component)
         }

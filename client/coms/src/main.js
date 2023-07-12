@@ -22,64 +22,52 @@ const registerComponents = (Vue) => {
   window.time_log('[coms] register components')
   //
   window.nocode.comsManager.register(
-    'default', 'nc_container',
     () => import('./components/nc_container.vue'),
     nc_container_schema
   )
   window.nocode.comsManager.register(
-    'default', 'nc_ref_cust_com',
     () => import('./components/nc_ref_cust_com.vue'),
     nc_ref_cust_com_schema
   )
   Vue.component('nc_table_column', () => import('./components/nc_table_column.vue'))
   window.nocode.comsManager.register(
-    'default', 'nc_table',
     () => import('./components/nc_table.vue'),
     nc_table_schema
   )
   window.nocode.comsManager.register(
-    'default', 'nc_enum',
     () => import('./components/show/nc_enum.vue'),
     nc_enum_schema
   )
   window.nocode.comsManager.register(
-    'default', 'nc_text',
     () => import('./components/show/nc_text.vue'),
     nc_text_schema
   )
   window.nocode.comsManager.register(
-    'default', 'nc_pagination',
     () => import('./components/nc_pagination.vue'),
     nc_pagination_schema
   )
   window.nocode.comsManager.register(
-    'default', 'nc_form',
     () => import('./components/nc_form.vue'),
     nc_form_schema
   )
   window.nocode.comsManager.register(
-    'default', 'nc_select',
     () => import('./components/edit/nc_select.vue'),
     nc_select_schema
   )
   //
   window.nocode.comsManager.register(
-    'default', 'ElInput',
     null,
     el_input_schema
   )
   window.nocode.comsManager.register(
-    'default', 'ElButton',
     null,
     el_button_schema
   )
   window.nocode.comsManager.register(
-    'default', 'ElPopconfirm',
     null,
     el_popconfirm_schema
   )
   window.nocode.comsManager.register(
-    'default', 'ElAvatar',
     null,
     el_avatar_schema
   )
