@@ -13,6 +13,7 @@ import nc_pagination_schema from './components/nc_pagination_schema.js'
 import nc_form_schema from './components/nc_form_schema.js'
 import nc_form_item_schema from './components/nc_form_item_schema.js'
 import nc_select_schema from './components/edit/nc_select_schema.js'
+import nc_radio_group_schema from './components/edit/nc_radio_group_schema.js'
 
 import el_input_schema from './elementui/el_input_schema.js'
 import el_date_picker_schema from './elementui/el_date_picker_schema.js'
@@ -59,6 +60,10 @@ const registerComponents = (Vue) => {
   window.nocode.comsManager.register(
     () => import('./components/edit/nc_select.vue'),
     nc_select_schema
+  )
+  window.nocode.comsManager.register(
+    () => import('./components/edit/nc_radio_group.vue'),
+    nc_radio_group_schema
   )
   //
   window.nocode.comsManager.register(
