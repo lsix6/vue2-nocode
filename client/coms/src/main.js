@@ -17,6 +17,8 @@ import nc_radio_group_schema from './components/edit/nc_radio_group_schema.js'
 
 import el_input_schema from './elementui/el_input_schema.js'
 import el_input_number_schema from './elementui/el_input_number_schema.js'
+import el_checkbox_schema from './elementui/el_checkbox_schema.js'
+import el_switch_schema from './elementui/el_switch_schema.js'
 import el_date_picker_schema from './elementui/el_date_picker_schema.js'
 import el_button_schema from './elementui/el_button_schema.js'
 import el_popconfirm_schema from './elementui/el_popconfirm_schema.js'
@@ -74,6 +76,14 @@ const registerComponents = (Vue) => {
   window.nocode.comsManager.register(
     null,
     el_input_number_schema
+  )
+  window.nocode.comsManager.register(
+    null,
+    el_checkbox_schema
+  )
+  window.nocode.comsManager.register(
+    null,
+    el_switch_schema
   )
   window.nocode.comsManager.register(
     null,
