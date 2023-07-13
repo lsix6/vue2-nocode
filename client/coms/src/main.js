@@ -4,17 +4,29 @@ import { DomMessage } from './elementui/messageDeduplication.js'
 
 window.time_log('[coms] main.js')
 
+import nc_container from './components/nc_container.vue'
 import nc_container_schema from './components/nc_container_schema.js'
+import nc_ref_cust_com from './components/nc_ref_cust_com.vue'
 import nc_ref_cust_com_schema from './components/nc_ref_cust_com_schema.js'
+import nc_table from './components/nc_table.vue'
 import nc_table_schema from './components/nc_table_schema.js'
+import nc_enum from './components/show/nc_enum.vue'
 import nc_enum_schema from './components/show/nc_enum_schema.js'
+import nc_enum_color from './components/show/nc_enum_color.vue'
 import nc_enum_color_schema from './components/show/nc_enum_color_schema.js'
+import nc_text from './components/show/nc_text.vue'
 import nc_text_schema from './components/show/nc_text_schema.js'
+import nc_pagination from './components/nc_pagination.vue'
 import nc_pagination_schema from './components/nc_pagination_schema.js'
+import nc_form from './components/nc_form.vue'
 import nc_form_schema from './components/nc_form_schema.js'
+import nc_form_item from './components/nc_form_item.vue'
 import nc_form_item_schema from './components/nc_form_item_schema.js'
+import nc_select from './components/edit/nc_select.vue'
 import nc_select_schema from './components/edit/nc_select_schema.js'
+import nc_select_color from './components/edit/nc_select_color.vue'
 import nc_select_color_schema from './components/edit/nc_select_color_schema.js'
+import nc_radio_group from './components/edit/nc_radio_group.vue'
 import nc_radio_group_schema from './components/edit/nc_radio_group_schema.js'
 
 import el_input_schema from './elementui/el_input_schema.js'
@@ -30,100 +42,96 @@ import el_avatar_schema from './elementui/el_avatar_schema.js'
 const registerComponents = (Vue) => {
   window.time_log('[coms] register components')
   //
-  window.nocode.comsManager.register(
-    () => import('./components/nc_container.vue'),
+  const comsManager = window.nocode.comsManager
+  //
+  comsManager.register(
+    nc_container,
     nc_container_schema
   )
-  window.nocode.comsManager.register(
-    () => import('./components/nc_ref_cust_com.vue'),
+  comsManager.register(
+    nc_ref_cust_com,
     nc_ref_cust_com_schema
   )
-  window.nocode.comsManager.register(
-    () => import('./components/nc_table.vue'),
+  comsManager.register(
+    nc_table,
     nc_table_schema
   )
-  window.nocode.comsManager.register(
-    () => import('./components/show/nc_enum.vue'),
+  comsManager.register(
+    nc_enum,
     nc_enum_schema
   )
-  window.nocode.comsManager.register(
-    () => import('./components/show/nc_enum_color.vue'),
+  comsManager.register(
+    nc_enum_color,
     nc_enum_color_schema
   )
-  window.nocode.comsManager.register(
-    () => import('./components/show/nc_text.vue'),
+  comsManager.register(
+    nc_text,
     nc_text_schema
   )
-  window.nocode.comsManager.register(
-    () => import('./components/nc_pagination.vue'),
+  comsManager.register(
+    nc_pagination,
     nc_pagination_schema
   )
-  window.nocode.comsManager.register(
-    () => import('./components/nc_form.vue'),
+  comsManager.register(
+    nc_form,
     nc_form_schema
   )
-  window.nocode.comsManager.register(
-    () => import('./components/nc_form_item.vue'),
+  comsManager.register(
+    nc_form_item,
     nc_form_item_schema
   )
-  window.nocode.comsManager.register(
-    () => import('./components/edit/nc_select.vue'),
+  comsManager.register(
+    nc_select,
     nc_select_schema
   )
-  window.nocode.comsManager.register(
-    () => import('./components/edit/nc_select_color.vue'),
+  comsManager.register(
+    nc_select_color,
     nc_select_color_schema
   )
-  window.nocode.comsManager.register(
-    () => import('./components/edit/nc_radio_group.vue'),
+  comsManager.register(
+    nc_radio_group,
     nc_radio_group_schema
   )
   //
-  window.nocode.comsManager.register(
+  comsManager.register(
     null,
     el_input_schema
   )
-  window.nocode.comsManager.register(
+  comsManager.register(
     null,
     el_input_number_schema
   )
-  window.nocode.comsManager.register(
+  comsManager.register(
     null,
     el_checkbox_schema
   )
-  window.nocode.comsManager.register(
+  comsManager.register(
     null,
     el_switch_schema
   )
-  window.nocode.comsManager.register(
+  comsManager.register(
     null,
     el_date_picker_schema
   )
-  window.nocode.comsManager.register(
+  comsManager.register(
     null,
     el_rate_schema
   )
-  window.nocode.comsManager.register(
+  comsManager.register(
     null,
     el_button_schema
   )
-  window.nocode.comsManager.register(
+  comsManager.register(
     null,
     el_popconfirm_schema
   )
-  window.nocode.comsManager.register(
+  comsManager.register(
     null,
     el_avatar_schema
   )
-  Vue.component('nc_pagination', () => import('./components/nc_pagination.vue'))
-  Vue.component('nc_form_item', () => import('./components/nc_form_item.vue'))
   Vue.component('nc_input', () => import('./components/nc_input.vue'))
-  Vue.component('nc_enum', () => import('./components/show/nc_enum.vue'))
-  Vue.component('nc_enum_color', () => import('./components/show/nc_enum_color.vue'))
   Vue.component('nc_switch_in_show', () => import('./components/show/nc_switch_in_show.vue'))
   Vue.component('nc_color', () => import('./components/show/nc_color.vue'))
-  Vue.component('nc_select_color', () => import('./components/edit/nc_select_color.vue'))
-  Vue.component('nc_radio_group', () => import('./components/edit/nc_radio_group.vue'))
 }
 
 if (window.Vue) {
