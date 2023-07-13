@@ -100,15 +100,17 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .coms-editor-frame {
   flex: 1;
   display: flex;
+  overflow: hidden;
 
   .coms-editor-tabs {
     flex: 1;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     .el-tabs__content {
       flex: 1;
@@ -116,6 +118,7 @@ export default {
 
       .tabs-content {
         flex: 1;
+        overflow: hidden;
       }
     }
   }
