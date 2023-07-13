@@ -100,7 +100,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .coms-editor-frame {
   flex: 1;
   display: flex;
