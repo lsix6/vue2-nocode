@@ -1,6 +1,6 @@
 <template>
     <el-dialog title="自定义组件列表" :visible.sync="dialogVisible">
-        <el-table :data="comsData">
+        <el-table :height="500" :data="comsData">
             <el-table-column property="name" label="自定义组件名称" width="200"></el-table-column>
             <el-table-column label="操作">
                 <template slot-scope="scope">
@@ -12,7 +12,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <el-button @click="onCreate">
+        <el-button style="margin-top: 20px;" @click="onCreate">
             Create
         </el-button>
     </el-dialog>
