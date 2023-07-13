@@ -37,6 +37,20 @@ export default {
                                         type: 'string',
                                         title: 'label',
                                     },
+                                    'min-width': {
+                                        type: 'string',
+                                        title: 'min width',
+                                    },
+                                    'header-align': {
+                                        type: 'string',
+                                        title: 'header align',
+                                        enum: [
+                                            'left',
+                                            'center',
+                                            'right',
+                                        ],
+                                        default: 'left',
+                                    },
                                     sortable: {
                                         type: 'boolean',
                                         title: 'sortable',
