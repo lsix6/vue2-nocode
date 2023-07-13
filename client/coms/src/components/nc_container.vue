@@ -49,3 +49,10 @@ export default {
     },
 }
 </script>
+
+<style lang="scss" scoped>
+.nc-container {
+    overflow: hidden;
+    display: flex;
+}
+</style>
