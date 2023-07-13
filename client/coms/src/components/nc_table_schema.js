@@ -37,6 +37,10 @@ export default {
                                         type: 'string',
                                         title: 'label',
                                     },
+                                    width: {
+                                        type: 'string',
+                                        title: 'width',
+                                    },
                                     'min-width': {
                                         type: 'string',
                                         title: 'min width',
@@ -50,6 +54,15 @@ export default {
                                             'right',
                                         ],
                                         default: 'left',
+                                    },
+                                    fixed: {
+                                        type: 'string',
+                                        title: 'fixed',
+                                        enum: [
+                                            'left',
+                                            'right',
+                                        ],
+                                        'ui:clearable': true,
                                     },
                                     sortable: {
                                         type: 'boolean',
