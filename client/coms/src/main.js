@@ -129,9 +129,8 @@ const registerComponents = (Vue) => {
     null,
     el_avatar_schema
   )
-  Vue.component('nc_input', () => import('./components/nc_input.vue'))
+  //
   Vue.component('nc_switch_in_show', () => import('./components/show/nc_switch_in_show.vue'))
-  Vue.component('nc_color', () => import('./components/show/nc_color.vue'))
 }
 
 if (window.Vue) {
