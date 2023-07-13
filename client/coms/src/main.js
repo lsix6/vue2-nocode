@@ -38,7 +38,6 @@ const registerComponents = (Vue) => {
     () => import('./components/nc_ref_cust_com.vue'),
     nc_ref_cust_com_schema
   )
-  Vue.component('nc_table_column', () => import('./components/nc_table_column.vue'))
   window.nocode.comsManager.register(
     () => import('./components/nc_table.vue'),
     nc_table_schema

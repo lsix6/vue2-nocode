@@ -14,10 +14,14 @@
 <script>
 
 import _ from 'lodash'
+import nc_table_column from './nc_table_column.vue'
 
 export default {
     install(Vue) {
         Vue.component('nc_table', this)
+    },
+    components: {
+        nc_table_column
     },
     props: {
         table_props: {
