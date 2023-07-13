@@ -22,6 +22,7 @@ import el_input_number_schema from './elementui/el_input_number_schema.js'
 import el_checkbox_schema from './elementui/el_checkbox_schema.js'
 import el_switch_schema from './elementui/el_switch_schema.js'
 import el_date_picker_schema from './elementui/el_date_picker_schema.js'
+import el_rate_schema from './elementui/el_rate_schema.js'
 import el_button_schema from './elementui/el_button_schema.js'
 import el_popconfirm_schema from './elementui/el_popconfirm_schema.js'
 import el_avatar_schema from './elementui/el_avatar_schema.js'
@@ -98,6 +99,10 @@ const registerComponents = (Vue) => {
   window.nocode.comsManager.register(
     null,
     el_date_picker_schema
+  )
+  window.nocode.comsManager.register(
+    null,
+    el_rate_schema
   )
   window.nocode.comsManager.register(
     null,
