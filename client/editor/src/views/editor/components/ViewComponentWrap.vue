@@ -98,7 +98,7 @@ export default {
             finalBind.com_root = this.com_root
             finalBind.com_data = this.com_data
             //
-            console.log('[ViewComponentWrap] comFinalBind', finalBind)
+            // console.log('[ViewComponentWrap] comFinalBind', finalBind)
             return finalBind
         },
         isEdit() {
@@ -107,7 +107,7 @@ export default {
         },
     },
     mounted() {
-        console.log('[ViewComponentWrap] mounted(), com_data', this.attrs.curNodePath, this.com_data)
+        // console.log('[ViewComponentWrap] mounted(), com_data', this.attrs.curNodePath, this.com_data)
     },
     beforeDestroy() {
         this.hideEditForm();
