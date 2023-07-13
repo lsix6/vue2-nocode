@@ -1,5 +1,5 @@
 <template>
-    <div v-bind="{ ...$attrs, ...$props }" :style="{ background: color }">
+    <div class="nc-enum-color" v-bind="{ ...$attrs, ...$props }" :style="{ background: color }">
     </div>
 </template>
 
@@ -26,32 +26,38 @@ export default {
     },
     data() {
         return {
-            color: 'transparent',
         }
     },
-    mounted() {
-        // console.log('[nc_enum_color] mounted', this.value, typeof (this.value))
-        //
-        this.updateColor()
-    },
-    beforeUpdate() {
-        // console.log('[nc_enum_color] beforeUpdate', this.value, typeof (this.value))
-        //
-        this.updateColor()
-    },
-    methods: {
-        updateColor() {
+    computed: {
+        color() {
+            // console.log('[nc_enum_color] color', this.value, typeof (this.value), { ...this.com_data }, this.data_source_name)
+            //
+            let c = 'transparent'
             if (this.value !== undefined) {
                 if (this.data_source_name) {
                     const enumMap = getPropValue(this.com_data, this.data_source_name)
                     if (enumMap) {
-                        this.color = enumMap['' + this.value]
+                        c = enumMap['' + this.value]
                     }
                 } else if (this.enum_map) {
-                    this.color = this.enum_map['' + this.value]
+                    c = this.enum_map['' + this.value]
                 }
             }
+            // console.log('[nc_enum_color] color', c)
+            //
+            return c
         },
+    },
+    mounted() {
+        // console.log('[nc_enum_color] mounted', this.value, typeof (this.value))
     },
 }
 </script>
+
+<style lang="scss">
+.nc-enum-color {
+    width: 28px;
+    height: 28px;
+    margin: auto;
+}
+</style>
