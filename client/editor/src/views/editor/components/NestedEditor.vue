@@ -1,7 +1,9 @@
 <template>
     <draggable ref="draggable" :list="childComponentList" v-bind="dragOptions"
-        :class="[$style.dragArea, $style.formItemWrap, 'NestedEditor_items-direction']" @change="handleDragChange">
+        :class="[$style.dragArea, $style.formItemWrap, 'flex-container', 'NestedEditor_items-direction']"
+        @change="handleDragChange">
         <div v-for="item in childComponentList" :key="item.id" :class="{
+            'flex-container': isFlex(item.comName),
             draggableItem: true,
             w100: showNestedEditor(item),
             [$style.formItem]: true
@@ -75,6 +77,13 @@ export default {
         console.log('[NestedEditor] mounted(), com_data', this.com_data)
     },
     methods: {
+        isFlex(comName) {
+            const comItem = this.getEditorItem(comName)
+            const ret = !!comItem.componentPack?.comSchema?.com_flex
+            console.log('[NestedEditor] isFlex(), comItem', comItem, ret)
+            //
+            return ret
+        },
         showNestedEditor(editorItem) {
             return editorItem.slots;
         },

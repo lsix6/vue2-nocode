@@ -1,5 +1,6 @@
 <template>
     <div :class="{
+        'flex-container': true,
         [$style.viewBox]: true,
         [$style.active]: isEdit,
         js_viewComponentWrap: true

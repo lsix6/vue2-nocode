@@ -110,6 +110,7 @@ export default {
     },
     comSchema: {
         com_name: 'nc_data_source',
+        com_flex: true,
         com_slots: {
             default: [],
         },
