@@ -8,6 +8,7 @@ import nc_container_schema from './components/nc_container_schema.js'
 import nc_ref_cust_com_schema from './components/nc_ref_cust_com_schema.js'
 import nc_table_schema from './components/nc_table_schema.js'
 import nc_enum_schema from './components/show/nc_enum_schema.js'
+import nc_enum_color_schema from './components/show/nc_enum_color_schema.js'
 import nc_text_schema from './components/show/nc_text_schema.js'
 import nc_pagination_schema from './components/nc_pagination_schema.js'
 import nc_form_schema from './components/nc_form_schema.js'
@@ -44,6 +45,10 @@ const registerComponents = (Vue) => {
   window.nocode.comsManager.register(
     () => import('./components/show/nc_enum.vue'),
     nc_enum_schema
+  )
+  window.nocode.comsManager.register(
+    () => import('./components/show/nc_enum_color.vue'),
+    nc_enum_color_schema
   )
   window.nocode.comsManager.register(
     () => import('./components/show/nc_text.vue'),
