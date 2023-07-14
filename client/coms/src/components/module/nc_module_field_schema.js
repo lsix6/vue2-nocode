@@ -19,6 +19,14 @@ export default {
                     type: 'string',
                     title: 'label',
                 },
+                enum: {
+                    title: 'enum',
+                    type: 'array',
+                    minItems: 0,
+                    items: {
+                        type: 'string',
+                    }
+                },
             }
         },
     },

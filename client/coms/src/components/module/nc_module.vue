@@ -40,7 +40,7 @@ export default {
             //
             if (!this.isInEdit) {
                 const coms = this.$parent.com_slots && this.$parent.com_slots.default
-                // console.log('[nc_module] fields, coms: ', coms)
+                console.log('[nc_module] fields, coms: ', coms)
                 if (coms) {
                     coms.forEach(com => {
                         const _field = {
@@ -49,7 +49,7 @@ export default {
                                 label: com.com_props.field_label,
                             },
                             in_list: {
-
+                                column_components: [],
                             },
                             in_form: {
                                 edit_com: {
@@ -60,6 +60,19 @@ export default {
                         //
                         const comSlots = com.com_slots
                         if (comSlots) {
+                            if (comSlots.in_list && comSlots.in_list.length > 0) {
+                                if (com.com_props.enum && com.com_props.enum.length > 0) {
+                                    _field.field_info.enum = com.com_props.enum
+                                    _field.in_list.column_components = [
+                                        {
+                                            ...comSlots.in_list[0],
+                                            com_field: {
+                                                field_name: _field.field_info.name,
+                                            },
+                                        }
+                                    ]
+                                }
+                            }
                             if (comSlots.in_form && comSlots.in_form.length > 0) {
                                 _field.in_form = {
                                     edit_com: comSlots.in_form[0]
