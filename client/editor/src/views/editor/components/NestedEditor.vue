@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { MessageBox } from 'element-ui';
 import Draggable from 'vuedraggable';
 import * as arrayMethods from '../../../utils/array';
 import { generateEditorItem } from '../common/editorData';
@@ -133,7 +134,28 @@ export default {
                     return target.splice(target.indexOf(arrayItem) + 1, 0, generateEditorItem(emptyPack));
                 },
                 remove(target, arrayItem) {
-                    return arrayMethods.remove(target, arrayItem);
+                    console.log('[NestedEditor] remove(), target, arrayItem', target, arrayItem)
+                    //
+                    let hasChildren = false
+                    //
+                    if (arrayItem.slots) {
+                        const slotsArr = Object.values(arrayItem.slots)
+                        for (let i = 0; i < slotsArr.length; i++) {
+                            if (slotsArr[i].length > 0) {
+                                hasChildren = true
+                                break
+                            }
+                        }
+                    }
+                    //
+                    if (hasChildren) {
+                        MessageBox.confirm('子组件将被一起删除，确认要删除吗？', '删除组件确认').then(() => {
+                            return arrayMethods.remove(target, arrayItem);
+                        }).catch(() => {
+                        })
+                    } else {
+                        return arrayMethods.remove(target, arrayItem);
+                    }
                 }
             };
 
