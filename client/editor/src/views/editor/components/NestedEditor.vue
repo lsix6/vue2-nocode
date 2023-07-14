@@ -1,7 +1,7 @@
 <template>
     <draggable ref="draggable" :list="childComponentList" v-bind="dragOptions"
         :class="[$style.dragArea, $style.formItemWrap, 'flex-container', 'NestedEditor_items-direction']"
-        @change="handleDragChange">
+        :style="dragCssVars" @change="handleDragChange">
         <div v-for="item in childComponentList" :key="item.id" :class="{
             'flex-container': isFlex(item),
             draggableItem: true,
@@ -63,6 +63,21 @@ export default {
         com_data: {
             type: Object,
             default: null
+        },
+        slot_name: {
+            type: String,
+            default: null
+        },
+    },
+    computed: {
+        dragCssVars() {
+            let content = '拖入子组件'
+            if (this.slot_name) {
+                content = `(slot:${this.slot_name})拖入子组件`
+            }
+            return {
+                '--content': JSON.stringify(content),
+            }
         },
     },
     watch: {
@@ -271,8 +286,9 @@ export default {
             &:after {
                 display: block;
                 text-align: center;
+                margin: auto;
                 font-size: 12px;
-                content: '拖入子组件';
+                content: var(--content);
             }
         }
     }
