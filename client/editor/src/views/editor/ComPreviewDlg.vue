@@ -1,6 +1,6 @@
 <template>
     <el-dialog title="自定义组件列表" :visible.sync="dialogVisible">
-        <nc_root v-if="dialogVisible" :com_list="comObjs" />
+        <nc_root v-if="dialogVisible" :coms_list="comObjs" />
     </el-dialog>
 </template>
 

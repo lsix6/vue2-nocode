@@ -1,5 +1,5 @@
 <template>
-  <nc_root v-if="comObj && comObj.com_version === '1'" :com_list="[comObj]" />
+  <nc_root v-if="comObj && comObj.com_version === '1'" :coms_list="[comObj]" />
 </template>
 
 <script>
