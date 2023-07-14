@@ -55,11 +55,18 @@ export default {
                             default: comObjs,
                         },
                     }
-                    pagesManager.register_page(page.path, rootObj)
+                    const isModulePage = (comObjs.length > 0 && comObjs[0].com_name === 'nc_module')
+                    if (isModulePage) {
+                        pagesManager.register_page(page.path + '/list', rootObj)
+                        pagesManager.register_page(page.path + '/add', rootObj)
+                        pagesManager.register_page(page.path + '/edit', rootObj)
+                    } else {
+                        pagesManager.register_page(page.path, rootObj)
+                    }
                     //
                     if (page.menu && page.menu.label) {
                         this.menus.push({
-                            index: page.path,
+                            index: isModulePage ? page.path + '/list' : page.path,
                             label: page.menu.label,
                         })
                     }
