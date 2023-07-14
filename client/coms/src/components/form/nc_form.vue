@@ -7,7 +7,7 @@
 <script>
 
 import _ from 'lodash'
-import { nc_vars } from '../utils/nc_vars.js'
+import { nc_vars } from '../../utils/nc_vars.js'
 
 const { filterChildrenFields } = window.nocode.utils
 
