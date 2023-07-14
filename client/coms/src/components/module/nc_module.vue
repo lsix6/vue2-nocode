@@ -40,6 +40,7 @@ export default {
             //
             if (!this.isInEdit) {
                 const coms = this.$parent.com_slots && this.$parent.com_slots.default
+                // console.log('[nc_module] fields, coms: ', coms)
                 if (coms) {
                     coms.forEach(com => {
                         const _field = {
@@ -55,6 +56,15 @@ export default {
 
                                 },
                             },
+                        }
+                        //
+                        const comSlots = com.com_slots
+                        if (comSlots) {
+                            if (comSlots.in_form && comSlots.in_form.length > 0) {
+                                _field.in_form = {
+                                    edit_com: comSlots.in_form[0]
+                                }
+                            }
                         }
                         //
                         _fields.push(_field)
