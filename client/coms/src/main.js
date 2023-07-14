@@ -6,6 +6,8 @@ window.time_log('[coms] main.js')
 
 import nc_module from './components/module/nc_module.vue'
 import nc_module_schema from './components/module/nc_module_schema.js'
+import nc_module_field from './components/module/nc_module_field.vue'
+import nc_module_field_schema from './components/module/nc_module_field_schema.js'
 import nc_data_source from './components/nc_data_source.vue'
 import nc_data_source_schema from './components/nc_data_source_schema'
 import nc_container from './components/nc_container.vue'
@@ -51,6 +53,10 @@ const registerComponents = (Vue) => {
   comsManager.register(
     nc_module,
     nc_module_schema
+  )
+  comsManager.register(
+    nc_module_field,
+    nc_module_field_schema
   )
   comsManager.register(
     nc_data_source,
