@@ -6,8 +6,8 @@
 
 <script>
 import _ from 'lodash'
-import { fetch_data } from '../../utils/nc_request'
-import { arr2enum } from '../../utils/nc_utils'
+
+const fetch_data = window.nocode.fetch_data
 
 export default {
     install(Vue) {
@@ -127,6 +127,13 @@ export default {
         },
         fetchData(com, ds) {
             if (ds.enum && ds.enum.length > 0) {
+                const arr2enum = (arr) => {
+                    const map = {}
+                    arr.forEach((item, i) => {
+                        map[i + 1] = item
+                    })
+                    return map
+                }
                 return new Promise((resolve) => {
                     resolve(arr2enum(ds.enum))
                 })
