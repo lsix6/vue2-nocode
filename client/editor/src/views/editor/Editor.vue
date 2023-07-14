@@ -16,7 +16,7 @@
             </div>
 
             <div :class="[$style.contentBox]">
-                <nc_root>
+                <nc_root :is_in_edit="true">
                     <template slot-scope="slotScope">
                         <NestedEditor :child-component-list="componentList" :drag-options="dragOptions"
                             :form-data="rootFormData" :form-props="formProps" :com_root="slotScope.com_root">

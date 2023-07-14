@@ -21,6 +21,10 @@ export default {
             type: Array,
             default: () => [],
         },
+        is_in_edit: {
+            type: Boolean,
+            default: false,
+        },
     },
     data() {
         return {
@@ -31,6 +35,7 @@ export default {
         this.root = Object.freeze(
             {
                 refsMgr: Object.freeze(new ComRefsManager()),
+                isInEdit: this.is_in_edit,
             }
         )
         console.log('[nc_root] created, com_root', this.root)
