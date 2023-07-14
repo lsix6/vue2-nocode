@@ -1,7 +1,7 @@
 <template>
-    <nc_module_view_list v-if="subPath === 'list'" :module_label="module_label" />
-    <nc_module_view_add v-else-if="subPath === 'add'" :module_label="module_label" />
-    <nc_module_view_edit v-else-if="subPath === 'edit'" :module_label="module_label" />
+    <nc_module_view_list v-if="subPath === 'list'" v-bind="$props" />
+    <nc_module_view_add v-else-if="subPath === 'add'" v-bind="$props" />
+    <nc_module_view_edit v-else-if="subPath === 'edit'" v-bind="$props" />
 </template>
 
 <script>
@@ -19,9 +19,13 @@ export default {
         nc_module_view_edit,
     },
     props: {
-        module_label: {
-            type: String,
-            default: '',
+        com_root: {
+            type: Object,
+            default: null
+        },
+        module_info: {
+            type: Object,
+            default: () => { },
         },
     },
     data() {

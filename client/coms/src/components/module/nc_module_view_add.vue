@@ -1,18 +1,32 @@
 <template>
     <div>
-        <div>添加{{ module_label }}</div>
+        <nc_component :com_root="com_root" v-bind="com_obj" />
     </div>
 </template>
 
 <script>
+import { createAddPage } from './js/add/add_page'
+
 export default {
     install(Vue) {
         Vue.component('nc_module_view_add', this)
     },
     props: {
-        module_label: {
-            type: String,
-            default: '',
+        com_root: {
+            type: Object,
+            default: null
+        },
+        module_info: {
+            type: Object,
+            default: () => { },
+        },
+    },
+    computed: {
+        com_obj() {
+            const comObj = createAddPage(this.module_info)
+            console.log('[nc_module_view_edit] comObj: ', comObj)
+            //
+            return comObj
         },
     },
     mounted() {
