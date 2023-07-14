@@ -1,5 +1,8 @@
 
 export const getPropValue = (obj, propName) => {
+    if (!obj || !propName) {
+        return
+    }
     let ret = null
     if (propName) {
         ret = obj
@@ -15,6 +18,10 @@ export const getPropValue = (obj, propName) => {
 }
 
 export const setPropValue = (obj, propName, value, com) => {
+    if (!obj || !propName) {
+        return
+    }
+    //
     const names = propName.split('.')
     let ref = obj
     for (let i = 0; i < (names.length - 1); i++) {
