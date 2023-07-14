@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import _ from 'lodash'
-
 const fetch_data = window.nocode.fetch_data
 
 export default {

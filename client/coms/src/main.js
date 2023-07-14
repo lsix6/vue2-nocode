@@ -4,6 +4,8 @@ import { DomMessage } from './elementui/messageDeduplication.js'
 
 window.time_log('[coms] main.js')
 
+import nc_data_source from './components/nc_data_source.vue'
+import nc_data_source_schema from './components/nc_data_source_schema'
 import nc_container from './components/nc_container.vue'
 import nc_container_schema from './components/nc_container_schema.js'
 import nc_ref_cust_com from './components/nc_ref_cust_com.vue'
@@ -44,6 +46,11 @@ const registerComponents = (Vue) => {
   //
   const comsManager = window.nocode.comsManager
   //
+
+  comsManager.register(
+    nc_data_source,
+    nc_data_source_schema
+  )
   comsManager.register(
     nc_container,
     nc_container_schema
