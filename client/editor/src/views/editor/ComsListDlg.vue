@@ -2,10 +2,10 @@
     <el-dialog class="coms-list-dlg" title="自定义组件列表" :visible.sync="dialogVisible">
         <div v-if="dialogVisible" class="flex-container frame">
             <el-tabs class="flex-container" v-model="activeName">
-                <el-tab-pane class="flex-container" label="用户管理" name="first">
+                <el-tab-pane class="flex-container" label="自定义组件" name="first">
                     <ComsListView />
                 </el-tab-pane>
-                <el-tab-pane label="配置管理" name="second">
+                <el-tab-pane label="预定义字段" name="second">
 
                 </el-tab-pane>
             </el-tabs>
