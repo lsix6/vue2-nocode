@@ -27,6 +27,42 @@ export default {
                         type: 'string',
                     }
                 },
+                column_props: {
+                    type: 'object',
+                    properties: {
+                        width: {
+                            type: 'string',
+                            title: 'width',
+                        },
+                        'min-width': {
+                            type: 'string',
+                            title: 'min width',
+                        },
+                        'header-align': {
+                            type: 'string',
+                            title: 'header align',
+                            enum: [
+                                'left',
+                                'center',
+                                'right',
+                            ],
+                            default: 'left',
+                        },
+                        fixed: {
+                            type: 'string',
+                            title: 'fixed',
+                            enum: [
+                                'left',
+                                'right',
+                            ],
+                            'ui:clearable': true,
+                        },
+                        sortable: {
+                            type: 'boolean',
+                            title: 'sortable',
+                        },
+                    },
+                },
             }
         },
     },

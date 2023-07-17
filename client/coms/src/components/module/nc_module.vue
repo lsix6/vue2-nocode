@@ -49,6 +49,7 @@ export default {
                                 label: com.com_props.field_label,
                             },
                             in_list: {
+                                column_props: com.com_props.column_props,
                                 column_components: [],
                             },
                             in_form: {
