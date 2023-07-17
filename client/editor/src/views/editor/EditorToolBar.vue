@@ -27,6 +27,7 @@
 
 <script>
 import Draggable from 'vuedraggable';
+import _ from 'lodash'
 
 import { generateEditorItem } from './common/editorData';
 
@@ -48,6 +49,18 @@ export default {
     methods: {
         // clone 当前模块
         cloneDog(toolItem) {
+            // console.log('[EditorToolBar] cloneDog, toolItem: ', toolItem)
+            if (toolItem.isPreDefinedField) {
+                let retItem = null
+                const comData = window.nocode.customizedComsManager.loadComData(toolItem.comId)
+                // console.log('[EditorToolBar] cloneDog, comData: ', comData)
+                if (comData.componentList.length > 0) {
+                    retItem = _.cloneDeep(comData.componentList[0])
+                }
+                //
+                return retItem
+            }
+            //
             return generateEditorItem(toolItem);
         }
     }
