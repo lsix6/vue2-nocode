@@ -61,17 +61,17 @@ export default {
             })
         },
         handleOpen(index, row) {
-            console.log('[ComsListDlg] handleOpen', index, row);
+            console.log('[ComsListView] handleOpen', index, row);
             //
             this.$emit('openCom', row)
             //
             this.close()
         },
         handleRename(index, row) {
-            console.log('[ComsListDlg] handleRename', index, row);
+            console.log('[ComsListView] handleRename', index, row);
             //
             MessageBox.prompt('请输入新名字', '重命名').then(({ value }) => {
-                console.log('[ComsListDlg] new com name', value);
+                console.log('[ComsListView] new com name', value);
                 //
                 if (value) {
                     row.name = value
@@ -82,10 +82,10 @@ export default {
             })
         },
         handleCopy(index, row) {
-            console.log('[ComsListDlg] handleCopy', index, row);
+            console.log('[ComsListView] handleCopy', index, row);
             //
             MessageBox.prompt('请输入新组件名字', '复制').then(({ value }) => {
-                console.log('[ComsListDlg] new copy com name', value);
+                console.log('[ComsListView] new copy com name', value);
                 //
                 if (value) {
                     const newCom = this.createNewCom(value)
@@ -99,7 +99,7 @@ export default {
             })
         },
         handleDelete(index, row) {
-            console.log('[ComsListDlg] handleDelete', index, row);
+            console.log('[ComsListView] handleDelete', index, row);
             //
             this.comsData.splice(index, 1)
             //
