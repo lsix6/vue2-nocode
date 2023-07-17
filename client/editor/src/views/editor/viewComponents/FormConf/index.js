@@ -6,6 +6,10 @@ export default {
     type: 'object',
     required: [],
     properties: {
+        isPreDefinedField: {
+            type: 'boolean',
+            title: 'is pre defined field'
+        },
         path: {
             type: 'string',
             title: 'path',
