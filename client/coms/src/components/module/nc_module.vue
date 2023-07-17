@@ -61,16 +61,16 @@ export default {
                         const comSlots = com.com_slots
                         if (comSlots) {
                             if (comSlots.in_list && comSlots.in_list.length > 0) {
+                                _field.in_list.column_components = [
+                                    {
+                                        ...comSlots.in_list[0],
+                                        com_field: {
+                                            field_name: _field.field_info.name,
+                                        },
+                                    }
+                                ]
                                 if (com.com_props.enum && com.com_props.enum.length > 0) {
                                     _field.field_info.enum = com.com_props.enum
-                                    _field.in_list.column_components = [
-                                        {
-                                            ...comSlots.in_list[0],
-                                            com_field: {
-                                                field_name: _field.field_info.name,
-                                            },
-                                        }
-                                    ]
                                 }
                             }
                             if (comSlots.in_form && comSlots.in_form.length > 0) {
