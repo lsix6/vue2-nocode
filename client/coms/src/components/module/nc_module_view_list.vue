@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <nc_component :com_root="com_root" v-bind="com_obj" />
-    </div>
+    <nc_component :com_root="com_root" v-bind="com_obj" />
 </template>
 
 <script>
