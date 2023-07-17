@@ -1,7 +1,14 @@
 <template>
     <el-dialog class="coms-list-dlg" title="自定义组件列表" :visible.sync="dialogVisible">
-        <div class="frame">
-            <ComsListView />
+        <div v-if="dialogVisible" class="flex-container frame">
+            <el-tabs class="flex-container" v-model="activeName">
+                <el-tab-pane class="flex-container" label="用户管理" name="first">
+                    <ComsListView />
+                </el-tab-pane>
+                <el-tab-pane label="配置管理" name="second">
+
+                </el-tab-pane>
+            </el-tabs>
         </div>
     </el-dialog>
 </template>
@@ -17,6 +24,7 @@ export default {
     data() {
         return {
             dialogVisible: false,
+            activeName: 'first',
         };
     },
     mounted() {
@@ -32,13 +40,18 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .coms-list-dlg {
 
     .frame {
         height: 600px;
-        display: flex;
-        overflow: hidden;
+
+        .el-tabs__content {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
     }
 }
 </style>
