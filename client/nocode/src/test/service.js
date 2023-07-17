@@ -27,7 +27,7 @@ const listUsers = [
 ]
 
 const init_users = () => {
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 5; i++) {
         listUsers.push({
             _id: '' + (i + 1),
             no: '' + (i + 1),
