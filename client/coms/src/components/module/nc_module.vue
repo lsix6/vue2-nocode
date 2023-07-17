@@ -48,20 +48,18 @@ export default {
                                 name: com.com_props.field_name,
                                 label: com.com_props.field_label,
                             },
-                            in_list: {
+                        }
+                        //
+                        if (com.com_props.is_in_list) {
+                            _field.in_list = {
                                 column_props: com.com_props.column_props,
                                 column_components: [],
-                            },
-                            in_form: {
-                                edit_com: {
-
-                                },
-                            },
+                            }
                         }
                         //
                         const comSlots = com.com_slots
                         if (comSlots) {
-                            if (comSlots.in_list && comSlots.in_list.length > 0) {
+                            if (_field.in_list && comSlots.in_list && comSlots.in_list.length > 0) {
                                 _field.in_list.column_components = [
                                     {
                                         ...comSlots.in_list[0],
@@ -74,7 +72,7 @@ export default {
                                     _field.field_info.enum = com.com_props.enum
                                 }
                             }
-                            if (comSlots.in_form && comSlots.in_form.length > 0) {
+                            if (com.com_props.is_in_form && comSlots.in_form && comSlots.in_form.length > 0) {
                                 _field.in_form = {
                                     edit_com: comSlots.in_form[0]
                                 }

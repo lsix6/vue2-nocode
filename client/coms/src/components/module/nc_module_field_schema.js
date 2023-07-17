@@ -27,9 +27,18 @@ export default {
                         type: 'string',
                     }
                 },
+                is_in_list: {
+                    type: 'boolean',
+                    title: 'in list',
+                    default: true,
+                },
                 column_props: {
                     type: 'object',
                     properties: {
+                        sortable: {
+                            type: 'boolean',
+                            title: 'sortable',
+                        },
                         width: {
                             type: 'string',
                             title: 'width',
@@ -57,11 +66,17 @@ export default {
                             ],
                             'ui:clearable': true,
                         },
-                        sortable: {
-                            type: 'boolean',
-                            title: 'sortable',
-                        },
                     },
+                },
+                is_in_form: {
+                    type: 'boolean',
+                    title: 'in form',
+                    default: true,
+                },
+                is_in_search: {
+                    type: 'boolean',
+                    title: 'in search',
+                    default: false,
                 },
             }
         },

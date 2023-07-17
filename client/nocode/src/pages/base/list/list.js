@@ -6,23 +6,25 @@ const createFields = (fields) => {
     const arr = []
     //
     fields.forEach(field => {
-        const fdInfo = field.field_info
-        //
-        const colComs = _.cloneDeep(field.in_list.column_components)
-        //
-        if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
-            colComs[0].com_props = colComs[0].com_props || {}
-            colComs[0].com_props.data_source_name = get_field_ds_name(fdInfo.name)
+        if (field.in_list) {
+            const fdInfo = field.field_info
+            //
+            const colComs = _.cloneDeep(field.in_list.column_components)
+            //
+            if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
+                colComs[0].com_props = colComs[0].com_props || {}
+                colComs[0].com_props.data_source_name = get_field_ds_name(fdInfo.name)
+            }
+            //
+            arr.push({
+                column_props: {
+                    prop: fdInfo.name,
+                    label: fdInfo.label,
+                    ...field.in_list.column_props,
+                },
+                column_components: colComs,
+            })
         }
-        //
-        arr.push({
-            column_props: {
-                prop: fdInfo.name,
-                label: fdInfo.label,
-                ...field.in_list.column_props,
-            },
-            column_components: colComs,
-        })
     });
     console.log('createFields', arr)
     //
