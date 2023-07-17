@@ -6,7 +6,7 @@
                     <ComsListView />
                 </el-tab-pane>
                 <el-tab-pane label="预定义字段" name="second">
-
+                    <PreDefinedFieldsListView />
                 </el-tab-pane>
             </el-tabs>
         </div>
@@ -15,11 +15,13 @@
 
 <script>
 import ComsListView from './ComsListView.vue'
+import PreDefinedFieldsListView from './PreDefinedFieldsListView.vue'
 
 export default {
     name: 'ComsListDlg',
     components: {
         ComsListView,
+        PreDefinedFieldsListView,
     },
     data() {
         return {
