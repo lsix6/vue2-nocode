@@ -76,4 +76,38 @@ export const getCom = (comName) => {
     return comsMap[comName]
 }
 
+const preDefinedFields = {
+    groupName: '预定义字段',
+    componentList: [],
+}
+
+const custComsMgr = window.nocode.customizedComsManager
+const custComs = custComsMgr.loadComsList()
+custComs.forEach(com => {
+    const comData = window.nocode.customizedComsManager.loadComData(com.id)
+    const isPreDefinedField = comData?.page?.isPreDefinedField
+    if (isPreDefinedField) {
+        const _com = {
+            title: com.name,
+            btnClass: 'w100',
+            groupName: preDefinedFields.groupName,
+            comName: com.name,
+            comId: com.id,
+            isPreDefinedField: true,
+            componentPack: {
+                viewSchema: {
+                    title: com.name,
+                    type: 'object',
+                },
+                propsSchema: genSchema({}, 'object')
+            },
+        }
+        //
+        comsMap[com.name] = _com
+        preDefinedFields.componentList.push(_com)
+    }
+})
+
+tools.push(preDefinedFields)
+
 export default tools;
