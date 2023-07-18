@@ -42,7 +42,14 @@ export default {
                 if (cmd.name === 'update') {
                     this.init()
                     //
-                    this.$refs.ncView.refresh()
+                    const pageRoute = this.$refs.ncView.getPageRoute()
+                    if (pageRoute) {
+                        const comData = window.nocode.customizedComsManager.loadComData(cmd.data.com_id)
+                        const pagePath = comData?.page?.path
+                        if (pagePath && pageRoute.indexOf(pagePath) === 0) {
+                            this.$refs.ncView.refresh()
+                        }
+                    }
                 }
             }
         })

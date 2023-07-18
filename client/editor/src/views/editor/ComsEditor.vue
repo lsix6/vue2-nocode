@@ -31,10 +31,11 @@ export default {
   },
   provide() {
     return {
-      notifyPreview: () => {
+      notifyPreview: (data) => {
         if (this.winPreview) {
           const cmd = {
             name: 'update',
+            data,
           }
           console.log('[ComsEditor] notifyPreview, cmd: ', cmd)
           this.winPreview.postMessage(JSON.stringify(cmd))

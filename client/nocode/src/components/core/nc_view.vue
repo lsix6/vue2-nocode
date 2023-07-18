@@ -39,6 +39,7 @@ export default {
       this.refresh()
     },
     getPageData() {
+      // 获取页面数据
       return new Promise(resolve => {
         const pagesManager = window.nocode.pagesManager
         //
@@ -55,7 +56,6 @@ export default {
     refresh() {
       // 先要把根节点清空一下才能保证子组件的生命周期被正确调用
       this.comObj = null
-      // 获取页面数据的函数
 
       setTimeout(() => {
         // 延迟一帧后获取数据
@@ -65,6 +65,10 @@ export default {
         })
       }, 0)
     },
+    getPageRoute() {
+      return this.pageRoute
+    },
+
   },
 }
 </script>

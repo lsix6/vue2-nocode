@@ -193,7 +193,9 @@ export default {
             }
             window.nocode.customizedComsManager.saveComData(this.com_id, saveData)
             //
-            this.notifyPreview()
+            this.notifyPreview({
+                com_id: this.com_id,
+            })
         },
         loadData() {
             const saveData = window.nocode.customizedComsManager.loadComData(this.com_id)
