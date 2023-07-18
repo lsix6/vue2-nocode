@@ -3,7 +3,7 @@
     <el-tabs class="coms-editor-tabs" v-model="editableTabsValue" type="card" editable @edit="handleTabsEdit">
       <el-tab-pane class="tabs-content" :key="item.name" v-for="(item) in editableTabs" :label="item.title"
         :name="item.name">
-        <Editor :com_id="item.id" />
+        <Editor :com_id="item.id" @preview="onPreview" />
       </el-tab-pane>
     </el-tabs>
     <ComsListDlg ref="comsListDlg" @openCom="onOpenCom" />
@@ -26,6 +26,20 @@ export default {
     return {
       editableTabsValue: '',
       editableTabs: [],
+      winPreview: null,
+    }
+  },
+  provide() {
+    return {
+      notifyPreview: () => {
+        if (this.winPreview) {
+          const cmd = {
+            name: 'update',
+          }
+          console.log('[ComsEditor] notifyPreview, cmd: ', cmd)
+          this.winPreview.postMessage(JSON.stringify(cmd))
+        }
+      }
     }
   },
   mounted() {
@@ -95,7 +109,13 @@ export default {
         //
         this.setComOpended(targetName, false)
       }
-    }
+    },
+    onPreview() {
+      console.log('[ComsEditor] onPreview')
+      //
+      this.winPreview = window.open('http://localhost:9000/preview')
+    },
+
   }
 }
 </script>

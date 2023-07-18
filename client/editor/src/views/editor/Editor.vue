@@ -81,6 +81,9 @@ export default {
         NestedEditor,
         ComPreviewDlg,
     },
+    inject: [
+        'notifyPreview',
+    ],
     provide() {
         return {
             genFormProvide: {
@@ -189,6 +192,8 @@ export default {
                 },
             }
             window.nocode.customizedComsManager.saveComData(this.com_id, saveData)
+            //
+            this.notifyPreview()
         },
         loadData() {
             const saveData = window.nocode.customizedComsManager.loadComData(this.com_id)
@@ -204,9 +209,11 @@ export default {
             this.preComponentList = JSON.stringify(this.componentList)
         },
         onPreview() {
-            console.log('[Editor] onPreview')
+            // console.log('[Editor] onPreview')
             //
-            this.$refs.comPreviewDlg.open(this.com_id)
+            // this.$refs.comPreviewDlg.open(this.com_id)
+            //
+            this.$emit('preview')
         },
     }
 };

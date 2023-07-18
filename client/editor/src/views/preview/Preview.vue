@@ -13,7 +13,7 @@
 
             </el-header>
             <el-main style="display: flex;">
-                <nc_view />
+                <nc_view ref="ncView" :refresh="refresh" />
             </el-main>
         </el-container>
     </div>
@@ -28,13 +28,31 @@ export default {
     data() {
         return {
             menus: [],
+            refresh: 0,
         }
     },
     created() {
         this.init()
+        //
+        window.addEventListener('message', ev => {
+            if (ev.source === window.opener) {
+                console.log('[Preview] message, ev: ', ev)
+                const cmd = JSON.parse(ev.data)
+                console.log('[Preview] message, cmd: ', cmd)
+                //
+                if (cmd.name === 'update') {
+                    this.init()
+                    //
+                    this.$refs.ncView.$forceUpdate()
+                    this.refresh++
+                }
+            }
+        })
     },
     methods: {
         init() {
+            this.menus = []
+            //
             const pagesManager = window.nocode.pagesManager
             //
             pagesManager.set_base_path('/preview/')
