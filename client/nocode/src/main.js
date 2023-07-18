@@ -1,10 +1,11 @@
-import Vue from 'vue'
 import { init_nocode } from './init_nocode'
 import App from './App.vue'
 
 // css 样式
 import './assets/css/main.scss'
 import { init_vue } from './init_vue'
+
+const Vue = window.Vue
 
 Vue.config.productionTip = false
 
