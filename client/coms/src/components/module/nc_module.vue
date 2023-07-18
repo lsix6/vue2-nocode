@@ -56,6 +56,37 @@ export default {
                                 column_components: [],
                             }
                         }
+                        if (com.com_props.is_in_form) {
+                            _field.in_form = {}
+                            //
+                            const rules = []
+                            const rulesData = com.com_props.rules || {}
+                            if (rulesData.required) {
+                                rules.push({
+                                    required: true,
+                                    message: '请输入' + _field.field_info.label,
+                                    trigger: 'blur'
+                                },)
+                            }
+                            if (rulesData.limit) {
+                                rules.push({
+                                    min: rulesData.min,
+                                    max: rulesData.max,
+                                    message: `长度限制 ${rulesData.min} 到 ${rulesData.max} 个字符`,
+                                    trigger: ['blur', 'change']
+                                })
+                            }
+                            if (rulesData.pattern) {
+                                rules.push({
+                                    pattern: rulesData.pattern,
+                                    message: rulesData.pattern_message,
+                                    trigger: ['blur', 'change']
+                                })
+                            }
+                            if (rules.length > 0) {
+                                _field.in_form.rules = rules
+                            }
+                        }
                         //
                         const comSlots = com.com_slots
                         if (comSlots) {
@@ -72,10 +103,8 @@ export default {
                                     _field.field_info.enum = com.com_props.enum
                                 }
                             }
-                            if (com.com_props.is_in_form && comSlots.in_form && comSlots.in_form.length > 0) {
-                                _field.in_form = {
-                                    edit_com: comSlots.in_form[0]
-                                }
+                            if (_field.in_form && comSlots.in_form && comSlots.in_form.length > 0) {
+                                _field.in_form.edit_com = comSlots.in_form[0]
                             }
                             if (com.com_props.is_in_search) {
                                 _field.in_search = {}

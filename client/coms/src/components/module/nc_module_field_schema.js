@@ -73,6 +73,36 @@ export default {
                     title: 'in form',
                     default: true,
                 },
+                rules: {
+                    type: 'object',
+                    title: 'rules',
+                    properties: {
+                        required: {
+                            type: 'boolean',
+                            title: 'required',
+                        },
+                        limit: {
+                            type: 'boolean',
+                            title: 'limit',
+                        },
+                        min: {
+                            type: 'number',
+                            title: 'min',
+                        },
+                        max: {
+                            type: 'number',
+                            title: 'max',
+                        },
+                        pattern: {
+                            type: 'string',
+                            title: 'pattern',
+                        },
+                        pattern_message: {
+                            type: 'string',
+                            title: 'pattern message'
+                        },
+                    },
+                },
                 is_in_search: {
                     type: 'boolean',
                     title: 'in search',
