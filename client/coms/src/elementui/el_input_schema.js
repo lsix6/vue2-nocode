@@ -25,6 +25,10 @@ export default {
                             type: 'string',
                             title: 'placeholder',
                         },
+                        maxlength: {
+                            type: 'number',
+                            title: 'maxlength',
+                        },
                     },
                 },
             },
@@ -33,6 +37,10 @@ export default {
             type: 'object',
             title: 'props',
             properties: {
+                'show-word-limit': {
+                    type: 'boolean',
+                    title: 'show word limit',
+                },
                 clearable: {
                     type: 'boolean',
                     title: 'clearable',
