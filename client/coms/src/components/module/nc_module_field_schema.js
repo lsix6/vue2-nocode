@@ -75,23 +75,10 @@ export default {
                 },
                 rules: {
                     type: 'object',
-                    title: 'rules',
                     properties: {
                         required: {
                             type: 'boolean',
                             title: 'required',
-                        },
-                        limit: {
-                            type: 'boolean',
-                            title: 'limit',
-                        },
-                        min: {
-                            type: 'number',
-                            title: 'min',
-                        },
-                        max: {
-                            type: 'number',
-                            title: 'max',
                         },
                         pattern: {
                             type: 'string',

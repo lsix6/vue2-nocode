@@ -68,14 +68,14 @@ export default {
                                     trigger: 'blur'
                                 },)
                             }
-                            if (rulesData.limit) {
-                                rules.push({
-                                    min: rulesData.min,
-                                    max: rulesData.max,
-                                    message: `长度限制 ${rulesData.min} 到 ${rulesData.max} 个字符`,
-                                    trigger: ['blur', 'change']
-                                })
-                            }
+                            // if (rulesData.limit) {
+                            //     rules.push({
+                            //         min: rulesData.min,
+                            //         max: rulesData.max,
+                            //         message: `长度限制 ${rulesData.min} 到 ${rulesData.max} 个字符`,
+                            //         trigger: ['blur', 'change']
+                            //     })
+                            // }
                             if (rulesData.pattern) {
                                 rules.push({
                                     pattern: rulesData.pattern,
