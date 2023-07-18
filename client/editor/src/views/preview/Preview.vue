@@ -13,7 +13,7 @@
 
             </el-header>
             <el-main style="display: flex;">
-                <nc_view ref="ncView" :refresh="refresh" />
+                <nc_view ref="ncView" />
             </el-main>
         </el-container>
     </div>
@@ -28,7 +28,6 @@ export default {
     data() {
         return {
             menus: [],
-            refresh: 0,
         }
     },
     created() {
@@ -43,8 +42,7 @@ export default {
                 if (cmd.name === 'update') {
                     this.init()
                     //
-                    this.$refs.ncView.$forceUpdate()
-                    this.refresh++
+                    this.$refs.ncView.refresh()
                 }
             }
         })

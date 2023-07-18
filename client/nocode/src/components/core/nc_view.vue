@@ -16,7 +16,8 @@ export default {
   },
   data() {
     return {
-      comObj: null
+      pageRoute: null,
+      comObj: null,
     }
   },
   watch: {
@@ -32,31 +33,38 @@ export default {
     switchPage(path) {
       const pagesManager = window.nocode.pagesManager
       //
-      const pageRoute = path.substring(pagesManager.get_base_path().length)
-      console.log('[nc_view] switchPage', path, pageRoute)
+      this.pageRoute = path.substring(pagesManager.get_base_path().length)
+      console.log('[nc_view] switchPage', path, this.pageRoute)
+      //
+      this.refresh()
+    },
+    getPageData() {
+      return new Promise(resolve => {
+        const pagesManager = window.nocode.pagesManager
+        //
+        const page = pagesManager.get_page(this.pageRoute)
+        if (typeof page === 'function') {
+          page().then(ret => {
+            resolve(ret.default)
+          })
+        } else {
+          resolve(page)
+        }
+      })
+    },
+    refresh() {
       // 先要把根节点清空一下才能保证子组件的生命周期被正确调用
       this.comObj = null
       // 获取页面数据的函数
-      function getPageData() {
-        return new Promise(resolve => {
-          const page = pagesManager.get_page(pageRoute)
-          if (typeof page === 'function') {
-            page().then(ret => {
-              resolve(ret.default)
-            })
-          } else {
-            resolve(page)
-          }
-        })
-      }
+
       setTimeout(() => {
         // 延迟一帧后获取数据
-        getPageData().then(pageData => {
+        this.getPageData().then(pageData => {
           this.comObj = pageData
           // console.log('[nc_view] comObj', this.comObj)
         })
       }, 0)
-    }
+    },
   },
 }
 </script>
