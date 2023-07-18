@@ -77,9 +77,13 @@ export default {
                                     edit_com: comSlots.in_form[0]
                                 }
                             }
-                            if (com.com_props.is_in_search && comSlots.in_search && comSlots.in_search.length > 0) {
-                                _field.in_search = {
-                                    search_com: comSlots.in_search[0]
+                            if (com.com_props.is_in_search) {
+                                _field.in_search = {}
+                                if (com.com_props.is_in_keyWord) {
+                                    _field.in_search.type = 'key'
+                                }
+                                if (comSlots.in_search && comSlots.in_search.length > 0) {
+                                    _field.in_search.search_com = comSlots.in_search[0]
                                 }
                             }
                         }

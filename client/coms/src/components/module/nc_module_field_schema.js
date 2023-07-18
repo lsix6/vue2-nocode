@@ -78,6 +78,11 @@ export default {
                     title: 'in search',
                     default: false,
                 },
+                is_in_keyWord: {
+                    type: 'boolean',
+                    title: 'in keyword',
+                    default: false,
+                },
             }
         },
     },
