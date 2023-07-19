@@ -12,6 +12,9 @@ import nc_data_source from './components/nc_data_source.vue'
 import nc_data_source_schema from './components/nc_data_source_schema'
 import nc_container from './components/nc_container.vue'
 import nc_container_schema from './components/nc_container_schema.js'
+import nc_dialog from './components/nc_dialog.vue'
+import nc_dialog_schema from './components/nc_dialog_schema.js'
+
 import nc_ref_cust_com from './components/nc_ref_cust_com.vue'
 import nc_ref_cust_com_schema from './components/nc_ref_cust_com_schema.js'
 import nc_table from './components/list/nc_table.vue'
@@ -66,6 +69,11 @@ const registerComponents = (Vue) => {
     nc_container,
     nc_container_schema
   )
+  comsManager.register(
+    nc_dialog,
+    nc_dialog_schema
+  )
+  //
   comsManager.register(
     nc_ref_cust_com,
     nc_ref_cust_com_schema

@@ -1,9 +1,11 @@
 <template>
-    <el-dialog v-show="!isHide" :visible.sync="visible" v-bind="dialog_props" :before-close="beforeClose"
+    <div v-if="isInEdit">
+        <slot v-bind="{ com_root, com_data, com_params: dlgData }"></slot>
+    </div>
+    <el-dialog v-else v-show="!isHide" :visible.sync="visible" v-bind="dialog_props" :before-close="beforeClose"
         @close="onClose">
         <template v-if="visible">
-            <nc_children :com_children="dialog_children" :com_params="dlgData">
-            </nc_children>
+            <slot v-bind="{ com_root, com_data, com_params: dlgData }"></slot>
         </template>
     </el-dialog>
 </template>
@@ -15,9 +17,17 @@ export default {
         Vue.component('nc_dialog', this)
     },
     props: {
+        com_root: {
+            type: Object,
+            default: null
+        },
+        com_data: {
+            type: Object,
+            default: null
+        },
         dialog_props: {
             type: Object,
-            default: {}
+            default: () => { }
         },
         dialog_children: {
             type: Array,
@@ -34,6 +44,11 @@ export default {
             isHide: false,
             dlgData: {},
         }
+    },
+    computed: {
+        isInEdit() {
+            return this.com_root.isInEdit
+        },
     },
     mounted() {
         this.visible = this.initVisible
