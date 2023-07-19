@@ -1,6 +1,7 @@
 <template>
     <div v-if="isInEdit">
         <div>{{ module_label }}({{ module_name }})</div>
+        <slot name="buttons"></slot>
         <slot></slot>
     </div>
     <nc_module_view v-else :com_root="com_root" :module_info="moduleInfo" />
@@ -129,6 +130,7 @@ export default {
             const _moduleInfo = {
                 name: this.module_name,
                 label: this.module_label,
+                buttons: this.$parent.com_slots && this.$parent.com_slots.buttons,
                 add_form: {
                     title: '添加新' + this.module_label,
                 },

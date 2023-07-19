@@ -90,6 +90,7 @@ export const createListPage = (moduleInfo) => {
                                             com_slots: {
                                                 default: [
                                                     list_formSearch,
+                                                    ...(moduleInfo.buttons || []),
                                                     list_btnAdd,
                                                 ],
                                             },

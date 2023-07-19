@@ -25,6 +25,7 @@ export default {
     comSchema: {
         com_name: 'nc_module',
         com_slots: {
+            buttons: [],
             default: [],
         },
     },
