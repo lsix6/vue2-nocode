@@ -300,6 +300,7 @@ export default {
     height: 100%;
     /* padding: 15px; */
     overflow: auto;
+    border: dashed 1px lightblue;
 
     .dragArea {
         &:empty {
