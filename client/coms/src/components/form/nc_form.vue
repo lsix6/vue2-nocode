@@ -8,8 +8,7 @@
 
 import _ from 'lodash'
 import { nc_vars } from '../../utils/nc_vars.js'
-
-const { filterChildrenFields } = window.nocode.utils
+import { filterChildrenFields } from './nc_form.js'
 
 const request_api = window.nocode.request_api
 const get_params = window.nocode.get_params
