@@ -37,10 +37,6 @@ export const setPropValue = (obj, propName, value, com) => {
     }
 }
 
-export const isNil = (value) => {
-    return (value === null || undefined)
-}
-
 export const parseValue = (type, value) => {
     let v = value
     if (v != '') {
