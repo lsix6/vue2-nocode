@@ -16,6 +16,8 @@ import Editor from './Editor.vue'
 
 const custComsMgr = window.nocode.customizedComsManager
 
+const PreviewWindowName = 'nocode-editor-preview'
+
 export default {
   name: 'ComsEditor',
   components: {
@@ -114,7 +116,7 @@ export default {
     onPreview() {
       console.log('[ComsEditor] onPreview')
       //
-      this.winPreview = window.open('http://localhost:9000/preview')
+      this.winPreview = window.open('http://localhost:9000/preview', PreviewWindowName)
     },
 
   }
