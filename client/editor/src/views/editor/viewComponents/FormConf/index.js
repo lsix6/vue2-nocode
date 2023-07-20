@@ -6,9 +6,15 @@ export default {
     type: 'object',
     required: [],
     properties: {
-        isPreDefinedField: {
-            type: 'boolean',
-            title: 'is pre defined field'
+        type: {
+            type: 'string',
+            title: 'type',
+            enum: [
+                'module',
+                'page',
+                'pre defined field',
+            ],
+            'ui:clearable': true,
         },
         path: {
             type: 'string',

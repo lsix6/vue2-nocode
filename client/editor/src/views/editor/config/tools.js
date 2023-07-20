@@ -85,7 +85,7 @@ const custComsMgr = window.nocode.customizedComsManager
 const custComs = custComsMgr.loadComsList()
 custComs.forEach(com => {
     const comData = window.nocode.customizedComsManager.loadComData(com.id)
-    const isPreDefinedField = comData?.page?.isPreDefinedField
+    const isPreDefinedField = (comData?.page?.type === 'pre defined field')
     if (isPreDefinedField) {
         const _com = {
             title: com.name,

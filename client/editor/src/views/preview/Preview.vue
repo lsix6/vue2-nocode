@@ -66,7 +66,7 @@ export default {
             coms.forEach(com => {
                 const comData = window.nocode.customizedComsManager.loadComData(com.id)
                 const page = comData?.page
-                if (page && page.path) {
+                if (page && (page.type === 'module' || page.type === 'page') && page.path) {
                     const comObjs = window.nocode.customizedComsManager.loadComObjs(com.id)
                     const rootObj = {
                         com_name: 'div',
@@ -78,7 +78,7 @@ export default {
                             default: comObjs,
                         },
                     }
-                    const isModulePage = (comObjs.length > 0 && comObjs[0].com_name === 'nc_module')
+                    const isModulePage = (page.type === 'module')
                     if (isModulePage) {
                         pagesManager.register_page(page.path + '/list', rootObj)
                         pagesManager.register_page(page.path + '/add', rootObj)
