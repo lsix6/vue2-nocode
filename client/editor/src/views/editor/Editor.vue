@@ -39,7 +39,7 @@
 }">
                         </VueJsonFrom>
                     </el-tab-pane>
-                    <el-tab-pane label="页面配置" name="formConfig">
+                    <el-tab-pane label="组件配置" name="formConfig">
                         <VueJsonFrom v-model="formConfig" :class="$style.configForm" :schema="FormConfSchema" :form-props="{
                             labelPosition: 'right',
                             labelWidth: '110px'
