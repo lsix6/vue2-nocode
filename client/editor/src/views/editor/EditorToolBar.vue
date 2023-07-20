@@ -3,7 +3,7 @@
         <el-button @click="$emit('preview')">
             预览
         </el-button>
-        <el-collapse>
+        <el-collapse style="margin-top: 20px;">
             <div v-for="(group, index) in configTools" :key="index" :class="$style.group">
                 <template v-if="!group.hidden">
                     <el-collapse-item :title="`${group.groupName}(${group.componentList.length})`">
