@@ -29,7 +29,7 @@
             </div>
             <div :class="$style.rightForm">
                 <el-tabs v-model="activeName">
-                    <el-tab-pane v-if="curEditorItem" label="组件配置" name="compConfig">
+                    <el-tab-pane v-if="curEditorItem" label="属性" name="compConfig">
                         <VueJsonFrom v-model="curEditorItem.componentValue" :class="$style.configForm"
                             :schema="getEditorItem(curEditorItem.comName).componentPack.propsSchema" :form-props="{
                                 labelPosition: 'right',
