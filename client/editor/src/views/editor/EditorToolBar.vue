@@ -3,25 +3,27 @@
         <el-button @click="$emit('preview')">
             预览
         </el-button>
-        <div v-for="(group, index) in configTools" :key="index" :class="$style.group">
-            <template v-if="!group.hidden">
-                <h3 :class="$style.groupName">
-                    {{ group.groupName }}({{ group.componentList.length }})
-                </h3>
-                <draggable v-model="group.componentList" :class="$style.groupList" :sort="false"
-                    :filter="`.${$style.disabled}`" :group="{ name: dragGroup, pull: 'clone', put: false }"
-                    :clone="cloneDog" @filter="$emit('onFilter')" @start="$emit('onDragStart')" @end="$emit('onDragEnd')">
-                    <div v-for="(item, cIndex) in group.componentList" :key="cIndex" :class="{
-                        [$style.listItem]: true,
-                        draggableToolItem: true,
-                        [item.btnClass]: item.btnClass
+        <el-collapse>
+            <div v-for="(group, index) in configTools" :key="index" :class="$style.group">
+                <template v-if="!group.hidden">
+                    <el-collapse-item :title="`${group.groupName}(${group.componentList.length})`">
+                        <draggable v-model="group.componentList" :class="$style.groupList" :sort="false"
+                            :filter="`.${$style.disabled}`" :group="{ name: dragGroup, pull: 'clone', put: false }"
+                            :clone="cloneDog" @filter="$emit('onFilter')" @start="$emit('onDragStart')"
+                            @end="$emit('onDragEnd')">
+                            <div v-for="(item, cIndex) in group.componentList" :key="cIndex" :class="{
+                                [$style.listItem]: true,
+                                draggableToolItem: true,
+                                [item.btnClass]: item.btnClass
 
-                    }">
-                        <span>{{ item.title }}</span>
-                    </div>
-                </draggable>
-            </template>
-        </div>
+                            }">
+                                <span>{{ item.title }}</span>
+                            </div>
+                        </draggable>
+                    </el-collapse-item>
+                </template>
+            </div>
+        </el-collapse>
     </div>
 </template>
 

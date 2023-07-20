@@ -13,6 +13,7 @@ import {
   Scrollbar,
   Popconfirm,
   Avatar,
+  Collapse, CollapseItem,
 } from "element-ui"
 
 const load = () => import('./el_coms.js')
@@ -64,6 +65,8 @@ const element = {
     Vue.use(DropdownMenu)
     Vue.use(Popconfirm)
     Vue.use(Avatar)
+    Vue.use(Collapse)
+    Vue.use(CollapseItem)
 
     // 使用懒加载的方法注册不会马上用到的 elementui 组件
     registElComponent(Vue, 'DatePicker')
