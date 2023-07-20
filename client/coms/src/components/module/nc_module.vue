@@ -1,8 +1,15 @@
 <template>
     <div v-if="isInEdit">
         <div>{{ module_label }}({{ module_name }})</div>
-        <slot name="buttons"></slot>
-        <slot></slot>
+        <div class="flex-container" style="flex-direction: row; border: dashed 1px lightblue">
+            <div style="flex: 1;"></div>
+            <div style="display: flex; flex-direction: row;">
+                <slot name="buttons"></slot>
+            </div>
+        </div>
+        <div class="flex-container">
+            <slot></slot>
+        </div>
     </div>
     <nc_module_view v-else :com_root="com_root" :module_info="moduleInfo" />
 </template>
