@@ -6,11 +6,12 @@ import { getDefaultFormState } from '@lljj/vue-json-schema-form';
 import { genId } from '../../../utils/id';
 import { isObject, isEmptyObject } from './utils';
 import _ from 'lodash';
+import { getCom } from '../config/tools';
 
 // 生成一个新的editor item
 export function generateEditorItem(toolItem) {
     console.log('generateEditorItem', toolItem);
-    const currentComponentPack = toolItem.componentPack;
+    const currentComponentPack = getCom(toolItem.comName).componentPack;
 
     const ids = [currentComponentPack.viewSchema.type, genId()];
     const id = ids.filter(item => !!item).join('_');
