@@ -1,4 +1,6 @@
 import {
+  Menu, MenuItem, Submenu,
+  Row, Col, Aside,
   Pagination, Dialog,
   Dropdown, DropdownItem, DropdownMenu,
   Input, InputNumber,
@@ -34,6 +36,12 @@ const registElComponent = (Vue, name) => {
 
 const element = {
   install: function (Vue) {
+    Vue.use(Menu)
+    Vue.use(MenuItem)
+    Vue.use(Submenu)
+    Vue.use(Row)
+    Vue.use(Col)
+    Vue.use(Aside)
     Vue.use(Pagination)
     Vue.use(Dialog)
     Vue.use(Dropdown)
@@ -72,9 +80,6 @@ const element = {
     registElComponent(Vue, 'DatePicker')
     registElComponent(Vue, 'ColorPicker')
     registElComponent(Vue, 'Image')
-    registElComponent(Vue, 'Menu')
-    registElComponent(Vue, 'MenuItem')
-    registElComponent(Vue, 'Submenu')
     registElComponent(Vue, 'Radio')
     registElComponent(Vue, 'RadioGroup')
     registElComponent(Vue, 'Rate')
@@ -84,9 +89,6 @@ const element = {
     registElComponent(Vue, 'Cascader')
     registElComponent(Vue, 'Slider')
     registElComponent(Vue, 'Card')
-    registElComponent(Vue, 'Row')
-    registElComponent(Vue, 'Col')
-    registElComponent(Vue, 'Aside')
     registElComponent(Vue, 'Timeline')
     registElComponent(Vue, 'TimelineItem')
 
