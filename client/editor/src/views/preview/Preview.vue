@@ -1,8 +1,8 @@
 <template>
     <div id="app">
         <el-aside width="160px" style="display: flex; border: 1px solid #eee; background-color: rgb(238, 241, 246)">
-            <el-menu :router="true" style="flex: 1; display: flex; flex-direction: column;">
-                <el-menu-item v-for="(menu, i) in menus" :key="i" :index="'/preview/' + menu.index"
+            <el-menu :router="true" style="flex: 1; display: flex; flex-direction: column;" :defaultActive="activeMenu">
+                <el-menu-item v-for="(menu, i) in menus" :key="i" :index="menu.index"
                     style="margin: 10px; text-align: center; background-color: aliceblue;">
                     {{ menu.label }}
                 </el-menu-item>
@@ -28,10 +28,12 @@ export default {
     data() {
         return {
             menus: [],
+            activeMenu: '',
         }
     },
     created() {
         this.init()
+        this.setActiveMenuByRoute()
         //
         window.addEventListener('message', ev => {
             if (ev.source === window.opener) {
@@ -89,13 +91,28 @@ export default {
                     //
                     if (page.menu && page.menu.label) {
                         this.menus.push({
-                            index: isModulePage ? page.path + '/list' : page.path,
+                            path: page.path,
+                            index: '/preview/' + page.path + (isModulePage ? '/list' : ''),
                             label: page.menu.label,
                         })
                     }
                 }
             })
             //
+        },
+        setActiveMenuByRoute() {
+            const subPath = this.$route.params[0]
+            console.log('[Preview] setActiveMenuByRoute, subPath: ', subPath)
+            //
+            if (subPath) {
+                for (let i = 0; i < this.menus.length; i++) {
+                    const menu = this.menus[i]
+                    if (subPath.indexOf(menu.path) === 0) {
+                        this.activeMenu = menu.index
+                        break
+                    }
+                }
+            }
         },
     },
 }
