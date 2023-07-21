@@ -113,10 +113,10 @@ export default {
         this.setComOpended(targetName, false)
       }
     },
-    onPreview() {
-      console.log('[ComsEditor] onPreview')
+    onPreview(url) {
+      console.log('[ComsEditor] onPreview, url: ', url)
       //
-      this.winPreview = window.open('http://localhost:9000/preview', PreviewWindowName)
+      this.winPreview = window.open(url, PreviewWindowName)
     },
 
   }

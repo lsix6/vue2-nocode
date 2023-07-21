@@ -213,9 +213,13 @@ export default {
         onPreview() {
             // console.log('[Editor] onPreview')
             //
-            // this.$refs.comPreviewDlg.open(this.com_id)
-            //
-            this.$emit('preview')
+            const config = this.formConfig
+            if ((config.type === 'module' || config.type === 'page') && config.path) {
+                const url = 'http://localhost:9000/preview/' + config.path + (config.type === 'module' ? '/list' : '')
+                this.$emit('preview', url)
+            } else {
+                this.$refs.comPreviewDlg.open(this.com_id)
+            }
         },
     }
 };
