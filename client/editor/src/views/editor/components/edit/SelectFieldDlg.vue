@@ -1,7 +1,8 @@
 <template>
-    <el-dialog title="选择字段" :visible.sync="dialogVisible">
-        <div class="select-field-dlg-frame">
-            <el-tree :data="treeData" :default-expand-all="true" :expand-on-click-node="false" @node-click="onNodeClick">
+    <el-dialog title="选择字段" :visible.sync="dialogVisible" @close="close">
+        <div v-if="dialogVisible" class="select-field-dlg-frame">
+            <el-tree :data="treeData" @node-click="onNodeClick" :expand-on-click-node="false" default-expand-all
+                highlight-current node-key="id" :current-node-key="selectedId">
             </el-tree>
         </div>
     </el-dialog>
@@ -27,33 +28,47 @@ export default {
         return {
             dialogVisible: false,
             treeData: [],
+            selectedId: null,
+            onSelect: null,
         }
     },
     mounted() {
     },
     methods: {
-        open() {
+        open(_selectedId, _onSelect) {
+            console.log('[SelectFieldDlg] open', _selectedId)
             this.initTreeData()
+            this.selectedId = _selectedId
+            this.onSelect = _onSelect
             this.dialogVisible = true
         },
         close() {
+            console.log('[SelectFieldDlg] close')
+            this.onSelect = null
             this.dialogVisible = false
         },
         initTreeData() {
             const wrapper = this.getCurEditorItemWrapper()
             console.log('[SelectFieldDlg] initTreeData', wrapper)
             //
-            const obj2tree = (obj) => {
+            const obj2tree = (obj, prefix) => {
                 const arr = []
                 //
                 for (let k in obj) {
                     const v = obj[k]
                     //
                     const node = {
-                        label: k
+                        id: prefix + k,
+                        label: k,
                     }
                     if (_.isObject(v) && !_.isArray(v)) {
-                        node.children = obj2tree(v)
+                        node.children = obj2tree(v, node.id + '.')
+                    } else {
+                        if (_.isArray(v)) {
+                            node.label = k + `: [${v.length}]`
+                        } else {
+                            node.label = k + ': ' + v
+                        }
                     }
                     //
                     arr.push(node)
@@ -63,11 +78,15 @@ export default {
             }
             const comData = wrapper?.com_data
             if (comData) {
-                this.treeData = obj2tree(comData)
+                this.treeData = obj2tree(comData, '')
             }
         },
         onNodeClick(data) {
             console.log('[SelectFieldDlg] onNodeClick', data)
+            //
+            if (this.onSelect) {
+                this.onSelect(data.id)
+            }
         },
     },
 }

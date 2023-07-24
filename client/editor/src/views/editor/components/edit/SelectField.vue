@@ -32,7 +32,9 @@ export default {
             this.$emit('input', v)
         },
         onBtnClick() {
-            this.openSelectFieldDlg()
+            this.openSelectFieldDlg(this.value, (id) => {
+                this.onInput(id)
+            })
         },
     },
 }

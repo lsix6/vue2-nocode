@@ -96,7 +96,7 @@ export default {
             },
             getCurEditorItem: () => this.curEditorItem,
             getCurEditorItemWrapper: () => this.curEditorItemWrapper,
-            openSelectFieldDlg: (selected) => this.$refs.selectFieldDlg.open(selected),
+            openSelectFieldDlg: (_selectedId, _onSelect) => this.$refs.selectFieldDlg.open(_selectedId, _onSelect),
             getEditorItem: (comName) => this.getEditorItem(comName)
         };
     },
