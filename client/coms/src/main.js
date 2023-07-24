@@ -25,6 +25,8 @@ import nc_enum_color from './components/show/nc_enum_color.vue'
 import nc_enum_color_schema from './components/show/nc_enum_color_schema.js'
 import nc_text from './components/show/nc_text.vue'
 import nc_text_schema from './components/show/nc_text_schema.js'
+import nc_array from './components/show/nc_array.vue'
+import nc_array_schema from './components/show/nc_array_schema.js'
 import nc_pagination from './components/list/nc_pagination.vue'
 import nc_pagination_schema from './components/list/nc_pagination_schema.js'
 import nc_form from './components/form/nc_form.vue'
@@ -93,6 +95,10 @@ const registerComponents = (Vue) => {
   comsManager.register(
     nc_text,
     nc_text_schema
+  )
+  comsManager.register(
+    nc_array,
+    nc_array_schema
   )
   comsManager.register(
     nc_pagination,
