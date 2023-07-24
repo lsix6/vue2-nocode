@@ -1,7 +1,7 @@
 <template>
     <div class="flex-container">
         <div class="flex-container" v-for="(item, i) in items" :key="i">
-            <slot v-bind="{ com_root, com_data: { ...com_data, __row: item } }"></slot>
+            <slot v-bind="{ com_root, com_data: { ...com_data, __item: item } }"></slot>
         </div>
     </div>
 </template>
