@@ -38,6 +38,7 @@ function genBaseVal(schema) {
                     field_name: {
                         type: 'string',
                         title: 'name',
+                        'ui:widget': 'SelectField',
                     },
                     field_default_value: {
                         type: 'string',

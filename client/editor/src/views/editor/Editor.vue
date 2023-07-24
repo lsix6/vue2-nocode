@@ -52,6 +52,7 @@
             </div>
         </div>
         <ComPreviewDlg ref="comPreviewDlg" />
+        <SelectFieldDlg ref="selectFieldDlg" />
     </div>
 </template>
 
@@ -61,6 +62,7 @@ import VueJsonFrom from '@lljj/vue-json-schema-form';
 import FormConfSchema from './viewComponents/FormConf';
 import EditorToolBar from './EditorToolBar.vue';
 import ComPreviewDlg from './ComPreviewDlg.vue'
+import SelectFieldDlg from './components/edit/SelectFieldDlg.vue'
 
 import { deepFreeze } from './common/utils';
 import configTools, { getCom } from './config/tools';
@@ -70,8 +72,8 @@ import NestedEditor from './components/NestedEditor';
 window.Vue.component('NestedEditor', NestedEditor)
 import SelectRefCom from './components/edit/SelectRefCom.vue'
 window.Vue.component('SelectRefCom', SelectRefCom)
-import SelectFieldName from './components/edit/SelectFieldName.vue'
-window.Vue.component('SelectFieldName', SelectFieldName)
+import SelectField from './components/edit/SelectField.vue'
+window.Vue.component('SelectField', SelectField)
 
 deepFreeze(configTools);
 
@@ -82,6 +84,7 @@ export default {
         EditorToolBar,
         NestedEditor,
         ComPreviewDlg,
+        SelectFieldDlg,
     },
     inject: [
         'notifyPreview',
@@ -93,6 +96,7 @@ export default {
             },
             getCurEditorItem: () => this.curEditorItem,
             getCurEditorItemWrapper: () => this.curEditorItemWrapper,
+            openSelectFieldDlg: (selected) => this.$refs.selectFieldDlg.open(selected),
             getEditorItem: (comName) => this.getEditorItem(comName)
         };
     },
