@@ -18,7 +18,6 @@ export default {
     },
     props: {
         value: {
-            type: [String, Number],
             default: ''
         },
         tooltip: {
