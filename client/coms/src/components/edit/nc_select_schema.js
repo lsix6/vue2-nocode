@@ -41,5 +41,8 @@ export default {
     },
     comSchema: {
         com_name: 'nc_select',
+        com_support: {
+            field: true,
+        },
     },
 };

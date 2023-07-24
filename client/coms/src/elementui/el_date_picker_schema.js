@@ -35,5 +35,8 @@ export default {
     },
     comSchema: {
         com_name: 'ElDatePicker',
+        com_support: {
+            field: true,
+        },
     },
 };

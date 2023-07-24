@@ -20,5 +20,8 @@ export default {
     },
     comSchema: {
         com_name: 'ElCheckbox',
+        com_support: {
+            field: true,
+        },
     },
 };

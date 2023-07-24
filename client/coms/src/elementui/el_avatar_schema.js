@@ -39,5 +39,8 @@ export default {
     },
     comSchema: {
         com_name: 'ElAvatar',
+        com_support: {
+            field: true,
+        },
     },
 };

@@ -26,5 +26,8 @@ export default {
     },
     comSchema: {
         com_name: 'nc_enum_color',
+        com_support: {
+            field: true,
+        },
     },
 };

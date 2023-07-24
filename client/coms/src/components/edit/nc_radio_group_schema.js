@@ -23,5 +23,8 @@ export default {
     },
     comSchema: {
         com_name: 'nc_radio_group',
+        com_support: {
+            field: true,
+        },
     },
 };

@@ -24,5 +24,8 @@ export default {
     },
     comSchema: {
         com_name: 'ElRate',
+        com_support: {
+            field: true,
+        },
     },
 };

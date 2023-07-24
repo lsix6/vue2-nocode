@@ -42,5 +42,8 @@ export default {
     },
     comSchema: {
         com_name: 'ElInputNumber',
+        com_support: {
+            field: true,
+        },
     },
 };

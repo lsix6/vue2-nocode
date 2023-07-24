@@ -94,5 +94,8 @@ export default {
     },
     comSchema: {
         com_name: 'nc_pagination',
+        com_support: {
+            binds: true,
+        },
     },
 };
