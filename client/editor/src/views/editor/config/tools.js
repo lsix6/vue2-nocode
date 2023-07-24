@@ -33,7 +33,13 @@ tags.forEach(tag => {
                 title: tag,
                 type: 'object',
             },
-            propsSchema: genSchema({}, 'object')
+            propsSchema: genSchema({
+                comSchema: {
+                    com_support: {
+                        text: true,
+                    },
+                },
+            }, 'object')
         },
     }
     //

@@ -56,6 +56,10 @@ export default {
     },
     comSchema: {
         com_name: 'nc_container',
+        com_support: {
+            field: true,
+            binds: true,
+        },
         com_slots: {
             default: [],
         },
