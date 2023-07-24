@@ -125,5 +125,8 @@ export default {
     },
     comSchema: {
         com_name: 'ElButton',
+        com_support: {
+            text: true,
+        },
     },
 };

@@ -2,33 +2,52 @@
  * Created by Liu.Jun on 2020/10/26 18:24.
  */
 
-function genBaseVal() {
-    return {
-        title: 'base',
+function genBaseVal(schema) {
+    const ret = {
         type: 'object',
         properties: {
             com_ref: {
                 type: 'string',
                 title: 'ref name',
             },
-            com_field: {
+            schemaOptions: {
                 type: 'object',
+                properties: {
+                }
+            },
+            uiOptions: {
+                type: 'object',
+                properties: {
+                }
+            }
+        }
+    };
+    const comSupport = schema?.comSchema?.com_support
+    if (comSupport) {
+        if (comSupport.text) {
+            ret.properties.com_text = {
+                type: 'string',
+                title: 'text',
+            }
+        }
+        if (comSupport.field) {
+            ret.properties.com_field = {
+                type: 'object',
+                title: 'field',
                 properties: {
                     field_name: {
                         type: 'string',
-                        title: 'field name',
+                        title: 'name',
                     },
                     field_default_value: {
                         type: 'string',
-                        title: 'default value',
+                        title: 'default',
                     },
                 },
-            },
-            com_text: {
-                type: 'string',
-                title: 'text',
-            },
-            com_binds: {
+            }
+        }
+        if (comSupport.binds) {
+            ret.properties.com_binds = {
                 title: 'binds',
                 type: 'array',
                 minItems: 0,
@@ -47,19 +66,11 @@ function genBaseVal() {
                         },
                     },
                 },
-            },
-            schemaOptions: {
-                type: 'object',
-                properties: {
-                }
-            },
-            uiOptions: {
-                type: 'object',
-                properties: {
-                }
             }
         }
-    };
+    }
+    //
+    return ret
 }
 
 export default (schema) => ({
@@ -72,7 +83,7 @@ export default (schema) => ({
             'ui:placeholder': '请输入属性名',
             'err:required': '属性名必填'
         },
-        baseValue: genBaseVal(),
-        ...schema
+        baseValue: genBaseVal(schema),
+        ...schema.propsSchema
     }
 });

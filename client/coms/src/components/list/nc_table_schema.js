@@ -143,6 +143,9 @@ export default {
     comSchema: {
         com_name: 'nc_table',
         com_flex: true,
+        com_support: {
+            binds: true,
+        },
         com_slots: {
             empty: [],
         },

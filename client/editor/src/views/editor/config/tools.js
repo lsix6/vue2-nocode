@@ -61,7 +61,7 @@ for (let groupName in coms) {
             comName,
             componentPack: {
                 ...com,
-                propsSchema: genSchema(com.propsSchema, 'object')
+                propsSchema: genSchema(com, 'object')
             },
         }
         //
