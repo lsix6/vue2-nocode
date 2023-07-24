@@ -70,6 +70,8 @@ import NestedEditor from './components/NestedEditor';
 window.Vue.component('NestedEditor', NestedEditor)
 import SelectRefCom from './components/edit/SelectRefCom.vue'
 window.Vue.component('SelectRefCom', SelectRefCom)
+import SelectFieldName from './components/edit/SelectFieldName.vue'
+window.Vue.component('SelectFieldName', SelectFieldName)
 
 deepFreeze(configTools);
 
@@ -90,6 +92,7 @@ export default {
                 fallbackLabel: true
             },
             getCurEditorItem: () => this.curEditorItem,
+            getCurEditorItemWrapper: () => this.curEditorItemWrapper,
             getEditorItem: (comName) => this.getEditorItem(comName)
         };
     },
@@ -106,6 +109,7 @@ export default {
             configTools,
             rootFormData: {},
             curEditorItem: null, // 选中的formItem
+            curEditorItemWrapper: null, // 选中的formItem的外壳对象
             componentList: [],
             FormConfSchema,
             formConfig: {},
@@ -173,9 +177,10 @@ export default {
         window.document.body.classList.remove('page-decorate-design');
     },
     created() {
-        this.$on('onSetCurEditorItem', ({ editorItem }) => {
+        this.$on('onSetCurEditorItem', ({ editorItem, wrapper }) => {
             this.activeName = editorItem ? 'compConfig' : 'formConfig';
             this.curEditorItem = editorItem;
+            this.curEditorItemWrapper = wrapper;
         });
     },
     methods: {

@@ -150,7 +150,8 @@ export default {
 
         setCurEditorItem(editorItem) {
             this.dispatch('Editor', 'onSetCurEditorItem', {
-                editorItem
+                editorItem,
+                wrapper: editorItem ? this : null,
             });
         },
     }
