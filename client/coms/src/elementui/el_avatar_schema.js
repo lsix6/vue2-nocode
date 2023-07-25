@@ -41,6 +41,7 @@ export default {
         com_name: 'ElAvatar',
         com_support: {
             binds: true,
+            binds_props: ['src'],
         },
     },
 };

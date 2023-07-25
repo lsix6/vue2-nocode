@@ -48,14 +48,20 @@ function genBaseVal(schema) {
             }
         }
         if (comSupport.binds) {
-            ret.properties.com_binds = {
+            ret.properties.com_binds_title = {
+                type: 'object',
                 title: 'binds',
+            }
+            ret.properties.com_binds = {
                 type: 'array',
+                title: 'items',
                 minItems: 0,
                 'ui:widget': 'SetBinds',
-                'ui:prop_names': ['src'],
                 items: {
                 },
+            }
+            if (comSupport.binds_props) {
+                ret.properties.com_binds['ui:prop_names'] = comSupport.binds_props
             }
         }
     }
