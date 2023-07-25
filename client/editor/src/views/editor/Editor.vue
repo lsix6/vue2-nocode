@@ -53,6 +53,7 @@
         </div>
         <ComPreviewDlg ref="comPreviewDlg" />
         <SelectFieldDlg ref="selectFieldDlg" />
+        <SetDataSourceDlg ref="setDataSourceDlg" />
     </div>
 </template>
 
@@ -63,6 +64,7 @@ import FormConfSchema from './viewComponents/FormConf';
 import EditorToolBar from './EditorToolBar.vue';
 import ComPreviewDlg from './ComPreviewDlg.vue'
 import SelectFieldDlg from './components/edit/SelectFieldDlg.vue'
+import SetDataSourceDlg from './components/edit/SetDataSourceDlg.vue'
 
 import { deepFreeze } from './common/utils';
 import configTools, { getCom } from './config/tools';
@@ -91,6 +93,7 @@ export default {
         NestedEditor,
         ComPreviewDlg,
         SelectFieldDlg,
+        SetDataSourceDlg,
     },
     inject: [
         'notifyPreview',
@@ -103,6 +106,7 @@ export default {
             getCurEditorItem: () => this.curEditorItem,
             getCurEditorItemWrapper: () => this.curEditorItemWrapper,
             openSelectFieldDlg: (_selectedId, _onSelect) => this.$refs.selectFieldDlg.open(_selectedId, _onSelect),
+            openSetDataSourceDlg: () => this.$refs.setDataSourceDlg.open(),
             getEditorItem: (comName) => this.getEditorItem(comName)
         };
     },

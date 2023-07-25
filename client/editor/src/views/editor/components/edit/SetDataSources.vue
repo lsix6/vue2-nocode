@@ -15,6 +15,9 @@ export default {
     install(Vue) {
         Vue.component('SetDataSources', this)
     },
+    inject: [
+        'openSetDataSourceDlg',
+    ],
     props: {
         value: {
             type: Array,
@@ -32,6 +35,9 @@ export default {
     methods: {
         onAdd() {
             this.value.push({ name: '' })
+        },
+        onOpenDlg(i) {
+            this.openSetDataSourceDlg(this.value[i])
         },
         onRemove(i) {
             console.log('[SetDataSources] onRemove', i)
