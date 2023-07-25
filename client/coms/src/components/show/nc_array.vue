@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-container">
+    <div class="nc-array" :style="style">
         <div class="flex-container" v-for="(item, i) in items" :key="i">
             <slot v-bind="{ com_root, com_data: { ...com_data, __item: item } }"></slot>
         </div>
@@ -25,6 +25,10 @@ export default {
         value: {
             default: null,
         },
+        items_direction: {
+            type: String,
+            default: 'column'
+        },
     },
     computed: {
         items() {
@@ -35,6 +39,13 @@ export default {
             }
             //
             return arr
+        },
+        style() {
+            const ret = {
+                'flex-direction': this.items_direction,
+            }
+            //
+            return ret
         },
     },
     data() {
@@ -47,3 +58,10 @@ export default {
     },
 }
 </script>
+
+<style lang="scss" scoped>
+.nc-array {
+    flex: 1;
+    display: flex;
+}
+</style>
