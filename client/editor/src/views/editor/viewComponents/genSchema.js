@@ -52,20 +52,9 @@ function genBaseVal(schema) {
                 title: 'binds',
                 type: 'array',
                 minItems: 0,
-                'ui:showIndexNumber': true,
+                'ui:widget': 'SetBinds',
+                'ui:prop_names': ['src'],
                 items: {
-                    type: 'object',
-                    title: 'bind',
-                    properties: {
-                        prop_name: {
-                            type: 'string',
-                            title: 'prop',
-                        },
-                        field_name: {
-                            type: 'string',
-                            title: 'field',
-                        },
-                    },
                 },
             }
         }

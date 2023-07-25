@@ -74,6 +74,8 @@ import SelectRefCom from './components/edit/SelectRefCom.vue'
 window.Vue.component('SelectRefCom', SelectRefCom)
 import SelectField from './components/edit/SelectField.vue'
 window.Vue.component('SelectField', SelectField)
+import SetBinds from './components/edit/SetBinds.vue'
+window.Vue.component('SetBinds', SetBinds)
 
 deepFreeze(configTools);
 
