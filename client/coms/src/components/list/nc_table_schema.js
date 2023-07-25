@@ -145,6 +145,7 @@ export default {
         com_flex: true,
         com_support: {
             binds: true,
+            binds_props: ['listData'],
         },
         com_slots: {
             empty: [],
