@@ -76,6 +76,8 @@ import SelectField from './components/edit/SelectField.vue'
 window.Vue.component('SelectField', SelectField)
 import SetBinds from './components/edit/SetBinds.vue'
 window.Vue.component('SetBinds', SetBinds)
+import SetEnumMap from './components/edit/SetEnumMap.vue';
+window.Vue.component('SetEnumMap', SetEnumMap)
 
 deepFreeze(configTools);
 

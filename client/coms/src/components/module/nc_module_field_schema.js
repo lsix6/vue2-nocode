@@ -27,6 +27,19 @@ export default {
                         type: 'string',
                     }
                 },
+                enum_map_title: {
+                    title: 'enum map',
+                    type: 'object',
+                },
+                enum_map: {
+                    type: 'array',
+                    'ui:widget': 'SetEnumMap',
+                    items: {},
+                },
+                list_title: {
+                    title: 'list',
+                    type: 'object',
+                },
                 is_in_list: {
                     type: 'boolean',
                     title: 'in list',
@@ -68,6 +81,10 @@ export default {
                         },
                     },
                 },
+                form_title: {
+                    title: 'form',
+                    type: 'object',
+                },
                 is_in_form: {
                     type: 'boolean',
                     title: 'in form',
@@ -89,6 +106,10 @@ export default {
                             title: 'pattern message'
                         },
                     },
+                },
+                search_title: {
+                    title: 'search',
+                    type: 'object',
                 },
                 is_in_search: {
                     type: 'boolean',
