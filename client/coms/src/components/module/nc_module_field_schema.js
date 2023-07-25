@@ -19,14 +19,6 @@ export default {
                     type: 'string',
                     title: 'label',
                 },
-                enum: {
-                    title: 'enum',
-                    type: 'array',
-                    minItems: 0,
-                    items: {
-                        type: 'string',
-                    }
-                },
                 enum_map_title: {
                     title: 'enum map',
                     type: 'object',
