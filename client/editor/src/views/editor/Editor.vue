@@ -78,6 +78,8 @@ import SetBinds from './components/edit/SetBinds.vue'
 window.Vue.component('SetBinds', SetBinds)
 import SetEnumMap from './components/edit/SetEnumMap.vue';
 window.Vue.component('SetEnumMap', SetEnumMap)
+import SetDataSources from './components/edit/SetDataSources.vue';
+window.Vue.component('SetDataSources', SetDataSources)
 
 deepFreeze(configTools);
 

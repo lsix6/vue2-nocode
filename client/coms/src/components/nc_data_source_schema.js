@@ -22,11 +22,15 @@ export default {
                     title: 'after got',
                     default: true,
                 },
+                data_sources_title: {
+                    title: 'Data Sources',
+                    type: 'object',
+                },
                 data_sources: {
-                    title: 'Date Sources',
                     type: 'array',
                     minItems: 0,
                     'ui:showIndexNumber': true,
+                    'ui:widget': 'SetDataSources',
                     items: {
                         title: 'Data Source',
                         type: 'object',
