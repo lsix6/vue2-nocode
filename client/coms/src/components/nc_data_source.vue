@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import _ from 'lodash'
+
 const fetch_data = window.nocode.fetch_data
 
 export default {
@@ -136,10 +138,16 @@ export default {
                     resolve(arr2enum(ds.enum))
                 })
             } else if (ds.enum_map) {
-                return new Promise((resolve) => {
-                    resolve({
-                        ...ds.enum_map
+                let map = {}
+                if (_.isArray(ds.enum_map)) {
+                    ds.enum_map.forEach(kv => {
+                        map[kv.k] = kv.v
                     })
+                } else if (_.isObject(ds.enum_map)) {
+                    map = { ...ds.enum_map }
+                }
+                return new Promise((resolve) => {
+                    resolve(map)
                 })
             } else if (ds.obj) {
                 return new Promise((resolve, reject) => {

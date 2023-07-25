@@ -110,6 +110,9 @@ export default {
                                 if (com.com_props.enum && com.com_props.enum.length > 0) {
                                     _field.field_info.enum = com.com_props.enum
                                 }
+                                if (com.com_props.enum_map && com.com_props.enum_map.length > 0) {
+                                    _field.field_info.enum_map = com.com_props.enum_map
+                                }
                             }
                             if (_field.in_form && comSlots.in_form && comSlots.in_form.length > 0) {
                                 _field.in_form.edit_com = comSlots.in_form[0]
