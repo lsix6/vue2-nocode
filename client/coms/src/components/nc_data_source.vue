@@ -158,9 +158,18 @@ export default {
                         reject(e)
                     }
                 })
+            } else if (ds.api) {
+                return fetch_data(com, {
+                    api: {
+                        ...ds.api,
+                        method: 'GET',
+                    }
+                })
             }
             //
-            return fetch_data(com, ds)
+            return new Promise(resolve => {
+                resolve(null)
+            })
         },
     }
 }

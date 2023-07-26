@@ -8,15 +8,9 @@
             </el-radio-group>
             <div class="content">
                 <div v-if="ds.type === 'api'">
-                    <el-form size="small" label-width="80px">
+                    <el-form size="small" label-width="80px" :model="ds.api">
                         <el-form-item label="url">
                             <el-input v-model="ds.api.url" />
-                        </el-form-item>
-                        <el-form-item label="method">
-                            <el-select v-model="ds.api.method">
-                                <el-option v-for="method in ['GET', 'POST', 'DELETE']" :key="method" :label="method"
-                                    :value="method" />
-                            </el-select>
                         </el-form-item>
                     </el-form>
                 </div>
@@ -51,11 +45,10 @@ export default {
         open(ds) {
             console.log('[SetDataSourceDlg] open', ds)
             if (!ds.api) {
-                ds.api = {
+                this.$set(ds, 'api', {
                     url: '',
-                    method: 'GET',
                     fetch_params: [],
-                }
+                })
             }
             this.ds = ds
             this.dialogVisible = true
