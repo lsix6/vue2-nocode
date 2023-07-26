@@ -5,7 +5,7 @@
                 <el-radio label="api">api</el-radio>
                 <el-radio label="obj">json</el-radio>
             </el-radio-group>
-            <div class="content">
+            <div class="flex-container content">
                 <div v-if="ds.type === 'api'">
                     <el-form size="small" label-width="80px" :model="ds.api" onsubmit="return false">
                         <el-form-item label="url">
@@ -13,8 +13,9 @@
                         </el-form-item>
                     </el-form>
                 </div>
-                <div v-else-if="ds.type === 'obj'">
-                    <vueJsonTool v-model="ds.obj" :showBtns="false" mode="code" :expandedOnStart="true" />
+                <div v-else-if="ds.type === 'obj'" class="flex-container">
+                    <vueJsonTool class="flex-container set-data-source-dlg-json-editor" v-model="ds.obj" :showBtns="false"
+                        mode="code" :expandedOnStart="true" />
                 </div>
             </div>
         </div>
@@ -68,9 +69,20 @@ export default {
 .set-data-source-dlg-frame {
     height: 550px;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
 
     .content {
         padding: 20px;
+
+    }
+}
+</style>
+<style lang="scss">
+.set-data-source-dlg-json-editor {
+
+    .jsoneditor-vue {
+        flex: 1;
     }
 }
 </style>
