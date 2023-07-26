@@ -3,7 +3,6 @@
         <div v-if="dialogVisible" class="set-data-source-dlg-frame">
             <el-radio-group v-model="ds.type" @input="onRadioInput">
                 <el-radio label="api">api</el-radio>
-                <el-radio label="enum_map">enum map</el-radio>
                 <el-radio label="obj">json</el-radio>
             </el-radio-group>
             <div class="content">
@@ -13,9 +12,6 @@
                             <el-input v-model="ds.api.url" />
                         </el-form-item>
                     </el-form>
-                </div>
-                <div v-else-if="ds.type === 'enum_map'">
-                    enum map
                 </div>
                 <div v-else-if="ds.type === 'obj'">
                     <vueJsonTool v-model="ds.obj" :showBtns="false" mode="code" :expandedOnStart="true" />
