@@ -58,6 +58,9 @@ export default {
             //
             return []
         },
+        dataMethods() {
+            return ['getSort']
+        },
     },
     mounted() {
         // console.log('[nc_table] mounted, com_data:', this.com_data)

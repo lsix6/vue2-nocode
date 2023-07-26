@@ -33,6 +33,7 @@ export default {
         }
     },
     mounted() {
+        this.initTreeData()
     },
     methods: {
         open(_selectedId, _onSelect) {
@@ -76,10 +77,32 @@ export default {
                 //
                 return arr
             }
+            //
+            const obj = {
+                route_query: this.$route.query,
+            }
+            if (wrapper) {
+                const comRefs = wrapper.com_root.refsMgr.get_com_refs()
+                const com_ref = {}
+                for (let k in comRefs) {
+                    const refCom = comRefs[k]
+                    console.log('ref com', refCom)
+                    const methodsData = {}
+                    if (refCom && refCom.dataMethods) {
+                        refCom.dataMethods.forEach(method => {
+                            methodsData[method + '()'] = refCom[method]()
+                        })
+                    }
+                    com_ref[k] = methodsData
+                }
+                obj.com_ref = com_ref
+            }
             const comData = wrapper?.com_data
             if (comData) {
-                this.treeData = obj2tree(comData, '')
+                obj.com_data = comData
             }
+            //
+            this.treeData = obj2tree(obj, '')
         },
         onNodeClick(data) {
             console.log('[SelectParamsDlg] onNodeClick', data)

@@ -27,4 +27,8 @@ export class ComRefsManager {
         return ref
     }
 
+    get_com_refs() {
+        return { ...this.com_refs }
+    }
+
 }
