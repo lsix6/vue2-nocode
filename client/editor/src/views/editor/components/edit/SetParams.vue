@@ -1,6 +1,7 @@
 <template>
     <div>
         <el-button size="mini" @click="onAdd">+</el-button>
+        <el-button size="mini" @click="onOpenSelect">select...</el-button>
         <el-table :data="value" emptyText="no params now">
             <el-table-column label="name">
                 <template slot-scope="scope">
@@ -34,6 +35,9 @@ export default {
     install(Vue) {
         Vue.component('SetParams', this)
     },
+    inject: [
+        'openSelectParamsDlg',
+    ],
     props: {
         value: {
             type: Array,
@@ -54,6 +58,9 @@ export default {
         //
     },
     methods: {
+        onOpenSelect() {
+            this.openSelectParamsDlg()
+        },
         onAdd() {
             this.value.push({ k: '', v: '' })
         },
