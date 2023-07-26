@@ -18,7 +18,7 @@
                     enum map
                 </div>
                 <div v-else-if="ds.type === 'obj'">
-                    json
+                    <vueJsonTool v-model="ds.obj" :showBtns="false" mode="code" :expandedOnStart="true" />
                 </div>
             </div>
         </div>
@@ -26,10 +26,14 @@
 </template>
 
 <script>
+import vueJsonTool from 'vue-json-tool'
 
 export default {
     install(Vue) {
         Vue.component('SetDataSourceDlg', this)
+    },
+    components: {
+        vueJsonTool,
     },
     props: {
     },

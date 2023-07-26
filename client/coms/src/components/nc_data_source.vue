@@ -149,10 +149,10 @@ export default {
                 return new Promise((resolve) => {
                     resolve(map)
                 })
-            } else if (ds.obj) {
+            } else if (ds.obj && Object.keys(ds.obj).length > 0) {
                 return new Promise((resolve, reject) => {
                     try {
-                        const obj = JSON.parse(ds.obj)
+                        const obj = _.cloneDeep(ds.obj)
                         resolve(obj)
                     } catch (e) {
                         reject(e)
