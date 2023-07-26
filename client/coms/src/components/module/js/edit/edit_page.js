@@ -62,6 +62,7 @@ export const createEditPage = (moduleInfo) => {
                                                                 {
                                                                     name: 'recordData',
                                                                     api: {
+                                                                        type: 'api',
                                                                         url: `${moduleInfo.name}/detail`,
                                                                         method: 'GET',
                                                                         fetch_params: [

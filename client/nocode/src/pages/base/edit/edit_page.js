@@ -61,6 +61,7 @@ export const createEditPage = (moduleInfo) => {
                                                                 ...moduleInfo.data_sources,
                                                                 {
                                                                     name: 'recordData',
+                                                                    type: 'api',
                                                                     api: {
                                                                         url: `${moduleInfo.name}/detail`,
                                                                         method: 'GET',

@@ -66,7 +66,7 @@ export default {
         },
     },
     mounted() {
-        console.log('[nc_data_source] mounted, com_data:', this.com_data)
+        console.log('[nc_data_source] mounted, data_sources:', this.data_sources)
         this.refreshAll()
     },
     methods: {
@@ -126,30 +126,7 @@ export default {
             })
         },
         fetchData(com, ds) {
-            if (ds.enum && ds.enum.length > 0) {
-                const arr2enum = (arr) => {
-                    const map = {}
-                    arr.forEach((item, i) => {
-                        map[i + 1] = item
-                    })
-                    return map
-                }
-                return new Promise((resolve) => {
-                    resolve(arr2enum(ds.enum))
-                })
-            } else if (ds.enum_map) {
-                let map = {}
-                if (_.isArray(ds.enum_map)) {
-                    ds.enum_map.forEach(kv => {
-                        map[kv.k] = kv.v
-                    })
-                } else if (_.isObject(ds.enum_map)) {
-                    map = { ...ds.enum_map }
-                }
-                return new Promise((resolve) => {
-                    resolve(map)
-                })
-            } else if (ds.obj && Object.keys(ds.obj).length > 0) {
+            if (ds.type === 'obj') {
                 return new Promise((resolve, reject) => {
                     try {
                         const obj = _.cloneDeep(ds.obj)
@@ -158,12 +135,14 @@ export default {
                         reject(e)
                     }
                 })
-            } else if (ds.api) {
+            } else if (ds.type === 'api') {
                 return fetch_data(com, {
                     api: {
                         ...ds.api,
                         method: 'GET',
                     }
+                }).catch(errs => {
+                    console.error('[nc_data_source] fetchData, api errors:', errs)
                 })
             }
             //

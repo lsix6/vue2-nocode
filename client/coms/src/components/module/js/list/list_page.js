@@ -36,6 +36,7 @@ export const createListPage = (moduleInfo) => {
                             ...moduleInfo.data_sources,
                             {
                                 name: 'listPageData',
+                                type: 'api',
                                 api: {
                                     url: `${moduleInfo.name}/list`,
                                     method: 'GET',
