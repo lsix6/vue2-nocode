@@ -35,11 +35,12 @@ export const fetch_data = (com, fetchData) => {
                 reject(e)
             })
         } else {
-            // 参数里获取到的就是数据
-            // console.log('[nc_requests] fetch_data, fetchData:', fetchData)
-            const fetchParams = get_params(com, fetchData.fetch_params)
-            const data = fetchParams[fetchData.fetch_params[0].params_fields[0]]
-            resolve(data)
+            // // 参数里获取到的就是数据
+            // // console.log('[nc_requests] fetch_data, fetchData:', fetchData)
+            // const fetchParams = get_params(com, fetchData.fetch_params)
+            // const data = fetchParams[fetchData.fetch_params[0].params_fields[0]]
+            // resolve(data)
+            resolve(null)
         }
     })
 }
