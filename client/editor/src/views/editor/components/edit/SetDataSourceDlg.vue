@@ -11,6 +11,9 @@
                         <el-form-item label="url">
                             <el-input v-model="ds.api.url" />
                         </el-form-item>
+                        <el-form-item label="params">
+                            <SetParams />
+                        </el-form-item>
                     </el-form>
                 </div>
                 <div v-else-if="ds.type === 'obj'" class="flex-container">
@@ -24,6 +27,7 @@
 
 <script>
 import vueJsonTool from 'vue-json-tool'
+import SetParams from './SetParams.vue'
 
 export default {
     install(Vue) {
@@ -31,6 +35,7 @@ export default {
     },
     components: {
         vueJsonTool,
+        SetParams,
     },
     props: {
     },
