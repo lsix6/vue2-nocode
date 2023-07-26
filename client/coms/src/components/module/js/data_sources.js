@@ -16,9 +16,14 @@ export const create_date_sources = (moduleInfo) => {
                 enum: fdInfo.enum,
             })
         } else if (fdInfo.enum_map) {
+            const obj = {}
+            fdInfo.enum_map.forEach(kv => {
+                obj[kv.k] = kv.v
+            })
             data_sources.push({
                 name: fdInfo.name,
-                enum_map: fdInfo.enum_map,
+                type: 'obj',
+                obj,
             })
         } else if (fdInfo.data_source) {
             data_sources.push({
