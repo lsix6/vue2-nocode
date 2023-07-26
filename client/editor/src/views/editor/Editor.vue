@@ -54,6 +54,7 @@
         <ComPreviewDlg ref="comPreviewDlg" />
         <SelectFieldDlg ref="selectFieldDlg" />
         <SetDataSourceDlg ref="setDataSourceDlg" />
+        <SelectParamsDlg ref="selectParamsDlg" />
     </div>
 </template>
 
@@ -65,6 +66,7 @@ import EditorToolBar from './EditorToolBar.vue';
 import ComPreviewDlg from './ComPreviewDlg.vue'
 import SelectFieldDlg from './components/edit/SelectFieldDlg.vue'
 import SetDataSourceDlg from './components/edit/SetDataSourceDlg.vue'
+import SelectParamsDlg from './components/edit/SelectParamsDlg.vue'
 
 import { deepFreeze } from './common/utils';
 import configTools, { getCom } from './config/tools';
@@ -94,6 +96,7 @@ export default {
         ComPreviewDlg,
         SelectFieldDlg,
         SetDataSourceDlg,
+        SelectParamsDlg,
     },
     inject: [
         'notifyPreview',
