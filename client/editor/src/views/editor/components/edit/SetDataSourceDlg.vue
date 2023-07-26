@@ -8,7 +8,7 @@
             </el-radio-group>
             <div class="content">
                 <div v-if="ds.type === 'api'">
-                    <el-form size="small" label-width="80px" :model="ds.api">
+                    <el-form size="small" label-width="80px" :model="ds.api" onsubmit="return false">
                         <el-form-item label="url">
                             <el-input v-model="ds.api.url" />
                         </el-form-item>
