@@ -1,26 +1,21 @@
 <template>
-    <div>
+    <div class="set-params">
         <el-button size="mini" @click="onAdd">+</el-button>
-        <el-button size="mini" @click="onOpenSelect">select...</el-button>
         <el-table :data="value" emptyText="no params now">
-            <el-table-column label="name">
+            <el-table-column label="name" width="120">
                 <template slot-scope="scope">
-                    <el-input size="mini" v-model="scope.row.k" @input="onInput" />
-                </template>
-            </el-table-column>
-            <el-table-column label="source">
-                <template slot-scope="scope">
-                    <el-select v-model="scope.row.source">
-                        <el-option v-for="source in paramSources" :key="source" :label="source" :value="source" />
-                    </el-select>
+                    <el-input size="mini" v-model="scope.row.param_name" @input="onInput" />
                 </template>
             </el-table-column>
             <el-table-column label="value">
                 <template slot-scope="scope">
-                    <el-input size="mini" v-model="scope.row.v" @input="onInput" />
+                    <div class="row-value">
+                        <el-button size="mini" @click="onOpenSelect(scope.row)">...</el-button>
+                        <el-input size="mini" v-model="scope.row.param_value" @input="onInput" />
+                    </div>
                 </template>
             </el-table-column>
-            <el-table-column label="remove">
+            <el-table-column label="remove" width="80">
                 <template slot-scope="scope">
                     <el-button size="mini" class="btn-remove" @click="onRemove(scope.row.i)">-</el-button>
                 </template>
@@ -58,11 +53,14 @@ export default {
         //
     },
     methods: {
-        onOpenSelect() {
-            this.openSelectParamsDlg()
+        onOpenSelect(row) {
+            this.openSelectParamsDlg(row.param_value, (v) => {
+                row.param_value = v
+                console.log('[SetParams] onOpenSelect', row)
+            })
         },
         onAdd() {
-            this.value.push({ k: '', v: '' })
+            this.value.push({ param_name: '', param_value: '' })
         },
         onRemove(i) {
             console.log('[SetParams] onRemove', i)
@@ -75,4 +73,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.set-params {
+
+    .row-value {
+        display: flex;
+        flex-direction: row;
+    }
+}
+</style>

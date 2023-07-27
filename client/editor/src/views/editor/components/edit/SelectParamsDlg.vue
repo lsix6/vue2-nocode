@@ -37,11 +37,11 @@ export default {
     },
     methods: {
         open(_selectedId, _onSelect) {
-            console.log('[SelectParamsDlg] open', _selectedId)
-            this.initTreeData()
+            console.log('[SelectParamsDlg] open', _selectedId, _onSelect)
             this.selectedId = _selectedId
             this.onSelect = _onSelect
             this.dialogVisible = true
+            this.initTreeData()
         },
         close() {
             console.log('[SelectParamsDlg] close')
@@ -108,7 +108,14 @@ export default {
             console.log('[SelectParamsDlg] onNodeClick', data)
             //
             if (this.onSelect) {
-                this.onSelect(data.id)
+                const arr = data.id.split('.')
+                if (arr[0] === 'com_ref') {
+                    if (arr.length >= 3) {
+                        this.onSelect(data.id)
+                    }
+                } else {
+                    this.onSelect(data.id)
+                }
             }
         },
     },

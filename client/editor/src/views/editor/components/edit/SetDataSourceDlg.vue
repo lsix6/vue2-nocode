@@ -12,7 +12,7 @@
                             <el-input v-model="ds.api.url" />
                         </el-form-item>
                         <el-form-item label="params">
-                            <SetParams />
+                            <SetParams v-model="ds.api.fetch_params" />
                         </el-form-item>
                     </el-form>
                 </div>
