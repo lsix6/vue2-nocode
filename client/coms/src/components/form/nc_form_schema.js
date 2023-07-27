@@ -111,6 +111,7 @@ export default {
         com_name: 'nc_form',
         com_support: {
             binds: true,
+            binds_props: ['init_data'],
         },
         com_slots: {
             default: [],
