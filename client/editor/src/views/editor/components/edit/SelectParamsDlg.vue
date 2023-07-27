@@ -1,5 +1,5 @@
 <template>
-    <el-dialog title="选择参数" :visible.sync="dialogVisible" @close="close">
+    <el-dialog title="选择参数" width="40%" top="20vh" :visible.sync="dialogVisible" @close="close">
         <div v-if="dialogVisible" class="select-params-dlg-frame">
             <el-tree :data="treeData" @node-click="onNodeClick" :expand-on-click-node="false" default-expand-all
                 highlight-current node-key="id" :current-node-key="selectedId">
@@ -124,7 +124,7 @@ export default {
 
 <style lang="scss" scoped>
 .select-params-dlg-frame {
-    height: 550px;
+    height: 450px;
     overflow: auto;
 }
 </style>
