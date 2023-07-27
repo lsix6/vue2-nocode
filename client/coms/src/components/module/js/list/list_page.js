@@ -55,7 +55,7 @@ export const createListPage = (moduleInfo) => {
                                             param_name: 'page',
                                             param_source: 'com_ref',
                                             param_desc: 'pagination.getData()',
-                                            params_default_value: {
+                                            param_default_value: {
                                                 pageIndex: 1,
                                                 pageSize: 10,
                                             },

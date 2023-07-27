@@ -127,6 +127,9 @@ const paramDesc2Def = (desc) => {
             def.params_com_method_name = arr[1].substring(0, arr[1].length - 2)
             def.params_prop_name = arr.slice(2).join('.')
         }
+        if (desc.param_default_value) {
+            def.params_default_value = desc.param_default_value
+        }
     } else {
         def.params_source = source
         def.params_set_name = desc.param_name
