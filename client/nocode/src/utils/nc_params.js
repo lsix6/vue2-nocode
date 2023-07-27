@@ -62,6 +62,7 @@ export const get_params = (com, paramsDef, cmdData) => {
             if (obj.params_set_name) {
                 if (obj.params_prop_name) {
                     result[obj.params_set_name] = getPropValue(source, obj.params_prop_name)
+                    source = {}
                 } else {
                     set = result[obj.params_set_name] = {}
                 }
