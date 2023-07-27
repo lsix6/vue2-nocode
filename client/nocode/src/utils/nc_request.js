@@ -1,4 +1,4 @@
-import { get_params } from "./nc_params"
+import { get_params, params_desc_to_def } from "./nc_params"
 
 const nc_requests = {}
 
@@ -27,7 +27,8 @@ export const fetch_data = (com, fetchData) => {
     return new Promise((resolve, reject) => {
         if (fetchData.api) {
             //  请求 api 获取数据
-            const fetchParams = get_params(com, fetchData.api.fetch_params)
+            const paramsDef = params_desc_to_def(fetchData.api.fetch_params)
+            const fetchParams = get_params(com, paramsDef)
             const requestParams = { ...fetchParams }
             request_api(fetchData.api, requestParams).then(data => {
                 resolve(data)

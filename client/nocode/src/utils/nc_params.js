@@ -83,3 +83,47 @@ export const get_params = (com, paramsDef, cmdData) => {
     //
     return result
 }
+
+const paramDesc2Def = (desc) => {
+    const def = {}
+    //
+    const source = desc.param_source
+    if (source === 'text') {
+        def[desc.param_name] = desc.param_desc
+    } else if (source === 'json') {
+        try {
+            const obj = JSON.parse(desc.param_desc)
+            if (desc.param_name) {
+                def[desc.param_name] = obj
+            } else {
+                Object.assign(def, obj)
+            }
+        } catch (err) {
+            console.error('[nc_params] paramsDesc2Def, parse json error:', err)
+        }
+    } else if (source === 'com_ref') {
+        def.params_source = source
+        def.params_set_name = desc.param_name
+        //
+        const arr = desc.param_desc.split('.')
+        if (arr.length >= 2) {
+            def.params_com_ref = arr[0]
+            def.params_com_method_name = arr[1].substring(0, arr[1].length - 2)
+        }
+    } else {
+        def.params_source = source
+        def.params_set_name = desc.param_name
+    }
+    //
+    return def
+}
+
+export const params_desc_to_def = (descs) => {
+    const defs = []
+    //
+    descs.forEach(desc => {
+        defs.push(paramDesc2Def(desc))
+    })
+    //
+    return defs
+}
