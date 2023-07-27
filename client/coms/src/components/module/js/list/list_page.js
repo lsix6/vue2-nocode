@@ -32,6 +32,7 @@ export const createListPage = (moduleInfo) => {
                         },
                     },
                     com_props: {
+                        show_children_after_got_data: false,
                         data_sources: [
                             ...moduleInfo.data_sources,
                             {
@@ -55,10 +56,6 @@ export const createListPage = (moduleInfo) => {
                                             param_name: 'page',
                                             param_source: 'com_ref',
                                             param_desc: 'pagination.getData()',
-                                            param_default_value: {
-                                                pageIndex: 1,
-                                                pageSize: 10,
-                                            },
                                         },
                                     ]
                                 },
