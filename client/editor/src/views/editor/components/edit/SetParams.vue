@@ -11,10 +11,16 @@
                 <template slot-scope="scope">
                     <div class="row-value">
                         <el-button size="mini" @click="onOpenSelect(scope.row)">...</el-button>
-                        <el-select v-model="scope.row.param_source">
+                        <el-select class="row-source" v-model="scope.row.param_source">
                             <el-option v-for="source in paramSources" :key="source" :label="source" :value="source" />
                         </el-select>
-                        <el-input size="mini" v-model="scope.row.param_desc" @input="onInput" />
+                        <div class="row-desc">
+                            <el-input size="mini" v-model="scope.row.param_desc" @input="onInput" />
+                            <div class="row-default" v-if="scope.row.param_source === 'com_ref'">
+                                <div class="row-default-label">default</div>
+                                <el-input size="mini" v-model="scope.row.param_default_value" @input="onInput" />
+                            </div>
+                        </div>
                     </div>
                 </template>
             </el-table-column>
@@ -68,7 +74,8 @@ export default {
             this.value.push({
                 param_name: '',
                 param_source: '',
-                param_desc: ''
+                param_desc: '',
+                param_default_value: '',
             })
         },
         onRemove(i) {
@@ -88,6 +95,23 @@ export default {
     .row-value {
         display: flex;
         flex-direction: row;
+
+        .row-source {
+            width: 150px
+        }
+
+        .row-desc {
+            flex: 1;
+
+            .row-default {
+                display: flex;
+                flex-direction: row;
+
+                .row-default-label {
+                    width: 60px;
+                }
+            }
+        }
     }
 }
 </style>
