@@ -26,7 +26,7 @@ export default {
     },
     data() {
         return {
-            dialogVisible: true,
+            dialogVisible: false,
             treeData: [],
             selectedId: null,
             onSelect: null,
