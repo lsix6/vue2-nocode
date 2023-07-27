@@ -61,16 +61,15 @@ export const createEditPage = (moduleInfo) => {
                                                                 ...moduleInfo.data_sources,
                                                                 {
                                                                     name: 'recordData',
+                                                                    type: 'api',
                                                                     api: {
-                                                                        type: 'api',
                                                                         url: `${moduleInfo.name}/detail`,
                                                                         method: 'GET',
                                                                         fetch_params: [
                                                                             {
-                                                                                params_source: 'route_query',
-                                                                                params_fields: [
-                                                                                    '_id',
-                                                                                ]
+                                                                                param_name: '_id',
+                                                                                param_source: 'route_query',
+                                                                                param_desc: '_id',
                                                                             }
                                                                         ]
                                                                     },
