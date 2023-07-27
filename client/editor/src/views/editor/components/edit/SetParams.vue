@@ -26,7 +26,7 @@
             </el-table-column>
             <el-table-column label="remove" width="80">
                 <template slot-scope="scope">
-                    <el-button size="mini" class="btn-remove" @click="onRemove(scope.row.i)">-</el-button>
+                    <el-button size="mini" class="btn-remove" @click="onRemove(scope.row)">-</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -78,9 +78,12 @@ export default {
                 param_default_value: '',
             })
         },
-        onRemove(i) {
-            console.log('[SetParams] onRemove', i)
-            this.value.splice(i, 1)
+        onRemove(row) {
+            const i = this.value.indexOf(row)
+            console.log('[SetParams] onRemove', i, row)
+            if (i >= 0) {
+                this.value.splice(i, 1)
+            }
         },
         onInput() {
             console.log('[SetParams] onInput', this.value)
