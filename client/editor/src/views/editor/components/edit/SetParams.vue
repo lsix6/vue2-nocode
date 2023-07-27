@@ -11,7 +11,10 @@
                 <template slot-scope="scope">
                     <div class="row-value">
                         <el-button size="mini" @click="onOpenSelect(scope.row)">...</el-button>
-                        <el-input size="mini" v-model="scope.row.param_value" @input="onInput" />
+                        <el-select v-model="scope.row.param_source">
+                            <el-option v-for="source in paramSources" :key="source" :label="source" :value="source" />
+                        </el-select>
+                        <el-input size="mini" v-model="scope.row.param_desc" @input="onInput" />
                     </div>
                 </template>
             </el-table-column>
@@ -45,7 +48,7 @@ export default {
     },
     computed: {
         paramSources() {
-            return ['value', 'com_data', 'com_ref', 'route_query', 'cmd_data']
+            return ['text', 'json', 'com_data', 'com_ref', 'route_query', 'cmd_data']
         },
     },
     mounted() {
@@ -54,13 +57,19 @@ export default {
     },
     methods: {
         onOpenSelect(row) {
-            this.openSelectParamsDlg(row.param_value, (v) => {
-                row.param_value = v
+            this.openSelectParamsDlg(row.param_source + '.' + row.param_desc, (v) => {
+                const arr = v.split('.')
+                row.param_source = arr[0]
+                row.param_desc = arr.slice(1).join('.')
                 console.log('[SetParams] onOpenSelect', row)
             })
         },
         onAdd() {
-            this.value.push({ param_name: '', param_value: '' })
+            this.value.push({
+                param_name: '',
+                param_source: '',
+                param_desc: ''
+            })
         },
         onRemove(i) {
             console.log('[SetParams] onRemove', i)
