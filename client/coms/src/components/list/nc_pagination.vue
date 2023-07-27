@@ -47,6 +47,10 @@ export default {
     },
     created() {
         // console.log('[nc_pagination] created, data:', { ...this.data }, this.$route)
+        const pageSizes = this.pagination_props['page-sizes']
+        if (pageSizes && pageSizes.length > 0) {
+            this.data.pageSize = pageSizes[0]
+        }
         // 获取之前保存在内存中的翻页数据
         const savedData = storageManager.getItemInMem(this.$route.fullPath)
         if (savedData) {
