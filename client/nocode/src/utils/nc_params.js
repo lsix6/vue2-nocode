@@ -8,6 +8,39 @@ export const register_params_source = (params_source, func) => {
     nc_params_source[params_source] = func
 }
 
+register_params_source('com_data', (paramDef, com, cmdData) => {
+    return com.com_data
+})
+
+register_params_source('com_ref', (paramDef, com, cmdData) => {
+    let ret = null//
+    const ref = com.com_root.refsMgr.get_com_ref(paramDef.params_com_ref)
+    if (ref) {
+        const method_name = paramDef.params_com_method_name || 'getData'
+        ret = ref[method_name]()
+    } else {
+        if (_.isString(paramDef.params_default_value)) {
+            try {
+                ret = JSON.parse(paramDef.params_default_value)
+            } catch (e) {
+                console.error('[nc_params] get_params, parse params_default_value failed', e)
+            }
+        } else {
+            ret = paramDef.params_default_value
+        }
+    }
+    //
+    return ret
+})
+
+register_params_source('route_query', (paramDef, com, cmdData) => {
+    return com.$route.query
+})
+
+register_params_source('cmd_data', (paramDef, com, cmdData) => {
+    return cmdData
+})
+
 export const get_params = (com, paramsDef, cmdData) => {
     // paramsDef 是个数组，可以同时指定1个或多个数据源，获取到的数据将合并到一个对象里返回
     console.log('[nc_params] get_params,', com, paramsDef, cmdData)
@@ -20,36 +53,18 @@ export const get_params = (com, paramsDef, cmdData) => {
             // 选择数据源
             const func = nc_params_source[obj.params_source]
             if (func) {
-                source = func(obj)
-            } else if (obj.params_source === 'com_data') {
-                source = com.com_data
-            } else if (obj.params_source === 'com_ref') {
-                const ref = com.com_root.refsMgr.get_com_ref(obj.params_com_ref)
-                if (ref) {
-                    const method_name = obj.params_com_method_name || 'getData'
-                    source = ref[method_name]()
-                } else {
-                    if (_.isString(obj.params_default_value)) {
-                        try {
-                            source = JSON.parse(obj.params_default_value)
-                        } catch (e) {
-                            console.error('[nc_params] get_params, parse params_default_value failed', e)
-                        }
-                    } else {
-                        source = obj.params_default_value
-                    }
-                }
-            } else if (obj.params_source === 'route_query') {
-                source = com.$route.query
-            } else if (obj.params_source === 'cmd_data') {
-                source = cmdData
+                source = func(obj, com, cmdData)
             } else {
                 source = obj
             }
             // console.log('[nc_params] get_params, params_source source,', obj.params_source, source)
             // 如果有设置参数的集合名，则参数都放在该集合下
             if (obj.params_set_name) {
-                set = result[obj.params_set_name] = {}
+                if (obj.params_prop_name) {
+                    result[obj.params_set_name] = getPropValue(source, obj.params_prop_name)
+                } else {
+                    set = result[obj.params_set_name] = {}
+                }
             }
             if (obj.params_fields && obj.params_fields.length > 0) {
                 // 如果指定了字段列表
@@ -109,10 +124,12 @@ const paramDesc2Def = (desc) => {
         if (arr.length >= 2) {
             def.params_com_ref = arr[0]
             def.params_com_method_name = arr[1].substring(0, arr[1].length - 2)
+            def.params_prop_name = arr.slice(2).join('.')
         }
     } else {
         def.params_source = source
         def.params_set_name = desc.param_name
+        def.params_prop_name = desc.param_desc
     }
     //
     return def
