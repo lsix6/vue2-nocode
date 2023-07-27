@@ -11,7 +11,7 @@
                 <template slot-scope="scope">
                     <div class="row-value">
                         <el-button size="mini" @click="onOpenSelect(scope.row)">...</el-button>
-                        <el-select class="row-source" v-model="scope.row.param_source">
+                        <el-select class="row-source" size="mini" v-model="scope.row.param_source">
                             <el-option v-for="source in paramSources" :key="source" :label="source" :value="source" />
                         </el-select>
                         <div class="row-desc">
