@@ -16,10 +16,10 @@
                         </el-select>
                         <div class="row-desc">
                             <el-input size="mini" v-model="scope.row.param_desc" @input="onInput" />
-                            <div class="row-default" v-if="scope.row.param_source === 'com_ref'">
+                            <!-- <div class="row-default" v-if="scope.row.param_source === 'com_ref'">
                                 <div class="row-default-label">default</div>
                                 <el-input size="mini" v-model="scope.row.param_default_value" @input="onInput" />
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </template>
