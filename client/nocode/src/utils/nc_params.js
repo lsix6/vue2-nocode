@@ -142,7 +142,7 @@ const paramDesc2Def = (desc) => {
 export const params_desc_to_def = (descs) => {
     const defs = []
     //
-    descs.forEach(desc => {
+    descs && descs.forEach(desc => {
         defs.push(paramDesc2Def(desc))
     })
     //
