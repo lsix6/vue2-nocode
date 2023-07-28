@@ -81,10 +81,9 @@ export const createList = (moduleName, moduleFields) => {
             },
             request_params: [
                 {
-                    params_source: 'com_data',
-                    params_fields: [
-                        '_id'
-                    ],
+                    param_name: '_id',
+                    param_source: 'com_data',
+                    param_desc: '_id',
                 }
             ],
             commands: [
