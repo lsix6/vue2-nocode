@@ -34,7 +34,12 @@ export default {
     },
     methods: {
         onAdd() {
-            this.value.push({ cmd_name: '' })
+            this.value.push({
+                cmd_name: '',
+                cmd_params: {},
+                succeeded_commands: [],
+                failed_commands: [],
+            })
         },
         onOpenDlg(cmd) {
             this.getEditorRefs().setCommandDlg.open(cmd)

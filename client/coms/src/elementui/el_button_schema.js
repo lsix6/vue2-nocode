@@ -55,69 +55,6 @@ export default {
                         'ui:showIndexNumber': true,
                         'ui:widget': 'SetCommands',
                         items: {
-                            type: 'object',
-                            title: 'command',
-                            properties: {
-                                cmd_name: {
-                                    type: 'string',
-                                    title: 'name',
-                                },
-                                cmd_params: {
-                                    type: 'object',
-                                    title: 'params',
-                                    properties: {
-                                        path: {
-                                            type: 'string',
-                                            title: 'path',
-                                        },
-                                        route_params: {
-                                            type: 'array',
-                                            title: 'route params',
-                                            items: {
-                                                type: 'object',
-                                                properties: {
-                                                    params_source: {
-                                                        type: 'string',
-                                                        title: 'params source',
-                                                    },
-                                                    params_fields: {
-                                                        type: 'array',
-                                                        title: 'params fields',
-                                                        items: {
-                                                            type: 'string'
-                                                        },
-                                                    },
-                                                },
-                                            },
-                                        },
-                                        com_ref: {
-                                            type: 'string',
-                                            title: 'ref',
-                                        },
-                                        com_method_name: {
-                                            type: 'string',
-                                            title: 'method name',
-                                        },
-                                        commands: {
-                                            type: 'array',
-                                            title: 'commands',
-                                            items: {
-                                                type: 'object',
-                                                properties: {
-                                                    cmd_name: {
-                                                        type: 'string',
-                                                        title: 'cmd name',
-                                                    },
-                                                    cmd_delay: {
-                                                        type: 'number',
-                                                        title: 'delay',
-                                                    },
-                                                },
-                                            },
-                                        },
-                                    },
-                                },
-                            },
                         },
                     },
                 },

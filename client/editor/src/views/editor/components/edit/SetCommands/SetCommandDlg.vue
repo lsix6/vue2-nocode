@@ -3,22 +3,25 @@
         <div v-if="dialogVisible" class="set-command-dlg-frame">
             <el-form size="small" label-width="80px" :model="cmd" onsubmit="return false">
                 <el-form-item label="name">
-                    <el-select v-model="cmd.cmd_name">
+                    <el-select v-model="cmd.cmd_name" filterable allow-create clearable>
                         <el-option v-for="name in cmd_names" :key="name" :label="name" :value="name" />
                     </el-select>
                 </el-form-item>
+                <SetCommand_request_api v-if="cmd.cmd_name === 'request_api'" v-model="cmd.cmd_params" />
             </el-form>
         </div>
     </el-dialog>
 </template>
 
 <script>
+import SetCommand_request_api from './SetCommand_request_api.vue'
 
 export default {
     install(Vue) {
         Vue.component('SetCommand', this)
     },
     components: {
+        SetCommand_request_api,
     },
     props: {
     },
