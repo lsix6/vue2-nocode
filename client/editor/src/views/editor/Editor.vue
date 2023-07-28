@@ -84,6 +84,8 @@ import SetEnumMap from './components/edit/SetEnumMap.vue';
 window.Vue.component('SetEnumMap', SetEnumMap)
 import SetDataSources from './components/edit/SetDataSources.vue';
 window.Vue.component('SetDataSources', SetDataSources)
+import SetCommands from './components/edit/SetCommands/SetCommands.vue'
+window.Vue.component('SetCommands', SetCommands)
 
 deepFreeze(configTools);
 

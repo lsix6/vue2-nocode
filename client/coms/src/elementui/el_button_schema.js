@@ -53,6 +53,7 @@ export default {
                         title: 'commands',
                         minItems: 0,
                         'ui:showIndexNumber': true,
+                        'ui:widget': 'SetCommands',
                         items: {
                             type: 'object',
                             title: 'command',
