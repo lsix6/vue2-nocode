@@ -55,6 +55,7 @@
         <SelectFieldDlg ref="selectFieldDlg" />
         <SetDataSourceDlg ref="setDataSourceDlg" />
         <SelectParamsDlg ref="selectParamsDlg" />
+        <SetCommandDlg ref="setCommandDlg" />
     </div>
 </template>
 
@@ -67,6 +68,7 @@ import ComPreviewDlg from './ComPreviewDlg.vue'
 import SelectFieldDlg from './components/edit/SelectFieldDlg.vue'
 import SetDataSourceDlg from './components/edit/SetDataSourceDlg.vue'
 import SelectParamsDlg from './components/edit/SelectParamsDlg.vue'
+import SetCommandDlg from './components/edit/SetCommands/SetCommandDlg.vue'
 
 import { deepFreeze } from './common/utils';
 import configTools, { getCom } from './config/tools';
@@ -99,6 +101,7 @@ export default {
         SelectFieldDlg,
         SetDataSourceDlg,
         SelectParamsDlg,
+        SetCommandDlg,
     },
     inject: [
         'notifyPreview',
@@ -113,7 +116,8 @@ export default {
             openSelectFieldDlg: (_selectedId, _onSelect) => this.$refs.selectFieldDlg.open(_selectedId, _onSelect),
             openSetDataSourceDlg: (ds) => this.$refs.setDataSourceDlg.open(ds),
             openSelectParamsDlg: (_selectedId, _onSelect) => this.$refs.selectParamsDlg.open(_selectedId, _onSelect),
-            getEditorItem: (comName) => this.getEditorItem(comName)
+            getEditorItem: (comName) => this.getEditorItem(comName),
+            getEditorRefs: () => this.$refs,
         };
     },
     props: {

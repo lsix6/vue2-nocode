@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="command-item" v-for="(item, i) in value" :key="i">
-            <el-button size="mini" class="btn-open" @click="onOpenDlg(i)">...</el-button>
-            <el-input size="mini" v-model="item.name" disabled @input="onInput" />
+            <el-button size="mini" class="btn-open" @click="onOpenDlg(item)">...</el-button>
+            <el-input size="mini" v-model="item.cmd_name" disabled />
             <el-button size="mini" class="btn-remove" @click="onRemove(i)">-</el-button>
         </div>
         <el-button size="mini" @click="onAdd">+</el-button>
@@ -16,7 +16,7 @@ export default {
         Vue.component('SetCommands', this)
     },
     inject: [
-        'openSetDataSourceDlg',
+        'getEditorRefs',
     ],
     props: {
         value: {
@@ -34,17 +34,14 @@ export default {
     },
     methods: {
         onAdd() {
-            this.value.push({ name: '' })
+            this.value.push({ cmd_name: '' })
         },
-        onOpenDlg(i) {
-            this.openSetDataSourceDlg(this.value[i])
+        onOpenDlg(cmd) {
+            this.getEditorRefs().setCommandDlg.open(cmd)
         },
         onRemove(i) {
             console.log('[SetCommands] onRemove', i)
             this.value.splice(i, 1)
-        },
-        onInput() {
-            console.log('[SetCommands] onInput', this.value)
         },
     },
 }
