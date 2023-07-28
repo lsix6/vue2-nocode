@@ -1,27 +1,38 @@
 <template>
     <el-dialog title="设置命令" :visible.sync="dialogVisible" @close="close">
         <div v-if="dialogVisible" class="set-command-dlg-frame">
-            <el-form size="small" label-width="80px" :model="cmd" onsubmit="return false">
+            <el-form size="small" label-width="180px" :model="cmd" onsubmit="return false">
                 <el-form-item label="name">
                     <el-select v-model="cmd.cmd_name" filterable allow-create clearable>
                         <el-option v-for="name in cmd_names" :key="name" :label="name" :value="name" />
                     </el-select>
                 </el-form-item>
                 <SetCommand_request_api v-if="cmd.cmd_name === 'request_api'" v-model="cmd.cmd_params" />
+                <SetCommand_message v-if="cmd.cmd_name === 'message'" v-model="cmd.cmd_params" />
+                <el-form-item label="succeeded commands">
+                    <SetCommands v-model="cmd.succeeded_commands" />
+                </el-form-item>
+                <el-form-item label="failed commands">
+                    <SetCommands v-model="cmd.failed_commands" />
+                </el-form-item>
             </el-form>
         </div>
     </el-dialog>
 </template>
 
 <script>
+import SetCommands from './SetCommands.vue'
 import SetCommand_request_api from './SetCommand_request_api.vue'
+import SetCommand_message from './SetCommand_message.vue'
 
 export default {
     install(Vue) {
         Vue.component('SetCommand', this)
     },
     components: {
+        SetCommands,
         SetCommand_request_api,
+        SetCommand_message,
     },
     props: {
     },
