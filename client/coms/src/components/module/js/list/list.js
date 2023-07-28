@@ -86,48 +86,53 @@ export const createList = (moduleName, moduleFields) => {
                     param_desc: '_id',
                 }
             ],
-            commands: [
-                {
-                    cmd_name: 'message',
-                    cmd_params: {
-                        cmd_msg_type: 'success',
-                        cmd_msg_params: {
-                            options: '删除成功',
-                        },
-                    }
-                },
-                {
-                    cmd_name: 'call_com_method',
-                    cmd_params: {
-                        com_ref: 'list_page_data',
-                        com_method_name: 'refresh',
-                        com_method_params: [
+        },
+        succeeded_commands: [
+            {
+                cmd_name: 'message',
+                cmd_params: {
+                    msg: {
+                        type: 'success',
+                        msg_params: [
                             {
-                                ds_name: 'listPageData',
+                                param_name: 'options',
+                                param_source: 'text',
+                                param_desc: '删除成功',
                             }
                         ],
-                    }
-                },
-            ],
-            exception_commands: [
-                {
-                    cmd_name: 'message',
-                    cmd_params: {
-                        cmd_msg_type: 'error',
-                        cmd_msg_params: {
-                            options_params: [
-                                {
-                                    params_source: 'cmd_data',
-                                    params_fields: [
-                                        'message'
-                                    ]
-                                }
-                            ],
-                        },
-                    }
-                },
-            ],
-        },
+                    },
+                }
+            },
+            {
+                cmd_name: 'call_com_method',
+                cmd_params: {
+                    com_ref: 'list_page_data',
+                    com_method_name: 'refresh',
+                    com_method_params: [
+                        {
+                            ds_name: 'listPageData',
+                        }
+                    ],
+                }
+            },
+        ],
+        failed_commands: [
+            {
+                cmd_name: 'message',
+                cmd_params: {
+                    msg: {
+                        type: 'error',
+                        msg_params: [
+                            {
+                                param_name: 'options',
+                                param_source: 'cmd_data',
+                                param_desc: 'message',
+                            }
+                        ],
+                    },
+                }
+            },
+        ],
     }
 
     const btnRemove = {

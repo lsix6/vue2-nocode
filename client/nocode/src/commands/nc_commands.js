@@ -50,15 +50,15 @@ export const execute_commands = async (com, commands, cmd_data) => {
             const cmdRet = await execute_command(com, command, cmd_data).then(async result => {
                 console.log('[nc_commands] execute_command.then, result', result)
                 //
-                if (result !== false && command.cmd_params && command.cmd_params.commands) {
-                    return await execute_commands(com, command.cmd_params.commands, {...cmd_data, ...result})
+                if (result !== false && command.cmd_params && command.succeeded_commands) {
+                    return await execute_commands(com, command.succeeded_commands, {...cmd_data, ...result})
                 }
                 return result
             }).catch(async err => {
                 console.log('[nc_commands] execute_command.catch, err: ', err)
                 //
-                if (command.cmd_params && command.cmd_params.exception_commands) {
-                    return await execute_commands(com, command.cmd_params.exception_commands, {...cmd_data, ...err})
+                if (command.cmd_params && command.failed_commands) {
+                    return await execute_commands(com, command.failed_commands, {...cmd_data, ...err})
                 }
             })
             //

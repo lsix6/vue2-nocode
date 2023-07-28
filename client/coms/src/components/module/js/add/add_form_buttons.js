@@ -4,12 +4,12 @@ const cmdCancel = {
     cmd_params: {
         com_ref: 'formAdd',
         com_method_name: 'cancelFormChange',
-        commands: [
-            {
-                cmd_name: 'go_back',
-            }
-        ]
     },
+    succeeded_commands: [
+        {
+            cmd_name: 'go_back',
+        }
+    ],
 }
 
 const btnCancel = {
@@ -43,13 +43,13 @@ const btnSave = {
                     cmd_params: {
                         com_ref: 'formAdd',
                         com_method_name: 'commitData',
-                        commands: [
-                            {
-                                cmd_name: 'go_back',
-                                cmd_delay: 500,
-                            }
-                        ]
-                    }
+                    },
+                    succeeded_commands: [
+                        {
+                            cmd_name: 'go_back',
+                            cmd_delay: 500,
+                        }
+                    ]
                 },
             ]
         }
