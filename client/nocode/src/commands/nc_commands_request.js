@@ -7,7 +7,7 @@ const commands = {
     'request_api': async function (com, command) {
         //
         return new Promise((resolve, reject) => {
-            const paramsDef = params_desc_to_def(command.cmd_params.request_params)
+            const paramsDef = params_desc_to_def(command.cmd_params?.api?.request_params)
             const requestParams = get_params(com, paramsDef)
             request_api(command.cmd_params.api, requestParams).then(data => {
                 console.log(`[nc_commands_request] request_api('${command.cmd_params.api}') return`, data)

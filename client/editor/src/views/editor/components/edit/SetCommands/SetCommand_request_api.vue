@@ -9,7 +9,7 @@
             </el-select>
         </el-form-item>
         <el-form-item label="params">
-            <SetParams v-model="value.request_params" />
+            <SetParams v-model="value.api.request_params" />
         </el-form-item>
     </div>
 </template>
@@ -43,8 +43,8 @@ export default {
             this.$set(this.value, 'api', {
                 url: '',
                 method: this.method_names[0],
+                request_params: [],
             })
-            this.$set(this.value, 'request_params', [])
         }
     },
     methods: {

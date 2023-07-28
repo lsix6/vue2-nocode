@@ -78,14 +78,14 @@ export const createList = (moduleName, moduleFields) => {
             api: {
                 url: `${moduleName}/delete`,
                 method: 'DELETE',
+                request_params: [
+                    {
+                        param_name: '_id',
+                        param_source: 'com_data',
+                        param_desc: '_id',
+                    }
+                ],
             },
-            request_params: [
-                {
-                    param_name: '_id',
-                    param_source: 'com_data',
-                    param_desc: '_id',
-                }
-            ],
         },
         succeeded_commands: [
             {
