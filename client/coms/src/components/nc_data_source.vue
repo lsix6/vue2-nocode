@@ -56,6 +56,9 @@ export default {
             console.log('[nc_data_source] finalComData:', comData)
             return comData
         },
+        callableMethods() {
+            return ['refreshAll', 'refresh']
+        },
     },
     watch: {
         data_sources: {
