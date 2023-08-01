@@ -107,13 +107,17 @@ export const createList = (moduleName, moduleFields) => {
             {
                 cmd_name: 'call_com_method',
                 cmd_params: {
-                    com_ref: 'list_page_data',
-                    com_method_name: 'refresh',
-                    com_method_params: [
-                        {
-                            ds_name: 'listPageData',
-                        }
-                    ],
+                    call: {
+                        com_ref: 'list_page_data',
+                        com_method_name: 'refresh',
+                        com_method_params: [
+                            {
+                                param_name: 'ds_name',
+                                param_source: 'text',
+                                param_desc: 'listPageData'
+                            }
+                        ],
+                    },
                 }
             },
         ],
@@ -231,13 +235,17 @@ export const createList = (moduleName, moduleFields) => {
                     {
                         cmd_name: 'call_com_method',
                         cmd_params: {
-                            com_ref: 'list_page_data',
-                            com_method_name: 'refresh',
-                            com_method_params: [
-                                {
-                                    ds_name: 'listPageData',
-                                }
-                            ],
+                            call: {
+                                com_ref: 'list_page_data',
+                                com_method_name: 'refresh',
+                                com_method_params: [
+                                    {
+                                        param_name: 'ds_name',
+                                        param_source: 'text',
+                                        param_desc: 'listPageData'
+                                    }
+                                ],
+                            },
                         },
                     }
                 ],

@@ -2,8 +2,10 @@
 const cmdCancel = {
     cmd_name: 'call_com_method',
     cmd_params: {
-        com_ref: 'formEdit',
-        com_method_name: 'cancelFormChange',
+        call: {
+            com_ref: 'formEdit',
+            com_method_name: 'cancelFormChange',
+        },
     },
     succeeded_commands: [
         {
@@ -41,8 +43,10 @@ const btnSave = {
                 {
                     cmd_name: 'call_com_method',
                     cmd_params: {
-                        com_ref: 'formEdit',
-                        com_method_name: 'commitData',
+                        call: {
+                            com_ref: 'formEdit',
+                            com_method_name: 'commitData',
+                        },
                     },
                     succeeded_commands: [
                         {
