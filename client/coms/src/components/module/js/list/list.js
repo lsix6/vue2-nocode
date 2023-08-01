@@ -56,15 +56,16 @@ export const createList = (moduleName, moduleFields) => {
                     {
                         cmd_name: 'push_route',
                         cmd_params: {
-                            path: 'edit',
-                            route_params: [
-                                {
-                                    params_source: 'com_data',
-                                    params_fields: [
-                                        '_id',
-                                    ]
-                                }
-                            ],
+                            route: {
+                                path: 'edit',
+                                route_params: [
+                                    {
+                                        param_name: '_id',
+                                        param_source: 'com_data',
+                                        param_desc: '_id',
+                                    }
+                                ],
+                            },
                         }
                     }
                 ]

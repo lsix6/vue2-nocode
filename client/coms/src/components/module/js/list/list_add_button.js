@@ -12,7 +12,9 @@ export const list_btnAdd = {
                 {
                     cmd_name: 'push_route',
                     cmd_params: {
-                        path: 'add',
+                        route: {
+                            path: 'add',
+                        },
                     }
                 },
             ]
