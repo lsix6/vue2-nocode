@@ -1,12 +1,12 @@
 <template>
     <div v-if="value.call">
         <el-form-item label="ref">
-            <el-select clearable v-model="value.call.com_ref">
+            <el-select v-model="value.call.com_ref" filterable allow-create clearable>
                 <el-option v-for="refName in comRefs" :key="refName" :value="refName" />
             </el-select>
         </el-form-item>
         <el-form-item label="method">
-            <el-select clearable v-model="value.call.com_method_name">
+            <el-select v-model="value.call.com_method_name" filterable allow-create clearable>
                 <el-option v-for="methodName in comMethods" :key="methodName" :value="methodName" />
             </el-select>
         </el-form-item>
