@@ -113,7 +113,6 @@ export default {
             },
             getCurEditorItem: () => this.curEditorItem,
             getCurEditorItemWrapper: () => this.curEditorItemWrapper,
-            openSelectParamsDlg: (_selectedId, _onSelect) => this.$refs.selectParamsDlg.open(_selectedId, _onSelect),
             getEditorItem: (comName) => this.getEditorItem(comName),
             getEditorRefs: () => this.$refs,
         };

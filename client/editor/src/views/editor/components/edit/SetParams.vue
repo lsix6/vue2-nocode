@@ -40,7 +40,7 @@ export default {
         Vue.component('SetParams', this)
     },
     inject: [
-        'openSelectParamsDlg',
+        'getEditorRefs',
     ],
     props: {
         value: {
@@ -63,12 +63,14 @@ export default {
     },
     methods: {
         onOpenSelect(row) {
-            this.openSelectParamsDlg(row.param_source + '.' + row.param_desc, (v) => {
-                const arr = v.split('.')
-                row.param_source = arr[0]
-                row.param_desc = arr.slice(1).join('.')
-                console.log('[SetParams] onOpenSelect', row)
-            })
+            this.getEditorRefs().selectParamsDlg.open(
+                row.param_source + '.' + row.param_desc,
+                (v) => {
+                    const arr = v.split('.')
+                    row.param_source = arr[0]
+                    row.param_desc = arr.slice(1).join('.')
+                    console.log('[SetParams] onOpenSelect', row)
+                })
         },
         onAdd() {
             this.value.push({
