@@ -21,9 +21,6 @@ export default {
     components: {
         SelectField,
     },
-    inject: [
-        'openSelectFieldDlg',
-    ],
     props: {
         value: {
             type: Array,

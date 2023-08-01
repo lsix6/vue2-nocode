@@ -12,7 +12,7 @@ export default {
         Vue.component('SelectField', this)
     },
     inject: [
-        'openSelectFieldDlg',
+        'getEditorRefs',
     ],
     props: {
         value: {
@@ -32,7 +32,7 @@ export default {
             this.$emit('input', v)
         },
         onBtnClick() {
-            this.openSelectFieldDlg(this.value, (id) => {
+            this.getEditorRefs().selectFieldDlg.open(this.value, (id) => {
                 this.onInput(id)
             })
         },
