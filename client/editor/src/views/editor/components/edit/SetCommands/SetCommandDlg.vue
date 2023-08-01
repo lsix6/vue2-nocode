@@ -8,7 +8,8 @@
                     </el-select>
                 </el-form-item>
                 <SetCommand_request_api v-if="cmd.cmd_name === 'request_api'" v-model="cmd.cmd_params" />
-                <SetCommand_message v-if="cmd.cmd_name === 'message'" v-model="cmd.cmd_params" />
+                <SetCommand_message v-else-if="cmd.cmd_name === 'message'" v-model="cmd.cmd_params" />
+                <SetCommand_push_route v-else-if="cmd.cmd_name === 'push_route'" v-model="cmd.cmd_params" />
                 <el-form-item label="succeeded commands">
                     <SetCommands v-model="cmd.succeeded_commands" />
                 </el-form-item>
@@ -24,6 +25,7 @@
 import SetCommands from './SetCommands.vue'
 import SetCommand_request_api from './SetCommand_request_api.vue'
 import SetCommand_message from './SetCommand_message.vue'
+import SetCommand_push_route from './SetCommand_push_route.vue'
 
 export default {
     install(Vue) {
@@ -33,6 +35,7 @@ export default {
         SetCommands,
         SetCommand_request_api,
         SetCommand_message,
+        SetCommand_push_route,
     },
     props: {
     },
