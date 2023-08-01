@@ -84,8 +84,6 @@ import SetBinds from './components/edit/SetBinds.vue'
 window.Vue.component('SetBinds', SetBinds)
 import SetEnumMap from './components/edit/SetEnumMap.vue';
 window.Vue.component('SetEnumMap', SetEnumMap)
-import SetDataSources from './components/edit/SetDataSources.vue';
-window.Vue.component('SetDataSources', SetDataSources)
 import SetDataSource from './components/edit/SetDataSource.vue';
 window.Vue.component('SetDataSource', SetDataSource)
 import SetCommands from './components/edit/SetCommands/SetCommands.vue'
@@ -116,7 +114,6 @@ export default {
             getCurEditorItem: () => this.curEditorItem,
             getCurEditorItemWrapper: () => this.curEditorItemWrapper,
             openSelectFieldDlg: (_selectedId, _onSelect) => this.$refs.selectFieldDlg.open(_selectedId, _onSelect),
-            openSetDataSourceDlg: (ds) => this.$refs.setDataSourceDlg.open(ds),
             openSelectParamsDlg: (_selectedId, _onSelect) => this.$refs.selectParamsDlg.open(_selectedId, _onSelect),
             getEditorItem: (comName) => this.getEditorItem(comName),
             getEditorRefs: () => this.$refs,
