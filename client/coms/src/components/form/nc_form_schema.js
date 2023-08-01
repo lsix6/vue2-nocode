@@ -65,42 +65,8 @@ export default {
                         title: 'commands',
                         minItems: 0,
                         'ui:showIndexNumber': true,
+                        'ui:widget': 'SetCommands',
                         items: {
-                            type: 'object',
-                            title: 'command',
-                            properties: {
-                                cmd_name: {
-                                    type: 'string',
-                                    title: 'name',
-                                },
-                                cmd_params: {
-                                    type: 'object',
-                                    title: 'params',
-                                    properties: {
-                                        com_ref: {
-                                            type: 'string',
-                                            title: 'ref',
-                                        },
-                                        com_method_name: {
-                                            type: 'string',
-                                            title: 'method name',
-                                        },
-                                        com_method_params: {
-                                            type: 'array',
-                                            title: 'method params',
-                                            items: {
-                                                type: 'object',
-                                                properties: {
-                                                    ds_name: {
-                                                        type: 'string',
-                                                        title: 'ds name',
-                                                    },
-                                                },
-                                            },
-                                        },
-                                    },
-                                },
-                            },
                         },
                     },
                 },
