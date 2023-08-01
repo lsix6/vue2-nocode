@@ -86,6 +86,8 @@ import SetEnumMap from './components/edit/SetEnumMap.vue';
 window.Vue.component('SetEnumMap', SetEnumMap)
 import SetDataSources from './components/edit/SetDataSources.vue';
 window.Vue.component('SetDataSources', SetDataSources)
+import SetDataSource from './components/edit/SetDataSource.vue';
+window.Vue.component('SetDataSource', SetDataSource)
 import SetCommands from './components/edit/SetCommands/SetCommands.vue'
 window.Vue.component('SetCommands', SetCommands)
 
@@ -147,6 +149,7 @@ export default {
                 // console.log('watch componentList')
                 const s = JSON.stringify(this.componentList)
                 if (this.preComponentList !== s) {
+                    // console.log('watch componentList', this.preComponentList, s)
                     this.preComponentList = s
                     //
                     this.$nextTick(() => {

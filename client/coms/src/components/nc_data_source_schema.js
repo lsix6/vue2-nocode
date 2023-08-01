@@ -30,8 +30,28 @@ export default {
                     type: 'array',
                     minItems: 0,
                     'ui:showIndexNumber': true,
-                    'ui:widget': 'SetDataSources',
                     items: {
+                        type: 'object',
+                        'ui:field': 'SetDataSource',
+                        properties: {
+                            name: {
+                                type: 'string',
+                            },
+                            type: {
+                                type: 'string',
+                            },
+                            api: {
+                                type: 'object',
+                                properties: {
+                                    url: {
+                                        type: 'string',
+                                    },
+                                    fetch_params: {
+                                        type: 'array',
+                                    },
+                                },
+                            },
+                        },
                     }
                 },
             }
