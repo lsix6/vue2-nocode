@@ -56,7 +56,7 @@ function genBaseVal(schema) {
                 type: 'array',
                 title: 'items',
                 minItems: 0,
-                'ui:widget': 'SetBinds',
+                'ui:field': 'SetBinds',
                 items: {
                 },
             }

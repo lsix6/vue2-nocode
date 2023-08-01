@@ -12,6 +12,11 @@
 </template>
 
 <script>
+import { fieldProps } from '@lljj/vue-json-schema-form'
+import {
+    getPathVal, setPathVal
+} from '@lljj/vjsf-utils/vueUtils';
+
 import SelectField from './SelectField.vue';
 
 export default {
@@ -22,26 +27,30 @@ export default {
         SelectField,
     },
     props: {
-        value: {
-            type: Array,
-            default: () => [],
-        },
-        prop_names: {
-            type: Array,
-            default: () => [],
-        },
+        ...fieldProps,
     },
     data() {
         return {
         }
     },
     computed: {
+        value: {
+            get() {
+                return getPathVal(this.rootFormData, this.curNodePath);
+            },
+            set(v) {
+                setPathVal(this.rootFormData, this.curNodePath, v);
+            }
+        },
+        prop_names() {
+            return this.schema['ui:prop_names'] || []
+        },
         propList() {
             return [...this.prop_names, '-']
         },
     },
     mounted() {
-        console.log('[SetBinds] mounted', this.prop_names)
+        console.log('[SetBinds] mounted', this)
         //
         if (this.value.length === 0) {
             this.prop_names.forEach(prop => {
