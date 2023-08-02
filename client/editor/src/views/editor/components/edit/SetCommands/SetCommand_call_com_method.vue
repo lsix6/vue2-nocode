@@ -7,24 +7,31 @@
         </el-form-item>
         <el-form-item label="method">
             <el-select v-model="value.call.com_method_name" filterable allow-create clearable>
-                <el-option v-for="methodName in comMethods" :key="methodName" :value="methodName" />
+                <el-option v-for="(method, methodName) in comMethods" :key="methodName" :value="methodName" />
             </el-select>
         </el-form-item>
         <el-form-item label="params">
-            <SetParams v-model="value.call.com_method_params" />
+            <VueJsonFrom v-if="!!paramsSchema" v-model="value.call.com_method_params" class="" :schema="paramsSchema"
+                :form-props="{
+                    labelPosition: 'right',
+                    labelWidth: '110px',
+                    size: 'small',
+                }" :form-footer="{ show: false }">
+            </VueJsonFrom>
         </el-form-item>
     </div>
 </template>
 
 <script>
-import SetParams from '../SetParams.vue';
+import VueJsonFrom from '@lljj/vue-json-schema-form';
 
 export default {
     components: {
-        SetParams,
+        VueJsonFrom,
     },
     inject: [
         'getCurEditorItemWrapper',
+        'getEditorItem',
     ],
     props: {
         value: {
@@ -41,15 +48,34 @@ export default {
             return Object.keys(this.getCurEditorItemWrapper().com_root.refsMgr.get_com_refs())
         },
         comMethods() {
-            const arr = []
+            const arr = {}
             //
             const com = this.getCurEditorItemWrapper().com_root.refsMgr.get_com_ref(this.value.call.com_ref)
-            console.log('[SetCommand_call_com_method] comMethods', com)
             if (com) {
-                arr.push(...com.callableMethods)
+                const comName = com.$options._componentTag
+                const itemSchema = this.getEditorItem(comName)
+                const methods = itemSchema.componentPack.comSchema.com_methods
+                console.log('[SetCommand_call_com_method] comMethods', comName, methods, com)
+                if (methods) {
+                    methods.forEach(method => {
+                        arr[method.method_name] = method
+                    })
+                    // arr.push(...methods)
+                }
             }
             //
             return arr
+        },
+        paramsSchema() {
+            let ret = null
+            //
+            const methodName = this.value?.call?.com_method_name
+            if (methodName) {
+                ret = this.comMethods[methodName].params_schema
+            }
+            // console.log('[SetCommand_call_com_method] paramsSchema', ret)
+            //
+            return ret
         },
     },
     mounted() {

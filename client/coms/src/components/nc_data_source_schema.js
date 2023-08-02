@@ -63,5 +63,22 @@ export default {
         com_slots: {
             default: [],
         },
+        com_methods: [
+            {
+                method_name: 'refresh',
+                params_schema: {
+                    type: 'object',
+                    properties: {
+                        ds_name: {
+                            type: 'string',
+                            title: 'ds name',
+                        },
+                    },
+                },
+            },
+            {
+                method_name: 'refreshAll',
+            },
+        ],
     },
 };
