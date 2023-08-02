@@ -30,11 +30,6 @@ export default {
             },
         }
     },
-    computed: {
-        dataMethods() {
-            return ['getData']
-        },
-    },
     watch: {
         page_data: {
             handler() {

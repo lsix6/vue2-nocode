@@ -17,6 +17,7 @@ export default {
     },
     inject: [
         'getCurEditorItemWrapper',
+        'getEditorItem',
     ],
     props: {
         value: {
@@ -87,11 +88,16 @@ export default {
                 for (let k in comRefs) {
                     const refCom = comRefs[k]
                     console.log('ref com', refCom)
+                    const comName = refCom.$options._componentTag
+                    const itemSchema = this.getEditorItem(comName)
+                    const methods = itemSchema.componentPack.comSchema.data_methods
+                    console.log('[SelectParamsDlg] methods', comName, methods)
+                    //
                     const methodsData = {}
-                    if (refCom && refCom.dataMethods) {
-                        refCom.dataMethods.forEach(method => {
+                    if (methods) {
+                        for (let method in methods) {
                             methodsData[method + '()'] = refCom[method]()
-                        })
+                        }
                     }
                     com_ref[k] = methodsData
                 }

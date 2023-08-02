@@ -97,5 +97,8 @@ export default {
         com_support: {
             binds: true,
         },
+        data_methods: {
+            getData: {},
+        }
     },
 };

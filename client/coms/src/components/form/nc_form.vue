@@ -81,9 +81,6 @@ export default {
             filterChildrenFields(this.$parent.com_slots, fields, binds)
             return fields
         },
-        dataMethods() {
-            return ['getData']
-        },
     },
     watch: {
         formData: {

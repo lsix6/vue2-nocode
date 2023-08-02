@@ -150,5 +150,8 @@ export default {
         com_slots: {
             empty: [],
         },
+        data_methods: {
+            getSort: {},
+        }
     },
 };

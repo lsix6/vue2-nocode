@@ -82,5 +82,8 @@ export default {
         com_slots: {
             default: [],
         },
+        data_methods: {
+            getData: {},
+        }
     },
 };
