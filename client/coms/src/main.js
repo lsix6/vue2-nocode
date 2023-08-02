@@ -39,6 +39,8 @@ import nc_select_color from './components/edit/nc_select_color.vue'
 import nc_select_color_schema from './components/edit/nc_select_color_schema.js'
 import nc_radio_group from './components/edit/nc_radio_group.vue'
 import nc_radio_group_schema from './components/edit/nc_radio_group_schema.js'
+import test_bg from './components/test/test_bg.vue'
+import test_bg_schema from './components/test/test_bg_schema.js'
 
 import el_input_schema from './elementui/el_input_schema.js'
 import el_input_number_schema from './elementui/el_input_number_schema.js'
@@ -123,6 +125,10 @@ const registerComponents = (Vue) => {
   comsManager.register(
     nc_radio_group,
     nc_radio_group_schema
+  )
+  comsManager.register(
+    test_bg,
+    test_bg_schema
   )
   //
   comsManager.register(
