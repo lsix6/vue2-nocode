@@ -8,10 +8,13 @@
                 <img class="img" :src="img3" />
             </div>
         </div>
+        <img class="img" :src="baseUrl + 'static/img/test.png'" />
     </div>
 </template>
 
 <script>
+
+console.log('process.env: ', process.env)
 
 const bg1 = require('../../assets/img/bgLeft.png')
 import bg2 from '../../assets/img/loginLogo.png'
@@ -24,6 +27,9 @@ export default {
         }
     },
     computed: {
+        baseUrl() {
+            return process.env.BASE_URL
+        },
         img3() {
             const img = (this.imgOn ? bg1 : bg2)
             return img
