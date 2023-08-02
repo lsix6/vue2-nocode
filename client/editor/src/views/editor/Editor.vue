@@ -242,7 +242,7 @@ export default {
             //
             const config = this.formConfig
             if ((config.type === 'module' || config.type === 'page') && config.path) {
-                const url = 'http://localhost:9000/preview/' + config.path + (config.type === 'module' ? '/list' : '')
+                const url = location.origin + '/editor/preview/' + config.path + (config.type === 'module' ? '/list' : '')
                 this.$emit('preview', url)
             } else {
                 this.$refs.comPreviewDlg.open(this.com_id)

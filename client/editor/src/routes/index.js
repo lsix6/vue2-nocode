@@ -1,11 +1,11 @@
 
 const routes = [
     {
-        path: '/editor',
+        path: '/editor/edit',
         component: () => import('@/views/editor/ComsEditor.vue')
     },
     {
-        path: '/preview',
+        path: '/editor/preview',
         component: () => import('@/views/preview/Preview.vue'),
         children: [
             {
@@ -13,7 +13,7 @@ const routes = [
             }
         ],
     },
-    { path: '*', redirect: '/editor' }
+    { path: '*', redirect: '/editor/edit' }
 ]
 
 export default routes

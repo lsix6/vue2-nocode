@@ -62,7 +62,7 @@ export default {
             //
             const pagesManager = window.nocode.pagesManager
             //
-            pagesManager.set_base_path('/preview/')
+            pagesManager.set_base_path('/editor/preview/')
             //
             const coms = custComsMgr.loadComsList()
             coms.forEach(com => {
@@ -92,7 +92,7 @@ export default {
                     if (page.menu && page.menu.label) {
                         this.menus.push({
                             path: page.path,
-                            index: '/preview/' + page.path + (isModulePage ? '/list' : ''),
+                            index: pagesManager.get_base_path() + page.path + (isModulePage ? '/list' : ''),
                             label: page.menu.label,
                         })
                     }
