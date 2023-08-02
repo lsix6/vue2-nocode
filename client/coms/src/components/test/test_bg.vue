@@ -4,23 +4,27 @@
         <div class="img img2" />
         <div>
             <el-switch v-model="imgOn" />
-            <img class="img" :src="img3" />
+            <div>
+                <img class="img" :src="img3" />
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+
+const bg1 = require('../../assets/img/bgLeft.png')
+import bg2 from '../../assets/img/loginLogo.png'
+
 export default {
 
     data() {
         return {
-            imgOn: false,
+            imgOn: true,
         }
     },
     computed: {
         img3() {
-            const bg1 = require('../../assets/img/bg.jpg')
-            const bg2 = require('../../assets/img/bgLeft.png')
             const img = (this.imgOn ? bg1 : bg2)
             return img
         },
