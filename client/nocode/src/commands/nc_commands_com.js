@@ -7,8 +7,12 @@ const commands = {
         const callParams = command.cmd_params.call
         const ref = com.com_root.refsMgr.get_com_ref(callParams.com_ref)
         if (ref) {
-            const paramsDef = params_desc_to_def(callParams.com_method_params)
-            let methodParams = get_params(com, paramsDef, cmd_data)
+            let methodParams = callParams.com_method_params
+            if (methodParams.param_source) {
+                const paramsDef = params_desc_to_def(callParams.com_method_params)
+                methodParams = get_params(com, paramsDef, cmd_data)
+            }
+            //
             if (callParams && callParams.com_method_param_field) {
                 methodParams = methodParams[callParams.com_method_param_field]
             }
