@@ -10,5 +10,19 @@ module.exports = defineConfig({
   },
   devServer: {
     port: 8200,
+    proxy: {
+      '/nocode': {
+        target: 'http://localhost:8000',
+        logLevel: 'debug',
+        changeOrigin: true,
+        ws: true
+      },
+      '/editor': {
+        target: 'http://localhost:9000',
+        logLevel: 'debug',
+        changeOrigin: true,
+        ws: true
+      },
+    }
   },
 })
