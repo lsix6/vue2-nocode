@@ -18,7 +18,7 @@ const execute_command = async (com, command, cmd_data) => {
     //
     const cmd_func = nc_command_functions[command.cmd_name]
     if (cmd_func) {
-        if (command.cmd_delay !== undefined) {
+        if (command.cmd_delay > 0) {
             console.log('[nc_commands] execute_command, delay call:', command.cmd_name, command.cmd_delay)
             return new Promise(resolve => {
                 setTimeout(() => {
@@ -34,6 +34,7 @@ const execute_command = async (com, command, cmd_data) => {
 }
 
 export const execute_commands = async (com, commands, cmd_data) => {
+    // console.log('[nc_commands] execute_commands', commands)
     try {
         let ret = true
         for (let i = 0; i < commands.length; i++) {
