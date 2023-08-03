@@ -10,6 +10,7 @@ import _ from 'lodash'
 const fetch_data = window.nocode.fetch_data
 
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_data_source', this)
     },
@@ -25,14 +26,6 @@ export default {
         data_sources: {
             type: Array,
             default: () => []
-        },
-        com_root: {
-            type: Object,
-            default: null
-        },
-        com_data: {
-            type: Object,
-            default: null
         },
     },
     data() {

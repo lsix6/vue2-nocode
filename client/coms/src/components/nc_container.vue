@@ -7,6 +7,7 @@
 <script>
 
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_container', this)
     },
@@ -23,14 +24,6 @@ export default {
             type: String,
             default: 'column'
         },
-        com_root: {
-            type: Object,
-            default: null
-        },
-        com_data: {
-            type: Object,
-            default: null
-        },
     },
     computed: {
         style() {
@@ -45,7 +38,7 @@ export default {
         },
     },
     mounted() {
-        // console.log('[nc_container] mounted, com_data:', this.com_data, this.value)
+        // console.log('[nc_container] mounted, com_data:', this.com_data, this)
     },
 }
 </script>
