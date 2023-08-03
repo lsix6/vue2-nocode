@@ -12,36 +12,18 @@
 </template>
 
 <script>
-import { fieldProps } from '@lljj/vue-json-schema-form'
-import {
-    getPathVal, setPathVal
-} from '@lljj/vjsf-utils/vueUtils';
-
+import UiFieldBase from './UiFieldBase.vue';
 import SelectField from './SelectField.vue';
 
 export default {
+    extends: UiFieldBase,
     install(Vue) {
         Vue.component('SetBinds', this)
     },
     components: {
         SelectField,
     },
-    props: {
-        ...fieldProps,
-    },
-    data() {
-        return {
-        }
-    },
     computed: {
-        value: {
-            get() {
-                return getPathVal(this.rootFormData, this.curNodePath);
-            },
-            set(v) {
-                setPathVal(this.rootFormData, this.curNodePath, v);
-            }
-        },
         prop_names() {
             return this.schema['ui:prop_names'] || []
         },

@@ -6,37 +6,18 @@
 </template>
 
 <script>
-import { fieldProps } from '@lljj/vue-json-schema-form'
-import {
-    getPathVal, setPathVal
-} from '@lljj/vjsf-utils/vueUtils';
+import UiFieldBase from './UiFieldBase.vue'
 
 import _ from 'lodash'
 
 export default {
+    extends: UiFieldBase,
     install(Vue) {
         Vue.component('SetDataSource', this)
     },
     inject: [
         'getEditorRefs',
     ],
-    props: {
-        ...fieldProps,
-    },
-    data() {
-        return {
-        }
-    },
-    computed: {
-        value: {
-            get() {
-                return getPathVal(this.rootFormData, this.curNodePath);
-            },
-            set(v) {
-                setPathVal(this.rootFormData, this.curNodePath, v);
-            }
-        }
-    },
     mounted() {
         console.log('[SetDataSource] mounted', _.cloneDeep(this.value))
         //
