@@ -63,9 +63,8 @@ export default {
         com_slots: {
             default: [],
         },
-        com_methods: [
-            {
-                method_name: 'refresh',
+        com_methods: {
+            refresh: {
                 params_schema: {
                     type: 'object',
                     properties: {
@@ -76,9 +75,8 @@ export default {
                     },
                 },
             },
-            {
-                method_name: 'refreshAll',
+            refreshAll: {
             },
-        ],
+        },
     },
 };

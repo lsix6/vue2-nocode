@@ -48,23 +48,17 @@ export default {
             return Object.keys(this.getCurEditorItemWrapper().com_root.refsMgr.get_com_refs())
         },
         comMethods() {
-            const arr = {}
+            let methods = {}
             //
             const com = this.getCurEditorItemWrapper().com_root.refsMgr.get_com_ref(this.value.call.com_ref)
             if (com) {
                 const comName = com.$options._componentTag
                 const itemSchema = this.getEditorItem(comName)
-                const methods = itemSchema.componentPack.comSchema.com_methods
+                methods = itemSchema.componentPack.comSchema.com_methods || {}
                 console.log('[SetCommand_call_com_method] comMethods', comName, methods, com)
-                if (methods) {
-                    methods.forEach(method => {
-                        arr[method.method_name] = method
-                    })
-                    // arr.push(...methods)
-                }
             }
             //
-            return arr
+            return methods
         },
         paramsSchema() {
             let ret = null
