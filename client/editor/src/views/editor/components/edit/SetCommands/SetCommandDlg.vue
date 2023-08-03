@@ -2,13 +2,13 @@
     <el-dialog title="设置命令" :visible.sync="dialogVisible" @close="close">
         <div v-if="dialogVisible" class="set-command-dlg-frame">
             <el-form size="small" label-width="180px" :model="cmd" onsubmit="return false">
+                <el-form-item label="delay">
+                    <el-input-number v-model="cmd.cmd_delay" />
+                </el-form-item>
                 <el-form-item label="name">
                     <el-select v-model="cmd.cmd_name" filterable allow-create clearable>
                         <el-option v-for="name in cmd_names" :key="name" :label="name" :value="name" />
                     </el-select>
-                </el-form-item>
-                <el-form-item label="delay">
-                    <el-input-number v-model="cmd.cmd_delay" />
                 </el-form-item>
                 <SetCommand_request_api v-if="cmd.cmd_name === 'request_api'" v-model="cmd.cmd_params" />
                 <SetCommand_message v-else-if="cmd.cmd_name === 'message'" v-model="cmd.cmd_params" />
