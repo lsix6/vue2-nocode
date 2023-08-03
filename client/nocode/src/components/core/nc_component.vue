@@ -282,11 +282,15 @@ export default {
             // 注册组件里定义的事件
             let eventsMap = {}
             if (this.com_events && comRef) {
-                this.com_events.forEach(event => {
-                    const event_name = event.event_name
+                this.com_events.forEach(({ event_name }) => {
                     eventsMap[event_name] = (e) => {
-                        // console.log('[nc_component] event func', this, event, e)
-                        execute_commands(this, event.commands, e)
+                        // 在编辑器里，组件装载后 com_events 也可能会发生变化
+                        // 所以事件发生后要在 com_events 里获取最新的事件对象
+                        const evt = this.com_events.find(item => { return item.event_name === event_name })
+                        // console.log('[nc_component] event func', evt, e, this)
+                        if (evt) {
+                            execute_commands(this, evt.commands, e)
+                        }
                     }
                     //
                     if (comRef.$on) {
