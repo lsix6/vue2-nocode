@@ -15,14 +15,11 @@ const get_params = window.nocode.get_params
 const msg_box = window.nocode.msg_box
 
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_form', this)
     },
     props: {
-        com_root: {
-            type: Object,
-            default: null
-        },
         com_ref: {
             type: String,
             default: null
@@ -36,10 +33,6 @@ export default {
             default: () => null,
         },
         commit_data: {
-            type: Object,
-            default: null
-        },
-        com_data: {
             type: Object,
             default: null
         },

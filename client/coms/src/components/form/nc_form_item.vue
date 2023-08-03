@@ -12,21 +12,14 @@
 <script>
 
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_form_item', this)
     },
     props: {
-        com_root: {
-            type: Object,
-            default: null
-        },
         com_props: {
             type: Object,
             default: () => { }
-        },
-        com_data: {
-            type: Object,
-            default: null
         },
     },
     computed: {

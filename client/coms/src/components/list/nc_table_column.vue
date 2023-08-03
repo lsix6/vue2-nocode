@@ -10,6 +10,7 @@
 
 <script>
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_table_column', this)
     },
@@ -25,14 +26,6 @@ export default {
         ref_com_id: {
             type: String,
             default: '',
-        },
-        com_root: {
-            type: Object,
-            default: null
-        },
-        com_data: {
-            type: Object,
-            default: null
         },
     },
     computed: {

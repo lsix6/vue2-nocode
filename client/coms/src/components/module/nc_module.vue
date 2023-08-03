@@ -19,6 +19,7 @@ import nc_module_view from './nc_module_view.vue'
 import { preProcessModuleInfo } from './js/pages.js'
 
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_module', this)
     },
@@ -26,10 +27,6 @@ export default {
         nc_module_view,
     },
     props: {
-        com_root: {
-            type: Object,
-            default: null
-        },
         module_name: {
             type: String,
             default: '',

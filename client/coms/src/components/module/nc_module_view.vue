@@ -10,6 +10,7 @@ import nc_module_view_add from './nc_module_view_add.vue'
 import nc_module_view_edit from './nc_module_view_edit.vue'
 
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_module_view', this)
     },
@@ -19,10 +20,6 @@ export default {
         nc_module_view_edit,
     },
     props: {
-        com_root: {
-            type: Object,
-            default: null
-        },
         module_info: {
             type: Object,
             default: () => { },

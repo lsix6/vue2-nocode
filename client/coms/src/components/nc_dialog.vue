@@ -13,18 +13,11 @@
 <script>
 
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_dialog', this)
     },
     props: {
-        com_root: {
-            type: Object,
-            default: null
-        },
-        com_data: {
-            type: Object,
-            default: null
-        },
         dialog_props: {
             type: Object,
             default: () => { }

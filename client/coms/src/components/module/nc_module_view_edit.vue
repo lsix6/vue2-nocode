@@ -6,14 +6,11 @@
 import { createEditPage } from './js/edit/edit_page'
 
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_module_view_edit', this)
     },
     props: {
-        com_root: {
-            type: Object,
-            default: null
-        },
         module_info: {
             type: Object,
             default: () => { },

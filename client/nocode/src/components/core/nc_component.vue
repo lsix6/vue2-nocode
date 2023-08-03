@@ -13,6 +13,10 @@ export default {
             type: Object,
             default: null
         },
+        com_data: {
+            type: Object,
+            default: null
+        },
         com_text: {
             type: String,
             default: null
@@ -54,10 +58,6 @@ export default {
             default: null
         },
         com_if: {
-            type: Object,
-            default: null
-        },
-        com_data: {
             type: Object,
             default: null
         },

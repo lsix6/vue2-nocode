@@ -24,6 +24,7 @@ export default {
         nc_table_column
     },
     props: {
+        extends: window.nocode.nc_base,
         table_props: {
             type: Object,
             default: null
@@ -31,14 +32,6 @@ export default {
         fields: {
             type: Array,
             default: () => []
-        },
-        com_root: {
-            type: Object,
-            default: null
-        },
-        com_data: {
-            type: Object,
-            default: null
         },
         listData: {
             type: [Array, Object],

@@ -10,18 +10,11 @@
 import _ from 'lodash'
 
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_text', this)
     },
     props: {
-        com_root: {
-            type: Object,
-            default: null
-        },
-        com_data: {
-            type: Object,
-            default: null
-        },
         value: {
             default: null,
         },

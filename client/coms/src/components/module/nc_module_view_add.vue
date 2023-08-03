@@ -6,14 +6,11 @@
 import { createAddPage } from './js/add/add_page'
 
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_module_view_add', this)
     },
     props: {
-        com_root: {
-            type: Object,
-            default: null
-        },
         module_info: {
             type: Object,
             default: () => { },
