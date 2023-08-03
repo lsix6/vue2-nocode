@@ -19,6 +19,8 @@ window.Vue.use(nc_root)
 import nc_view from './components/core/nc_view.vue'
 window.Vue.use(nc_view)
 
+import nc_base from './components/core/nc_base.vue'
+
 import { ComsManager } from './utils/coms_manager'
 const comsManager = new ComsManager(window.Vue)
 
@@ -42,7 +44,9 @@ register_request_api(testService.request_api)
 import { start } from './main'
 
 window.nocode = {
+    Vue,
     VueRouter,
+    nc_base,
     utils,
     get_params,
     request_api,
