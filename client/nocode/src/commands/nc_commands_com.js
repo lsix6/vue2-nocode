@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { get_params, params_desc_to_def } from "../utils/nc_params"
 import { register_commands } from "./nc_commands_base"
 
@@ -8,7 +9,7 @@ const commands = {
         const ref = com.com_root.refsMgr.get_com_ref(callParams.com_ref)
         if (ref) {
             let methodParams = callParams.com_method_params
-            if (methodParams?.param_source) {
+            if (_.isArray(methodParams)) {
                 const paramsDef = params_desc_to_def(callParams.com_method_params)
                 methodParams = get_params(com, paramsDef, cmd_data)
             }
