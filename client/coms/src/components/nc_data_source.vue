@@ -109,6 +109,8 @@ export default {
                         }
                         this.data[dsName] = result
                         console.log('[nc_data_source] refresh,', params, this.data)
+                        //
+                        resolve(true)
                     }).catch(e => {
                         console.error('[nc_data_source] refresh, fetchData error:', e)
                     })
