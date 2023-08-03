@@ -17,6 +17,7 @@ import _ from 'lodash'
 import nc_table_column from './nc_table_column.vue'
 
 export default {
+    extends: window.nocode.nc_base,
     install(Vue) {
         Vue.component('nc_table', this)
     },
@@ -24,7 +25,6 @@ export default {
         nc_table_column
     },
     props: {
-        extends: window.nocode.nc_base,
         table_props: {
             type: Object,
             default: null
