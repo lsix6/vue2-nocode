@@ -296,10 +296,10 @@ export default {
             // console.log('lodash_merge', obj1, obj2, ret)
             return ret
         },
-        commitDataIfChanged() {
+        submitIfChanged() {
             return new Promise(resolve => {
                 const isChanged = !!nc_vars.formChanged.isChanged(this.com_ref)
-                console.log('[nc_form] commitDataIfChanged, isChanged: ', isChanged)
+                console.log('[nc_form] submitIfChanged, isChanged: ', isChanged)
                 if (isChanged) {
                     this.submit().then(() => {
                         setTimeout(() => {
