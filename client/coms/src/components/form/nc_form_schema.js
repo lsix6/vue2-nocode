@@ -86,7 +86,7 @@ export default {
             getData: {},
         },
         com_methods: {
-            commitData: {},
+            submit: {},
             cancelFormChange: {},
         },
     },

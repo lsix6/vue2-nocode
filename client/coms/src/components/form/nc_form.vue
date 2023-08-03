@@ -158,7 +158,7 @@ export default {
                 }
             })
         },
-        commitData() {
+        submit() {
             // 先清空字段的错误信息
             this.formFieldsError = {}
             //
@@ -190,7 +190,7 @@ export default {
                                 })
                             }).catch(err => {
                                 // 根据后端返回的错误信息设置字段的错误信息（需要使用 this.$set，否则不会触发刷新）
-                                console.log('[nc_form] commitData, request_api.catch err:', err)
+                                console.log('[nc_form] submit, request_api.catch err:', err)
                                 if (err.fieldsError) {
                                     for (let k in err.fieldsError) {
                                         this.$set(this.formFieldsError, k, err.fieldsError[k])
@@ -301,7 +301,7 @@ export default {
                 const isChanged = !!nc_vars.formChanged.isChanged(this.com_ref)
                 console.log('[nc_form] commitDataIfChanged, isChanged: ', isChanged)
                 if (isChanged) {
-                    this.commitData().then(() => {
+                    this.submit().then(() => {
                         setTimeout(() => {
                             resolve(true)
                         }, 200);

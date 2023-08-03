@@ -42,7 +42,7 @@ const btnSave = {
                     cmd_name: 'call_com_method',
                     cmd_params: {
                         com_ref: 'formAdd',
-                        com_method_name: 'commitData',
+                        com_method_name: 'submit',
                         commands: [
                             {
                                 cmd_name: 'go_back',
