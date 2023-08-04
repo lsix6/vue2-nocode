@@ -81,6 +81,8 @@ import { formatFormLabelWidth } from './common/editorData';
 
 import NestedEditor from './components/NestedEditor';
 window.Vue.component('NestedEditor', NestedEditor)
+import SelectRef from './components/edit/SelectRef.vue'
+window.Vue.component('SelectRef', SelectRef)
 import SelectRefCom from './components/edit/SelectRefCom.vue'
 window.Vue.component('SelectRefCom', SelectRefCom)
 import SelectField from './components/edit/SelectField.vue'
