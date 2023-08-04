@@ -1,7 +1,7 @@
 <template>
     <div class="select-field">
-        <el-input :value="value" @input="onInput" />
-        <el-button class="dlg-button" @click="onBtnClick">...</el-button>
+        <el-input :value="value" @input="onInput" size="small" />
+        <el-button class="dlg-button" @click="onBtnClick" size="small">...</el-button>
     </div>
 </template>
 

@@ -1,13 +1,13 @@
 <template>
     <div>
         <div class="bind-item" v-for="(item, i) in value" :key="i">
-            <el-select class="prop-name" v-model="item.prop_name" @change="(v) => { onChange(v, i) }">
+            <el-select class="prop-name" v-model="item.prop_name" @change="(v) => { onChange(v, i) }" size="small">
                 <el-option v-for="prop in propList" :key="prop" :label="prop" :value="prop">
                 </el-option>
             </el-select>
             <SelectField v-model="item.field_name" />
         </div>
-        <el-button @click="onAdd">+</el-button>
+        <el-button @click="onAdd" size="small">+</el-button>
     </div>
 </template>
 

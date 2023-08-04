@@ -33,7 +33,8 @@
                         <VueJsonFrom v-model="curEditorItem.componentValue" :class="$style.configForm"
                             :schema="getEditorItem(curEditorItem.comName).componentPack.propsSchema" :form-props="{
                                 labelPosition: 'right',
-                                labelWidth: '110px'
+                                labelWidth: '110px',
+                                size: 'small',
                             }" :form-footer="{
     show: false
 }">
@@ -42,7 +43,8 @@
                     <el-tab-pane label="组件配置" name="formConfig">
                         <VueJsonFrom v-model="formConfig" :class="$style.configForm" :schema="FormConfSchema" :form-props="{
                             labelPosition: 'right',
-                            labelWidth: '110px'
+                            labelWidth: '110px',
+                            size: 'small',
                         }" :form-footer="{
     show: false
 }">
