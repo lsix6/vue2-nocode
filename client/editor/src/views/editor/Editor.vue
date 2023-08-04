@@ -55,7 +55,9 @@
         <SelectFieldDlg ref="selectFieldDlg" />
         <SetDataSourceDlg ref="setDataSourceDlg" />
         <SelectParamsDlg ref="selectParamsDlg" />
-        <SetCommandDlg ref="setCommandDlg" />
+        <DialogsManager ref="setCommandDlg">
+            <SetCommandDlg />
+        </DialogsManager>
     </div>
 </template>
 
@@ -65,6 +67,7 @@ import VueJsonFrom from '@lljj/vue-json-schema-form';
 import FormConfSchema from './viewComponents/FormConf';
 import EditorToolBar from './EditorToolBar.vue';
 import ComPreviewDlg from './ComPreviewDlg.vue'
+import DialogsManager from './components/edit/DialogsManager.vue'
 import SelectFieldDlg from './components/edit/SelectFieldDlg.vue'
 import SetDataSourceDlg from './components/edit/SetDataSourceDlg.vue'
 import SelectParamsDlg from './components/edit/SelectParamsDlg.vue'
@@ -98,6 +101,7 @@ export default {
         EditorToolBar,
         NestedEditor,
         ComPreviewDlg,
+        DialogsManager,
         SelectFieldDlg,
         SetDataSourceDlg,
         SelectParamsDlg,
