@@ -287,7 +287,7 @@ export const getProductFields = (moduleName) => {
                             field_name: 'delivery',
                         },
                         com_props: {
-                            commit_data: {
+                            submit_data: {
                                 api: {
                                     url: `${moduleName}/update`,
                                     method: 'POST',

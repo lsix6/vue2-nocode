@@ -18,7 +18,7 @@ export const createEditForm = (moduleInfo) => {
             form_props: {
                 "label-width": '90px',
             },
-            commit_data: {
+            submit_data: {
                 api: {
                     url: `${moduleInfo.name}/update`,
                     method: 'POST',

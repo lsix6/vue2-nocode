@@ -12,7 +12,7 @@ export const createAddForm = (moduleInfo) => {
             form_props: {
                 "label-width": '90px',
             },
-            commit_data: {
+            submit_data: {
                 api: {
                     url: `${moduleInfo.name}/add`,
                     method: 'POST',

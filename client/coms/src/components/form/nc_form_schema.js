@@ -14,7 +14,7 @@ export default {
             type: 'object',
             title: 'props',
             properties: {
-                commit_data: {
+                submit_data: {
                     type: 'object',
                     title: 'commit',
                     properties: {

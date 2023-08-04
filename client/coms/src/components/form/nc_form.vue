@@ -32,7 +32,7 @@ export default {
             type: Object,
             default: () => null,
         },
-        commit_data: {
+        submit_data: {
             type: Object,
             default: null
         },
@@ -163,26 +163,26 @@ export default {
             this.formFieldsError = {}
             //
             return new Promise((resolve, reject) => {
-                if (this.commit_data && this.commit_data.api) {
+                if (this.submit_data && this.submit_data.api) {
                     // 有提交数据的参数
                     this.formValidate().then(valid => {
                         if (valid) {
                             // 校验通过
                             // 请求 api 提交数据
                             let data = this.formData
-                            if (this.commit_data.commit_fields) {
+                            if (this.submit_data.commit_fields) {
                                 // 如果有 commit_fields，则只提交 commit_fields 里指定的字段
-                                // console.log('[nc_form] commit_fields', this.commit_data.commit_fields)
+                                // console.log('[nc_form] commit_fields', this.submit_data.commit_fields)
                                 data = get_params(null,
                                     [{
                                         params_source: 'cmd_data',
-                                        params_fields: this.commit_data.commit_fields,
+                                        params_fields: this.submit_data.commit_fields,
                                     }],
                                     this.formData)
                             }
-                            request_api(this.commit_data.api, { data }).then(data => {
+                            request_api(this.submit_data.api, { data }).then(data => {
                                 this.clearFormChanged().then(() => {
-                                    const options = (this.commit_data.success_message || '保存成功')
+                                    const options = (this.submit_data.success_message || '保存成功')
                                     msg_box.success({
                                         options,
                                     })
@@ -197,7 +197,7 @@ export default {
                                     }
                                 } else {
                                     // 没有字段相关的错误，则显示整体错误信息
-                                    const options = (this.commit_data.error_message || err.msgText || '保存失败')
+                                    const options = (this.submit_data.error_message || err.msgText || '保存失败')
                                     msg_box.error({
                                         options,
                                     })
@@ -211,7 +211,7 @@ export default {
                     })
                 } else {
                     // 参数不足
-                    reject(`[nc_form] not found 'commit_data' or 'commit_data.api'`)
+                    reject(`[nc_form] not found 'submit_data' or 'submit_data.api'`)
                 }
             })
         },
