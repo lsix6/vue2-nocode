@@ -26,6 +26,6 @@ const request_api_schema = {
 export default {
     request_api: {
         func: request_api_func,
-        schema: request_api_schema,
+        // schema: request_api_schema,
     },
 }

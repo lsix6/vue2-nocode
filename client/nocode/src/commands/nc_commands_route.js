@@ -67,14 +67,14 @@ export default {
 
     'push_route': {
         func: push_route,
-        schema: push_route_schema,
+        // schema: push_route_schema,
     },
     'go_back': {
         func: go_back,
     },
     'open_new_window': {
         func: open_new_window,
-        schema: open_new_window_schema,
+        // schema: open_new_window_schema,
     },
 
 }

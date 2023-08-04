@@ -19,6 +19,6 @@ const message_schema = {
 export default {
     message: {
         func: message,
-        schema: message_schema,
+        // schema: message_schema,
     },
 }
