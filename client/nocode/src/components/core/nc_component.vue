@@ -1,6 +1,5 @@
 
 <script>
-import { execute_commands } from '../../commands/nc_commands'
 import { getPropValue, parseValue, setPropValue } from '../../utils/nc_utils'
 
 export default {
@@ -289,7 +288,8 @@ export default {
                         const evt = this.com_events.find(item => { return item.event_name === event_name })
                         // console.log('[nc_component] event func', evt, e, this)
                         if (evt) {
-                            execute_commands(this, evt.commands, e)
+                            const cmdsMgr = window.nocode.commandsManager
+                            cmdsMgr.execute_commands(this, evt.commands, e)
                         }
                     }
                     //

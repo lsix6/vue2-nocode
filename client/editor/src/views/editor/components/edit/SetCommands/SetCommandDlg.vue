@@ -52,14 +52,11 @@ export default {
         }
     },
     computed: {
+        commands() {
+            return window.nocode.commandsManager.get_commands()
+        },
         cmd_names() {
-            return [
-                'request_api',
-                'call_com_method',
-                'push_route',
-                'go_back',
-                'message',
-            ]
+            return Object.keys(this.commands)
         },
     },
     mounted() {

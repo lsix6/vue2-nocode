@@ -21,6 +21,9 @@ window.Vue.use(nc_view)
 
 import nc_base from './components/core/nc_base.vue'
 
+import { CommandsManager } from './utils/commands_manager'
+const commandsManager = new CommandsManager()
+
 import { ComsManager } from './utils/coms_manager'
 const comsManager = new ComsManager(window.Vue)
 
@@ -42,6 +45,7 @@ import * as testService from './test/service'
 register_request_api(testService.request_api)
 
 import { start } from './main'
+import { init_commands } from './commands/nc_commands'
 
 window.nocode = {
     VueRouter,
@@ -52,11 +56,14 @@ window.nocode = {
     fetch_data,
     register_msg_box,
     msg_box,
+    commandsManager,
     pagesManager,
     comsManager,
     customizedComsManager,
     storageManager,
 }
+
+init_commands()
 
 window.time_log('[nocode] js loaded')
 
