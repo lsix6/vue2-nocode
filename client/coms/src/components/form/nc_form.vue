@@ -170,13 +170,13 @@ export default {
                             // 校验通过
                             // 请求 api 提交数据
                             let data = this.formData
-                            if (this.submit_data.commit_fields) {
-                                // 如果有 commit_fields，则只提交 commit_fields 里指定的字段
-                                // console.log('[nc_form] commit_fields', this.submit_data.commit_fields)
+                            if (this.submit_data.submit_fields) {
+                                // 如果有 submit_fields，则只提交 submit_fields 里指定的字段
+                                // console.log('[nc_form] submit_fields', this.submit_data.submit_fields)
                                 data = get_params(null,
                                     [{
                                         params_source: 'cmd_data',
-                                        params_fields: this.submit_data.commit_fields,
+                                        params_fields: this.submit_data.submit_fields,
                                     }],
                                     this.formData)
                             }
