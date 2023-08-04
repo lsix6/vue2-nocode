@@ -44,7 +44,6 @@ register_request_api(testService.request_api)
 import { start } from './main'
 
 window.nocode = {
-    Vue,
     VueRouter,
     nc_base,
     utils,
