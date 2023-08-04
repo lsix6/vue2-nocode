@@ -23,6 +23,8 @@ import nc_enum from './components/show/nc_enum.vue'
 import nc_enum_schema from './components/show/nc_enum_schema.js'
 import nc_enum_color from './components/show/nc_enum_color.vue'
 import nc_enum_color_schema from './components/show/nc_enum_color_schema.js'
+import nc_switch_in_show from './components/show/nc_switch_in_show.vue'
+import nc_switch_in_show_schema from './components/show/nc_switch_in_show_schema.js'
 import nc_text from './components/show/nc_text.vue'
 import nc_text_schema from './components/show/nc_text_schema.js'
 import nc_array from './components/show/nc_array.vue'
@@ -52,7 +54,7 @@ import el_button_schema from './elementui/el_button_schema.js'
 import el_popconfirm_schema from './elementui/el_popconfirm_schema.js'
 import el_avatar_schema from './elementui/el_avatar_schema.js'
 
-const registerComponents = (Vue) => {
+const registerComponents = () => {
   window.time_log('[coms] register components')
   //
   const comsManager = window.nocode.comsManager
@@ -93,6 +95,10 @@ const registerComponents = (Vue) => {
   comsManager.register(
     nc_enum_color,
     nc_enum_color_schema
+  )
+  comsManager.register(
+    nc_switch_in_show,
+    nc_switch_in_show_schema
   )
   comsManager.register(
     nc_text,
@@ -167,8 +173,6 @@ const registerComponents = (Vue) => {
     null,
     el_avatar_schema
   )
-  //
-  Vue.component('nc_switch_in_show', () => import('./components/show/nc_switch_in_show.vue'))
 }
 
 if (window.Vue) {
@@ -176,7 +180,7 @@ if (window.Vue) {
   //
   window.Vue.use(elementui)
   // 注册组件
-  registerComponents(window.Vue)
+  registerComponents()
   //
   window.nocode.register_msg_box(new DomMessage())
 } else {
