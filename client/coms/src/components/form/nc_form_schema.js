@@ -16,7 +16,7 @@ export default {
             properties: {
                 submit_data: {
                     type: 'object',
-                    title: 'commit',
+                    title: 'submit',
                     properties: {
                         api: {
                             type: 'object',
