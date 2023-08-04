@@ -1,5 +1,5 @@
 <template>
-    <el-dialog title="设置命令" :visible.sync="dialogVisible" @close="close">
+    <el-dialog title="设置命令" :visible.sync="dialogVisible" @close="onClose">
         <div v-if="dialogVisible" class="set-command-dlg-frame">
             <el-form size="small" label-width="180px" :model="cmd" onsubmit="return false">
                 <el-form-item label="delay">
@@ -70,9 +70,10 @@ export default {
             this.cmd = cmd
             this.dialogVisible = true
         },
-        close() {
-            console.log('[SetCommandDlg] close')
-            this.dialogVisible = false
+        onClose() {
+            console.log('[SetCommandDlg] onClose')
+            //
+            this.$emit('close')
         },
     },
 }
