@@ -65,7 +65,7 @@ export default {
             //
             const methodName = this.value?.call?.com_method_name
             if (methodName) {
-                ret = this.comMethods[methodName].params_schema
+                ret = this.comMethods[methodName]?.params_schema
             }
             // console.log('[SetCommand_call_com_method] paramsSchema', ret)
             //
