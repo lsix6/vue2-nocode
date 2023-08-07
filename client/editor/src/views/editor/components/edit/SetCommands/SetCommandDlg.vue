@@ -6,7 +6,7 @@
                     <el-input-number v-model="cmd.cmd_delay" />
                 </el-form-item>
                 <el-form-item label="name">
-                    <el-select v-model="cmd.cmd_name" filterable allow-create clearable>
+                    <el-select v-model="cmd.cmd_name" @change="onCmdChange" filterable allow-create clearable>
                         <el-option v-for="name in cmd_names" :key="name" :label="name" :value="name" />
                     </el-select>
                 </el-form-item>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+// import _ from 'lodash'
 import VueJsonFrom from '@lljj/vue-json-schema-form';
 
 import SetCommands from './SetCommands.vue'
@@ -59,6 +60,7 @@ export default {
             return Object.keys(this.commands)
         },
         selectedCommandSchema() {
+            // console.log('selectedCommandSchema, cmd', _.cloneDeep(this.cmd))
             return this.commands[this.cmd.cmd_name]?.schema
         },
     },
@@ -74,6 +76,11 @@ export default {
             console.log('[SetCommandDlg] onClose')
             //
             this.$emit('close')
+        },
+        onCmdChange() {
+            // console.log('[SetCommandDlg] onCmdChange')
+            // 命令改变的时候清除一下命令的参数，不然参数里的数组类型的属性会自动被转成对象类型的
+            this.cmd.cmd_params = {}
         },
     },
 }
