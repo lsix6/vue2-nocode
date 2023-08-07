@@ -20,12 +20,40 @@ const request_api_func = async function (com, command) {
 }
 
 const request_api_schema = {
-
+    type: 'object',
+    properties: {
+        api: {
+            type: 'object',
+            properties: {
+                url: {
+                    type: 'string',
+                    title: 'url',
+                },
+                method: {
+                    type: 'string',
+                    title: 'method',
+                    enum: [
+                        'GET',
+                        'POST',
+                        'DELETE',
+                    ],
+                    default: 'GET',
+                },
+                request_params: {
+                    type: 'array',
+                    title: 'params',
+                    minItems: 0,
+                    'ui:widget': 'SetParams',
+                    items: {},
+                },
+            },
+        },
+    },
 }
 
 export default {
     request_api: {
         func: request_api_func,
-        // schema: request_api_schema,
+        schema: request_api_schema,
     },
 }

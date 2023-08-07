@@ -17,9 +17,6 @@
                         size: 'small',
                     }" :form-footer="{ show: false }">
                 </VueJsonFrom>
-                <SetCommand_request_api v-if="cmd.cmd_name === 'request_api'" v-model="cmd.cmd_params" />
-                <SetCommand_message v-else-if="cmd.cmd_name === 'message'" v-model="cmd.cmd_params" />
-                <SetCommand_push_route v-else-if="cmd.cmd_name === 'push_route'" v-model="cmd.cmd_params" />
                 <el-form-item label="succeeded commands">
                     <SetCommands v-model="cmd.succeeded_commands" />
                 </el-form-item>
@@ -35,9 +32,6 @@
 import VueJsonFrom from '@lljj/vue-json-schema-form';
 
 import SetCommands from './SetCommands.vue'
-import SetCommand_request_api from './SetCommand_request_api.vue'
-import SetCommand_message from './SetCommand_message.vue'
-import SetCommand_push_route from './SetCommand_push_route.vue'
 import SetCommand_call_com_method from './SetCommand_call_com_method.vue'
 window.Vue.component('SetCommand_call_com_method', SetCommand_call_com_method)
 
@@ -48,9 +42,6 @@ export default {
     components: {
         VueJsonFrom,
         SetCommands,
-        SetCommand_request_api,
-        SetCommand_message,
-        SetCommand_push_route,
     },
     props: {
     },

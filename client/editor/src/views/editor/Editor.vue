@@ -95,6 +95,8 @@ import SetDataSource from './components/edit/SetDataSource.vue';
 window.Vue.component('SetDataSource', SetDataSource)
 import SetCommands from './components/edit/SetCommands/SetCommands.vue'
 window.Vue.component('SetCommands', SetCommands)
+import SetParams from './components/edit/SetParams.vue'
+window.Vue.component('SetParams', SetParams)
 
 deepFreeze(configTools);
 
