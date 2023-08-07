@@ -26,7 +26,25 @@ const push_route = async function (com, command, cmd_data) {
 }
 
 const push_route_schema = {
-
+    type: 'object',
+    properties: {
+        route: {
+            type: 'object',
+            properties: {
+                path: {
+                    type: 'string',
+                    title: 'url',
+                },
+                route_params: {
+                    type: 'array',
+                    title: 'params',
+                    minItems: 0,
+                    'ui:widget': 'SetParams',
+                    items: {},
+                },
+            },
+        },
+    },
 }
 
 const go_back = async function (com, command) {
@@ -67,7 +85,7 @@ export default {
 
     'push_route': {
         func: push_route,
-        // schema: push_route_schema,
+        schema: push_route_schema,
     },
     'go_back': {
         func: go_back,
