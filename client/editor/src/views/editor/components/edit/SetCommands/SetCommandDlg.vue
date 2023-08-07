@@ -10,10 +10,16 @@
                         <el-option v-for="name in cmd_names" :key="name" :label="name" :value="name" />
                     </el-select>
                 </el-form-item>
+                <VueJsonFrom v-if="!!selectedCommandSchema" v-model="cmd.cmd_params" class=""
+                    :schema="selectedCommandSchema" :form-props="{
+                        labelPosition: 'right',
+                        labelWidth: '180px',
+                        size: 'small',
+                    }" :form-footer="{ show: false }">
+                </VueJsonFrom>
                 <SetCommand_request_api v-if="cmd.cmd_name === 'request_api'" v-model="cmd.cmd_params" />
                 <SetCommand_message v-else-if="cmd.cmd_name === 'message'" v-model="cmd.cmd_params" />
                 <SetCommand_push_route v-else-if="cmd.cmd_name === 'push_route'" v-model="cmd.cmd_params" />
-                <SetCommand_call_com_method v-else-if="cmd.cmd_name === 'call_com_method'" v-model="cmd.cmd_params" />
                 <el-form-item label="succeeded commands">
                     <SetCommands v-model="cmd.succeeded_commands" />
                 </el-form-item>
@@ -26,22 +32,25 @@
 </template>
 
 <script>
+import VueJsonFrom from '@lljj/vue-json-schema-form';
+
 import SetCommands from './SetCommands.vue'
 import SetCommand_request_api from './SetCommand_request_api.vue'
 import SetCommand_message from './SetCommand_message.vue'
 import SetCommand_push_route from './SetCommand_push_route.vue'
 import SetCommand_call_com_method from './SetCommand_call_com_method.vue'
+window.Vue.component('SetCommand_call_com_method', SetCommand_call_com_method)
 
 export default {
     install(Vue) {
         Vue.component('SetCommand', this)
     },
     components: {
+        VueJsonFrom,
         SetCommands,
         SetCommand_request_api,
         SetCommand_message,
         SetCommand_push_route,
-        SetCommand_call_com_method,
     },
     props: {
     },
@@ -57,6 +66,9 @@ export default {
         },
         cmd_names() {
             return Object.keys(this.commands)
+        },
+        selectedCommandSchema() {
+            return this.commands[this.cmd.cmd_name]?.schema
         },
     },
     mounted() {

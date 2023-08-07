@@ -22,7 +22,14 @@ const call_com_method = async function (com, command, cmd_data) {
 }
 
 const call_com_method_schema = {
-
+    type: 'object',
+    'ui:field': 'SetCommand_call_com_method',
+    properties: {
+        call: {
+            type: 'object',
+            properties: {},
+        },
+    },
 }
 
 export default {

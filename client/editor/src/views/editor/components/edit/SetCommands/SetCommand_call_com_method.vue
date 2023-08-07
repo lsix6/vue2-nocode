@@ -24,8 +24,10 @@
 
 <script>
 import VueJsonFrom from '@lljj/vue-json-schema-form';
+import UiFieldBase from '../UiFieldBase.vue';
 
 export default {
+    extends: UiFieldBase,
     components: {
         VueJsonFrom,
     },
@@ -34,10 +36,6 @@ export default {
         'getEditorItem',
     ],
     props: {
-        value: {
-            type: Object,
-            default: () => { },
-        },
     },
     data() {
         return {
