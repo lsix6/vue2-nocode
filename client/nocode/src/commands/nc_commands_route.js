@@ -58,7 +58,8 @@ const open_new_window = async function (com, command, cmd_data) {
     let path = openParams.path
     let routeParams = null
     if (openParams.open_params) {
-        routeParams = get_params(com, openParams.open_params, cmd_data)
+        const paramsDef = params_desc_to_def(openParams.open_params)
+        routeParams = get_params(com, paramsDef, cmd_data)
     }
     const page = com.$router.resolve({
         path: path,
@@ -78,7 +79,33 @@ const open_new_window = async function (com, command, cmd_data) {
 }
 
 const open_new_window_schema = {
-
+    type: 'object',
+    properties: {
+        open: {
+            type: 'object',
+            properties: {
+                path: {
+                    type: 'string',
+                    title: 'path',
+                },
+                root_path: {
+                    type: 'string',
+                    title: 'root path',
+                },
+                open_target: {
+                    type: 'string',
+                    title: 'target',
+                },
+                open_params: {
+                    type: 'array',
+                    title: 'params',
+                    minItems: 0,
+                    'ui:widget': 'SetParams',
+                    items: {},
+                },
+            },
+        },
+    },
 }
 
 export default {
@@ -92,7 +119,7 @@ export default {
     },
     'open_new_window': {
         func: open_new_window,
-        // schema: open_new_window_schema,
+        schema: open_new_window_schema,
     },
 
 }
