@@ -13,12 +13,37 @@ const message = async function (com, command, cmd_data) {
 }
 
 const message_schema = {
-
+    type: 'object',
+    properties: {
+        msg: {
+            type: 'object',
+            properties: {
+                type: {
+                    type: 'string',
+                    title: 'type',
+                    enum: [
+                        'success',
+                        'error',
+                        'info',
+                        'warning',
+                    ],
+                    default: 'success',
+                },
+                msg_params: {
+                    type: 'array',
+                    title: 'params',
+                    minItems: 0,
+                    'ui:widget': 'SetParams',
+                    items: {},
+                },
+            },
+        },
+    },
 }
 
 export default {
     message: {
         func: message,
-        // schema: message_schema,
+        schema: message_schema,
     },
 }
