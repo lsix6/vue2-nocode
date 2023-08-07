@@ -179,7 +179,7 @@ export default {
         let scopedSlots = this.$scopedSlots
         //
         if (this.com_slots) {
-            if (window.Vue.component(this.com_name)) {
+            if (window.nocode.Vue.component(this.com_name)) {
                 // vue 组件
                 // console.log('[nc_component] vue com')
                 const slots = this.com_slots

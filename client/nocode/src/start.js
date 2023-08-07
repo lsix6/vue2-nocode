@@ -48,6 +48,7 @@ import { start } from './main'
 import { init_commands } from './commands/nc_commands'
 
 window.nocode = {
+    Vue: window.Vue,
     VueRouter,
     nc_base,
     utils,

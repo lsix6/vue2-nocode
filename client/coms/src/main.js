@@ -175,14 +175,13 @@ const registerComponents = () => {
   )
 }
 
-if (window.Vue) {
-  // 主应用中赋值了 window.Vue
+if (window.nocode) {
   //
-  window.Vue.use(elementui)
+  window.nocode.Vue.use(elementui)
   // 注册组件
   registerComponents()
   //
   window.nocode.register_msg_box(new DomMessage())
 } else {
-  console.error(`not found 'window.Vue'`)
+  console.error(`not found 'window.nocode'`)
 }
