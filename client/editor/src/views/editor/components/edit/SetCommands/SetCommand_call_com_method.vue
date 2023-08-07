@@ -73,13 +73,6 @@ export default {
     mounted() {
         console.log('[SetCommand_call_com_method] mounted', this.value)
         //
-        if (!this.value.call) {
-            this.$set(this.value, 'call', {
-                com_ref: '',
-                com_method_name: '',
-                com_method_params: [],
-            })
-        }
     },
     methods: {
     },
