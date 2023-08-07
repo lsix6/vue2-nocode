@@ -1,5 +1,5 @@
 <template>
-    <el-form-item :label="schema.title + '：'" size="mini">
+    <el-form-item :label="label" size="mini">
         <div class="set-param">
             <el-button @click="onOpenSelect(value)">...</el-button>
             <el-select class="row-source" v-model="value.param_source">
@@ -28,16 +28,18 @@ export default {
         'getEditorRefs',
     ],
     props: {
-        label: {
-            type: String,
-            default: '',
-        },
     },
     data() {
         return {
         }
     },
     computed: {
+        label() {
+            if (this.schema && this.schema.title) {
+                return this.schema.title + '：'
+            }
+            return ''
+        },
         paramSources() {
             return ['text', 'json', 'com_data', 'com_ref', 'route_query', 'cmd_data']
         },

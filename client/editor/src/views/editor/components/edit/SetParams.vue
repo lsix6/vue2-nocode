@@ -9,19 +9,7 @@
             </el-table-column>
             <el-table-column label="value">
                 <template slot-scope="scope">
-                    <div class="row-value">
-                        <el-button size="mini" @click="onOpenSelect(scope.row)">...</el-button>
-                        <el-select class="row-source" size="mini" v-model="scope.row.param_source">
-                            <el-option v-for="source in paramSources" :key="source" :label="source" :value="source" />
-                        </el-select>
-                        <div class="row-desc">
-                            <el-input size="mini" v-model="scope.row.param_desc" @input="onInput" />
-                            <!-- <div class="row-default" v-if="scope.row.param_source === 'com_ref'">
-                                <div class="row-default-label">default</div>
-                                <el-input size="mini" v-model="scope.row.param_default_value" @input="onInput" />
-                            </div> -->
-                        </div>
-                    </div>
+                    <SetParam style="margin: 0;" v-model="scope.row" />
                 </template>
             </el-table-column>
             <el-table-column label="remove" width="80">
@@ -34,10 +22,14 @@
 </template>
 
 <script>
+import SetParam from './SetParam.vue'
 
 export default {
     install(Vue) {
         Vue.component('SetParams', this)
+    },
+    components: {
+        SetParam,
     },
     inject: [
         'getEditorRefs',
