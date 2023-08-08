@@ -1,19 +1,16 @@
 <template>
-  <nc_root v-if="comObj && comObj.com_version === '1'" :coms_list="[comObj]" />
+  <nc_component v-if="comObj" v-bind="{ ...comObj, com_root }" />
 </template>
 
 <script>
-
-import nc_root from './nc_root.vue'
+import nc_base from './nc_base.vue'
 
 export default {
+  extends: nc_base,
   install(Vue) {
     Vue.component('nc_view', this)
   },
   name: 'nc_view',
-  components: {
-    nc_root
-  },
   data() {
     return {
       pageRoute: null,
@@ -28,6 +25,9 @@ export default {
   },
   created() {
     this.switchPage(this.$route.path)
+  },
+  mounted() {
+    console.log('[nc_view] mounted', this.$props)
   },
   methods: {
     switchPage(path) {

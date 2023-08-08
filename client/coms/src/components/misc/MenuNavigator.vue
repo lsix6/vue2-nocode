@@ -13,7 +13,7 @@
 
             </el-header>
             <el-main style="display: flex;">
-                <nc_view ref="ncView" />
+                <nc_view ref="ncView" v-bind="{ com_root }" />
             </el-main>
         </el-container>
     </div>
@@ -24,6 +24,7 @@
 const custComsMgr = window.nocode.customizedComsManager
 
 export default {
+    extends: window.nocode.nc_base,
     name: 'MenuNavigator',
     props: {
         base_path: {
