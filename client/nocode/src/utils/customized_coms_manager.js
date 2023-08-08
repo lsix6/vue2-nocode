@@ -1,4 +1,5 @@
 const C_COMS_LIST = 'coms_list'
+const C_COM_MAIN = 'com_main'
 
 const getComSaveName = (comId) => {
     return 'com_' + comId
@@ -116,6 +117,14 @@ export class CustomizedComsManager {
         console.log('loadComObjs', comId, objs)
         //
         return objs
+    }
+
+    saveMainComId(comId) {
+        localStorage.setItem(C_COM_MAIN, comId)
+    }
+
+    getMainComId() {
+        return localStorage.getItem(C_COM_MAIN)
     }
 
 }

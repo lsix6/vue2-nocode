@@ -1,5 +1,11 @@
 <template>
     <el-dialog title="自定义组件列表" :visible.sync="dialogVisible">
+        <div>
+            <span>main: </span>
+            <el-select v-model="mainComId" @change="onSelectMain" size="small">
+                <el-option v-for="(comData, i) in comsData" :key="i" :value="comData.id" :label="comData.name" />
+            </el-select>
+        </div>
         <el-table :height="500" :data="comsData">
             <el-table-column property="name" label="自定义组件名称" width="200"></el-table-column>
             <el-table-column label="操作">
@@ -30,6 +36,7 @@ export default {
         return {
             comsData: [],
             dialogVisible: false,
+            mainComId: '',
         };
     },
     mounted() {
@@ -37,6 +44,7 @@ export default {
     methods: {
         open() {
             this.comsData = custComsMgr.loadComsList()
+            this.mainComId = custComsMgr.getMainComId()
             //
             this.dialogVisible = true
         },
@@ -107,8 +115,13 @@ export default {
             //
             custComsMgr.saveComsList(this.comsData)
             //
-            window.nocode.customizedComsManager.removeComData(row.id)
-        }
+            custComsMgr.removeComData(row.id)
+        },
+        onSelectMain() {
+            // console.log('[ComsListDlg] onSelectMain', this.mainComId);
+            //
+            custComsMgr.saveMainComId(this.mainComId)
+        },
     },
 }
 </script>
