@@ -54,6 +54,9 @@ import el_button_schema from './elementui/el_button_schema.js'
 import el_popconfirm_schema from './elementui/el_popconfirm_schema.js'
 import el_avatar_schema from './elementui/el_avatar_schema.js'
 
+import MenuNavigator from './components/misc/MenuNavigator.vue'
+import MenuNavigator_schema from './components/misc/MenuNavigator_schema.js'
+
 const registerComponents = () => {
   window.time_log('[coms] register components')
   //
@@ -172,6 +175,11 @@ const registerComponents = () => {
   comsManager.register(
     null,
     el_avatar_schema
+  )
+  //
+  comsManager.register(
+    MenuNavigator,
+    MenuNavigator_schema
   )
 }
 
