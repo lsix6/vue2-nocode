@@ -23,5 +23,6 @@ export default {
     },
     comSchema: {
         com_name: 'MenuNavigator',
+        com_flex: true,
     },
 };
