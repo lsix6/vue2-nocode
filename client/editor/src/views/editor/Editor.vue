@@ -253,8 +253,12 @@ export default {
             // console.log('[Editor] onPreview')
             //
             const config = this.formConfig
-            if ((config.type === 'module' || config.type === 'page') && config.path) {
+            if (((config.type === 'module' || config.type === 'page') && config.path)) {
                 const url = location.origin + '/editor/preview/' + config.path + (config.type === 'module' ? '/list' : '')
+                this.$emit('preview', url)
+            } else if (this.com_id === window.nocode.customizedComsManager.getMainComId()) {
+                // main com
+                const url = location.origin + '/editor/preview'
                 this.$emit('preview', url)
             } else {
                 this.$refs.comPreviewDlg.open(this.com_id)

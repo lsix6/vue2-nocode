@@ -1,21 +1,6 @@
 <template>
-    <div id="app">
-        <el-aside width="160px" style="display: flex; border: 1px solid #eee; background-color: rgb(238, 241, 246)">
-            <el-menu :router="true" style="flex: 1; display: flex; flex-direction: column;" :defaultActive="activeMenu">
-                <el-menu-item v-for="(menu, i) in menus" :key="i" :index="menu.index"
-                    style="margin: 10px; text-align: center; background-color: aliceblue;">
-                    {{ menu.label }}
-                </el-menu-item>
-            </el-menu>
-        </el-aside>
-        <el-container>
-            <el-header height="48px" style="border: 1px solid #eee; text-align: right; font-size: 12px">
-
-            </el-header>
-            <el-main style="display: flex;">
-                <nc_view ref="ncView" />
-            </el-main>
-        </el-container>
+    <div id="preview">
+        <nc_root v-if="comObjs" :coms_list="comObjs" />
     </div>
 </template>
   
@@ -27,14 +12,11 @@ export default {
     name: 'Preview',
     data() {
         return {
-            menus: [],
-            activeMenu: '',
+            comObjs: null,
         }
     },
     created() {
         this.init()
-        this.setActiveMenuByRoute()
-        //
         window.addEventListener('message', ev => {
             if (ev.source === window.opener) {
                 console.log('[Preview] message, ev: ', ev)
@@ -42,15 +24,8 @@ export default {
                 console.log('[Preview] message, cmd: ', cmd)
                 //
                 if (cmd.name === 'update') {
-                    this.init()
-                    //
-                    const pageRoute = this.$refs.ncView.getPageRoute()
-                    if (pageRoute) {
-                        const comData = window.nocode.customizedComsManager.loadComData(cmd.data.com_id)
-                        const pagePath = comData?.page?.path
-                        if (pagePath && pageRoute.indexOf(pagePath) === 0) {
-                            this.$refs.ncView.refresh()
-                        }
+                    if (cmd.data.com_id === custComsMgr.getMainComId()) {
+                        this.init()
                     }
                 }
             }
@@ -58,60 +33,9 @@ export default {
     },
     methods: {
         init() {
-            this.menus = []
-            //
-            const pagesManager = window.nocode.pagesManager
-            //
-            pagesManager.set_base_path('/editor/preview/')
-            //
-            const coms = custComsMgr.loadComsList()
-            coms.forEach(com => {
-                const comData = window.nocode.customizedComsManager.loadComData(com.id)
-                const page = comData?.page
-                if (page && (page.type === 'module' || page.type === 'page') && page.path) {
-                    const comObjs = window.nocode.customizedComsManager.loadComObjs(com.id)
-                    const rootObj = {
-                        com_name: 'div',
-                        com_version: '1',
-                        com_info: {
-                            class: 'flex-container',
-                        },
-                        com_slots: {
-                            default: comObjs,
-                        },
-                    }
-                    const isModulePage = (page.type === 'module')
-                    if (isModulePage) {
-                        pagesManager.register_page(page.path + '/list', rootObj)
-                        pagesManager.register_page(page.path + '/add', rootObj)
-                        pagesManager.register_page(page.path + '/edit', rootObj)
-                    } else {
-                        pagesManager.register_page(page.path, rootObj)
-                    }
-                    //
-                    if (page.menu && page.menu.label) {
-                        this.menus.push({
-                            path: page.path,
-                            index: pagesManager.get_base_path() + page.path + (isModulePage ? '/list' : ''),
-                            label: page.menu.label,
-                        })
-                    }
-                }
-            })
-            //
-        },
-        setActiveMenuByRoute() {
-            const subPath = this.$route.params[0]
-            console.log('[Preview] setActiveMenuByRoute, subPath: ', subPath)
-            //
-            if (subPath) {
-                for (let i = 0; i < this.menus.length; i++) {
-                    const menu = this.menus[i]
-                    if (subPath.indexOf(menu.path) === 0) {
-                        this.activeMenu = menu.index
-                        break
-                    }
-                }
+            const mainComId = custComsMgr.getMainComId()
+            if (mainComId) {
+                this.comObjs = custComsMgr.loadComObjs(mainComId)
             }
         },
     },
@@ -119,7 +43,7 @@ export default {
 </script>
   
 <style>
-#Preview {
+#preview {
     background-color: #fff;
     flex: 1;
     display: flex;
