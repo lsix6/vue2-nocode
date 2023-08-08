@@ -68,7 +68,11 @@ export default {
             //
             const pagesManager = window.nocode.pagesManager
             //
-            pagesManager.set_base_path(this.base_path)
+            let basePath = this.base_path
+            if (!basePath.endsWith('/')) {
+                basePath += '/'
+            }
+            pagesManager.set_base_path(basePath)
             //
             const coms = custComsMgr.loadComsList()
             coms.forEach(com => {
