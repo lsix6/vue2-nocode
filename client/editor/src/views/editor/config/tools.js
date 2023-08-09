@@ -25,7 +25,6 @@ const tags = ['div', 'span']
 tags.forEach(tag => {
     const _com = {
         title: tag,
-        btnClass: 'w100',
         groupName: html.groupName,
         comName: tag,
         componentPack: {
@@ -62,7 +61,6 @@ for (let groupName in coms) {
         //
         const _com = {
             title: com.viewSchema.title,
-            btnClass: 'w100',
             groupName,
             comName,
             componentPack: {
@@ -95,7 +93,6 @@ custComs.forEach(com => {
     if (isPreDefinedField) {
         const _com = {
             title: com.name,
-            btnClass: 'w100',
             groupName: preDefinedFields.groupName,
             comName: com.name,
             comId: com.id,

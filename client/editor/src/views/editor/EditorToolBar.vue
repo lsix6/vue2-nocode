@@ -14,8 +14,6 @@
                             <div v-for="(item, cIndex) in group.componentList" :key="cIndex" :class="{
                                 [$style.listItem]: true,
                                 draggableToolItem: true,
-                                [item.btnClass]: item.btnClass
-
                             }">
                                 <span>{{ item.title }}</span>
                             </div>
