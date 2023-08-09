@@ -15,7 +15,7 @@
                                 [$style.listItem]: true,
                                 draggableToolItem: true,
                             }">
-                                <span>{{ item.title }}</span>
+                                <span>{{ item.comName }}</span>
                             </div>
                         </draggable>
                     </el-collapse-item>

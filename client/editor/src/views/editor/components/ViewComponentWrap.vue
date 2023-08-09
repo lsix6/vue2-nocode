@@ -6,7 +6,7 @@
         js_viewComponentWrap: true
     }" @click="handleClickView">
         <!-- <span :class="$style.formProperty"> {{ attrs.curNodePath }}</span> -->
-        <div class="com-title">[{{ editorItem.title }}]</div>
+        <div class="com-title">[{{ editorItem.comName }}]</div>
         <nc_component v-bind="comFinalBind" class="com-in-editor">
             <template v-for="(children, slotName) in editorItem.slots" :slot="slotName" slot-scope="slotProps">
                 <NestedEditor :key="slotName" :child-component-list="children" :drag-options="dragOptions"
