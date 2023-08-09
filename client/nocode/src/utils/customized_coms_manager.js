@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 const C_COMS_LIST = 'coms_list'
 const C_COM_MAIN = 'com_main'
 
@@ -69,21 +71,9 @@ export class CustomizedComsManager {
     }
 
     schemaItem2ComObj(editorItem) {
-        let comObj = {
-            com_name: editorItem.comName,
-            ...editorItem.componentValue.baseValue,
-            com_info: {
-                ...editorItem.componentValue.com_info,
-            },
-            com_props: {
-                ...editorItem.componentValue.com_props,
-            },
-            com_events: [
-                ...(editorItem.componentValue.com_events || []),
-            ],
-        }
+        const comObj = _.cloneDeep(editorItem.componentValue)
         //
-        // console.log('[customized_coms_manager] schemaItem2ComObj', comObj)
+        console.log('[customized_coms_manager] schemaItem2ComObj', comObj)
         return comObj
     }
 

@@ -20,6 +20,7 @@ export function generateEditorItem(toolItem) {
     const ret = {
         ...toolItem,
         componentValue: {
+            com_name: toolItem.comName,
             ...!toolItem.componentValue || isEmptyObject(toolItem.componentValue) ? getDefaultFormState(
                 currentComponentPack.propsSchema,
                 {}, // 初始值为空

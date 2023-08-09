@@ -69,7 +69,7 @@ export default (schema) => ({
             'ui:placeholder': '请输入属性名',
             'err:required': '属性名必填'
         },
-        baseValue: genBaseVal(schema),
+        ...genBaseVal(schema).properties,
         ...schema.propsSchema
     }
 });
