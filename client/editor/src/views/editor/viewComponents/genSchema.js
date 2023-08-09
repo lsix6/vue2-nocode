@@ -61,14 +61,8 @@ function genBaseVal(schema) {
 
 export default (schema) => ({
     type: 'object',
-    required: ['property'],
+    required: [],
     properties: {
-        property: {
-            title: '属性名',
-            type: 'string',
-            'ui:placeholder': '请输入属性名',
-            'err:required': '属性名必填'
-        },
         ...genBaseVal(schema).properties,
         ...schema.propsSchema
     }

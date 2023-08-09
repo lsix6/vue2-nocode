@@ -25,7 +25,6 @@ export function generateEditorItem(toolItem) {
                 {}, // 初始值为空
                 currentComponentPack.propsSchema
             ) : toolItem.componentValue,
-            property: (toolItem.componentValue && toolItem.componentValue.property) || id
         },
         id,
         ...(comSchema && comSchema.com_slots)
