@@ -10,16 +10,6 @@ function genBaseVal(schema) {
                 type: 'string',
                 title: 'ref name',
             },
-            schemaOptions: {
-                type: 'object',
-                properties: {
-                }
-            },
-            uiOptions: {
-                type: 'object',
-                properties: {
-                }
-            }
         }
     };
     const comSupport = schema?.comSchema?.com_support
