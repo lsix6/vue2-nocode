@@ -3,6 +3,9 @@
         <el-button @click="$emit('preview')">
             预览
         </el-button>
+        <el-button @click="$emit('showJson')">
+            JSON
+        </el-button>
         <el-collapse style="margin-top: 20px;">
             <div v-for="(group, index) in configTools" :key="index" :class="$style.group">
                 <template v-if="!group.hidden">

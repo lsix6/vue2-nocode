@@ -7,7 +7,7 @@
             <div :class="$style.toolBarWrap">
                 <div :class="$style.toolsBar">
                     <EditorToolBar :drag-group="dragOptions.group" :config-tools="configTools"
-                        @onFilter="$message.error('该组件添加数目已达上限！')" @preview="onPreview">
+                        @onFilter="$message.error('该组件添加数目已达上限！')" @preview="onPreview" @showJson="onShowJson">
                     </EditorToolBar>
                 </div>
                 <span :class="$style.leftCaret" @click="closeToolbar = !closeToolbar">
@@ -54,6 +54,7 @@
             </div>
         </div>
         <ComPreviewDlg ref="comPreviewDlg" />
+        <ComJsonDlg ref="comJsonDlg" />
         <SelectFieldDlg ref="selectFieldDlg" />
         <SetDataSourceDlg ref="setDataSourceDlg" />
         <SelectParamsDlg ref="selectParamsDlg" />
@@ -69,6 +70,7 @@ import VueJsonFrom from '@lljj/vue-json-schema-form';
 import FormConfSchema from './viewComponents/FormConf';
 import EditorToolBar from './EditorToolBar.vue';
 import ComPreviewDlg from './ComPreviewDlg.vue'
+import ComJsonDlg from './ComJsonDlg.vue'
 import DialogsManager from './components/edit/DialogsManager.vue'
 import SelectFieldDlg from './components/edit/SelectFieldDlg.vue'
 import SetDataSourceDlg from './components/edit/SetDataSourceDlg.vue'
@@ -109,6 +111,7 @@ export default {
         EditorToolBar,
         NestedEditor,
         ComPreviewDlg,
+        ComJsonDlg,
         DialogsManager,
         SelectFieldDlg,
         SetDataSourceDlg,
@@ -263,6 +266,10 @@ export default {
             } else {
                 this.$refs.comPreviewDlg.open(this.com_id)
             }
+        },
+        onShowJson() {
+            const saveData = window.nocode.customizedComsManager.loadComData(this.com_id)
+            this.$refs.comJsonDlg.open(saveData)
         },
     }
 };
