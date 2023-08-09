@@ -6,7 +6,7 @@
         js_viewComponentWrap: true
     }" @click="handleClickView">
         <!-- <span :class="$style.formProperty"> {{ attrs.curNodePath }}</span> -->
-        <div class="com-title">[{{ editorItem.comName }}]</div>
+        <div class="com-title">[{{ editorItem.componentValue.com_name }}]</div>
         <nc_component v-bind="comFinalBind" class="com-in-editor">
             <template v-for="(children, slotName) in editorItem.slots" :slot="slotName" slot-scope="slotProps">
                 <NestedEditor :key="slotName" :child-component-list="children" :drag-options="dragOptions"
@@ -80,7 +80,7 @@ export default {
     },
     computed: {
         attrs() {
-            const componentPack = this.getEditorItem(this.editorItem.comName)?.componentPack
+            const componentPack = this.getEditorItem(this.editorItem.componentValue.com_name)?.componentPack
             return {
                 formProps: this.formProps,
                 globalOptions,

@@ -31,7 +31,7 @@
                 <el-tabs v-model="activeName">
                     <el-tab-pane v-if="curEditorItem" label="属性" name="compConfig">
                         <VueJsonFrom v-model="curEditorItem.componentValue" :class="$style.configForm"
-                            :schema="getEditorItem(curEditorItem.comName).componentPack.propsSchema" :form-props="{
+                            :schema="getEditorItem(curEditorItem.componentValue.com_name).componentPack.propsSchema" :form-props="{
                                 labelPosition: 'right',
                                 labelWidth: '110px',
                                 size: 'small',

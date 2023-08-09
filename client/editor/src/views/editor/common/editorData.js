@@ -18,7 +18,6 @@ export function generateEditorItem(toolItem) {
     const comSchema = currentComponentPack.comSchema
 
     const ret = {
-        ...toolItem,
         componentValue: {
             com_name: toolItem.comName,
             ...!toolItem.componentValue || isEmptyObject(toolItem.componentValue) ? getDefaultFormState(

@@ -90,7 +90,7 @@ export default {
     },
     methods: {
         isFlex(item) {
-            const comItem = this.getEditorItem(item.comName)
+            const comItem = this.getEditorItem(item.componentValue.com_name)
             const ret = (comItem.componentPack?.comSchema?.com_flex
                 || item.componentValue?.com_props?.flex)
             // console.log('[NestedEditor] isFlex(), comItem', item, comItem, ret)
