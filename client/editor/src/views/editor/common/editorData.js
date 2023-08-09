@@ -19,12 +19,6 @@ export function generateEditorItem(toolItem) {
 
     const ret = {
         ...toolItem,
-        toolBar: {
-            moveDownDisabled: false,
-            moveUpDisabled: false,
-            copyDisabled: false,
-            removeDisabled: false,
-        },
         componentValue: {
             ...!toolItem.componentValue || isEmptyObject(toolItem.componentValue) ? getDefaultFormState(
                 currentComponentPack.propsSchema,

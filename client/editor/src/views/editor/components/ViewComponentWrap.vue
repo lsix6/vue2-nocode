@@ -15,14 +15,14 @@
             </template>
         </nc_component>
         <div v-show="isEdit" :class="$style.editBar">
-            <button :disabled="editorItem.toolBar.moveUpDisabled" :class="$style.toolBarBtn" class="el-icon-caret-top"
-                title="上移" type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveUp' })"></button>
-            <button :disabled="editorItem.toolBar.moveDownDisabled" :class="$style.toolBarBtn" class="el-icon-caret-bottom"
-                title="下移" type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveDown' })"></button>
-            <button :disabled="editorItem.toolBar.copyDisabled" :class="[$style.toolBarBtn]" class="el-icon-copy-document"
-                title="复制" type="button" @click="$emit('onOperate', { item: editorItem, command: 'copy' })"></button>
-            <button :disabled="editorItem.toolBar.removeDisabled" :class="$style.toolBarBtn" class="el-icon-delete"
-                title="移除" type="button" @click="$emit('onOperate', { item: editorItem, command: 'remove' })"></button>
+            <button :disabled="toolBar.moveUpDisabled" :class="$style.toolBarBtn" class="el-icon-caret-top" title="上移"
+                type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveUp' })"></button>
+            <button :disabled="toolBar.moveDownDisabled" :class="$style.toolBarBtn" class="el-icon-caret-bottom" title="下移"
+                type="button" @click="$emit('onOperate', { item: editorItem, command: 'moveDown' })"></button>
+            <button :disabled="toolBar.copyDisabled" :class="[$style.toolBarBtn]" class="el-icon-copy-document" title="复制"
+                type="button" @click="$emit('onOperate', { item: editorItem, command: 'copy' })"></button>
+            <button :disabled="toolBar.removeDisabled" :class="$style.toolBarBtn" class="el-icon-delete" title="移除"
+                type="button" @click="$emit('onOperate', { item: editorItem, command: 'remove' })"></button>
         </div>
     </div>
 </template>
@@ -52,6 +52,10 @@ export default {
         editorItem: {
             type: Object,
             default: () => ({})
+        },
+        toolBar: {
+            type: Object,
+            default: () => { }
         },
         dragOptions: {
             type: Object,

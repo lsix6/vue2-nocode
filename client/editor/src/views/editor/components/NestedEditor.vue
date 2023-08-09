@@ -2,15 +2,15 @@
     <draggable ref="draggable" :list="childComponentList" v-bind="dragOptions"
         :class="[$style.dragArea, $style.formItemWrap, 'flex-container', 'NestedEditor_items-direction']"
         :style="dragCssVars" @change="handleDragChange">
-        <div v-for="item in childComponentList" :key="item.id" :class="{
+        <div v-for="(item, i) in childComponentList" :key="item.id" :class="{
             'flex-container': isFlex(item),
             draggableItem: true,
             w100: showNestedEditor(item),
             [$style.formItem]: true
         }">
-            <ViewComponentWrap :form-data="formData" :editor-item="item" :drag-options="dragOptions"
-                :show-nested-editor="showNestedEditor" :form-props="formProps" @onOperate="handleItemOperate"
-                :com_root="com_root" :com_data="com_data">
+            <ViewComponentWrap :form-data="formData" :editor-item="item" :toolBar="computedComponentToolBarStatus(i)"
+                :drag-options="dragOptions" :show-nested-editor="showNestedEditor" :form-props="formProps"
+                @onOperate="handleItemOperate" :com_root="com_root" :com_data="com_data">
             </ViewComponentWrap>
         </div>
         <template slot="footer">
@@ -79,10 +79,9 @@ export default {
         },
     },
     watch: {
-        childComponentList() {
-            console.log('childComponentList', this.childComponentList);
-            this.computedComponentToolBarStatus();
-        }
+        // childComponentList() {
+        //     console.log('childComponentList', this.childComponentList);
+        // }
     },
     created() {
     },
@@ -105,14 +104,21 @@ export default {
             console.log(args);
         },
         // 计算各个组件状态栏按钮状态
-        computedComponentToolBarStatus() {
-            this.childComponentList.forEach((component, componentIndex) => {
-                Object.assign(component.toolBar, {
-                    moveUpDisabled: componentIndex === 0, // 是否可上移动
-                    moveDownDisabled: componentIndex === this.childComponentList.length - 1, // 是否可下移
-                    removeDisabled: component.additional && component.additional.unRemove // 是否可移除
-                });
+        computedComponentToolBarStatus(componentIndex) {
+            const component = this.childComponentList[componentIndex]
+            const toolBar = {
+                moveDownDisabled: false,
+                moveUpDisabled: false,
+                copyDisabled: false,
+                removeDisabled: false,
+            }
+            Object.assign(toolBar, {
+                moveUpDisabled: componentIndex === 0, // 是否可上移动
+                moveDownDisabled: componentIndex === this.childComponentList.length - 1, // 是否可下移
+                removeDisabled: component.additional && component.additional.unRemove // 是否可移除
             });
+            //
+            return toolBar
         },
         // 操作单个组件
         handleItemOperate({ item, command }) {
