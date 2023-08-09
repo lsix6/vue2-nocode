@@ -5,7 +5,6 @@
         [$style.active]: isEdit,
         js_viewComponentWrap: true
     }" @click="handleClickView">
-        <!-- <span :class="$style.formProperty"> {{ attrs.curNodePath }}</span> -->
         <div class="com-title">[{{ editorItem.componentValue.com_name }}]</div>
         <nc_component v-bind="comFinalBind" class="com-in-editor">
             <template v-for="(children, slotName) in editorItem.slots" :slot="slotName" slot-scope="slotProps">
@@ -28,10 +27,8 @@
 </template>
 
 <script>
-import { globalOptions } from '@lljj/vue-json-schema-form';
 import emitter from '../../../mixins/emitter.js';
 import NestedEditor from './NestedEditor';
-import { editorItem2SchemaFieldProps } from '../common/editorData';
 import _ from 'lodash'
 
 export default {
@@ -79,17 +76,6 @@ export default {
         },
     },
     computed: {
-        attrs() {
-            const componentPack = this.getEditorItem(this.editorItem.componentValue.com_name)?.componentPack
-            return {
-                formProps: this.formProps,
-                globalOptions,
-                ...editorItem2SchemaFieldProps({
-                    ...this.editorItem,
-                    componentPack,
-                }, this.formData)
-            };
-        },
         comFinalBind() {
             const comObj = window.nocode.customizedComsManager.schemaItem2ComObj(this.editorItem)
             const finalBind = _.merge(comObj, {
@@ -109,7 +95,7 @@ export default {
         },
     },
     mounted() {
-        // console.log('[ViewComponentWrap] mounted(), com_data', this.attrs.curNodePath, this.com_data)
+        // console.log('[ViewComponentWrap] mounted(), com_data', this.com_data)
     },
     beforeDestroy() {
         this.hideEditForm();
