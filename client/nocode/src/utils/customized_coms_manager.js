@@ -81,7 +81,7 @@ export class CustomizedComsManager {
     schemaItem2ComObj(editorItem) {
         const comObj = _.cloneDeep(editorItem.componentValue)
         //
-        console.log('[customized_coms_manager] schemaItem2ComObj', comObj)
+        // console.log('[customized_coms_manager] schemaItem2ComObj', comObj)
         return comObj
     }
 
@@ -111,7 +111,7 @@ export class CustomizedComsManager {
                 objs.push(comObj)
             })
         }
-        console.log('schemaItems2ComObjs', items, objs)
+        // console.log('schemaItems2ComObjs', items, objs)
         //
         return objs
     }
