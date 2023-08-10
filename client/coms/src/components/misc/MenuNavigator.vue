@@ -29,7 +29,7 @@ export default {
     props: {
         base_path: {
             type: String,
-            default: '',
+            default: '/',
         },
     },
     data() {
