@@ -269,8 +269,8 @@ export default {
             }
         },
         onShowJson() {
-            const saveData = window.nocode.customizedComsManager.loadComData(this.com_id)
-            this.$refs.comJsonDlg.open(saveData)
+            const savedData = window.nocode.customizedComsManager.loadComSavedData(this.com_id)
+            this.$refs.comJsonDlg.open(savedData)
         },
     }
 };

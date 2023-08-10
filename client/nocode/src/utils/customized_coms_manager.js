@@ -44,12 +44,23 @@ export class CustomizedComsManager {
         return comId
     }
 
-    loadComData(comId) {
-        let comData = null
+    loadComSavedData(comId) {
+        let savedData = null
         //
         const s = localStorage.getItem(getComSaveName(comId))
         if (s) {
-            const objsData = JSON.parse(s)
+            savedData = JSON.parse(s)
+        }
+        //
+        console.log('loadComSavedData', comId, savedData)
+        return savedData
+    }
+
+    loadComData(comId) {
+        let comData = null
+        //
+        const objsData = this.loadComSavedData(comId)
+        if (objsData) {
             comData = {
                 page: objsData.page,
                 componentList: this.comObjs2SchemaItems(objsData.componentList)
@@ -154,9 +165,8 @@ export class CustomizedComsManager {
     loadComObjs(comId) {
         const objs = []
         //
-        const s = localStorage.getItem(getComSaveName(comId))
-        if (s) {
-            const objsData = JSON.parse(s)
+        const objsData = this.loadComSavedData(comId)
+        if (objsData) {
             objs.push(...objsData.componentList)
         }
         console.log('loadComObjs', comId, objs)
