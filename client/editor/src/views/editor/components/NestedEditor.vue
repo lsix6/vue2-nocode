@@ -139,7 +139,8 @@ export default {
                 copy(target, arrayItem) {
                     // 不copy数据
                     // eslint-disable-next-line no-unused-vars
-                    const { componentValue, ...emptyPack } = arrayItem;
+                    const emptyPack = { ...arrayItem };
+                    emptyPack.comName = emptyPack.componentValue.com_name
 
                     return target.splice(target.indexOf(arrayItem) + 1, 0, generateEditorItem(emptyPack));
                 },
