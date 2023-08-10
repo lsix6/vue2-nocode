@@ -49,7 +49,11 @@ export class CustomizedComsManager {
         //
         const s = localStorage.getItem(getComSaveName(comId))
         if (s) {
-            comData = JSON.parse(s)
+            const objsData = JSON.parse(s)
+            comData = {
+                page: objsData.page,
+                componentList: this.comObjs2SchemaItems(objsData.componentList)
+            }
         }
         //
         console.log('loadComData', comId, comData)
@@ -59,7 +63,11 @@ export class CustomizedComsManager {
     saveComData(comId, comData) {
         console.log('saveComData', comId, comData)
         if (comId && comData) {
-            localStorage.setItem(getComSaveName(comId), JSON.stringify(comData))
+            const objsData = {
+                page: comData.page,
+                componentList: this.schemaItems2ComObjs(comData.componentList)
+            }
+            localStorage.setItem(getComSaveName(comId), JSON.stringify(objsData))
         }
     }
 
@@ -94,15 +102,63 @@ export class CustomizedComsManager {
         return obj
     }
 
-    loadComObjs(comId) {
+    schemaItems2ComObjs(items) {
         const objs = []
         //
-        const schemaData = this.loadComData(comId)
-        if (schemaData) {
-            schemaData.componentList.forEach(item => {
+        if (items) {
+            items.forEach(item => {
                 const comObj = this.schemaItem2ComObjWithChildren(item)
                 objs.push(comObj)
             })
+        }
+        console.log('schemaItems2ComObjs', items, objs)
+        //
+        return objs
+    }
+
+    comObj2SchemaItemWithChildren(obj) {
+        const componentValue = { ...obj }
+        delete componentValue.com_slots
+        //
+        const ret = {
+            componentValue
+        }
+        //
+        if (obj.com_slots) {
+            const slots = {}
+            Object.entries(obj.com_slots).forEach(([slot, children]) => {
+                slots[slot] = []
+                children.forEach(child => {
+                    slots[slot].push(this.comObj2SchemaItemWithChildren(child))
+                })
+            })
+            ret.slots = slots
+        }
+        //
+        return ret
+    }
+
+    comObjs2SchemaItems(objs) {
+        const items = []
+        //
+        if (objs) {
+            objs.forEach(obj => {
+                const item = this.comObj2SchemaItemWithChildren(obj)
+                items.push(item)
+            })
+        }
+        console.log('comObjs2SchemaItems', objs, items)
+        //
+        return items
+    }
+
+    loadComObjs(comId) {
+        const objs = []
+        //
+        const s = localStorage.getItem(getComSaveName(comId))
+        if (s) {
+            const objsData = JSON.parse(s)
+            objs.push(...objsData.componentList)
         }
         console.log('loadComObjs', comId, objs)
         //
