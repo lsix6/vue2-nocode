@@ -117,16 +117,15 @@ export class CustomizedComsManager {
     }
 
     comObj2SchemaItemWithChildren(obj) {
-        const componentValue = { ...obj }
-        delete componentValue.com_slots
+        const { com_slots, ...componentValue } = obj
         //
         const ret = {
             componentValue
         }
         //
-        if (obj.com_slots) {
+        if (com_slots) {
             const slots = {}
-            Object.entries(obj.com_slots).forEach(([slot, children]) => {
+            Object.entries(com_slots).forEach(([slot, children]) => {
                 slots[slot] = []
                 children.forEach(child => {
                     slots[slot].push(this.comObj2SchemaItemWithChildren(child))
