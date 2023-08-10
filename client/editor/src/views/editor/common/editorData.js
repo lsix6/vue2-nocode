@@ -3,7 +3,6 @@
  */
 
 import { getDefaultFormState } from '@lljj/vue-json-schema-form';
-import { genId } from '../../../utils/id';
 import { isEmptyObject } from './utils';
 import _ from 'lodash';
 import { getCom } from '../config/tools';
@@ -13,8 +12,6 @@ export function generateEditorItem(toolItem) {
     console.log('generateEditorItem', toolItem);
     const currentComponentPack = getCom(toolItem.comName).componentPack;
 
-    const ids = [currentComponentPack.viewSchema.type, genId()];
-    const id = ids.filter(item => !!item).join('_');
     const comSchema = currentComponentPack.comSchema
 
     const ret = {
@@ -26,7 +23,6 @@ export function generateEditorItem(toolItem) {
                 currentComponentPack.propsSchema
             ) : toolItem.componentValue,
         },
-        id,
         ...(comSchema && comSchema.com_slots)
             ? { slots: _.cloneDeep(comSchema.com_slots) }
             : {}

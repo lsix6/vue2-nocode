@@ -2,7 +2,7 @@
     <draggable ref="draggable" :list="childComponentList" v-bind="dragOptions"
         :class="[$style.dragArea, $style.formItemWrap, 'flex-container', 'NestedEditor_items-direction']"
         :style="dragCssVars" @change="handleDragChange">
-        <div v-for="(item, i) in childComponentList" :key="item.id" :class="{
+        <div v-for="(item, i) in childComponentList" :key="getItemId(item)" :class="{
             'flex-container': isFlex(item),
             draggableItem: true,
             w100: showNestedEditor(item),
@@ -24,6 +24,7 @@ import { MessageBox } from 'element-ui';
 import Draggable from 'vuedraggable';
 import * as arrayMethods from '../../../utils/array';
 import { generateEditorItem } from '../common/editorData';
+import { genId } from '../../../utils/id';
 
 // 避免循环依赖导致undefined
 const ViewComponentWrap = () => import('./ViewComponentWrap');
@@ -96,6 +97,12 @@ export default {
             // console.log('[NestedEditor] isFlex(), comItem', item, comItem, ret)
             //
             return ret
+        },
+        getItemId(item) {
+            if (!item.id) {
+                item.id = genId()
+            }
+            return item.id
         },
         showNestedEditor(editorItem) {
             return editorItem.slots;
