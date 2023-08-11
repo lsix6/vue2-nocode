@@ -1,5 +1,5 @@
 <script>
-import { fieldProps } from '@lljj/vue-json-schema-form'
+import { fieldProps, formUtils } from '@lljj/vue-json-schema-form'
 import {
     getPathVal, setPathVal
 } from '@lljj/vjsf-utils/vueUtils';
@@ -16,7 +16,12 @@ export default {
             set(v) {
                 setPathVal(this.rootFormData, this.curNodePath, v);
             }
-        }
+        },
+        options() {
+            return formUtils.getUiOptions({
+                schema: this.schema
+            })
+        },
     },
 }
 </script>
