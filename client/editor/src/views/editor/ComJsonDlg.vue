@@ -33,7 +33,7 @@ export default {
             this.dialogVisible = false
         },
         onJsonChange(v) {
-            console.log('[ComJsonDlg] onJsonChange', v)
+            // console.log('[ComJsonDlg] onJsonChange', v)
             //
             this.$emit('change', v)
         },
