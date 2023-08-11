@@ -1,13 +1,38 @@
 import _ from 'lodash'
 import { get_field_ds_name } from './data_sources'
 
+const createEditCom = (field) => {
+    let com = _.cloneDeep(field.in_form.edit_com)
+    //
+    if (!com) {
+        const fdInfo = field.field_info
+        if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
+            if (fdInfo.enum_map && fdInfo.enum_map.length <= 3) {
+                com = {
+                    com_name: 'nc_radio_group',
+                }
+            } else {
+                com = {
+                    com_name: 'nc_select',
+                }
+            }
+        } else {
+            com = {
+                com_name: 'el-input',
+            }
+        }
+    }
+    //
+    return com
+}
+
 export const createFormItems = (fields) => {
     const arr = []
     //
     const pushFieldToArr = (field, i) => {
         const fdInfo = field.field_info
         //
-        const edit_com = _.cloneDeep(field.in_form.edit_com)
+        const edit_com = createEditCom(field)
         //
         if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
             edit_com.com_props = edit_com.com_props || {}

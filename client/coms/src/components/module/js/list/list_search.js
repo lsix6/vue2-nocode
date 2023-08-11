@@ -1,13 +1,37 @@
 import _ from 'lodash'
 import { get_field_ds_name } from '../data_sources'
 
+const createSearchCom = (field) => {
+    let com = _.cloneDeep(field.in_search.search_com)
+    //
+    if (!com) {
+        const fdInfo = field.field_info
+        if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
+            com = {
+                com_name: 'nc_select',
+                com_info: {
+                    attrs: {
+                        clearable: true,
+                    },
+                },
+            }
+        } else {
+            com = {
+                com_name: 'el-input',
+            }
+        }
+    }
+    //
+    return com
+}
+
 export const createListSearch = (moduleFields) => {
 
     const search_coms = []
     const pushFieldToArr = (field) => {
         const fdInfo = field.field_info
         //
-        const search_com = _.cloneDeep(field.in_search.search_com)
+        const search_com = createSearchCom(field)
         //
         if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
             search_com.com_props = search_com.com_props || {}

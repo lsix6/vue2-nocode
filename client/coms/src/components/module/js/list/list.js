@@ -2,6 +2,26 @@
 import _ from 'lodash'
 import { get_field_ds_name } from '../data_sources';
 
+const createListComs = (field) => {
+    let colComs = _.cloneDeep(field.in_list.column_components)
+    //
+    const fdInfo = field.field_info
+    if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
+        if (!colComs[0]) {
+            colComs[0] = {
+                com_name: 'nc_enum',
+            }
+        }
+        colComs[0].com_field = {
+            field_name: fdInfo.name
+        }
+        colComs[0].com_props = colComs[0].com_props || {}
+        colComs[0].com_props.data_source_name = get_field_ds_name(fdInfo.name)
+    }
+    //
+    return colComs
+}
+
 const createFields = (fields) => {
     const arr = []
     //
@@ -9,12 +29,7 @@ const createFields = (fields) => {
         if (field.in_list) {
             const fdInfo = field.field_info
             //
-            const colComs = _.cloneDeep(field.in_list.column_components)
-            //
-            if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
-                colComs[0].com_props = colComs[0].com_props || {}
-                colComs[0].com_props.data_source_name = get_field_ds_name(fdInfo.name)
-            }
+            const colComs = createListComs(field)
             //
             arr.push({
                 column_props: {
