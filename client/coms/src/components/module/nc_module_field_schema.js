@@ -19,6 +19,39 @@ export default {
                     type: 'string',
                     title: 'label',
                 },
+                data_sources_title: {
+                    title: 'Data Sources',
+                    type: 'object',
+                },
+                data_sources: {
+                    type: 'array',
+                    minItems: 0,
+                    maxItems: 1,
+                    'ui:showIndexNumber': true,
+                    items: {
+                        type: 'object',
+                        'ui:field': 'SetDataSource',
+                        properties: {
+                            name: {
+                                type: 'string',
+                            },
+                            type: {
+                                type: 'string',
+                            },
+                            api: {
+                                type: 'object',
+                                properties: {
+                                    url: {
+                                        type: 'string',
+                                    },
+                                    fetch_params: {
+                                        type: 'array',
+                                    },
+                                },
+                            },
+                        },
+                    }
+                },
                 enum_map_title: {
                     title: 'enum map',
                     type: 'object',

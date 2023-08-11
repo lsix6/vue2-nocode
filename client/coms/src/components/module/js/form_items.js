@@ -6,7 +6,7 @@ const createEditCom = (field) => {
     //
     if (!com) {
         const fdInfo = field.field_info
-        if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
+        if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_sources) {
             if (fdInfo.enum_map && fdInfo.enum_map.length <= 3) {
                 com = {
                     com_name: 'nc_radio_group',
@@ -34,7 +34,7 @@ export const createFormItems = (fields) => {
         //
         const edit_com = createEditCom(field)
         //
-        if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_source) {
+        if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_sources) {
             edit_com.com_props = edit_com.com_props || {}
             edit_com.com_props.data_source_name = get_field_ds_name(fdInfo.name)
         }

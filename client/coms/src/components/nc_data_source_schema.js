@@ -23,7 +23,7 @@ export default {
                     default: true,
                 },
                 data_sources_title: {
-                    title: 'Data Sources',
+                    title: 'Data Source',
                     type: 'object',
                 },
                 data_sources: {

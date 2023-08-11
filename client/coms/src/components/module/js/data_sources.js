@@ -25,14 +25,10 @@ export const create_date_sources = (moduleInfo) => {
                 type: 'obj',
                 obj,
             })
-        } else if (fdInfo.data_source) {
+        } else if (fdInfo.data_sources && fdInfo.data_sources.length > 0) {
             data_sources.push({
+                ...fdInfo.data_sources[0],
                 name: fdInfo.name,
-                type: 'api',
-                api: {
-                    url: `${moduleInfo.name}/${fdInfo.data_source}`,
-                    method: 'GET',
-                },
             })
         }
     })

@@ -52,6 +52,7 @@ export default {
                             field_info: {
                                 name: com.com_props.field_name,
                                 label: com.com_props.field_label,
+                                data_sources: com.com_props.data_sources,
                             },
                         }
                         if (com.com_props.enum_map && com.com_props.enum_map.length > 0) {
