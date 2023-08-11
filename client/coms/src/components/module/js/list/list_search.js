@@ -6,7 +6,7 @@ const createSearchCom = (field) => {
     //
     if (!com) {
         const fdInfo = field.field_info
-        if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_sources) {
+        if (fdInfo.data_sources && fdInfo.data_sources.length > 0) {
             com = {
                 com_name: 'nc_select',
                 com_info: {
@@ -33,7 +33,7 @@ export const createListSearch = (moduleFields) => {
         //
         const search_com = createSearchCom(field)
         //
-        if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_sources) {
+        if (fdInfo.data_sources && fdInfo.data_sources.length > 0) {
             search_com.com_props = search_com.com_props || {}
             search_com.com_props.data_source_name = get_field_ds_name(fdInfo.name)
         }

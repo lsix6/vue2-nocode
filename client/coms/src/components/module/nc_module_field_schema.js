@@ -53,15 +53,6 @@ export default {
                         },
                     }
                 },
-                enum_map_title: {
-                    title: 'enum map',
-                    type: 'object',
-                },
-                enum_map: {
-                    type: 'array',
-                    'ui:widget': 'SetEnumMap',
-                    items: {},
-                },
                 list_title: {
                     title: 'list',
                     type: 'object',

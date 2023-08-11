@@ -55,9 +55,6 @@ export default {
                                 data_sources: com.com_props.data_sources,
                             },
                         }
-                        if (com.com_props.enum_map && com.com_props.enum_map.length > 0) {
-                            _field.field_info.enum_map = com.com_props.enum_map
-                        }
                         //
                         if (com.com_props.is_in_list) {
                             _field.in_list = {

@@ -6,7 +6,7 @@ const createListComs = (field) => {
     let colComs = _.cloneDeep(field.in_list.column_components)
     //
     const fdInfo = field.field_info
-    if (fdInfo.enum || fdInfo.enum_map || fdInfo.data_sources) {
+    if (fdInfo.data_sources && fdInfo.data_sources.length > 0) {
         if (!colComs[0]) {
             colComs[0] = {
                 com_name: 'nc_enum',
