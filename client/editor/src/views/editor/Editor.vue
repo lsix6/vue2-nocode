@@ -55,7 +55,7 @@
             </div>
         </div>
         <ComPreviewDlg ref="comPreviewDlg" />
-        <ComJsonDlg ref="comJsonDlg" />
+        <ComJsonDlg ref="comJsonDlg" @change="onJsonChange" />
         <SelectFieldDlg ref="selectFieldDlg" />
         <SetDataSourceDlg ref="setDataSourceDlg" />
         <SelectParamsDlg ref="selectParamsDlg" />
@@ -271,6 +271,10 @@ export default {
         onShowJson() {
             const savedData = window.nocode.customizedComsManager.loadComSavedData(this.com_id)
             this.$refs.comJsonDlg.open(savedData)
+        },
+        onJsonChange(v) {
+            this.formConfig = v.page
+            this.componentList = window.nocode.customizedComsManager.comObjs2SchemaItems(v.componentList)
         },
     }
 };

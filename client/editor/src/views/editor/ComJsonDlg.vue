@@ -1,7 +1,8 @@
 <template>
     <el-dialog title="JSON" :visible.sync="dialogVisible">
         <div class="com-json-dlg">
-            <vueJsonTool class="flex-container " :value="item" :showBtns="false" mode="text" :expandedOnStart="true" />
+            <vueJsonTool class="flex-container " :value="obj" :showBtns="false" mode="text" :expandedOnStart="true"
+                @json-change="onJsonChange" />
         </div>
     </el-dialog>
 </template>
@@ -17,19 +18,24 @@ export default {
     data() {
         return {
             dialogVisible: false,
-            item: {},
+            obj: {},
         };
     },
     mounted() {
     },
     methods: {
-        open(item) {
-            this.item = item
+        open(obj) {
+            this.obj = obj
             //
             this.dialogVisible = true
         },
         close() {
             this.dialogVisible = false
+        },
+        onJsonChange(v) {
+            console.log('[ComJsonDlg] onJsonChange', v)
+            //
+            this.$emit('change', v)
         },
     },
 }

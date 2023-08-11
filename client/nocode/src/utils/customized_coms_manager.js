@@ -151,11 +151,13 @@ export class CustomizedComsManager {
     comObjs2SchemaItems(objs) {
         const items = []
         //
-        if (objs) {
+        if (objs && _.isArray(objs)) {
             objs.forEach(obj => {
                 const item = this.comObj2SchemaItemWithChildren(obj)
                 items.push(item)
             })
+        } else {
+            console.error('comObjs2SchemaItems, error', objs)
         }
         console.log('comObjs2SchemaItems', objs, items)
         //
