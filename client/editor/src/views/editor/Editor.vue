@@ -151,22 +151,17 @@ export default {
             FormConfSchema,
             formConfig: {},
             activeName: 'formConfig',
-            preComponentList: '',
+            preSaveData: '',
         };
     },
     watch: {
         componentList: {
             handler() {
                 // console.log('watch componentList')
-                const s = JSON.stringify(this.componentList)
-                if (this.preComponentList !== s) {
-                    // console.log('watch componentList', this.preComponentList, s)
-                    this.preComponentList = s
-                    //
-                    this.$nextTick(() => {
-                        this.saveData()
-                    })
-                }
+                //
+                this.$nextTick(() => {
+                    this.saveData()
+                })
             },
             deep: true,
         },
@@ -234,11 +229,16 @@ export default {
                     ...this.formConfig
                 },
             }
-            window.nocode.customizedComsManager.saveComData(this.com_id, saveData)
-            //
-            this.notifyPreview({
-                com_id: this.com_id,
-            })
+            const s = JSON.stringify(saveData)
+            if (s !== this.preSaveData) {
+                window.nocode.customizedComsManager.saveComData(this.com_id, saveData)
+                //
+                this.notifyPreview({
+                    com_id: this.com_id,
+                })
+                //
+                this.preSaveData = s
+            }
         },
         loadData() {
             const saveData = window.nocode.customizedComsManager.loadComData(this.com_id)
@@ -251,7 +251,7 @@ export default {
                 }
             }
             //
-            this.preComponentList = JSON.stringify(this.componentList)
+            this.preSaveData = JSON.stringify(saveData)
         },
         onPreview() {
             // console.log('[Editor] onPreview')
