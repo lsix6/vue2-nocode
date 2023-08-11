@@ -31,6 +31,7 @@ export default {
                     items: {
                         type: 'object',
                         'ui:field': 'SetDataSource',
+                        'ui:disable_name_input': true,
                         properties: {
                             name: {
                                 type: 'string',

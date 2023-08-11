@@ -1,7 +1,7 @@
 <template>
     <div class="data-source-item">
         <el-button size="mini" class="btn-open" @click="onOpenDlg()">...</el-button>
-        <el-input size="mini" v-model="value.name" @input="onInput" />
+        <el-input size="mini" v-model="value.name" @input="onInput" :disabled="disable_name_input" />
     </div>
 </template>
 
@@ -18,6 +18,11 @@ export default {
     inject: [
         'getEditorRefs',
     ],
+    computed: {
+        disable_name_input() {
+            return !!this.options.disable_name_input
+        },
+    },
     mounted() {
         console.log('[SetDataSource] mounted', _.cloneDeep(this.value))
         //
